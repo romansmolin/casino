@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_card_casino_cards",
+  "info": {
+    "displayName": "CasinoCard",
+    "icon": "code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "main_bonus_title": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "rating": {
+      "type": "integer",
+      "max": 100
+    },
+    "hasRegularOffers": {
+      "type": "boolean"
+    },
+    "hasLiveCasino": {
+      "type": "boolean"
+    },
+    "hasVIPProgram": {
+      "type": "boolean"
+    },
+    "hasLiveChat": {
+      "type": "boolean"
+    },
+    "casino": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::casino.casino"
+    }
+  }
+}

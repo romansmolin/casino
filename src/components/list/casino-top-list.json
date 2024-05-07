@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_list_casino_top_lists",
+  "info": {
+    "displayName": "CasinoTopList",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "CasinoCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "card.casino-card"
+    }
+  }
+}

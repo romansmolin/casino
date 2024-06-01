@@ -52,6 +52,11 @@
     },
     "review": {
       "type": "blocks"
+    },
+    "Promos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list.available-promos-list"
     }
   }
 }

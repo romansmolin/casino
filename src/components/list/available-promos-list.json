@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_list_available_promos_lists",
+  "info": {
+    "displayName": "AvailablePromosList",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Promo": {
+      "displayName": "PromoCard",
+      "type": "component",
+      "repeatable": false,
+      "component": "card.promo-card"
+    }
+  }
+}

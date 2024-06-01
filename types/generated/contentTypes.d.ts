@@ -362,6 +362,86 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCasinoCasino extends Schema.CollectionType {
+  collectionName: 'casinos';
+  info: {
+    singularName: 'casino';
+    pluralName: 'casinos';
+    displayName: 'Casino';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    bonus_title: Attribute.String;
+    logo: Attribute.Media;
+    uuid: Attribute.UID &
+      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+    features: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'crypto_casino',
+          'vip_available',
+          'no_deposit_bonus_available',
+          'support_available',
+          'valid_license',
+          'aviator_game_available',
+          ''
+        ]
+      >;
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          max: 100;
+        },
+        number
+      >;
+    review: Attribute.Blocks;
+    Promos: Attribute.Component<'list.available-promos-list', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::casino.casino',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::casino.casino',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTopTop extends Schema.CollectionType {
+  collectionName: 'tops';
+  info: {
+    singularName: 'top';
+    pluralName: 'tops';
+    displayName: 'Top';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    country: Attribute.String;
+    MainTop: Attribute.DynamicZone<['card.casino-card']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::top.top', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::top.top', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,159 +868,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiBonusBonus extends Schema.CollectionType {
-  collectionName: 'bonuses';
-  info: {
-    singularName: 'bonus';
-    pluralName: 'bonuses';
-    displayName: 'Bonuses';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    bonus_text: Attribute.String;
-    bonus_title: Attribute.String;
-    bonus_category: Attribute.Relation<
-      'api::bonus.bonus',
-      'manyToOne',
-      'api::bonus-category.bonus-category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::bonus.bonus',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::bonus.bonus',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiBonusCategoryBonusCategory extends Schema.CollectionType {
-  collectionName: 'bonus_categories';
-  info: {
-    singularName: 'bonus-category';
-    pluralName: 'bonus-categories';
-    displayName: 'Bonus Categories';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    bonuses: Attribute.Relation<
-      'api::bonus-category.bonus-category',
-      'oneToMany',
-      'api::bonus.bonus'
-    >;
-    category_name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::bonus-category.bonus-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::bonus-category.bonus-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCasinoCasino extends Schema.CollectionType {
-  collectionName: 'casinos';
-  info: {
-    singularName: 'casino';
-    pluralName: 'casinos';
-    displayName: 'Casino';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    bonus_title: Attribute.String;
-    logo: Attribute.Media;
-    uuid: Attribute.UID &
-      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
-    features: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'crypto_casino',
-          'vip_available',
-          'no_deposit_bonus_available',
-          'support_available',
-          'valid_license',
-          'aviator_game_available',
-          ''
-        ]
-      >;
-    rating: Attribute.Integer &
-      Attribute.SetMinMax<
-        {
-          max: 100;
-        },
-        number
-      >;
-    review: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::casino.casino',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::casino.casino',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTopTop extends Schema.CollectionType {
-  collectionName: 'tops';
-  info: {
-    singularName: 'top';
-    pluralName: 'tops';
-    displayName: 'Top';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    country: Attribute.String;
-    MainTop: Attribute.DynamicZone<['card.casino-card']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::top.top', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::top.top', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -951,6 +878,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::casino.casino': ApiCasinoCasino;
+      'api::top.top': ApiTopTop;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -959,10 +888,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::bonus.bonus': ApiBonusBonus;
-      'api::bonus-category.bonus-category': ApiBonusCategoryBonusCategory;
-      'api::casino.casino': ApiCasinoCasino;
-      'api::top.top': ApiTopTop;
     }
   }
 }

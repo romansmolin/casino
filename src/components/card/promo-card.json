@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_card_promo_cards",
+  "info": {
+    "displayName": "PromoCard",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "bonus_title": {
+      "type": "string"
+    },
+    "bonus_subtitle": {
+      "type": "string"
+    },
+    "bonus_img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

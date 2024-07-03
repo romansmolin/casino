@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_bonus_bonus_infos",
+  "info": {
+    "displayName": "BonusInfo",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "release_date": {
+      "type": "date"
+    },
+    "available_for": {
+      "type": "customField",
+      "options": [
+        "Latvia",
+        "USA",
+        "Russia"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "bonus_type": {
+      "type": "customField",
+      "options": [
+        "No Deposit Bonus",
+        "Welcome Bonus",
+        "Cashback Bonus"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "bonus_status": {
+      "type": "customField",
+      "options": [
+        "Active",
+        "Innactive"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    }
+  }
+}

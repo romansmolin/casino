@@ -57,6 +57,12 @@
       "type": "component",
       "repeatable": true,
       "component": "list.available-promos-list"
+    },
+    "bonuses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::bonus.bonus",
+      "mappedBy": "casinos"
     }
   }
 }

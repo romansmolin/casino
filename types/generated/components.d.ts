@@ -1,5 +1,31 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BonusBonusInfo extends Schema.Component {
+  collectionName: 'components_bonus_bonus_infos';
+  info: {
+    displayName: 'BonusInfo';
+    icon: 'feather';
+  };
+  attributes: {
+    release_date: Attribute.Date;
+    available_for: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Latvia', 'USA', 'Russia']
+      >;
+    bonus_type: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['No Deposit Bonus', 'Welcome Bonus', 'Cashback Bonus']
+      >;
+    bonus_status: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Active', 'Innactive']
+      >;
+  };
+}
+
 export interface CardCasinoCard extends Schema.Component {
   collectionName: 'components_card_casino_cards';
   info: {
@@ -70,6 +96,7 @@ export interface ListCasinoTopList extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'bonus.bonus-info': BonusBonusInfo;
       'card.casino-card': CardCasinoCard;
       'card.promo-card': CardPromoCard;
       'list.available-promos-list': ListAvailablePromosList;

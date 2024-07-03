@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bonuses",
+  "info": {
+    "singularName": "bonus",
+    "pluralName": "bonuses",
+    "displayName": "Bonus",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "casinos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::casino.casino",
+      "inversedBy": "bonuses"
+    },
+    "bonus_info": {
+      "type": "component",
+      "repeatable": true,
+      "component": "bonus.bonus-info"
+    }
+  }
+}

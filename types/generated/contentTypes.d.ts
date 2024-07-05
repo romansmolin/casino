@@ -805,7 +805,10 @@ export interface ApiBonusBonus extends Schema.CollectionType {
       'manyToMany',
       'api::casino.casino'
     >;
-    bonus_info: Attribute.Component<'bonus.bonus-info', true>;
+    bonus_info: Attribute.Component<'bonus.bonus-info'>;
+    bonus_subtitle: Attribute.String;
+    name: Attribute.String;
+    logo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

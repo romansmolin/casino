@@ -20,8 +20,24 @@
     },
     "bonus_info": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "bonus.bonus-info"
+    },
+    "bonus_subtitle": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

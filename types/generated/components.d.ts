@@ -71,6 +71,18 @@ export interface CardPromoCard extends Schema.Component {
   };
 }
 
+export interface ContentContentSection extends Schema.Component {
+  collectionName: 'components_content_content_sections';
+  info: {
+    displayName: 'ContentSection';
+  };
+  attributes: {
+    text: Attribute.Blocks;
+    title: Attribute.String;
+    image: Attribute.Media;
+  };
+}
+
 export interface ListAvailablePromosList extends Schema.Component {
   collectionName: 'components_list_available_promos_lists';
   info: {
@@ -99,6 +111,7 @@ declare module '@strapi/types' {
       'bonus.bonus-info': BonusBonusInfo;
       'card.casino-card': CardCasinoCard;
       'card.promo-card': CardPromoCard;
+      'content.content-section': ContentContentSection;
       'list.available-promos-list': ListAvailablePromosList;
       'list.casino-top-list': ListCasinoTopList;
     }

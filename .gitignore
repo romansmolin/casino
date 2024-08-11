@@ -106,6 +106,7 @@ coverage
 ############################
 
 .env
+.sql
 license.txt
 exports
 .strapi

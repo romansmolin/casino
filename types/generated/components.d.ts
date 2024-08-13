@@ -5,6 +5,7 @@ export interface BonusBonusInfo extends Schema.Component {
   info: {
     displayName: 'BonusInfo';
     icon: 'feather';
+    description: '';
   };
   attributes: {
     release_date: Attribute.Date;
@@ -16,7 +17,12 @@ export interface BonusBonusInfo extends Schema.Component {
     bonus_type: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
-        ['No Deposit Bonus', 'Welcome Bonus', 'Cashback Bonus']
+        [
+          'No Deposit Bonus:noDepositBonus',
+          'Welcome Bonus:welcomeBonus',
+          'Cashback Bonus:cashbackBonus',
+          'Best Of The Month:bestOfTheMonth'
+        ]
       >;
     bonus_status: Attribute.JSON &
       Attribute.CustomField<

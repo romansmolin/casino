@@ -809,6 +809,12 @@ export interface ApiBonusBonus extends Schema.CollectionType {
     bonus_subtitle: Attribute.String;
     name: Attribute.String;
     logo: Attribute.Media;
+    faq: Attribute.Component<'faq.faq'>;
+    bonusOverview: Attribute.Blocks;
+    bonusTitle: Attribute.String;
+    casinoName: Attribute.String;
+    uuid: Attribute.UID &
+      Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

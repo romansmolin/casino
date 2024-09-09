@@ -89,6 +89,28 @@ export interface ContentContentSection extends Schema.Component {
   };
 }
 
+export interface FaqFaqItem extends Schema.Component {
+  collectionName: 'components_faq_faq_items';
+  info: {
+    displayName: 'FaqItem';
+  };
+  attributes: {
+    text: Attribute.Text;
+    label: Attribute.String;
+  };
+}
+
+export interface FaqFaq extends Schema.Component {
+  collectionName: 'components_faq_faqs';
+  info: {
+    displayName: 'FAQ';
+    description: '';
+  };
+  attributes: {
+    fact1: Attribute.Component<'faq.faq-item', true>;
+  };
+}
+
 export interface ListAvailablePromosList extends Schema.Component {
   collectionName: 'components_list_available_promos_lists';
   info: {
@@ -118,6 +140,8 @@ declare module '@strapi/types' {
       'card.casino-card': CardCasinoCard;
       'card.promo-card': CardPromoCard;
       'content.content-section': ContentContentSection;
+      'faq.faq-item': FaqFaqItem;
+      'faq.faq': FaqFaq;
       'list.available-promos-list': ListAvailablePromosList;
       'list.casino-top-list': ListCasinoTopList;
     }

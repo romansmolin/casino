@@ -39,6 +39,24 @@
         "videos",
         "audios"
       ]
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": false,
+      "component": "faq.faq"
+    },
+    "bonusOverview": {
+      "type": "blocks"
+    },
+    "bonusTitle": {
+      "type": "string"
+    },
+    "casinoName": {
+      "type": "string"
+    },
+    "uuid": {
+      "type": "customField",
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     }
   }
 }

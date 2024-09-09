@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_faq_faqs",
+  "info": {
+    "displayName": "FAQ",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "fact1": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.faq-item"
+    }
+  }
+}

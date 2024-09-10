@@ -1,25 +1,24 @@
 {
   "collectionName": "components_content_content_sections",
   "info": {
-    "displayName": "ContentSection"
+    "displayName": "ContentSection",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "text": {
       "type": "blocks"
     },
-    "title": {
-      "type": "string"
-    },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

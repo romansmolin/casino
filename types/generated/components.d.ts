@@ -81,10 +81,10 @@ export interface ContentContentSection extends Schema.Component {
   collectionName: 'components_content_content_sections';
   info: {
     displayName: 'ContentSection';
+    description: '';
   };
   attributes: {
     text: Attribute.Blocks;
-    title: Attribute.String;
     image: Attribute.Media;
   };
 }

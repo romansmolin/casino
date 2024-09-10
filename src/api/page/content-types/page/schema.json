@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page"
+    "displayName": "Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,8 +15,10 @@
     "slug": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.content-section"
     }
   }
 }

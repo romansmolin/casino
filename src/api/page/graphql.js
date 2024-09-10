@@ -2,38 +2,60 @@
 
 module.exports = (strapi) => () => ({
     typeDefs: `
-        type GetBonusTopPage {
-            bonusTopPage: String
+        type GetPageContentBySlug {
+            pageContent: [PageContent]
+        }
+
+        type PageContent {
+            image: String
+            content: [PageDetails]
+        }
+
+        type PageDetails {
+            type: String
+            children: [PageText]
+        }
+
+        type PageText {
+            type: String
+            text: String
+            bold: Boolean
         }
         
         extend type Query {
-            getBonusTopPage(slug: String!): GetBonusTopPage        
+            getPageContentBySlug(slug: String!): GetPageContentBySlug        
         }
     `,
     resolvers: {
         Query: {
-            getBonusTopPage: {
+            getPageContentBySlug: {
                 resolve: async (parent, args) => {
                     try {
-                        const data = await strapi.services["api::page.page"].find()
+                        const pages = await strapi.services["api::page.page"].find({
+                            populate: ['content', 'content.image']
+                        })
                         const { slug } = args
-                        const bonusTop = data.results.find(page => page.slug === slug)
-                        console.log('DATA: ', bonusTop)
+                        const page = pages.results.find(page => page.slug === slug)
+
+                        const processedPageContent = page.content.map(pageContentBlock => ({
+                            content: pageContentBlock.text,
+                            image: pageContentBlock?.image?.url
+                        }))
 
                         return {
-                            bonusTopPage: bonusTop.title
+                            pageContent: processedPageContent
                         }
+
                     } catch (err) {
-                        return {
-                            bonusTopPage: 'ERROR'
-                        }
+                        console.error('Error fetching page content by slug:', err);
+                        throw new Error('Error fetching page content');
                     }
                 }
             }
         }
     },
     resolversConfig: {
-        "Query.getBonusTopPage": {
+        "Query.getPageContentBySlug": {
             auth: false,
         },
     }

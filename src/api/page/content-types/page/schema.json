@@ -13,12 +13,15 @@
   "pluginOptions": {},
   "attributes": {
     "slug": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "content": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.content-section"
+    "dynamicContent": {
+      "type": "dynamiczone",
+      "components": [
+        "content.content-section",
+        "faq.faq"
+      ]
     }
   }
 }

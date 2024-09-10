@@ -32,11 +32,13 @@ module.exports = (strapi) => () => ({
                 resolve: async (parent, args) => {
                     try {
                         const pages = await strapi.services["api::page.page"].find({
-                            populate: ['content', 'content.image']
+                            populate: ['dynamicContent', 'dynamicContent.image', 'dynamicContent.fact1']
                         })
+
                         const { slug } = args
                         const page = pages.results.find(page => page.slug === slug)
 
+                        console.log(page.dynamicContent)
                         const processedPageContent = page.content.map(pageContentBlock => ({
                             content: pageContentBlock.text,
                             image: pageContentBlock?.image?.url

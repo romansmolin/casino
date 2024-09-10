@@ -907,8 +907,10 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    slug: Attribute.String;
-    content: Attribute.Component<'content.content-section', true>;
+    slug: Attribute.String & Attribute.Required;
+    dynamicContent: Attribute.DynamicZone<
+      ['content.content-section', 'faq.faq']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

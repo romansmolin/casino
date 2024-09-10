@@ -84,7 +84,7 @@ export interface ContentContentSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    text: Attribute.Blocks;
+    text: Attribute.Blocks & Attribute.Required;
     image: Attribute.Media;
   };
 }

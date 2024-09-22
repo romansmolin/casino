@@ -85,7 +85,8 @@ export interface ContentContentSection extends Schema.Component {
   };
   attributes: {
     text: Attribute.Blocks & Attribute.Required;
-    image: Attribute.Media;
+    image: Attribute.Media & Attribute.Required;
+    position: Attribute.Enumeration<['left', 'rigth']> & Attribute.Required;
   };
 }
 

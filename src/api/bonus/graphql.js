@@ -122,8 +122,6 @@ module.exports = (strapi) => ({ nexus }) => ({
                             bonus.bonus_info.bonus_type.includes(type)
                         );
 
-                        console.log('filteredBonuses: ', filteredBonuses)
-
                         const filteredProcessedBonuses = filteredBonuses.map(item => (
                             {
                                 casino_name: item.casinoName,

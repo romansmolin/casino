@@ -799,20 +799,65 @@ export interface ApiBonusBonus extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     casinos: Attribute.Relation<
       'api::bonus.bonus',
       'manyToMany',
       'api::casino.casino'
     >;
-    bonus_info: Attribute.Component<'bonus.bonus-info'>;
-    bonus_subtitle: Attribute.String;
-    name: Attribute.String;
-    logo: Attribute.Media;
-    faq: Attribute.Component<'faq.faq'>;
-    bonusOverview: Attribute.Blocks;
-    bonusTitle: Attribute.String;
-    casinoName: Attribute.String;
+    bonus_info: Attribute.Component<'bonus.bonus-info'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bonus_subtitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    faq: Attribute.Component<'faq.faq'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bonusOverview: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bonusTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    casinoName: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     uuid: Attribute.UID &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     createdAt: Attribute.DateTime;
@@ -830,6 +875,12 @@ export interface ApiBonusBonus extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::bonus.bonus',
+      'oneToMany',
+      'api::bonus.bonus'
+    >;
+    locale: Attribute.String;
   };
 }
 

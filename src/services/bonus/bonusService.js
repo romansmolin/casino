@@ -66,7 +66,7 @@ const getBonusById = async (uuid) => {
                 'bonusOverview',
             ],
         });
-
+        
         if (!data || !data.results.length) {
             throw new Error('Bonus not found');
         }

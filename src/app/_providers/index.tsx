@@ -9,15 +9,8 @@ interface ProvidersProps {
 const Providers: React.FC<ProvidersProps> = ({ children }) => {
     return (
         <ApolloProvider>
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-            >
-                <SidebarProvider>
-                    {children}
-                </SidebarProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                <SidebarProvider>{children}</SidebarProvider>
             </ThemeProvider>
         </ApolloProvider>
     )

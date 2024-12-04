@@ -13,6 +13,7 @@ import {
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl';
 
 export function SidebarBonusesMenu({
     items,
@@ -29,6 +30,7 @@ export function SidebarBonusesMenu({
         }[]
     }[]
 }) {
+    const t = useTranslations('sidebar');
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Bonuses</SidebarGroupLabel>
@@ -43,7 +45,7 @@ export function SidebarBonusesMenu({
                             <CollapsibleTrigger asChild>
                                 <SidebarMenuButton tooltip={item.title} className='h-10'>
                                     {item.icon && <item.icon />}
-                                    <span>{item.title}</span>
+                                    <span>{t(item.title)}</span>
                                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                 </SidebarMenuButton>
                             </CollapsibleTrigger>

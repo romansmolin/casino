@@ -33,7 +33,7 @@ export const menu = {
     ],
     bonuses: [
         {
-            title: 'No Deposit Bonuses',
+            title: 'no-deposit-bonus',
             url: '#',
             icon: SquareTerminal,
             isActive: true,
@@ -54,7 +54,7 @@ export const menu = {
             ],
         },
         {
-            title: 'Real Money Bonuses',
+            title: 'real-money-bonus',
             url: '#',
             icon: Bot,
             isActive: true,

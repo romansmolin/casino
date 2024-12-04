@@ -1,18 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {
-    AudioWaveform,
-    BookOpen,
-    Bot,
-    Command,
-    Frame,
-    GalleryVerticalEnd,
-    Map,
-    PieChart,
-    Settings2,
-    SquareTerminal,
-} from 'lucide-react'
+
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/shared/ui/sidebar'
 import { SidebarBonusesMenu } from './sidebar-bonuses-menu'

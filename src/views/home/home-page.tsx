@@ -4,7 +4,7 @@ import React from 'react'
 const HomePage = () => {
     return (
         <>
-            <div className="min-h-[100vh] flex-1 p-5 rounded-xl bg-muted/50 md:min-h-min">
+            <div className=" px-5 py-7 pr-0 md:pr-5  space-y-8 flex-1 rounded-xl bg-muted/50 md:min-h-min">
                 <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl'>
                     Best Casinos of December 2024
                 </h1>

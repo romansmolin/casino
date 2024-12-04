@@ -41,7 +41,7 @@ export function SidebarBonusesMenu({
                         className="group/collapsible">
                         <SidebarMenuItem>
                             <CollapsibleTrigger asChild>
-                                <SidebarMenuButton tooltip={item.title}>
+                                <SidebarMenuButton tooltip={item.title} className='h-10'>
                                     {item.icon && <item.icon />}
                                     <span>{item.title}</span>
                                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -51,7 +51,7 @@ export function SidebarBonusesMenu({
                                 <SidebarMenuSub>
                                     {item.items?.map((subItem) => (
                                         <SidebarMenuSubItem key={subItem.title}>
-                                            <SidebarMenuSubButton asChild>
+                                            <SidebarMenuSubButton asChild className='h-10'>
                                                 <Link href={subItem.url} className="flex gap-2">
                                                     {/* {subItem.icon && <subItem.icon />} */}
                                                     <span>{subItem.title}</span>

@@ -3,10 +3,23 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui/button'
 import Link from 'next/link'
 import RatingCircle from '@/shared/components/rating-circle/rating-circle'
+import { cookies } from 'next/headers'
+
+const getUserFriendlyUrl = (name: string) => {
+    return name
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "");
+};
+
+const navigateToReview = async (uuid: string) => {
+    const cookieStore = await cookies()
+    cookieStore.set('CASINO_REVIEW_UUID', uuid)
+}
 
 const CasinoTopCard = ({ casino }: {casino: CasinoEntry}) => {
     return (
-        <div className="min-w-[305px] shadow-lg lg:w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border">
+        <div className="min-w-[305px] lg:w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border shadow-none">
             {/* Logo */}
             <div className="md:col-span-1 h-[170px] bg-primary p-4 rounded-xl flex items-center justify-center">
                 <div className="w-full md:w-[150px] h-full flex justify-center items-center">
@@ -36,7 +49,7 @@ const CasinoTopCard = ({ casino }: {casino: CasinoEntry}) => {
                     <Button asChild>
                         <Link
                             href={{
-                                // pathname: `/review/${getUserFriendlyUrl(name)}/`,
+                                pathname: `/casino-review/${getUserFriendlyUrl(casino.title)}`,
                                 query: {
                                     id: casino.casino,
                                 },

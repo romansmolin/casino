@@ -9,6 +9,7 @@ import Providers from '../_providers'
 import { notFound } from 'next/navigation'
 import { getMessages } from 'next-intl/server'
 import { routing } from '@/shared/lib/i18n/routing'
+import {setRequestLocale} from 'next-intl/server';
 
 const trispace = Trispace({ subsets: ['latin'] })
 
@@ -31,8 +32,10 @@ export default async function RootLayout({
 
     const messages = await getMessages();
 
+    setRequestLocale(locale);
+
     return (
-        <html lang={locale}>
+        <html lang={locale} suppressHydrationWarning>
             <body className={trispace.className}>
                 <Providers>
                     <AppSidebar />

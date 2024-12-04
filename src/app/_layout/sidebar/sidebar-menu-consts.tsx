@@ -36,7 +36,7 @@ export const menu = {
             title: 'no-deposit-bonus',
             url: '#',
             icon: SquareTerminal,
-            isActive: true,
+            isActive: false,
             items: [
                 {
                     icon: SquareTerminal,
@@ -57,7 +57,7 @@ export const menu = {
             title: 'real-money-bonus',
             url: '#',
             icon: Bot,
-            isActive: true,
+            isActive: false,
             items: [
                 {
                     title: 'Welcome Bonuses',

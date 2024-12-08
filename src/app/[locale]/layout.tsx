@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import '../globals.css'
-import { Trispace } from 'next/font/google'
+import { Trispace, Nunito } from 'next/font/google'
 import { SidebarInset, SidebarTrigger } from '@/shared/ui/sidebar'
-import { Separator } from '@radix-ui/react-separator'
 import Header from '../_layout/header/header'
 import { AppSidebar } from '../_layout/sidebar/sidebar'
 import Providers from '../_providers'
@@ -12,6 +11,10 @@ import { routing } from '@/shared/lib/i18n/routing'
 import {setRequestLocale} from 'next-intl/server';
 
 const trispace = Trispace({ subsets: ['latin'] })
+const nunito = Nunito({
+    weight: '600',
+    subsets: ['cyrillic'], 
+  });
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -30,13 +33,15 @@ export default async function RootLayout({
         notFound();
     }
 
+    const font = locale === 'ru' ? nunito.className : trispace.className
+
     const messages = await getMessages();
 
     setRequestLocale(locale);
 
     return (
         <html lang={locale} suppressHydrationWarning>
-            <body className={trispace.className}>
+            <body className={font}>
                 <Providers>
                     <AppSidebar />
                     <SidebarInset className='w-full'>

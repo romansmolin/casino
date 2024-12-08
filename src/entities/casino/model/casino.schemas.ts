@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const CASINO_TOP_BY_COUNTRY = gql`
-  query GetCasinoTopByCountry($country: String!) {
-    getTopByCountryName(country: $country) {
+  query GetCasinoTopByCountry($country: String!, $locale: String!) {
+    getTopByCountryName(country: $country, locale: $locale) {
       id
       country
       top_list {

@@ -11,7 +11,7 @@ interface CasinoTopProps {
 const CasinoTop: React.FC<CasinoTopProps> = async ({ byCountry, byType }) => {
     const queryParam = byType || byCountry || 'Germany';
     const locale = await getLocale()
-    const { topByCountry, error } = await fetchCasinoTopByCountryServer(queryParam, 'en')
+    const { topByCountry, error } = await fetchCasinoTopByCountryServer(queryParam, locale)
     
     return (
             <div className='flex overflow-x-scroll lg:overflow-auto md:flex-col gap-5 mt-5'>

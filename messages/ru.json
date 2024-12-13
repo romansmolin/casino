@@ -2,5 +2,13 @@
     "sidebar": {
       "no-deposit-bonus": "Без Депозитные Бонусы",
       "real-money-bonus": "Приветсвенные Бонусы"
+    },
+    "mainPage": {
+      "title": "Лучшие казино в Декабре"
+    },
+    "casinoTopCard": {
+      "rating": "Рейтинг",
+      "playNow": "Играть!",
+      "review": "Обзор"
     }
   }

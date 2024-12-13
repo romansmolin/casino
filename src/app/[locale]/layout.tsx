@@ -33,7 +33,6 @@ export default async function RootLayout({
         notFound();
     }
 
-    const font = locale === 'ru' ? nunito.className : trispace.className
 
     const messages = await getMessages();
 
@@ -41,7 +40,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale} suppressHydrationWarning>
-            <body className={font}>
+            <body className={nunito.className}>
                 <Providers>
                     <AppSidebar />
                     <SidebarInset className='w-full'>

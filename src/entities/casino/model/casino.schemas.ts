@@ -20,7 +20,7 @@ export const CASINO_TOP_BY_COUNTRY = gql`
   }
 `;
 
-export const GET_CASINO_BY_UUID = gql`
+export const CASINO_BY_UUID = gql`
 query GetCasinoByID($uuid: String!) {
   getCasinoByUUID(uuid: $uuid) {
     name

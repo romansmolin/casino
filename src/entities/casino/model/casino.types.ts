@@ -17,7 +17,7 @@ interface CasinoReview {
 	logoUrl: string
 	features: string[]
 	rating: number
-	review: StrapiContent
+	review: StrapiContent[]
 }
 
 type StrapiContentItem = {

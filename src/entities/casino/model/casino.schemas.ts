@@ -42,6 +42,10 @@ query GetCasinoByID($uuid: String!) {
       bonus_link
       bonus_img
     }
+    faq {
+      text 
+      label
+    }
   }
 }
 `;

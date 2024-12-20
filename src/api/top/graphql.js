@@ -21,19 +21,27 @@ module.exports = (strapi) => ({ nexus }) => ({
         }
 
         extend type Query {
-            getTopByCountryName(country: String!): GetTopByCountryName
+            getTopByCountryName(country: String!, locale: String!): GetTopByCountryName
         }
   `,
     resolvers: {
         Query: {
             getTopByCountryName: {
-                resolve: async (parent, args, context) => {
+                resolve: async (parent, args) => {
+                    console.log('cookies: ', args)
 
-                    const res = await strapi.entityService.findMany('api::top.top', {
+                    // const res = await strapi.entityService.findMany('api::top.top', {
+                    //     populate: ['MainTop', 'MainTop.logo', 'MainTop.casino', 'localization'],
+                    // })
+
+                    const res = await strapi.service('api::top.top').find({
+                        locale: args.locale,
                         populate: ['MainTop', 'MainTop.logo', 'MainTop.casino'],
                     })
 
-                    const targetTop = res.filter(top => top.country === args.country)
+                    console.log('temp: ', res)
+
+                    const targetTop = res.results.filter(top => top.country === args.country)
 
                     const newMainTop = targetTop[0].MainTop.map(casino => ({
                         ...casino,

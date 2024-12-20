@@ -834,12 +834,6 @@ export interface ApiBonusBonus extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    faq: Attribute.Component<'faq.faq'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     bonusOverview: Attribute.Blocks &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -895,10 +889,30 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    bonus_title: Attribute.String;
-    logo: Attribute.Media;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bonus_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     uuid: Attribute.UID &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     features: Attribute.JSON &
@@ -915,19 +929,40 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
         ]
       >;
     rating: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.SetMinMax<
         {
           max: 100;
         },
         number
       >;
-    review: Attribute.Blocks;
-    Promos: Attribute.Component<'list.available-promos-list', true>;
+    review: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Promos: Attribute.Component<'list.available-promos-list', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     bonuses: Attribute.Relation<
       'api::casino.casino',
       'manyToMany',
       'api::bonus.bonus'
     >;
+    faq: Attribute.Component<'faq.faq'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -943,6 +978,12 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::casino.casino',
+      'oneToMany',
+      'api::casino.casino'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -978,13 +1019,29 @@ export interface ApiTopTop extends Schema.CollectionType {
     singularName: 'top';
     pluralName: 'tops';
     displayName: 'Top';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    country: Attribute.String;
-    MainTop: Attribute.DynamicZone<['card.casino-card']>;
+    country: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MainTop: Attribute.DynamicZone<['card.casino-card']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -992,6 +1049,12 @@ export interface ApiTopTop extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::top.top', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::top.top',
+      'oneToMany',
+      'api::top.top'
+    >;
+    locale: Attribute.String;
   };
 }
 

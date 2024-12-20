@@ -64,16 +64,6 @@
         }
       }
     },
-    "faq": {
-      "type": "component",
-      "repeatable": false,
-      "component": "faq.faq",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "bonusOverview": {
       "type": "blocks",
       "pluginOptions": {

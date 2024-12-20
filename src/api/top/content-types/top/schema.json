@@ -4,21 +4,36 @@
   "info": {
     "singularName": "top",
     "pluralName": "tops",
-    "displayName": "Top"
+    "displayName": "Top",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "country": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MainTop": {
       "type": "dynamiczone",
       "components": [
         "card.casino-card"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

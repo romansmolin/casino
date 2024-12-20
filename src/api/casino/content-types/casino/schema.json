@@ -10,13 +10,27 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "bonus_title": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "logo": {
       "type": "media",
@@ -27,7 +41,12 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "uuid": {
       "type": "customField",
@@ -48,21 +67,46 @@
     },
     "rating": {
       "type": "integer",
-      "max": 100
+      "max": 100,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "review": {
-      "type": "blocks"
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Promos": {
       "type": "component",
       "repeatable": true,
-      "component": "list.available-promos-list"
+      "component": "list.available-promos-list",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "bonuses": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::bonus.bonus",
       "mappedBy": "casinos"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "faq.faq"
     }
   }
 }

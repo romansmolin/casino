@@ -64,9 +64,24 @@ const getBonusById = async (uuid) => {
                 'casinos.logo',
                 'faq.fact1',
                 'bonusOverview',
+                'localizations'
             ],
         });
         
+        const temp = await strapi.service('api::bonus.bonus').find({
+            locale: 'en',
+            populate: [
+                'casinos',
+                'logo',
+                'bonus_info',
+                'casinos.logo',
+                'faq.fact1',
+                'bonusOverview',
+                'localizations'
+            ],
+        })
+        console.log(temp)
+
         if (!data || !data.results.length) {
             throw new Error('Bonus not found');
         }

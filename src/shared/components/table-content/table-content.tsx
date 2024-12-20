@@ -30,7 +30,7 @@ const TableContent = ({content}: {content:StrapiContent[] }) => {
     const tableContent = getTableContentData(content)
     
     return (
-        <div className={'flex flex-col lg:max-w-86 rounded-xl'}>
+        <div className={'flex flex-col rounded-xl'}>
             <h3 className="font-bold">Table Of Content</h3>
             <ul>
                 {tableContent.map((item) => (

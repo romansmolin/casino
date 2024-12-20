@@ -18,6 +18,18 @@ interface CasinoReview {
 	features: string[]
 	rating: number
 	review: StrapiContent[]
+	faq: CasinoReviewFaq[]
+	mainBonus: CasinoMainBonus
+}
+
+type CasinoMainBonus = {
+	bonusLink: string
+	info: StrapiContent[]
+}
+
+type CasinoReviewFaq = {
+	text: string
+	label: string	
 }
 
 type StrapiContentItem = {

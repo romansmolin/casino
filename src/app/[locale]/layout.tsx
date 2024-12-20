@@ -33,7 +33,7 @@ export default async function RootLayout({
         notFound();
     }
 
-    setRequestLocale(locale);
+    await setRequestLocale(locale);
 
     return (
         <html lang={locale} suppressHydrationWarning>

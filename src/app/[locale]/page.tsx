@@ -1,5 +1,13 @@
+import { Locale } from "@/shared/lib/i18n/routing";
 import { HomePage } from "@/views/home";
 
-export default function Home() {
-    return <HomePage />
+interface HomePageProps {
+    params: {
+        locale: Locale;
+    };
+}
+
+export default function Home({ params }: HomePageProps) {
+    const {locale} = params
+    return <HomePage locale={locale}/>
 }

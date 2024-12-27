@@ -2,11 +2,11 @@ import { getLocale } from 'next-intl/server'
 import React from 'react'
 import CasinoReviewCard from './casino-review-card'
 import CasinoReviewHighlights from './casino-review-highlights'
-import { StrapiTextRenderer as CasinoReviewRenderer } from '@/features/strapi'
 import { TableContent as CasinoTableContent } from '@/shared/components/table-content'
 import CasinoReviewFaq from './casino-review-faq'
 import CasinoMainBonus from './casino-main-bonus'
 import { fetchCasinoByUuid } from '@/entities/casino'
+import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
 
 const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()

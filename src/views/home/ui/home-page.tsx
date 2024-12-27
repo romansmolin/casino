@@ -1,10 +1,14 @@
+import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
 import { BestBonusesOfTheMonth } from '@/features/bonus'
 import { CasinoTop } from '@/features/casino'
+import { Locale } from '@/shared/lib/i18n/routing'
 import { getLocale, getTranslations } from 'next-intl/server'
 import React from 'react'
 
-const HomePage = async () => {
+const HomePage = async ({ locale }: { locale: Locale }) => {
     const t = await getTranslations('mainPage')
+    const {pageContent, error} = await fetchPageContentBySlug('/')
+
     return (
         <>
             <div className=" px-5 py-7 pr-0 md:pr-5  space-y-8 flex-1 rounded-xl bg-muted/50 md:min-h-min">
@@ -14,6 +18,9 @@ const HomePage = async () => {
                 <CasinoTop byCountry='Germany'/>
             </div>
             <BestBonusesOfTheMonth />
+            <HomePageContent pageContent={pageContent} />
+
+
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                 <div className="aspect-video rounded-xl bg-muted/50" />
                 <div className="aspect-video rounded-xl bg-muted/50" />

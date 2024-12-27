@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/shared/ui/card'
 import { Badge } from '@/shared/ui/badge'
-import BonusTypeBadge from './bonus-type-badge'
+import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 
 interface BonusCardProps {
     casinoName: string

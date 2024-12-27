@@ -1,6 +1,6 @@
 import React from 'react'
-import { StrapiTextRenderer } from '@/features/strapi'
 import Image from 'next/image'
+import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer';
 
 const CasinoMainBonus = ({ mainBonus, casinoName }: { mainBonus: CasinoMainBonus; casinoName: string }) => {
     return (

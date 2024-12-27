@@ -10,5 +10,10 @@
       "rating": "Рейтинг",
       "playNow": "Играть!",
       "review": "Обзор"
+    },
+    "common": { 
+      "noDepositBonus": "Без Депозитные Бонусы",
+      "realMoneyBonus": "Приветсвенные Бонусы",
+      "bestOfTheMonth": "Лучшие за месяц"
     }
   }

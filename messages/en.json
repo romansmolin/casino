@@ -10,5 +10,10 @@
       "rating": "Rating",
       "playNow": "Play Now",
       "review": "Review"
+    },
+    "common": { 
+      "noDepositBonus": "No Deposit Bonus",
+      "realMoneyBonus": "Real Money Bonus",
+      "bestOfTheMonth": "Best of the Month"
     }
   }

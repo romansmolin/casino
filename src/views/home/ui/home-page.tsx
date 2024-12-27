@@ -1,3 +1,4 @@
+import { BestBonusesOfTheMonth } from '@/features/bonus'
 import { CasinoTop } from '@/features/casino'
 import { getLocale, getTranslations } from 'next-intl/server'
 import React from 'react'
@@ -12,6 +13,7 @@ const HomePage = async () => {
                 </h1>
                 <CasinoTop byCountry='Germany'/>
             </div>
+            <BestBonusesOfTheMonth />
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                 <div className="aspect-video rounded-xl bg-muted/50" />
                 <div className="aspect-video rounded-xl bg-muted/50" />

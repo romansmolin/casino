@@ -5,7 +5,7 @@ import Image from 'next/image'
 const CasinoMainBonus = ({ mainBonus, casinoName }: { mainBonus: CasinoMainBonus; casinoName: string }) => {
     return (
         <div className="flex flex-col lg:flex-row gap-8">
-            <div className="hidden lg:flexw-[30%] items-center justify-center lg:border-r-2">
+            <div className="hidden lg:flex w-[30%] items-center justify-center lg:border-r-2">
                 <Image
                     style={{ width: 'auto', height: 'auto' }}
                     width={250}

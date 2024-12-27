@@ -1,4 +1,3 @@
-import { cn } from '@/shared/lib/css'
 import { Button } from '@/shared/ui/button'
 import { Card, CardContent } from '@/shared/ui/card'
 import Image from 'next/image'
@@ -8,10 +7,9 @@ interface CasinoHighlightProps {
 	casinoName: string
 	bonusTitle: string
 	logo: string
-	className?: string
 }
 
-const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bonusTitle, className }) => {
+const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bonusTitle }) => {
 	return (
 		<Card className='lg:w-1/3 bg-muted/50 md:min-h-min border-0'>
 				<CardContent className='space-y-5 p-3 flex flex-col items-center '>

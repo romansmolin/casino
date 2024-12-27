@@ -1,5 +1,5 @@
 import { getServerQuery } from '@/shared/lib/apollo-client'
-import { CASINO_BY_UUID, CASINO_TOP_BY_COUNTRY } from './casino.schemas'
+import { CASINO_BY_UUID, CASINO_TOP_BY_COUNTRY } from '../model/casino.schemas'
 
 export const fetchCasinoTopByCountryServer = async (country: string, locale: string) => {
     console.log('locale: ', locale)

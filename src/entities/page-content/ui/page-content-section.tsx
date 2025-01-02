@@ -19,7 +19,6 @@ interface ContentSectionProps {
 
 const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, position = 'left', imageBackgroundColor = 'bg-primary' }) => {
     const isLeft = position === 'left';
-    console.log('position', imageBackgroundColor);
 
     return (
         <section className='px-5 py-7 pr-0 md:pr-5 flex-1 bg-muted/50 md:min-h-min rounded-xl'>
@@ -27,8 +26,9 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                 {isLeft && (
                     <div className="w-full flex justify-center order-1 lg:order-1">
                         <div
+                            style={{ backgroundColor: imageBackgroundColor }}
                             className={cn(
-                                'flex justify-center w-[90%] h-[400px] rounded-xl bg-[#dd6030] transform skew-y-3',
+                                `flex justify-center w-[90%] h-[400px] rounded-xl  transform skew-y-3`,
                             )}
                         >
                             <Image
@@ -48,9 +48,9 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                 {!isLeft && (
                     <div className="w-full h-full flex justify-center items-center order-2 lg:order-3">
                         <div
+                            style={{ backgroundColor: imageBackgroundColor }}
                             className={cn(
-                                'flex justify-center w-[90%] h-[400px] rounded-xl transform -skew-y-3',
-                                `bg-[${imageBackgroundColor}]`
+                                'flex justify-center w-[90%] h-[400px] rounded-xl transform -skew-y-3'
                             )}
                         >
                             <Image

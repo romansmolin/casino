@@ -17,6 +17,7 @@ const BestBonusesOfTheMonth = async () => {
                             info={bonus.info}
                             casinoUuid={bonus.casinoUuid}
                             uuid={bonus.uuid}
+                            mainBonusTypeForUrl={bonus.bonusTypeForUrl}
                         />
                     </div>
                 ))}

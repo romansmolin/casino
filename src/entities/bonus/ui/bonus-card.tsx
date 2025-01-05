@@ -4,18 +4,28 @@ import { Button } from '@/shared/ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/shared/ui/card'
 import { Badge } from '@/shared/ui/badge'
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
+import Link from 'next/link'
+import { getLocale } from 'next-intl/server'
 
 interface BonusCardProps {
     casinoName: string
     casinoUuid: string
     bonusSubtitle: string
     bonusTitle: string
-    uuid: string
     casinoLogo: string
     info: BonusInfo
+    uuid: string
+    mainBonusTypeForUrl: string
 }
 
-const BonusCard: React.FC<BonusCardProps> = ({ casinoName, bonusSubtitle, bonusTitle, casinoLogo, info }) => {
+const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, bonusTitle, casinoLogo, info, uuid, mainBonusTypeForUrl }) => {
+    const locale = await getLocale()
+
+    const userUrlFriendly = (str: string) => { 
+        return str.replace(/\s+/g, '-').toLowerCase()
+    }
+
+
     return (
         <Card className="w-full max-w-md mx-auto">
             <CardHeader className="p-4">
@@ -44,7 +54,12 @@ const BonusCard: React.FC<BonusCardProps> = ({ casinoName, bonusSubtitle, bonusT
                 </div>
             </CardContent>
             <CardFooter>
-                <Button className="w-full">Claim Bonus</Button>
+                <Button className="w-full" asChild>
+                    <Link href={{
+                        pathname: `${locale}/${mainBonusTypeForUrl}/${userUrlFriendly(casinoName)}`,
+                        query: { uuid }
+                    }}> Claim Bonus</Link>
+                </Button>
             </CardFooter>
         </Card>
     )

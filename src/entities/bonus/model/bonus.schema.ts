@@ -10,6 +10,7 @@ export const GET_BONUSES_BY_TYPE = gql`
             bonusTitle
             uuid
             casinoLogo
+            bonusTypeForUrl
             info {
                 releaseDate
                 availableFor

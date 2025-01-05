@@ -5,8 +5,13 @@
 html {
     scroll-behavior: smooth;
   }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.bento-block {
+    @apply px-5 py-7 flex-1 rounded-xl bg-muted/50 md:min-h-min
 }
 
 @layer base {

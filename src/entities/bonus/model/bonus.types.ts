@@ -6,11 +6,19 @@ interface Bonus {
     uuid: string
     casinoLogo: string
     info: BonusInfo
+    bonusTypeForUrl: string
+    bonusReview: StrapiContent[]
+    faqInfo: BonusFaq[]
+}
+
+type BonusFaq = {
+    label: string
+    text: string
 }
 
 type BonusInfo = {
     releaseDate: string,
     availableFor: string[], 
     bonusType: string[]
-    bonusStatus: string
+    bonusStatus: 'active' | 'inactive'
 }

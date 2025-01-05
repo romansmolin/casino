@@ -12,7 +12,6 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
     const { casino, error } = await fetchCasinoByUuid<CasinoReview>(uuid, locale)
 
-    console.log('casino: ', casino.mainBonus)
     return (
         <>
             <div className="flex flex-col lg:flex-row gap-4">

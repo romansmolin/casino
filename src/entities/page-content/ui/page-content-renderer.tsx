@@ -18,7 +18,7 @@ interface ContentRendererProps {
 }
 
 const content: Record<string, any> = {
-    faq: (faq: any) => <div className="flex-1 px-5 py-7 md:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
+    faq: (faq: any, idx: number) => <div key={`faq-${idx}`} className="flex-1 px-5 py-7 md:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
         <h2 className='text-4xl font-extrabold tracking-tight'>Frequently Asked Questions</h2>
         <Accardion items={faq.content[0].faqs} />
     </div>,

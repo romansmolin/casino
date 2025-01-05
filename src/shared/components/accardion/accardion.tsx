@@ -20,7 +20,7 @@ const Accardion: React.FC<FaqProps> = ({ items }) => {
                             <h3 className="text-lg font-medium">{item.label}</h3>
                             <ChevronDownIcon className="h-5 w-5 text-muted-foreground transition-transform duration-300 [&[data-state=open]]:rotate-180" />
                         </CollapsibleTrigger>
-                        <CollapsibleContent className="px-4 py-3 ">
+                        <CollapsibleContent className="px-4 py-3 leading-8">
                             {item.text}
                         </CollapsibleContent>
                     </Collapsible>

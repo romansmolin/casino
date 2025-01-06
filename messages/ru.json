@@ -1,7 +1,9 @@
 {
     "sidebar": {
       "no-deposit-bonus": "Без Депозитные Бонусы",
-      "real-money-bonus": "Приветсвенные Бонусы"
+      "real-money-bonus": "Приветсвенные Бонусы",
+      "best-of-the-month": "Лучшие за месяц",
+      "bonuses": "Бонусы"
     },
     "mainPage": {
       "title": "Лучшие казино в Декабре"
@@ -12,8 +14,8 @@
       "review": "Обзор"
     },
     "common": { 
-      "noDepositBonus": "Без Депозитные Бонусы",
-      "realMoneyBonus": "Приветсвенные Бонусы",
-      "bestOfTheMonth": "Лучшие за месяц"
+      "no-deposit-bonuses": "Без Депозитные Бонусы",
+      "real-money-bonus": "Приветсвенные Бонусы",
+      "best-of-the-month": "Лучшие за месяц"
     }
   }

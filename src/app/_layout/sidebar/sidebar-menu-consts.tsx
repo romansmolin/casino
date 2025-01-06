@@ -33,23 +33,27 @@ export const menu = {
     ],
     bonuses: [
         {
-            title: 'no-deposit-bonus',
+            title: 'bonuses',
             url: '#',
             icon: SquareTerminal,
             isActive: false,
             items: [
                 {
                     icon: SquareTerminal,
+                    title: 'No Deposit Bonuses',
+                    url: 'category/no-deposit-bonuses',
+                },
+                {
                     title: 'Free Spins Bonuses',
-                    url: '#',
+                    url: 'category/free-spins-bonuses',
                 },
                 {
                     title: 'Free Cash Bonuses',
-                    url: '#',
+                    url: 'category/free-cash-bonuses',
                 },
                 {
                     title: '0 Wager Bonuse',
-                    url: '#',
+                    url: 'category/0-wager-bonuses',
                 },
             ],
         },

@@ -2,9 +2,9 @@ import { BonusCard, fetchBonusesByType } from '@/entities/bonus'
 import React from 'react'
 
 const BestBonusesOfTheMonth = async () => {
-    const { bonuses, error } = await fetchBonusesByType(1, 10, 'bestOfTheMonth')
+    const { bonuses, error } = await fetchBonusesByType(1, 10, 'best-of-the-month')
     return (
-        <div className="px-5 py-7 flex-1 space-y-8 lg:pr-0 md:pr-5 rounded-xl bg-muted/50 md:min-h-min">
+        <section className="flex-1 space-y-8 bento-block border border-border">
             <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">Best Bonuses of the Month</h2>
             <div className="grid grid-cols-3 gap-4">
                 {bonuses?.map((bonus) => (
@@ -22,7 +22,7 @@ const BestBonusesOfTheMonth = async () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 

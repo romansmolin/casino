@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/shared/lib/css'
 import StrapiTextRenderer from './strapi-text-renderer'
+import { Card, CardContent } from '@/shared/ui/card'
 
 type Paragraph = {
     type: string
@@ -21,7 +22,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
     const isLeft = position === 'left';
 
     return (
-        <section className='px-5 py-7 pr-0 md:pr-5 flex-1 bg-muted/50 md:min-h-min rounded-xl'>
+        <section className="flex-1 bento-block border border-border">
             <div className="flex justify-center items-center gap-5">
                 {isLeft && (
                     <div className="w-full flex justify-center order-1 lg:order-1">

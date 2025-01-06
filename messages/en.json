@@ -1,7 +1,9 @@
 {
     "sidebar": {
       "no-deposit-bonus": "No Deposit Bonus",
-      "real-money-bonus": "Real Money Bonus"
+      "real-money-bonus": "Real Money Bonus",
+      "best-of-the-month": "Best of the Month",
+      "bonuses": "Bonuses"
     },
     "mainPage": {
       "title": "Best Casinos of December"
@@ -12,8 +14,8 @@
       "review": "Review"
     },
     "common": { 
-      "noDepositBonus": "No Deposit Bonus",
-      "realMoneyBonus": "Real Money Bonus",
-      "bestOfTheMonth": "Best of the Month"
+      "no-deposit-bonuses": "No Deposit Bonus",
+      "real-money-bonus": "Real Money Bonus",
+      "best-of-the-month": "Best of the Month"
     }
   }

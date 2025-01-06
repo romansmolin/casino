@@ -18,11 +18,11 @@ const variantClasses: Record<BadgeVariant, string> = {
 }
 
 const BONUS_BADGE_CONFIG: Record<string, BadgeConfig> = {
-    'noDepositBonus': {
+    'no-deposit-bonuses': {
         color: 'bg-[#dd6030]',
         icon: Wallet
     },
-    'bestOfTheMonth': {
+    'best-of-the-month': {
         color: 'bg-[#3030dd]',
         icon: Trophy
     }

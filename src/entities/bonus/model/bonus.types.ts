@@ -22,3 +22,5 @@ type BonusInfo = {
     bonusType: string[]
     bonusStatus: 'active' | 'inactive'
 }
+
+type BonusCategoryType = 'free-spins-bonuses' | 'real-money-bonuses' | 'cashback-bonuses' | 'no-deposit-bonuses' | 'best-of-the-month';

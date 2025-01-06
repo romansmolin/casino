@@ -13,7 +13,7 @@ import {
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export function SidebarBonusesMenu({
     items,
@@ -31,6 +31,8 @@ export function SidebarBonusesMenu({
     }[]
 }) {
     const t = useTranslations('sidebar');
+    const locale = useLocale();
+
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Bonuses</SidebarGroupLabel>
@@ -54,7 +56,7 @@ export function SidebarBonusesMenu({
                                     {item.items?.map((subItem) => (
                                         <SidebarMenuSubItem key={subItem.title}>
                                             <SidebarMenuSubButton asChild className='h-10'>
-                                                <Link href={subItem.url} className="flex gap-2">
+                                                <Link href={`/${locale}/${subItem.url}`} className="flex gap-2">
                                                     {/* {subItem.icon && <subItem.icon />} */}
                                                     <span>{subItem.title}</span>
                                                 </Link>

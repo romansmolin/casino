@@ -11,7 +11,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
 
     return (
         <>
-            <div className=" px-5 py-7 pr-0 md:pr-5  space-y-8 flex-1 rounded-xl bg-muted/50 md:min-h-min">
+            <div className="space-y-8 flex-1 bento-block">
                 <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl'>
                     {t('title')} 2024
                 </h1>

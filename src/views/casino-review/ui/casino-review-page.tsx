@@ -7,6 +7,8 @@ import CasinoReviewFaq from './casino-review-faq'
 import CasinoMainBonus from './casino-main-bonus'
 import { fetchCasinoByUuid } from '@/entities/casino'
 import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
+import { cn } from '@/shared/lib/css'
+import { Card, CardContent } from '@/shared/ui/card'
 
 const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
@@ -26,20 +28,20 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
                     features={casino.features}
                 />
             </div>
-            <div className="flex-1 px-5 py-7 lg:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
-                <CasinoMainBonus casinoName={casino.name} mainBonus={casino.mainBonus} />
-            </div>
+            <CasinoMainBonus casinoName={casino.name} mainBonus={casino.mainBonus} />
             <div className="flex flex-col lg:flex-row gap-4">
-                <div className="bg-muted/50 lg:w-1/3 px-5 py-7 lg:sticky lg:top-[15px] rounded-xl lg:min-h-min border-0 flex-3 lg:h-[calc(100vh-20px)]">
-                    <CasinoTableContent content={casino.review}/>
+                <div className='lg:w-1/3'>
+                    <CasinoTableContent content={casino.review} />
                 </div>
-                <div className="flex-1 px-5 py-7 md:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
-                    <CasinoReviewRenderer contentData={casino.review} />
+                <div className='lg:w-2/3'>
+                    <Card>
+                        <CardContent className='space-y-8 bento-block'>
+                            <CasinoReviewRenderer contentData={casino.review} />
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
-            <div className="flex-1 px-5 py-7 md:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
-                <CasinoReviewFaq faq={casino.faq} casinoName={casino.name} />
-            </div>
+            <CasinoReviewFaq faq={casino.faq} casinoName={casino.name} />
         </>
     )
 }

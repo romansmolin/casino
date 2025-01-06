@@ -1,4 +1,5 @@
 import RatingCircle from '@/shared/components/rating-circle/rating-circle'
+import { Card, CardContent } from '@/shared/ui/card'
 import { Check } from 'lucide-react'
 import React from 'react'
 
@@ -24,38 +25,40 @@ interface CasinoReviewHighlightsProps {
 
 const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = ({ casinoName, features, rating }) => {
     return (
-        <div className="px-5 py-7 flex-1 lg:pr-0 md:pr-5 space-y-8 rounded-xl bg-muted/50 md:min-h-min">
-            <div className="flex flex-col rounded-xl lg:w-[100%]">
-                <h1 className="text-4xl text-gradient font-bold pb-4 border-b-2">{casinoName} Review</h1>
+        <Card>
+            <CardContent className="bento-block space-y-8 ">
+                <div className="flex flex-col rounded-xl lg:w-[100%]">
+                    <h1 className="text-4xl text-gradient font-bold pb-4 border-b-2">{casinoName} Review</h1>
 
-                <div className="mt-5 flex flex-col lg:flex-row justify-between gap-12">
-                    <div>
-                        <ul className="space-y-4 max-w- text-left">
-                            {features?.map((feature) => (
-                                <li
-                                    key={feature}
-                                    className="flex text-justify items-center space-x-3 rtl:space-x-reverse">
-                                    <Check />
-                                    <span>{readableFeatures[feature]}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="mt-5 flex flex-col lg:flex-row justify-between gap-12">
+                        <div>
+                            <ul className="space-y-4 max-w- text-left">
+                                {features?.map((feature) => (
+                                    <li
+                                        key={feature}
+                                        className="flex text-justify items-center space-x-3 rtl:space-x-reverse">
+                                        <Check />
+                                        <span>{readableFeatures[feature]}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="mt-4 sm:mt-0 flex flex-col gap-2 items-center justify-center">
+                            <RatingCircle rating={rating} className="size-44" textClass="text-3xl" />
+                            <span className="text-2xl font-bold text-primary-400">Rating</span>
+                        </div>
                     </div>
 
-                    <div className="mt-4 sm:mt-0 flex flex-col gap-2 items-center justify-center">
-                        <RatingCircle rating={rating} className="size-44" textClass="text-3xl" />
-                        <span className="text-2xl font-bold text-primary-400">Rating</span>
+                    <div className="flex-grow flex flex-col justify-end mt-6 text-primary-600 font-bold">
+                        <span className="text-sm">
+                            Terms & Conditions Apply. You must be at least 18 years old to visit this casino.
+                            Gamble Responsibly!
+                        </span>
                     </div>
                 </div>
-
-                <div className="flex-grow flex flex-col justify-end mt-6 text-primary-600 font-bold">
-                    <span className="text-sm">
-                        Terms & Conditions Apply. You must be at least 18 years old to visit this casino.
-                        Gamble Responsibly!
-                    </span>
-                </div>
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     )
 }
 

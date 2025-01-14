@@ -1,10 +1,8 @@
-import { fetchBonusesByType } from '@/entities/bonus'
+import { BonusGrid, fetchBonusesByType } from '@/entities/bonus'
+import PaginationControl from '@/shared/components/pagination-control/pagination-control'
 import React from 'react'
 
 interface BonusGridWithPaginationProps {
-    totalPages: number
-    totalItems: number
-    itemsPerPage: number
     currentPage: number
     bonusCategory: BonusCategoryType
 }
@@ -19,16 +17,15 @@ const headings: Record<BonusCategoryType, string> = {
 
 const BonusGridWithPagination: React.FC<BonusGridWithPaginationProps> = async ({
     currentPage,
-    totalPages,
-    totalItems,
-    itemsPerPage,
     bonusCategory
 }) => {
-    const { bonuses, error } = await fetchBonusesByType(1, 10, bonusCategory)
+    const { bonuses, totalPages } = await fetchBonusesByType(1, 6, bonusCategory)
 
     return (
-        <section className='bento-block'>
+        <section className='bento-block space-y-8'>
             <h2 className='text-5xl text-center lg:text-left font-bold lg:text-nowrap'>{headings[bonusCategory]}</h2>
+            <BonusGrid bonuses={bonuses} />
+            <PaginationControl totalPages={totalPages} currentPage={currentPage}/>
         </section>
     )
 }

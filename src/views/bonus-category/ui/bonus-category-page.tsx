@@ -2,17 +2,14 @@ import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-con
 import { BonusGridWithPagination } from '@/features/bonus'
 import React from 'react'
 
-const BonusCategoryPage = async ({ bonusCategory }: { bonusCategory: BonusCategoryType }) => {
+const BonusCategoryPage = async ({ bonusCategory, currentPage }: { bonusCategory: BonusCategoryType, currentPage: number }) => {
     const { pageContent } = await fetchPageContentBySlug(bonusCategory)
     
     return (
         <> 
             <BonusGridWithPagination 
                 bonusCategory={bonusCategory}
-                currentPage={1}
-                totalPages={1}
-                totalItems={1}
-                itemsPerPage={10}
+                currentPage={currentPage}
             />
             <PageContentRenderer pageContent={pageContent}/>
         </>

@@ -55,7 +55,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
             <CardFooter>
                 <Button className="w-full" asChild>
                     <Link href={{
-                        pathname: `${locale}/${mainBonusTypeForUrl}/${userUrlFriendly(casinoName)}`,
+                        pathname: `/${locale}/${mainBonusTypeForUrl}/${userUrlFriendly(casinoName)}`,
                         query: { uuid }
                     }}> Claim Bonus</Link>
                 </Button>

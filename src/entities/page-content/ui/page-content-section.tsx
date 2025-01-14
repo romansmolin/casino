@@ -29,7 +29,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                         <div
                             style={{ backgroundColor: imageBackgroundColor }}
                             className={cn(
-                                `flex justify-center w-[90%] h-[400px] rounded-xl  transform skew-y-3`,
+                                `flex justify-center items-center w-[90%] h-[400px] rounded-xl  transform skew-y-3`,
                             )}
                         >
                             <Image
@@ -38,7 +38,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                                 width={200}
                                 height={200}
                                 className="object-contain"
-                                style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
+                                style={{ width: 'auto', height: 'auto', maxWidth: '250px', maxHeight: '300px' }}
                             />
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                         <div
                             style={{ backgroundColor: imageBackgroundColor }}
                             className={cn(
-                                'flex justify-center w-[90%] h-[400px] rounded-xl transform -skew-y-3'
+                                'flex justify-center items-center w-[90%] h-[400px] rounded-xl transform -skew-y-3'
                             )}
                         >
                             <Image
@@ -60,7 +60,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                                 width={200}
                                 height={200}
                                 className="object-contain"
-                                style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
+                                style={{ width: 'auto', height: 'auto', maxWidth: '250px', maxHeight: '300px' }}
                             />
                         </div>
                     </div>

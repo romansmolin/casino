@@ -26,8 +26,8 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
 
 
     return (
-        <Card className="w-full max-w-md mx-auto">
-            <CardHeader className="p-4">
+        <Card className="w-full max-w-md mx-auto min-w-[305px] lg:min-w-[unset] lg:w-[unset] p-5 lg:p-4 space-y-8">
+            <CardHeader className='p-[unset]'>
                 <div className="flex flex-col items-center space-y-4">
                     <div className="bg-primary w-full flex justify-center rounded-xl items-center">
                         <Image
@@ -44,7 +44,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
                     </div>
                 </div>
             </CardHeader>
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-8 !p-[unset]">
                 <h3 className="text-2xl font-bold text-center">{bonusTitle}</h3>
                 <div className='flex gap-2 flex-wrap'>
                     {info.bonusType.map((type) => (
@@ -52,7 +52,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
                     ))}
                 </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter className='p-[unset]'>
                 <Button className="w-full" asChild>
                     <Link href={{
                         pathname: `/${locale}/${mainBonusTypeForUrl}/${userUrlFriendly(casinoName)}`,

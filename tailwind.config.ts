@@ -63,7 +63,37 @@ export default {
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)',
             },
+            keyframes: {
+                slideFadeIn: {
+                    from: { opacity: '0', transform: 'translateY(5vh)' },
+                    to: { opacity: '1', transform: 'translateY(0)' },
+                },
+            },
+            animation: {
+                slideFadeIn: 'slideFadeIn 0.7s both',
+            },
         },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        require('tailwindcss-animate'),
+        function ({ addComponents }: { addComponents: (components: Record<string, any>) => void }) {
+            addComponents({
+                '.animate-bento-block-lg': {
+                    '@screen lg': {
+                        viewTimelineName: '--timeline-offset',
+                        animation: 'slideFadeIn 1s both',
+                        animationTimeline: '--timeline-offset',
+                        animationRange: '270px 530px',
+                    },
+                },
+                '.animate-bento-block': {
+                    viewTimelineName: '--timeline-offset',
+                    animation: 'slideFadeIn 1s both',
+                    animationTimeline: '--timeline-offset',
+                    animationRange: '270px 530px',
+                }
+            })
+        },
+    ],
 } satisfies Config

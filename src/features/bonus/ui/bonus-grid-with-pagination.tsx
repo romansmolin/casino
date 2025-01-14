@@ -1,5 +1,6 @@
 import { BonusGrid, fetchBonusesByType } from '@/entities/bonus'
 import PaginationControl from '@/shared/components/pagination-control/pagination-control'
+import Typography from '@/shared/components/typography/typography'
 import React from 'react'
 
 interface BonusGridWithPaginationProps {
@@ -23,7 +24,7 @@ const BonusGridWithPagination: React.FC<BonusGridWithPaginationProps> = async ({
 
     return (
         <section className='bento-block space-y-8'>
-            <h2 className='text-5xl text-center lg:text-left font-bold lg:text-nowrap'>{headings[bonusCategory]}</h2>
+            <Typography as="h2" variant='h1'>{headings[bonusCategory]}</Typography>
             <BonusGrid bonuses={bonuses} />
             <PaginationControl totalPages={totalPages} currentPage={currentPage}/>
         </section>

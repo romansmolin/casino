@@ -1,6 +1,7 @@
 import { BonusDetailsCard, fetchBonusById } from '@/entities/bonus'
 import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
 import { Accardion } from '@/shared/components/accardion'
+import Typography from '@/shared/components/typography/typography'
 import { Card, CardContent, CardTitle } from '@/shared/ui/card'
 import { CheckCircleIcon, CircleHelp, InfoIcon } from 'lucide-react'
 import React from 'react'
@@ -21,7 +22,7 @@ const BonusReviewPage = ({ bonus }: { bonus: Bonus }) => {
             <Card className='bento-block'>
                 <CardTitle className='flex items-center gap-2'>
                     <CheckCircleIcon className="mr-2 h-8 w-8" />
-                    <h2 className='text-3xl lg:text-5xl font-bold break-words'>Review</h2>
+                    <Typography as="h2" variant='h2'>Review</Typography>
                 </CardTitle>
                 <CardContent className='space-y-5'>
                     <StrapiTextRenderer contentData={bonus.bonusReview} />
@@ -31,7 +32,7 @@ const BonusReviewPage = ({ bonus }: { bonus: Bonus }) => {
             <Card className='bento-block'>
                 <CardTitle className='flex items-center gap-2'>
                     <CircleHelp className="mr-2 h-8 w-8" />
-                    <h2 className='text-3xl lg:text-5xl font-bold break-words'>Frequently Asked Questions</h2>
+                    <Typography as="h2" variant='h2'>Frequently Asked Questions</Typography>
                 </CardTitle>
                 <CardContent className='space-y-5'>
                     <Accardion items={bonus.faqInfo} />

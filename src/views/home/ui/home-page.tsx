@@ -7,7 +7,7 @@ import React from 'react'
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
     const t = await getTranslations('mainPage')
-    const {pageContent, error} = await fetchPageContentBySlug('/')
+    const { pageContent, error } = await fetchPageContentBySlug('/')
 
     return (
         <>
@@ -15,7 +15,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
                 <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl'>
                     {t('title')} 2024
                 </h1>
-                <CasinoTop byCountry='Germany'/>
+                <CasinoTop byCountry='Germany' />
             </div>
             <BestBonusesOfTheMonth />
             <HomePageContent pageContent={pageContent} />

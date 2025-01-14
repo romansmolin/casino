@@ -1,3 +1,4 @@
+import Typography from '@/shared/components/typography/typography'
 import { Button } from '@/shared/ui/button'
 import { Card, CardContent } from '@/shared/ui/card'
 import Image from 'next/image'
@@ -22,10 +23,8 @@ const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bo
 						/>
 					</div>
 
-					<h2 className='text-2xl text-center font-extrabold tracking-tight'>{casinoName}</h2>
-
-					<h3 className='text-xl text-center font-extrabold tracking-tight'>{bonusTitle}</h3>
-
+					<Typography as="h2" variant='h2'>{casinoName}</Typography>
+					<Typography as="h3" variant='h3'>{bonusTitle}</Typography>
 					<Button>Play Now</Button>
 				</CardContent>
 		</Card>

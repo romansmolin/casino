@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/shared/ui/button'
 import { BookOpenCheck, Play } from 'lucide-react'
+import Typography from '@/shared/components/typography/typography'
 
 
 interface BonusDetailsCardProps {
@@ -33,8 +34,8 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = ({
                         />
                     </div>
                     <div className='space-y-2'>
-                        <h1 className='text-4xl text-center lg:text-left font-bold lg:text-nowrap'>{casinoName}</h1>
-                        <h2 className='text-lg text-center lg:text-left lg:text-2xl font-bold lg:text-nowrap'>{bonusSubtitle}</h2>
+                        <Typography as="h1" variant='h1'>{casinoName}</Typography>
+                        <Typography as="h2" variant='h2' nowrap>{bonusSubtitle}</Typography>
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>

@@ -16,14 +16,15 @@ interface ContentSectionProps {
     }
     position?: 'rigth' | 'left'
     imageBackgroundColor?: string
+    className?: string
 }
 
-const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, position = 'left', imageBackgroundColor = 'bg-primary' }) => {
+const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, position = 'left', imageBackgroundColor = 'bg-primary', className }) => {
     const isLeft = position === 'left';
 
     return (
-        <section className="flex-1 bento-block border border-border">
-            <div className="flex justify-center items-center gap-5">
+        <section className={cn('bento-block border border-border animate-bento-block', className)}>
+            <div className="flex flex-col gap-12 lg:flex-row justify-center items-center lg:gap-5">
                 {isLeft && (
                     <div className="w-full flex justify-center order-1 lg:order-1">
                         <div

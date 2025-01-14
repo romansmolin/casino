@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --timeline-offset: scroll();
+    /* Incorrect here as it needs to be linked to @scroll-timeline */
+}
+
 html {
     scroll-behavior: smooth;
-  }
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -13,6 +18,22 @@ body {
 .bento-block {
     @apply px-5 py-7 rounded-xl bg-muted/50 md:min-h-min border border-border;
 }
+
+/* Define the scroll-timeline with adjusted scroll-offsets */
+@scroll-timeline --timeline-offset {
+    source: auto;
+    orientation: block;
+    scroll-offsets: start 0%, end 50%;
+}
+
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5vh);
+    }
+}
+
 
 @layer base {
     :root {
@@ -45,6 +66,7 @@ body {
         --sidebar-border: 220 13% 91%;
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
+
     .dark {
         --background: 0 50% 5%;
         --foreground: 0 5% 90%;
@@ -81,6 +103,7 @@ body {
     * {
         @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
     }

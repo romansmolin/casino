@@ -6,7 +6,8 @@
       "bonuses": "Bonuses"
     },
     "mainPage": {
-      "title": "Best Casinos of December"
+      "title": "Best Casinos of December",
+      "categories-block": "Check our extensive bonus library!"
     },
     "casinoTopCard": {
       "rating": "Rating",
@@ -15,7 +16,12 @@
     },
     "common": { 
       "no-deposit-bonuses": "No Deposit Bonus",
-      "real-money-bonus": "Real Money Bonus",
-      "best-of-the-month": "Best of the Month"
+      "real-money-bonuses": "Real Money Bonus",
+      "best-of-the-month": "Best of the Month",
+      "cashback-bonuses": "Cashback Bonus",
+      "welcome-bonuses": "Welcome Bonus",
+      "crypto-bonuses": "Crypto Bonus"
     }
   }
+
+  

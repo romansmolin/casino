@@ -70,7 +70,7 @@ export default {
                 },
             },
             animation: {
-                slideFadeIn: 'slideFadeIn 0.7s both',
+                slideFadeIn: 'slideFadeIn 1s both',
             },
         },
     },
@@ -84,14 +84,14 @@ export default {
                         viewTimelineName: '--timeline-offset',
                         animation: 'slideFadeIn 1s both',
                         animationTimeline: '--timeline-offset',
-                        animationRange: '270px 530px',
+                        animationRange: '270px 500px',
                     },
                 },
                 '.animate-bento-block': {
                     viewTimelineName: '--timeline-offset',
                     animation: 'slideFadeIn 1s both',
                     animationTimeline: '--timeline-offset',
-                    animationRange: '270px 530px',
+                    animationRange: '270px 500px',
                 }
             })
         },

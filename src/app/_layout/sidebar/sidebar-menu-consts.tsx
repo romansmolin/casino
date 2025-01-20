@@ -36,7 +36,7 @@ export const menu = {
             title: 'bonuses',
             url: '#',
             icon: SquareTerminal,
-            isActive: false,
+            isActive: true,
             items: [
                 {
                     icon: SquareTerminal,
@@ -61,7 +61,7 @@ export const menu = {
             title: 'real-money-bonus',
             url: '#',
             icon: Bot,
-            isActive: false,
+            isActive: true,
             items: [
                 {
                     title: 'Welcome Bonuses',

@@ -6,7 +6,8 @@
       "bonuses": "Бонусы"
     },
     "mainPage": {
-      "title": "Лучшие казино в Декабре"
+      "title": "Лучшие казино в Декабре",
+      "categories-block": "Найди бонус, который ты ищешь!"
     },
     "casinoTopCard": {
       "rating": "Рейтинг",
@@ -15,7 +16,9 @@
     },
     "common": { 
       "no-deposit-bonuses": "Без Депозитные Бонусы",
-      "real-money-bonus": "Приветсвенные Бонусы",
-      "best-of-the-month": "Лучшие за месяц"
+      "real-money-bonuses": "Денежный Бонус",
+      "best-of-the-month": "Лучшие за месяц",
+      "cashback-bonuses": "Кэшбек Бонус",
+      "welcome-bonuses": "Приветсвенный Бонус"
     }
   }

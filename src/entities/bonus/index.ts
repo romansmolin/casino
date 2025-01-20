@@ -1,4 +1,5 @@
 import { fetchBonusesByType, fetchBonusById } from "./api/bonus.api";
+import { BONUS_CATEGORIES_CONFIG } from "./model/consts";
 import BonusCard from "./ui/bonus-card";
 import BonusDetailsCard from "./ui/bonus-details-card";
 import BonusGrid from "./ui/bonus-grid";
@@ -11,5 +12,6 @@ export {
     BonusTypeBadge,
     fetchBonusById,
     BonusDetailsCard,
-    BonusGrid
+    BonusGrid,
+    BONUS_CATEGORIES_CONFIG
 }

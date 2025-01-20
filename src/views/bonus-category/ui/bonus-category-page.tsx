@@ -11,7 +11,9 @@ const BonusCategoryPage = async ({ bonusCategory, currentPage }: { bonusCategory
                 bonusCategory={bonusCategory}
                 currentPage={currentPage}
             />
-            <PageContentRenderer pageContent={pageContent}/>
+            {pageContent && (
+                <PageContentRenderer pageContent={pageContent}/>
+            )}
         </>
     )
 }

@@ -1,6 +1,5 @@
-import { onError } from '@apollo/client/link/error';
 import { ApolloClient, DocumentNode, HttpLink, InMemoryCache, OperationVariables, TypedDocumentNode } from "@apollo/client";
-import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
 
 export const { getClient } = registerApolloClient(() => {
     return new ApolloClient({

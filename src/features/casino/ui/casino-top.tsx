@@ -14,7 +14,7 @@ const CasinoTop: React.FC<CasinoTopProps> = async ({ byCountry, byType }) => {
     const { topByCountry, error } = await fetchCasinoTopByCountryServer(queryParam, locale)
     
     return (
-            <div className='flex overflow-x-scroll lg:overflow-auto md:flex-col gap-5 mt-5'>
+            <div className='flex overflow-x-scroll lg:overflow-auto md:flex-col gap-5 mt-5 no-scrollbar'>
                 {topByCountry?.map((casino: CasinoEntry) => (
                     <CasinoTopCard
                         key={casino.title}

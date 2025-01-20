@@ -2,8 +2,8 @@ import { cn } from '@/shared/lib/css'
 import { Badge } from '@/shared/ui/badge'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
-import { Trophy, Wallet } from 'lucide-react'
-import { BadgeConfig, BadgeSize, BadgeVariant, BadgeProps } from './badge.types'
+import { BadgeSize, BadgeVariant, BadgeProps } from './badge.types'
+import { BONUS_CATEGORIES_CONFIG } from '../../model/consts'
 
 const sizeClasses: Record<BadgeSize, string> = {
     sm: 'h-6 text-xs',
@@ -17,17 +17,6 @@ const variantClasses: Record<BadgeVariant, string> = {
     secondary: 'bg-opacity-10'
 }
 
-const BONUS_BADGE_CONFIG: Record<string, BadgeConfig> = {
-    'no-deposit-bonuses': {
-        color: 'bg-[#dd6030]',
-        icon: Wallet
-    },
-    'best-of-the-month': {
-        color: 'bg-[#3030dd]',
-        icon: Trophy
-    }
-}
-
 const BonusTypeBadge = async ({ 
     type,
     variant = 'default',
@@ -36,14 +25,14 @@ const BonusTypeBadge = async ({
     onClick 
 }: BadgeProps) => {
     const t = await getTranslations('common')
-    const config = BONUS_BADGE_CONFIG
+    const config = BONUS_CATEGORIES_CONFIG
     const badgeConfig = config[type]
     const Icon = badgeConfig?.icon
 
     return (
         <Badge 
             className={cn(
-                'cursor-pointer flex items-center justify-center gap-1',
+                'cursor-pointer flex items-center justify-center gap-1 whitespace-nowrap',
                 sizeClasses[size],
                 variantClasses[variant],
                 badgeConfig?.color,

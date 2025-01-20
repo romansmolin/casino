@@ -1,23 +1,32 @@
-import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
 import { BestBonusesOfTheMonth } from '@/features/bonus'
+
+import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
 import { CasinoTop } from '@/features/casino'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import React from 'react'
+import BonusCategories from '@/features/bonus/ui/bonus-categories'
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
     const t = await getTranslations('mainPage')
-    const { pageContent, error } = await fetchPageContentBySlug('/')
+    const { pageContent } = await fetchPageContentBySlug('/')
 
     return (
         <>
-            <div className="space-y-8 flex-1 bento-block">
+            <section className="space-y-8 flex-1 bento-block">
                 <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl'>
                     {t('title')} 2024
                 </h1>
                 <CasinoTop byCountry='Germany' />
-            </div>
+            </section>
             <BestBonusesOfTheMonth />
+
+            <section className="space-y-8 animate-bento-block flex-1 bento-block">
+                <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+                    {t('categories-block')}
+                </h2>
+                <BonusCategories />
+            </section>
             <HomePageContent pageContent={pageContent} />
 
 

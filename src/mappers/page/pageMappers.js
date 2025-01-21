@@ -13,7 +13,8 @@ const pageContentSectionMapper = (contentBlock) => ({
         type: 'contentSection',
         image: contentBlock.image ? processImage(contentBlock.image) : null,
         content: contentBlock.text,
-        position: contentBlock.position
+        position: contentBlock.position,
+        imageBackgroundColor: contentBlock.imageBackgroundColor[0]
 })
 
 const pageFaqSectionMapper = (faqBlock) => ({

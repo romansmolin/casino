@@ -18,10 +18,11 @@ export interface BonusBonusInfo extends Schema.Component {
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
-          'No Deposit Bonus:noDepositBonus',
-          'Welcome Bonus:welcomeBonus',
-          'Cashback Bonus:cashbackBonus',
-          'Best Of The Month:bestOfTheMonth'
+          'No Deposit Bonus:no-deposit-bonuses',
+          'Welcome Bonus:welcome-bonuses',
+          'Cashback Bonus:cashback-bonuses',
+          'Best Of The Month:best-of-the-month',
+          'Real Money Bonuses:real-money-bonuses'
         ]
       >;
     bonus_status: Attribute.JSON &
@@ -29,6 +30,19 @@ export interface BonusBonusInfo extends Schema.Component {
         'plugin::multi-select.multi-select',
         ['Active', 'Innactive']
       >;
+  };
+}
+
+export interface BonusMainBonusInfo extends Schema.Component {
+  collectionName: 'components_bonus_main_bonus_infos';
+  info: {
+    displayName: 'MainBonusInfo';
+    icon: 'bold';
+    description: '';
+  };
+  attributes: {
+    bonusLink: Attribute.String;
+    info: Attribute.Blocks;
   };
 }
 
@@ -87,6 +101,11 @@ export interface ContentContentSection extends Schema.Component {
     text: Attribute.Blocks & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     position: Attribute.Enumeration<['left', 'rigth']> & Attribute.Required;
+    imageBackgroundColor: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Pinky Red:#dd3070', 'Orange:#DD7030', 'Blue:#3030DD', '']
+      >;
   };
 }
 
@@ -138,6 +157,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'bonus.bonus-info': BonusBonusInfo;
+      'bonus.main-bonus-info': BonusMainBonusInfo;
       'card.casino-card': CardCasinoCard;
       'card.promo-card': CardPromoCard;
       'content.content-section': ContentContentSection;

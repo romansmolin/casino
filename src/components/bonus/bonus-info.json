@@ -22,10 +22,11 @@
     "bonus_type": {
       "type": "customField",
       "options": [
-        "No Deposit Bonus:noDepositBonus",
-        "Welcome Bonus:welcomeBonus",
-        "Cashback Bonus:cashbackBonus",
-        "Best Of The Month:bestOfTheMonth"
+        "No Deposit Bonus:no-deposit-bonuses",
+        "Welcome Bonus:welcome-bonuses",
+        "Cashback Bonus:cashback-bonuses",
+        "Best Of The Month:best-of-the-month",
+        "Real Money Bonuses:real-money-bonuses"
       ],
       "customField": "plugin::multi-select.multi-select"
     },

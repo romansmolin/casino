@@ -19,16 +19,16 @@ module.exports = (strapi) => ({ nexus }) => ({
         }
 
         type Bonus {
-            casino_name: String,
-            casino_uuid: String
-            casino_logo: String
-            bonus_subtitle: String
-            bonus_title: String
+            casinoName: String,
+            casinoUuid: String
+            casinoLogo: String
+            bonusSubtitle: String
+            bonusTitle: String
             info: BonusInfo
             faqInfo: [FaqItem]
             bonusReview: [BonusDetails]
             uuid: String
-
+            bonusTypeForUrl: [String]
         }
         
         type BonusDetails {
@@ -48,10 +48,10 @@ module.exports = (strapi) => ({ nexus }) => ({
         }
 
         type BonusInfo {
-            release_date: String,
-            available_for: [String],
-            bonus_type: [String],
-            bonus_status: String
+            releaseDate: String,
+            availableFor: [String],
+            bonusType: [String],
+            bonusStatus: String
         }
 
         extend type Query {

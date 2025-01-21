@@ -107,6 +107,31 @@
         }
       },
       "component": "faq.faq"
+    },
+    "mainBonus": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "bonus.main-bonus-info"
+    },
+    "casinoType": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "Pay N Play Casino:pay-n-play",
+        "Crypto Casino:crypto-casino",
+        "Fresh Casino:fresh-casino",
+        "Sportsbook:sportsbook"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

@@ -14,6 +14,7 @@ module.exports = (strapi) => () => ({
             content: [PageDetails]
             image: Image
             position: String
+            imageBackgroundColor: String
         }
 
         type Image {

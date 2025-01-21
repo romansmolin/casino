@@ -91,6 +91,30 @@
     "uuid": {
       "type": "customField",
       "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "faq.faq"
+    },
+    "mainBonusTypeForUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "No Deposit Bonus:no-deposit-bonus",
+        "Welcome Bonus:welcome-bonus",
+        "Cashback Bonus:cashback-bonus"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

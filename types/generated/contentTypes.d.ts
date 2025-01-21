@@ -854,6 +854,26 @@ export interface ApiBonusBonus extends Schema.CollectionType {
       }>;
     uuid: Attribute.UID &
       Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
+    faq: Attribute.Component<'faq.faq'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mainBonusTypeForUrl: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'No Deposit Bonus:no-deposit-bonus',
+          'Welcome Bonus:welcome-bonus',
+          'Cashback Bonus:cashback-bonus'
+        ]
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -958,6 +978,27 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
       'api::bonus.bonus'
     >;
     faq: Attribute.Component<'faq.faq'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mainBonus: Attribute.Component<'bonus.main-bonus-info'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    casinoType: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Pay N Play Casino:pay-n-play',
+          'Crypto Casino:crypto-casino',
+          'Fresh Casino:fresh-casino',
+          'Sportsbook:sportsbook'
+        ]
+      > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

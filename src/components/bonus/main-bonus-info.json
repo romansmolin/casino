@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_bonus_main_bonus_infos",
+  "info": {
+    "displayName": "MainBonusInfo",
+    "icon": "bold",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "bonusLink": {
+      "type": "string"
+    },
+    "info": {
+      "type": "blocks"
+    }
+  }
+}

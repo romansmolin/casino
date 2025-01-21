@@ -39,7 +39,6 @@ const getBonusesByType = async (args) => {
 
         const filteredProcessedBonuses = filteredBonuses.map(item => bonusMapper(item));
         const { items: bonuses, totalPages } = paginate(filteredProcessedBonuses, page, number);
-        console.log("bonuses: ", bonuses)
 
         return {
             bonuses,
@@ -54,6 +53,7 @@ const getBonusesByType = async (args) => {
 };
 
 const getBonusById = async (uuid) => {
+    console.log('uuid', uuid)
     try {
         const data = await strapi.services["api::bonus.bonus"].find({
             filters: { uuid },

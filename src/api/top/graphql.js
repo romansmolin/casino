@@ -28,7 +28,6 @@ module.exports = (strapi) => ({ nexus }) => ({
         Query: {
             getTopByCountryName: {
                 resolve: async (parent, args) => {
-                    console.log('cookies: ', args)
 
                     // const res = await strapi.entityService.findMany('api::top.top', {
                     //     populate: ['MainTop', 'MainTop.logo', 'MainTop.casino', 'localization'],
@@ -38,8 +37,6 @@ module.exports = (strapi) => ({ nexus }) => ({
                         locale: args.locale,
                         populate: ['MainTop', 'MainTop.logo', 'MainTop.casino'],
                     })
-
-                    console.log('temp: ', res)
 
                     const targetTop = res.results.filter(top => top.country === args.country)
 

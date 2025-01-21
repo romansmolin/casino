@@ -28,6 +28,16 @@
         "rigth"
       ],
       "required": true
+    },
+    "imageBackgroundColor": {
+      "type": "customField",
+      "options": [
+        "Pinky Red:#dd3070",
+        "Orange:#DD7030",
+        "Blue:#3030DD",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

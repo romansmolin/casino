@@ -8,7 +8,11 @@ const BestBonusesOfTheMonth = async () => {
     return (
         <section className="animate-bento-block-lg space-y-8 bento-block border border-border">
             <Typography as='h1' variant="h1">Best Bonuses of the Month</Typography>
-            <BonusGrid bonuses={bonuses} horizontalyScrollable/>
+            <div className='relative w-[calc(100%+1.25rem)] md:w-[unset]'>
+                <BonusGrid bonuses={bonuses} horizontalyScrollable/>
+                <div className='pointer-events-none absolute top-1/2 transform -translate-y-1/2 h-[99%] right-0 w-5 bg-gradient-to-r from-transparent to-white dark:to-black md:hidden'>
+                </div>
+            </div>
         </section>
     )
 }

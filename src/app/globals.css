@@ -36,7 +36,8 @@ body {
 
 
 @layer base {
-    :root {
+    /* SPINS FREE CASINOS COLOR */
+    /* :root {
         --background: 0 100% 95%;
         --foreground: 0 5% 0%;
         --card: 0 50% 90%;
@@ -96,7 +97,55 @@ body {
         --sidebar-accent-foreground: 240 4.8% 95.9%;
         --sidebar-border: 240 3.7% 15.9%;
         --sidebar-ring: 217.2 91.2% 59.8%;
-    }
+    } */
+    /* SPINS FREE CASINOS COLOR END */
+
+
+:root  {
+    --background: 257 100% 95%;
+    --foreground: 257 5% 0%;
+    --card: 257 50% 90%;
+    --card-foreground: 257 5% 10%;
+    --popover: 257 100% 95%;
+    --popover-foreground: 257 100% 0%;
+    --primary: 257 68% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 257 30% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 219 30% 85%;
+    --muted-foreground: 257 5% 35%;
+    --accent: 219 30% 80%;
+    --accent-foreground: 257 5% 10%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 257 5% 90%;
+    --border: 257 30% 50%;
+    --input: 257 30% 18%;
+    --ring: 257 68% 40%;
+    --radius: 0.75rem;
+  }
+  .dark  {
+    --background: 257 50% 5%;
+    --foreground: 257 5% 90%;
+    --card: 257 50% 0%;
+    --card-foreground: 257 5% 90%;
+    --popover: 257 50% 5%;
+    --popover-foreground: 257 5% 90%;
+    --primary: 257 68% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 257 30% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 219 30% 15%;
+    --muted-foreground: 257 5% 60%;
+    --accent: 219 30% 15%;
+    --accent-foreground: 257 5% 90%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 257 5% 90%;
+    --border: 257 30% 18%;
+    --input: 257 30% 18%;
+    --ring: 257 68% 40%;
+    --radius: 0.75rem;
+  }
+  
 }
 
 @layer base {
@@ -108,6 +157,7 @@ body {
         @apply bg-background text-foreground;
     }
 }
+
 
 @layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */

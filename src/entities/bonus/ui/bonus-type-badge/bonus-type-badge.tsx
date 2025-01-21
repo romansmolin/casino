@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import React from 'react'
 import { BadgeSize, BadgeVariant, BadgeProps } from './badge.types'
 import { BONUS_CATEGORIES_CONFIG } from '../../model/consts'
+import Typography from '@/shared/components/typography/typography'
 
 const sizeClasses: Record<BadgeSize, string> = {
     sm: 'h-6 text-xs',
@@ -41,7 +42,7 @@ const BonusTypeBadge = async ({
             onClick={onClick}
         >
             {Icon && <Icon className="w-4 h-4" />}
-            {t(type)}
+            <Typography as="p" variant='small' className='text-[12px]'>{t(type)}</Typography>
         </Badge>
     )
 }

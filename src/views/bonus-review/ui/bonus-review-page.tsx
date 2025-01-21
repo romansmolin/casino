@@ -17,6 +17,7 @@ const BonusReviewPage = ({ bonus }: { bonus: Bonus }) => {
                 bonusSubtitle={bonus.bonusSubtitle}
                 casinoName={bonus.casinoName}
                 bonusStatus={bonus.info.bonusStatus}
+                casinoUuid={bonus.casinoUuid}
             />
 
             <Card className='bento-block'>

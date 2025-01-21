@@ -84,14 +84,14 @@ export default {
                         viewTimelineName: '--timeline-offset',
                         animation: 'slideFadeIn 1s both',
                         animationTimeline: '--timeline-offset',
-                        animationRange: '270px 500px',
+                        animationRange: '200px 500px',
                     },
                 },
                 '.animate-bento-block': {
                     viewTimelineName: '--timeline-offset',
                     animation: 'slideFadeIn 1s both',
                     animationTimeline: '--timeline-offset',
-                    animationRange: '270px 500px',
+                    animationRange: '200px 500px',
                 }
             })
         },

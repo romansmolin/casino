@@ -35,7 +35,6 @@ export function SidebarBonusesMenu({
 
     return (
         <SidebarGroup>
-            <SidebarGroupLabel>Bonuses</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
                     <Collapsible
@@ -54,8 +53,8 @@ export function SidebarBonusesMenu({
                             <CollapsibleContent>
                                 <SidebarMenuSub>
                                     {item.items?.map((subItem) => (
-                                        <SidebarMenuSubItem key={subItem.title}>
-                                            <SidebarMenuSubButton asChild className='h-10'>
+                                        <SidebarMenuSubItem key={subItem.title} className='hover:bg-primary rounded-md'>
+                                            <SidebarMenuSubButton asChild className='h-10 '>
                                                 <Link href={`/${locale}/${subItem.url}`} className="flex gap-2">
                                                     {/* {subItem.icon && <subItem.icon />} */}
                                                     <span>{subItem.title}</span>

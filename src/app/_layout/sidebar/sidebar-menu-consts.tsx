@@ -1,11 +1,7 @@
 import {
-    AudioWaveform,
     Bot,
-    Command,
-    Frame,
-    GalleryVerticalEnd,
-    PieChart,
     SquareTerminal,
+    Landmark
 } from 'lucide-react'
 
 export const menu = {
@@ -14,23 +10,6 @@ export const menu = {
         email: 'm@example.com',
         avatar: '/avatars/shadcn.jpg',
     },
-    teams: [
-        {
-            name: 'Acme Inc',
-            logo: GalleryVerticalEnd,
-            plan: 'Enterprise',
-        },
-        {
-            name: 'Acme Corp.',
-            logo: AudioWaveform,
-            plan: 'Startup',
-        },
-        {
-            name: 'Evil Corp.',
-            logo: Command,
-            plan: 'Free',
-        },
-    ],
     bonuses: [
         {
             title: 'bonuses',
@@ -77,22 +56,29 @@ export const menu = {
                 },
             ],
         },
-    ],
-    projects: [
         {
-            name: 'Design Engineering',
+            title: 'casinos',
             url: '#',
-            icon: Frame,
-        },
-        {
-            name: 'Sales & Marketing',
-            url: '#',
-            icon: PieChart,
-        },
-        {
-            name: 'Travel',
-            url: '#',
-            icon: Map,
+            icon: Landmark,
+            isActive: true,
+            items: [
+                {
+                    title: 'Sportsbook Casinos',
+                    url: 'casino-category/sportsbook-casinos',
+                },
+                {
+                    title: 'Pay N Play Casino',
+                    url: 'casino-category/pay-n-play-casinos',
+                },
+                {
+                    title: 'Crypto Casinos',
+                    url: 'casino-category/crypto-casinos',
+                },
+                {
+                    title: 'Fresh Casinos',
+                    url: 'casino-category/fresh-casinos',
+                },
+            ],
         },
     ],
 }

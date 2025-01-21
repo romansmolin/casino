@@ -60,3 +60,29 @@ export const CASINO_BY_UUID = gql`
         }
     }
 `
+export const CASINOS_BY_TYPE = gql`
+    query GetCasinosByType($casinoType: String!) {
+        getCasinosByType(casinoType: $casinoType) {
+            casinos {
+                id
+                name
+                bonus_title
+                logoUrl
+                features
+                rating
+                mainBonus {
+                    bonusLink
+                    info {
+                        type
+                        children {
+                            type
+                            text
+                            bold
+                        }
+                    }
+                }
+                casinoType
+            }
+        }
+    }
+`

@@ -1,7 +1,12 @@
-import React from 'react'
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+import React, { Suspense } from 'react'
 
 const BestCasinos = () => {
-    return <div>BestCasinos</div>
+    return (
+        <Suspense fallback={<LoadingIndicator />}>
+            <LoadingIndicator />
+        </Suspense>
+    )
 }
 
 export default BestCasinos

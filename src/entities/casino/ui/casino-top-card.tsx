@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui/button'
 import Link from 'next/link'
 import RatingCircle from '@/shared/components/rating-circle/rating-circle'
-import { cookies } from 'next/headers'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { Card, CardContent } from '@/shared/ui/card'
 
@@ -15,12 +14,12 @@ const getUserFriendlyUrl = (name: string) => {
 };
 
 
-const CasinoTopCard = async ({ casino }: { casino: CasinoEntry }) => {
+const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
     const t = await getTranslations("casinoTopCard")
     const locale = await getLocale()
     return (
         <Card>
-            <CardContent className="min-w-[305px] lg:w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border shadow-none">
+            <CardContent className="max-w-[250px] min-w-[250px] md:max-w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border shadow-none">
                 {/* Logo */}
                 <div className="md:col-span-1 h-[170px] bg-primary p-4 rounded-xl flex items-center justify-center">
                     <div className="w-full md:w-[150px] h-full flex justify-center items-center">
@@ -45,8 +44,8 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoEntry }) => {
                 {/* Buttons */}
                 <div className="md:col-span-1 flex justify-center w-full md:w-auto">
                     <div className="flex flex-col gap-3 w-full lg:w-44">
-                        <Button>{t('playNow')}</Button>
-                        <Button asChild>
+                        <Button size="lg">{t('playNow')}</Button>
+                        <Button size="lg" asChild>
                             <Link
                                 href={{
                                     pathname: `${locale}/casino-review/${getUserFriendlyUrl(casino.title)}`,

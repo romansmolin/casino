@@ -41,11 +41,12 @@ const BonusCategories = () => {
     const t = useTranslations('common')
     const locale = useLocale()
     const router = useRouter()
-    
+
     const categories = Object.keys(BONUS_CATEGORIES_CONFIG)
-    
+
     return (
-        <div className="flex flex-row overflow-scroll md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5"> 
+        <div className='relative w-[calc(100%+1.25rem)] md:w-[unset]'>
+            <div className="flex flex-row overflow-scroll md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 no-scrollbar">
                 {categories.map((category) => {
                     const { icon: Icon, color } = BONUS_CATEGORIES_CONFIG[category]
                     return (
@@ -71,6 +72,10 @@ const BonusCategories = () => {
                         </Card>
                     )
                 })}
+            </div>
+
+            <div className='pointer-events-none absolute top-1/2 transform -translate-y-1/2 h-full right-0 w-5 bg-gradient-to-r from-transparent to-white dark:to-black md:hidden'>
+            </div>
         </div>
     )
 }

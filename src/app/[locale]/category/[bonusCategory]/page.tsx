@@ -1,5 +1,6 @@
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator';
 import { BonusCategoryPage } from '@/views/bonus-category';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 interface BonusCategoryProps {
     params: {
@@ -13,7 +14,11 @@ const BonusCategory: React.FC<BonusCategoryProps> = async ({ params, searchParam
     const sp = await searchParams;
     const { page } = sp
 
-    return <BonusCategoryPage bonusCategory={bonusCategory} currentPage={page ? parseInt(page) : 1} />;
+    return (
+        <Suspense fallback={<LoadingIndicator />}>
+            <BonusCategoryPage bonusCategory={bonusCategory} currentPage={page ? parseInt(page) : 1} />;
+        </Suspense>
+    )
 };
 
 export default BonusCategory;

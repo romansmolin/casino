@@ -1,4 +1,4 @@
-interface CasinoEntry {
+interface CasinoTopEntry {
 	rating: number;
 	title: string;
 	main_bonus_title: string;
@@ -11,15 +11,19 @@ interface CasinoEntry {
 	__typename: string;
 }
 
-interface CasinoReview {
+interface Casino {
 	name: string
 	bonus_title: string
 	logoUrl: string
 	features: string[]
 	rating: number
+	mainBonus: CasinoMainBonus
+	casinoType: CasinoType
+}
+
+interface CasinoReview extends Casino {
 	review: StrapiContent[]
 	faq: CasinoReviewFaq[]
-	mainBonus: CasinoMainBonus
 }
 
 type CasinoMainBonus = {
@@ -42,3 +46,5 @@ type StrapiContent = {
 	type: string;
 	children: StrapiContentItem[];
 }
+
+type CasinoType = "sportsbook" | "fresh-casino" |"crypto-casino"| "pay-n-play"

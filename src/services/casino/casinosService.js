@@ -1,6 +1,7 @@
 "use strict";
 
 const { casinoMapper } = require("../../mappers/casino/casinoMappers");
+const paginate = require("../paginate");
 
 const getCasinoByUUID = async (uuid) => {
 	try {
@@ -40,6 +41,7 @@ const getCasinoByUUID = async (uuid) => {
 			faq: data.results[0].faq?.fact1,
 			mainBonus: data.results[0].mainBonus,
 			casinoType: data.results[0].casinoType,
+			uuid: data.results[0].uuid
 		};
 	} catch (error) {
 		console.error("Error fetching casino data:", error);
@@ -47,7 +49,7 @@ const getCasinoByUUID = async (uuid) => {
 	}
 };
 
-const getCasinosByType = async (casinoType) => {
+const getCasinosByType = async (args) => {
 	try {
 		const casinos = await strapi.services["api::casino.casino"].find({
 			populate: [
@@ -60,6 +62,8 @@ const getCasinosByType = async (casinoType) => {
 				"localizations",
 			],
 		});
+        const { page, number, casinoType } = args;
+		console.log('ccc: ', page, number, casinoType)
 
 		const filteredCasinos = casinos.results.filter((casino) => casino.casinoType.some(type => type === casinoType))
 		  
@@ -71,9 +75,11 @@ const getCasinosByType = async (casinoType) => {
 		}
 
 		const mappedCasinos = filteredCasinos.map(casino => casinoMapper(casino))
+		const { items: casinoItems, totalPages } = paginate(mappedCasinos, page, number);
 
 		return {
-			casinos: mappedCasinos|| []
+			casinos: casinoItems|| [],
+			totalPages
 		}
 	} catch (error) {
 		console.error("Error fetching casino data:", error);

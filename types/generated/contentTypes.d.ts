@@ -993,10 +993,10 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
-          'Pay N Play Casino:pay-n-play',
-          'Crypto Casino:crypto-casino',
-          'Fresh Casino:fresh-casino',
-          'Sportsbook:sportsbook'
+          'Pay N Play Casino:pay-n-play-casinos',
+          'Crypto Casino:crypto-casinos',
+          'Fresh Casino:fresh-casinos',
+          'Sportsbook:sportsbook-casinos'
         ]
       > &
       Attribute.SetPluginOptions<{
@@ -1039,11 +1039,27 @@ export interface ApiPagePage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    slug: Attribute.String & Attribute.Required;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     dynamicContent: Attribute.DynamicZone<
       ['content.content-section', 'faq.faq']
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1051,6 +1067,12 @@ export interface ApiPagePage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::page.page',
+      'oneToMany',
+      'api::page.page'
+    >;
+    locale: Attribute.String;
   };
 }
 

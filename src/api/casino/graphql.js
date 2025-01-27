@@ -25,6 +25,7 @@ module.exports =
 
 		type GetCasinoByType {
 			casinos: [CasinoItem]
+      totalPages: Int
 		}
 
 		type CasinoItem {
@@ -39,6 +40,7 @@ module.exports =
 			faq: [FaqItem]
 			mainBonus: MainBonus
 			casinoType: [String]
+      uuid: String
 		}
 
         type MainBonus {
@@ -84,7 +86,7 @@ module.exports =
         },
         getCasinosByType: {
           resolve: async (parent, args) => {
-            return getCasinosByType(args.casinoType);
+            return getCasinosByType(args);
           },
         },
       },

@@ -126,10 +126,10 @@
       },
       "type": "customField",
       "options": [
-        "Pay N Play Casino:pay-n-play",
-        "Crypto Casino:crypto-casino",
-        "Fresh Casino:fresh-casino",
-        "Sportsbook:sportsbook"
+        "Pay N Play Casino:pay-n-play-casinos",
+        "Crypto Casino:crypto-casinos",
+        "Fresh Casino:fresh-casinos",
+        "Sportsbook:sportsbook-casinos"
       ],
       "customField": "plugin::multi-select.multi-select"
     }

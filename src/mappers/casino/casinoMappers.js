@@ -10,6 +10,7 @@ const casinoMapper = (casino) => {
         faq: casino.faq?.fact1,
         mainBonus: casino.mainBonus,
         casinoType: casino.casinoType,
+        uuid: casino.uuid
     }
 
     return result

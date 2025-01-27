@@ -18,7 +18,8 @@ interface Casino {
 	features: string[]
 	rating: number
 	mainBonus: CasinoMainBonus
-	casinoType: CasinoType
+	casinoType: CasinoType[]
+	uuid: string
 }
 
 interface CasinoReview extends Casino {

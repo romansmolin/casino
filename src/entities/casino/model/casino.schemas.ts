@@ -60,9 +60,11 @@ export const CASINO_BY_UUID = gql`
         }
     }
 `
+
 export const CASINOS_BY_TYPE = gql`
     query GetCasinosByType($casinoType: String!) {
         getCasinosByType(casinoType: $casinoType) {
+            totalPages
             casinos {
                 id
                 name
@@ -82,6 +84,7 @@ export const CASINOS_BY_TYPE = gql`
                     }
                 }
                 casinoType
+                uuid
             }
         }
     }

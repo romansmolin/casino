@@ -12,14 +12,14 @@ interface CasinoHighlightProps {
 
 const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bonusTitle }) => {
 	return (
-		<Card className="lg:w-1/3 bg-muted/50 h-full flex flex-col">
+		<Card className="lg:w-1/3 h-full flex flex-col">
 			<CardContent className="p-3 flex flex-col justify-between bento-block items-center space-y-5 grow">
 
 				<div className='space-y-5'>
 					<div className="rounded-xl w-full h-[100px] bg-primary flex justify-center items-center">
 						<Image width={150} height={50} src={logo} alt={`${casinoName} logo`} />
 					</div>
-					<div className='flex flex-col'>
+					<div className='flex flex-col gap-3'>
 						<Typography as="h2" variant="h2" className="text-center">
 							{casinoName}
 						</Typography>

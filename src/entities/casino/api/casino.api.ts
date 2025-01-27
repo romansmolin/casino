@@ -18,11 +18,12 @@ export const fetchCasinoByUuid = async <T,>(uuid: string, locale: string) => {
     }
 }
 
-export const fetchCasinoByType = async(casinoType: string) => {
-    const {data, error} = await getServerQuery(CASINOS_BY_TYPE, {casinoType})
-
+export const fetchCasinoByType = async({ page, number, casinoType }: { page: number, number: number, casinoType:string  }) => {
+    const {data, error} = await getServerQuery(CASINOS_BY_TYPE, {casinoType, page, number})
+    console.log("casinosCategory: ", data)
     return {
         casinos: data.getCasinosByType.casinos,
+        totalPages: data.getCasinosByType.totalPages,
         error
     }
 }

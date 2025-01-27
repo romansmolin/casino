@@ -9,11 +9,13 @@ import {
     SidebarMenuSub,
     SidebarMenuSubItem,
     SidebarMenuSubButton,
+    SidebarHeader,
 } from '@/shared/ui/sidebar'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl';
+import Typography from '@/shared/components/typography/typography'
 
 export function SidebarBonusesMenu({
     items,

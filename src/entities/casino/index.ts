@@ -5,5 +5,5 @@ export {
     fetchCasinoTopByCountryServer,
     fetchCasinoByUuid,
     fetchCasinoByType,
-    casinoTopCard
+    casinoTopCard,
 }

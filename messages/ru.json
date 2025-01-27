@@ -3,7 +3,8 @@
       "no-deposit-bonus": "Без Депозитные Бонусы",
       "real-money-bonus": "Приветсвенные Бонусы",
       "best-of-the-month": "Лучшие за месяц",
-      "bonuses": "Бонусы"
+      "bonuses": "Бонусы",
+      "casinos": "Казино"
     },
     "mainPage": {
       "title": "Лучшие казино в Декабре",
@@ -19,6 +20,7 @@
       "real-money-bonuses": "Денежный Бонус",
       "best-of-the-month": "Лучшие за месяц",
       "cashback-bonuses": "Кэшбек Бонус",
-      "welcome-bonuses": "Приветсвенный Бонус"
+      "welcome-bonuses": "Приветсвенный Бонус",
+      "crypto-bonuses": "Крипто Бонус"
     }
   }

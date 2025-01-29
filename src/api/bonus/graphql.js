@@ -1,6 +1,6 @@
 'use strict';
 
-const { getAllBonuses, getBonusesByType, getBonusById } = require("../../services/bonus/bonusService");
+const { getAllBonuses, getBonusesByType, getBonusById, getAllBonusesWithoutPagination } = require("../../services/bonus/bonusService");
 
 module.exports = (strapi) => ({ nexus }) => ({
     typeDefs: `
@@ -16,6 +16,10 @@ module.exports = (strapi) => ({ nexus }) => ({
 
         type GetBonusById {
             bonus: Bonus
+        }
+        
+        type GetAllBonusesWithoutPagination {
+            bonuses: [Bonus]
         }
 
         type Bonus {
@@ -58,6 +62,7 @@ module.exports = (strapi) => ({ nexus }) => ({
             getAllBonuses(page: Int!, number: Int!): GetAllBonuses  
             getBonusesByType(page: Int!, number: Int!, type: String!): GetBonusesByType
             getBonusById(uuid: String!): GetBonusById
+            getAllBonusesWithoutPagination(locale: String!): GetAllBonusesWithoutPagination
         }
     `,
     resolvers: {
@@ -77,6 +82,11 @@ module.exports = (strapi) => ({ nexus }) => ({
                     const { uuid } = args;
                     return getBonusById(uuid);
                 }
+            },
+            getAllBonusesWithoutPagination: {
+                resolve: async (parent, args) => {
+                    return getAllBonusesWithoutPagination(args)
+                }
             }
         }
     },
@@ -88,6 +98,9 @@ module.exports = (strapi) => ({ nexus }) => ({
             auth: false,
         },
         "Query.getBonusById": {
+            auth: false,
+        },
+        "Query.getAllBonusesWithoutPagination": {
             auth: false,
         },
     }

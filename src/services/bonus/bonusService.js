@@ -25,6 +25,26 @@ const getAllBonuses = async (args) => {
         };
     }
 };
+const getAllBonusesWithoutPagination = async (args) => {
+    try {
+
+        const data = await strapi.service('api::bonus.bonus').find({
+            locale: args.locale,
+            populate: ['casinos', 'logo', 'bonus_info', 'casinos.logo'],
+        })
+
+        const mappedBonuses = data.results.map(item => bonusMapper(item));
+
+        return {
+            bonuses: mappedBonuses
+        };
+    } catch (err) {
+        console.log('Error fetching GetAllBonusesWithoutPagination: ', err);
+        return {
+            bonuses: []
+        };
+    }
+};
 
 const getBonusesByType = async (args) => {
     try {
@@ -101,5 +121,6 @@ const getBonusById = async (uuid) => {
 module.exports = {
     getAllBonuses,
     getBonusesByType,
-    getBonusById
+    getBonusById,
+    getAllBonusesWithoutPagination
 }

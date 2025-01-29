@@ -4,16 +4,14 @@ import { HomePage } from "@/views/home";
 import { Suspense } from "react";
 
 interface HomePageProps {
-    params: {
-        locale: Locale;
-    };
+    params: Promise<{ locale: Locale }>;
 }
 
-export default function Home({ params }: HomePageProps) {
-    const {locale} = params
+export default async function Home({ params }: HomePageProps) {
+    const { locale } = await params
     return (
         <Suspense fallback={<LoadingIndicator />}>
-            <HomePage locale={locale}/>
+            <HomePage locale={locale} />
         </Suspense>
     )
 }

@@ -3,9 +3,7 @@ import { BonusCategoryPage } from '@/views/bonus-category';
 import React, { Suspense } from 'react';
 
 interface BonusCategoryProps {
-    params: {
-        bonusCategory: BonusCategoryType;
-    };
+    params: Promise<{ bonusCategory: BonusCategoryType }>;
     searchParams: Promise<{ [key: string]: string | undefined }>
 }
 

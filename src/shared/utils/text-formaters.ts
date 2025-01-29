@@ -19,8 +19,13 @@ const getUserFriendlyUrl = (name: string) => {
         .replace(/[^\w-]+/g, "");
 };
 
+const bonusrUrlFriendly = (str: string) => { 
+	return str.replace(/\s+/g, '-').toLowerCase()
+}
+
 export {
     formatCasinoType,
     formatFeature,
-    getUserFriendlyUrl
+    getUserFriendlyUrl,
+	bonusrUrlFriendly
 }

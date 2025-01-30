@@ -8,8 +8,9 @@ import React from 'react'
 import BonusCategories from '@/features/bonus/ui/bonus-categories'
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
+    console.log('HomePage: ', locale)
     const t = await getTranslations('mainPage')
-    const { pageContent } = await fetchPageContentBySlug('/')
+    const { pageContent } = await fetchPageContentBySlug('/', locale)
 
     return (
         <>

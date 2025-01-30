@@ -10,6 +10,10 @@
       "title": "Best Casinos of December",
       "categories-block": "Check our extensive bonus library!"
     },
+    "bonuses": {
+      "best-bonuses-of-the-month": "Best Bonuses of the Month",
+      "claim-bonus": "Clain Bonus"
+    },
     "casinoTopCard": {
       "rating": "Rating",
       "playNow": "Play Now",
@@ -21,6 +25,7 @@
       "best-of-the-month": "Best of the Month",
       "cashback-bonuses": "Cashback Bonus",
       "welcome-bonuses": "Welcome Bonus",
-      "crypto-bonuses": "Crypto Bonus"
+      "crypto-bonuses": "Crypto Bonus",
+      "faq": "Frequently Asked Questions"
     }
   }

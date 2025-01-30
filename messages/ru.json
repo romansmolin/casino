@@ -10,6 +10,10 @@
       "title": "Лучшие казино в Декабре",
       "categories-block": "Найди бонус, который ты ищешь!"
     },
+    "bonuses": {
+      "best-bonuses-of-the-month": "Лучшие Бонусы за Месяц",
+      "claim-bonus": "Получить Бонус"
+    },
     "casinoTopCard": {
       "rating": "Рейтинг",
       "playNow": "Играть!",
@@ -21,6 +25,7 @@
       "best-of-the-month": "Лучшие за месяц",
       "cashback-bonuses": "Кэшбек Бонус",
       "welcome-bonuses": "Приветсвенный Бонус",
-      "crypto-bonuses": "Крипто Бонус"
+      "crypto-bonuses": "Крипто Бонус",
+      "faq": "Популярные Вопросы"
     }
   }

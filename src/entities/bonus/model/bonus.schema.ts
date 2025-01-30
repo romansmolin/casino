@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
 export const GET_BONUSES_BY_TYPE = gql`
-    query GetBonusesByType($page: Int!, $number: Int!, $type: String!) {
-        getBonusesByType(page: $page, number: $number, type: $type) {
+    query GetBonusesByType($page: Int!, $number: Int!, $type: String!, $locale: String!) {
+        getBonusesByType(page: $page, number: $number, type: $type, locale: $locale) {
             bonuses {
                 casinoName
                 casinoUuid

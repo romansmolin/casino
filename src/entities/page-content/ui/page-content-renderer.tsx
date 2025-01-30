@@ -2,6 +2,7 @@ import React from 'react';
 import PageContentSection from './page-content-section';
 import { Accardion } from '@/shared/components/accardion';
 import Typography from '@/shared/components/typography/typography';
+import PageContentFaq from './page-content-faq';
 
 type Content = {
     type: string;
@@ -19,11 +20,7 @@ interface ContentRendererProps {
 }
 
 const content: Record<string, any> = {
-    faq: (faq: any, idx: number) => 
-        <section key={`faq-${idx}`} className="animate-bento-block flex-1 space-y-8 bento-block">
-            <Typography as='h2' variant='h2'>Frequently Asked Questions</Typography>
-            <Accardion items={faq.content[0].faqs} />
-        </section>,
+    faq: (faq: any, idx: number) => <PageContentFaq faqs={faq.content[0].faqs}/>,
     contentSection: (contentItem: any, idx: number) => <PageContentSection key={idx} className='flex-col' position={contentItem.position} text={contentItem.content} image={contentItem.image} imageBackgroundColor={contentItem.imageBackgroundColor} />
 };
 

@@ -20,7 +20,7 @@ const getUserFriendlyUrl = (name: string) => {
 };
 
 const bonusrUrlFriendly = (str: string) => { 
-	return str.replace(/\s+/g, '-').toLowerCase()
+	return str.replace(/\s+/g, '-').replace(/_/g, '-').toLowerCase()
 }
 
 export {

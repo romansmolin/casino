@@ -2,12 +2,15 @@ import { BonusDetailsCard, fetchBonusById } from '@/entities/bonus'
 import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
 import { Accardion } from '@/shared/components/accardion'
 import Typography from '@/shared/components/typography/typography'
+import { Locale } from '@/shared/lib/i18n/routing'
 import { Card, CardContent, CardTitle } from '@/shared/ui/card'
 import { CheckCircleIcon, CircleHelp, InfoIcon } from 'lucide-react'
+import { getLocale } from 'next-intl/server'
 import React from 'react'
 
-const BonusReviewPage = ({ bonus }: { bonus: Bonus }) => {
-    console.log(bonus)
+const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
+    const locale = await getLocale()
+    const { bonus } = await fetchBonusById(uuid, locale as Locale)
 
     return (
         <>

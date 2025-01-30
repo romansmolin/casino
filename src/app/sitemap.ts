@@ -1,45 +1,38 @@
 import { fetchAllBonusesWithoutPagination } from '@/entities/bonus/api/bonus.api'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { getUserFriendlyUrl } from '@/shared/utils/text-formaters'
+import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
 import { MetadataRoute } from 'next'
 
 const casinoUrlTemplate = `http://localhost:3000/en/casino-review/fairspin-casino?id=05cdc587-508b-4874-a958-c9c59c81fcdd`
 const BASE_URL = 'http://localhost:3000'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const locales: string[] = ['ru', 'en']
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const locales: Locale[] = ['ru', 'en'] // Ensure proper typing
 
     const generateRoutesForBonusReviews = async (locale: Locale) => {
-        const { bonuses } = await fetchAllBonusesWithoutPagination(locale)
+        try {
+            const { bonuses } = await fetchAllBonusesWithoutPagination(locale)
 
-        const bonusRoutes = bonuses.map(
-            (bonus) => `${BASE_URL}/${locale}/casino-review/${getUserFriendlyUrl(bonus.casinoName)}?uuid=${bonus.uuid}`
-        )
-        console.log('bonusRoutes: ', bonusRoutes)
-        return []
+            return bonuses.map((bonus) => ({
+                url: `${BASE_URL}/${locale}/${bonusrUrlFriendly(bonus.primaryBonusType)}/${getUserFriendlyUrl(bonus.casinoName)}?uuid=${bonus.uuid}`,
+                lastModified: new Date(),
+                changeFrequency: 'yearly' as const,
+                priority: 1,
+            }))
+        } catch (error) {
+            console.error(`Error fetching bonuses for locale "${locale}":`, error)
+            return []
+        }
     }
 
-    generateRoutesForBonusReviews('en')
-    return [
-        {
-            url: 'https://acme.com',
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 1,
-        },
-        {
-            url: 'https://acme.com/about',
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: 'https://acme.com/blog',
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.5,
-        },
-    ]
+    const generateAllBonusReviewRoutes = async () => {
+        const allRoutes = await Promise.all(locales.map(generateRoutesForBonusReviews))
+        return allRoutes.flat() // Flatten nested arrays
+    }
+
+    const bonusReviewRoutes = await generateAllBonusReviewRoutes()
+
+    return [...bonusReviewRoutes]
 }
 
 // <?xml version="1.0" encoding="UTF-8"?>

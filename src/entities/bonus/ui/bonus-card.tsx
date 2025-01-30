@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/shared/u
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 import Link from 'next/link'
 import { getLocale } from 'next-intl/server'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
 interface BonusCardProps {
     casinoName: string
@@ -14,19 +15,14 @@ interface BonusCardProps {
     casinoLogo: string
     info: BonusInfo
     uuid: string
-    mainBonusTypeForUrl: string
+    primaryBonusType: string
 }
 
-const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, bonusTitle, casinoLogo, info, uuid, mainBonusTypeForUrl }) => {
+const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, bonusTitle, casinoLogo, info, uuid, primaryBonusType }) => {
     const locale = await getLocale()
-
-    const userUrlFriendly = (str: string) => { 
-        return str.replace(/\s+/g, '-').toLowerCase()
-    }
-
-
+    
     return (
-        <Card className="w-full border flex flex-col max-w-[250px] min-w-[250px] md:max-w-[305px] mx-auto md:min-w-[305px] lg:min-w-[unset] lg:max-w-[unset] p-5 lg:p-4 space-y-8 h-full">
+        <Card className="w-full border flex flex-col max-w-[250px] min-w-[250px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-8 h-full">
             <CardHeader className='p-[unset]'>
                 <div className="flex flex-col items-center space-y-4">
                     <div className="bg-primary w-full flex justify-center rounded-xl items-center">
@@ -55,7 +51,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
             <CardFooter className='p-[unset]'>
                 <Button className="w-full" asChild>
                     <Link href={{
-                        pathname: `/${locale}/${mainBonusTypeForUrl}/${userUrlFriendly(casinoName)}`,
+                        pathname: `/${locale}/${bonusrUrlFriendly(primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
                         query: { uuid }
                     }}> Claim Bonus</Link>
                 </Button>

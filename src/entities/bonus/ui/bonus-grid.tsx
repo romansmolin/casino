@@ -17,7 +17,7 @@ const BonusGrid = ({ bonuses, horizontalyScrollable = false }: {bonuses: Bonus[]
                         info={bonus.info}
                         casinoUuid={bonus.casinoUuid}
                         uuid={bonus.uuid}
-                        mainBonusTypeForUrl={bonus.bonusTypeForUrl}
+                        primaryBonusType={bonus.primaryBonusType}
                     />
                 </div>
             ))}

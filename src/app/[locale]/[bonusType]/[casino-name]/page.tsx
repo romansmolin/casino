@@ -6,11 +6,10 @@ import React, { Suspense } from 'react'
 // @ts-ignore
 const BonusReview = async ({ searchParams }: { searchParams: Promise<{ uuid: string }> }) => {
     const { uuid } = await searchParams
-    const { bonus } = await fetchBonusById(uuid)
     
     return (
         <Suspense fallback={<LoadingIndicator />}>
-            <BonusReviewPage bonus={bonus} />
+            <BonusReviewPage uuid={uuid} />
         </Suspense>
     )
 }

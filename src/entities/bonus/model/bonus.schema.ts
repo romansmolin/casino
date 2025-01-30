@@ -10,7 +10,7 @@ export const GET_BONUSES_BY_TYPE = gql`
                 bonusTitle
                 uuid
                 casinoLogo
-                bonusTypeForUrl
+                primaryBonusType
                 info {
                     releaseDate
                     availableFor
@@ -46,8 +46,8 @@ export const GET_ALL_BONUSES = gql`
 `
 
 export const GET_BONUS_BY_UUID = gql`
-    query GetBonusById($uuid: String!) {
-        getBonusById(uuid: $uuid) {
+    query GetBonusById($uuid: String!, $locale: String!) {
+        getBonusById(uuid: $uuid, locale: $locale) {
             bonus {
                 casinoName
                 casinoUuid
@@ -84,6 +84,7 @@ export const GET_ALL_BONUSES_WITHOUT_PAGINATION = gql`
             bonuses {
                 casinoName
                 uuid
+                primaryBonusType
             }
         }
     }

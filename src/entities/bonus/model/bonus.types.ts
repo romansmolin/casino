@@ -6,7 +6,7 @@ interface Bonus {
     uuid: string
     casinoLogo: string
     info: BonusInfo
-    bonusTypeForUrl: string
+    primaryBonusType: string
     bonusReview: StrapiContent[]
     faqInfo: BonusFaq[]
 }

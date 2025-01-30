@@ -37,8 +37,8 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
     return (
         <Card>
             <CardContent className='flex flex-col gap-5 lg:gap-[unset] lg:flex-row justify-between items-center bento-block'>
-                <div className='flex flex-col lg:flex-row items-center gap-5'>
-                    <div className='rounded-xl w-full bg-primary flex justify-center items-centers'>
+                <div className='flex flex-col lg:flex-row items-center gap-5 w-full'>
+                    <div className='rounded-xl w-full bg-primary flex justify-center items-centers lg:max-w-md'>
                         <Image
                             src={bonusLogo}
                             alt={bonusTitle}
@@ -46,9 +46,9 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                             height={150}
                         />
                     </div>
-                    <div className='space-y-2'>
+                    <div className='space-y-2 flex flex-col items-center lg:items-start'>
                         <Typography as="h1" variant='h1'>{casinoName}</Typography>
-                        <Typography as="h2" variant='h2' nowrap>{bonusSubtitle}</Typography>
+                        <Typography as="h2" variant='h4'>{bonusSubtitle}</Typography>
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>

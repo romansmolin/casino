@@ -32,7 +32,7 @@ module.exports = (strapi) => ({ nexus }) => ({
             faqInfo: [FaqItem]
             bonusReview: [BonusDetails]
             uuid: String
-            bonusTypeForUrl: [String]
+            primaryBonusType: ENUM_BONUS_PRIMARYBONUSTYPE
         }
         
         type BonusDetails {
@@ -60,8 +60,8 @@ module.exports = (strapi) => ({ nexus }) => ({
 
         extend type Query {
             getAllBonuses(page: Int!, number: Int!): GetAllBonuses  
-            getBonusesByType(page: Int!, number: Int!, type: String!): GetBonusesByType
-            getBonusById(uuid: String!): GetBonusById
+            getBonusesByType(page: Int!, number: Int!, type: String!, locale: String!): GetBonusesByType
+            getBonusById(uuid: String!, locale: String!): GetBonusById
             getAllBonusesWithoutPagination(locale: String!): GetAllBonusesWithoutPagination
         }
     `,
@@ -79,8 +79,8 @@ module.exports = (strapi) => ({ nexus }) => ({
             },
             getBonusById: {
                 resolve: async (parent, args) => {
-                    const { uuid } = args;
-                    return getBonusById(uuid);
+                    const { uuid, locale } = args;
+                    return getBonusById(uuid, locale);
                 }
             },
             getAllBonusesWithoutPagination: {

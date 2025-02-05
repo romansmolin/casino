@@ -13,11 +13,13 @@ const processedPageContent = (content) => (
   }).filter(item => item !== null)
 )
 
-const getPageContentBySlug = async (slug) => {
+const getPageContentBySlug = async (slug, locale) => {
     try {
-        const pages = await strapi.services["api::page.page"].find({
-          populate: ['dynamicContent', 'dynamicContent.image', 'dynamicContent.fact1']
-        });
+
+        const pages = await strapi.service("api::page.page").find({
+          populate: ['dynamicContent', 'dynamicContent.image', 'dynamicContent.fact1'],
+          locale
+        })
   
         const page = pages.results.find(page => page.slug === slug);
   

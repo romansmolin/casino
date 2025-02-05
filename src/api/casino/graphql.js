@@ -3,6 +3,7 @@
 const {
   getCasinoByUUID,
   getCasinosByType,
+  getAllCasinosWithoutPagination
 } = require("../../services/casino/casinosService");
 
 module.exports =
@@ -23,10 +24,14 @@ module.exports =
           casinoType: [String]
         }
 
-		type GetCasinoByType {
-			casinos: [CasinoItem]
-      totalPages: Int
-		}
+        type GetCasinoByType {
+          casinos: [CasinoItem]
+          totalPages: Int
+        }
+
+        type GetAllCasinosWithoutPagination {
+          casinos: [CasinoItem]
+        }
 
 		type CasinoItem {
 			id: Int
@@ -72,16 +77,16 @@ module.exports =
         }
 
         extend type Query {
-            getCasinoByUUID(uuid: String!): GetCasinoByUUID
-			getCasinosByType(casinoType: String!): GetCasinoByType        
-        
+            getCasinoByUUID(uuid: String!, locale: String!): GetCasinoByUUID
+			      getCasinosByType(casinoType: String!): GetCasinoByType        
+            getAllCasinosWithoutPagination(locale: String!): GetAllCasinosWithoutPagination
         }
     `,
     resolvers: {
       Query: {
         getCasinoByUUID: {
           resolve: async (parent, args, context) => {
-            return getCasinoByUUID(args.uuid);
+            return getCasinoByUUID(args.uuid, args.locale);
           },
         },
         getCasinosByType: {
@@ -89,6 +94,11 @@ module.exports =
             return getCasinosByType(args);
           },
         },
+        getAllCasinosWithoutPagination: {
+          resolve: async (parent, args) => {
+            return getAllCasinosWithoutPagination(args);
+          }
+        }
       },
     },
     resolversConfig: {
@@ -98,5 +108,8 @@ module.exports =
       "Query.getCasinosByType": {
         auth: false,
       },
+      "Query.getAllCasinosWithoutPagination": {
+        auth: false,
+      }
     },
   });

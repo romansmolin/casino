@@ -3,9 +3,9 @@
 const { casinoMapper } = require("../../mappers/casino/casinoMappers");
 const paginate = require("../paginate");
 
-const getCasinoByUUID = async (uuid) => {
+const getCasinoByUUID = async (uuid, locale) => {
 	try {
-		const data = await strapi.services["api::casino.casino"].find({
+		const data = await strapi.service("api::casino.casino").find({
 			populate: [
 				"logo",
 				"Promos",
@@ -16,6 +16,7 @@ const getCasinoByUUID = async (uuid) => {
 				"localizations",
 			],
 			filters: { uuid },
+			locale
 		});
 
 		if (!data) {
@@ -63,7 +64,6 @@ const getCasinosByType = async (args) => {
 			],
 		});
         const { page, number, casinoType } = args;
-		console.log('ccc: ', page, number, casinoType)
 
 		const filteredCasinos = casinos.results.filter((casino) => casino.casinoType.some(type => type === casinoType))
 		  
@@ -90,7 +90,42 @@ const getCasinosByType = async (args) => {
 	}
 };
 
+const getAllCasinosWithoutPagination = async (args) => {
+	try {
+		const {locale} = args
+
+		const casinos = await strapi.service("api::casino.casino").find({
+			locale,
+			populate: [
+				"logo",
+				"Promos",
+				"Promos.Promo",
+				"Promos.Promo.bonus_img",
+				"faq.fact1",
+				"mainBonus",
+				"localizations",
+			],
+		})
+
+		console.log('casinos: ', casinos)
+
+
+		const mappedCasinos = casinos.results.map(casino => casinoMapper(casino))
+
+
+		return {
+			casinos: mappedCasinos
+		}
+
+	} catch (error) {
+		return {
+			casinos: []
+		}
+	}
+}
+
 module.exports = {
 	getCasinoByUUID,
 	getCasinosByType,
+	getAllCasinosWithoutPagination
 };

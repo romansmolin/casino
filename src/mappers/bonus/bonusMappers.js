@@ -1,5 +1,5 @@
 const bonusMapper = (bonus) => ({
-    casinoName: bonus.casinos[0].name,
+    casinoName: bonus.casinoName,
     casinoUuid: bonus.casinos[0]?.uuid,
     casinoLogo: bonus.logo[0]?.url,
     bonusSubtitle: bonus.bonus_subtitle,
@@ -11,7 +11,7 @@ const bonusMapper = (bonus) => ({
         bonusStatus: bonus.bonus_info?.bonus_status[0],
     },
     uuid: bonus?.uuid,
-    bonusTypeForUrl: bonus.mainBonusTypeForUrl,
+    primaryBonusType: bonus?.primaryBonusType,
 })
 
 const bonusMapperWithExtras = (bonus) => ({

@@ -86,7 +86,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "uuid": {
       "type": "customField",
@@ -102,19 +103,16 @@
       },
       "component": "faq.faq"
     },
-    "mainBonusTypeForUrl": {
+    "primaryBonusType": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "customField",
-      "options": [
-        "No Deposit Bonus:no-deposit-bonus",
-        "Welcome Bonus:welcome-bonus",
-        "Cashback Bonus:cashback-bonus"
-      ],
-      "customField": "plugin::multi-select.multi-select"
+      "type": "enumeration",
+      "enum": [
+        "no-deposit-bonuses"
+      ]
     }
   }
 }

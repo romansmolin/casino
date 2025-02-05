@@ -25,6 +25,7 @@ const getAllBonuses = async (args) => {
         };
     }
 };
+
 const getAllBonusesWithoutPagination = async (args) => {
     try {
 
@@ -34,6 +35,8 @@ const getAllBonusesWithoutPagination = async (args) => {
         })
 
         const mappedBonuses = data.results.map(item => bonusMapper(item));
+
+        console.log('mappedBonuses: ', mappedBonuses)
 
         return {
             bonuses: mappedBonuses
@@ -48,8 +51,9 @@ const getAllBonusesWithoutPagination = async (args) => {
 
 const getBonusesByType = async (args) => {
     try {
-        const data = await strapi.services["api::bonus.bonus"].find({
+        const data = await strapi.service("api::bonus.bonus").find({
             populate: ['casinos', 'logo', 'bonus_info', 'casinos.logo', 'faq.fact1'],
+            locale: args.locale
         });
 
         const { page, number, type } = args;
@@ -72,10 +76,10 @@ const getBonusesByType = async (args) => {
     }
 };
 
-const getBonusById = async (uuid) => {
-    console.log('uuid', uuid)
-    try {
-        const data = await strapi.services["api::bonus.bonus"].find({
+const getBonusById = async (uuid, locale) => {
+    try {        
+        const data = await strapi.service('api::bonus.bonus').find({
+            locale,
             filters: { uuid },
             populate: [
                 'casinos',
@@ -86,27 +90,15 @@ const getBonusById = async (uuid) => {
                 'bonusOverview',
                 'localizations'
             ],
-        });
-        
-        const temp = await strapi.service('api::bonus.bonus').find({
-            locale: 'en',
-            populate: [
-                'casinos',
-                'logo',
-                'bonus_info',
-                'casinos.logo',
-                'faq.fact1',
-                'bonusOverview',
-                'localizations'
-            ],
         })
-        console.log(temp)
 
         if (!data || !data.results.length) {
             throw new Error('Bonus not found');
         }
 
         const bonusData = data.results[0];
+
+        console.log('bonusData: ', bonusData)
         const bonus = bonusMapperWithExtras(bonusData);
 
         return {

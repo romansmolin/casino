@@ -847,6 +847,7 @@ export interface ApiBonusBonus extends Schema.CollectionType {
         };
       }>;
     casinoName: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -860,15 +861,7 @@ export interface ApiBonusBonus extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    mainBonusTypeForUrl: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'No Deposit Bonus:no-deposit-bonus',
-          'Welcome Bonus:welcome-bonus',
-          'Cashback Bonus:cashback-bonus'
-        ]
-      > &
+    primaryBonusType: Attribute.Enumeration<['no-deposit-bonuses']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

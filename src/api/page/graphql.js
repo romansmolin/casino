@@ -39,14 +39,14 @@ module.exports = (strapi) => () => ({
         }
 
         extend type Query {
-            getPageContentBySlug(slug: String!): GetPageContentBySlug        
+            getPageContentBySlug(slug: String!, locale: String!): GetPageContentBySlug        
         }
     `,
     resolvers: {
         Query: {
             getPageContentBySlug: {
                 resolve: async (parent, args) => {
-                  return getPageContentBySlug(args.slug)
+                  return getPageContentBySlug(args.slug, args.locale)
                 }
               }
         }

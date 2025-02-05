@@ -40,7 +40,6 @@ module.exports = (strapi) => ({ nexus }) => ({
 
                     const targetTop = res.results.filter(top => top.country === args.country)
 
-                    console.log('targetTop[0].MainTop: ', targetTop[0].MainTop[0])
                     const newMainTop = targetTop[0].MainTop.map(casino => ({
                         ...casino,
                         casino: casino.casino.uuid,

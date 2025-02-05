@@ -1,10 +1,12 @@
 import { fetchAllBonusesWithoutPagination } from '@/entities/bonus/api/bonus.api'
+import { getAllCasinosWithoutPagination } from '@/entities/casino/api/casino.api'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
 import { MetadataRoute } from 'next'
 
 const casinoUrlTemplate = `http://localhost:3000/en/casino-review/fairspin-casino?id=05cdc587-508b-4874-a958-c9c59c81fcdd`
 const BASE_URL = 'http://localhost:3000'
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const locales: Locale[] = ['ru', 'en'] // Ensure proper typing
@@ -20,9 +22,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: 1,
             }))
         } catch (error) {
-            console.error(`Error fetching bonuses for locale "${locale}":`, error)
+            console.error(`Error fetching casinos for locale "${locale}":`, error)
             return []
         }
+    }
+
+    const generateRoutesForCasinoReviews = async (locale: Locale) => {
+        try {
+            const {casinos} = await getAllCasinosWithoutPagination(locale)
+
+            return casinos.map((casino) => ({
+                url: `${BASE_URL}/${locale}/casino-review/${bonusrUrlFriendly(casino.name)}?id=${casino.uuid}`,
+                lastModified: new Date(),
+                changeFrequency: 'yearly' as const,
+                priority: 1,
+            }))
+        } catch (error) {
+            console.error(`Error fetching casinos for locale "${locale}":`, error)
+            return []
+        }
+    }
+
+    const generateRoutesForStaticPages = async (locale: Locale) => {
+        const staticRoutes = [
+            '/category/no-deposit-bonuses',
+            '/category/free-spins-bonuses',
+            '/category/free-cash-bonuses',
+            '/category/0-wager-bonuses',
+            '/category/welcome-bonuses',
+            '/category/cashback-bonuses',
+            '/category/cashback-bonuses',
+            '/category/crypto-bonuses'
+        ]
+
+        return staticRoutes.map(route => ({
+            url: `${BASE_URL}/${locale}${route}`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly' as const,
+            priority: 0.8,
+        }))
     }
 
     const generateAllBonusReviewRoutes = async () => {
@@ -30,15 +68,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return allRoutes.flat() // Flatten nested arrays
     }
 
+    const generateAllCasinosReviewRoutes = async () => {
+        const allRoutes = await Promise.all(locales.map(generateRoutesForCasinoReviews))
+        return allRoutes.flat() // Flatten nested arrays
+    }
+
+    const generateAllStaticRoutes = async () => {
+        const allRoutes = await Promise.all(locales.map(generateRoutesForStaticPages))
+        return allRoutes.flat() // Flatten nested arrays
+    }
+
     const bonusReviewRoutes = await generateAllBonusReviewRoutes()
+    const casinoReviewsRoutes = await generateAllCasinosReviewRoutes()
+    const staticRoutes = await generateAllStaticRoutes()
 
-    return [...bonusReviewRoutes]
+    return [...bonusReviewRoutes, ...casinoReviewsRoutes, ...staticRoutes]
 }
-
-// <?xml version="1.0" encoding="UTF-8"?>
-// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-//   <url>
-//     <loc>https://www.example.com/foo.html</loc>
-//     <lastmod>2022-06-04</lastmod>
-//   </url>
-// </urlset>

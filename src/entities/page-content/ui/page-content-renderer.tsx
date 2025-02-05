@@ -20,7 +20,7 @@ interface ContentRendererProps {
 }
 
 const content: Record<string, any> = {
-    faq: (faq: any, idx: number) => <PageContentFaq faqs={faq.content[0].faqs}/>,
+    faq: (faq: any, idx: number) => <PageContentFaq faqs={faq.content[0].faqs} key={idx}/>,
     contentSection: (contentItem: any, idx: number) => <PageContentSection key={idx} className='flex-col' position={contentItem.position} text={contentItem.content} image={contentItem.image} imageBackgroundColor={contentItem.imageBackgroundColor} />
 };
 

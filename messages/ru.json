@@ -26,6 +26,24 @@
       "cashback-bonuses": "Кэшбек Бонус",
       "welcome-bonuses": "Приветсвенный Бонус",
       "crypto-bonuses": "Крипто Бонус",
+      "20-free-spins-bonuses": "20 Бесплатных Спинов",
+      "50-free-spins-bonuses": "50 Бесплатных Спинов",
+      "100-free-spins-bonuses": "100 Бесплатных Спинов",
       "faq": "Популярные Вопросы"
+    },
+    "free-spins-page": {
+      "title": "Найди Лучшие Бонусы!"
+    },
+    "bonus-category": {
+      "no-deposit-bonuses": "Лучший Бонус Без Депозита",
+      "real-money-bonuses": "Лучший Бонус На Реальные Деньги",
+      "cashback-bonuses": "Лучший Кэшбэк Бонус",
+      "welcome-bonuses": "Лучший Приветственный Бонус",
+      "crypto-bonuses": "Лучший Крипто-бонус",
+      "free-spins-bonuses": "Лучшие Бесплатные Вращения",
+      "20-free-spins-bonuses": "Лучшие 20 Бесплатных Вращений",
+      "50-free-spins-bonuses": "Лучшие 50 Бесплатных Вращений",
+      "100-free-spins-bonuses": "Лучшие 100 Бесплатных Вращений"
     }
+
   }

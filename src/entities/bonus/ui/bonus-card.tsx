@@ -46,7 +46,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
                 <h3 className="text-2xl font-bold text-center">{bonusTitle}</h3>
                 <div className='flex gap-2 flex-wrap'>
                     {info.bonusType.map((type) => (
-                        <BonusTypeBadge type={type} key={type}/>
+                        type !== 'free-spins-bonuses' && <BonusTypeBadge type={type} key={type}/>
                     ))}
                 </div>
             </CardContent>

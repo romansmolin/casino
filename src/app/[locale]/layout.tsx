@@ -7,14 +7,10 @@ import { AppSidebar } from '../_layout/sidebar/sidebar'
 import Providers from '../_providers'
 import { notFound } from 'next/navigation'
 import { getMessages } from 'next-intl/server'
-import { routing } from '@/shared/lib/i18n/routing'
+import { Locale, routing } from '@/shared/lib/i18n/routing'
 import {setRequestLocale} from 'next-intl/server';
+import BaseLayout from '../_layout/base-layout/base-layout'
 
-const trispace = Trispace({ subsets: ['latin'] })
-const nunito = Nunito({
-    weight: '600',
-    subsets: ['cyrillic'], 
-  });
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -26,28 +22,19 @@ export default async function RootLayout({
     params: { locale }
 }: Readonly<{
     children: React.ReactNode
-    params: { locale: string }
+    params: { locale: Locale }
 }>) {
 
     if (!routing.locales.includes(locale as any)) {
-        notFound();
+        console.log('locale should be catched')
+        return notFound()
     }
 
     await setRequestLocale(locale);
 
     return (
-        <html lang={locale} suppressHydrationWarning>
-            <body className={nunito.className}>
-                <Providers>
-                    <AppSidebar />
-                    <SidebarInset className='w-full'>
-                        <Header />
-                        <div className="flex flex-1 flex-col gap-4 p-2 md:p-4 pt-0 ">
-                            {children}
-                        </div>
-                    </SidebarInset>
-                </Providers>
-            </body>
-        </html>
+        <BaseLayout locale={locale}>
+            {children}
+        </BaseLayout>
     )
 }

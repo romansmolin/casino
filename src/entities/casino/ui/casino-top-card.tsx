@@ -5,6 +5,7 @@ import Link from 'next/link'
 import RatingCircle from '@/shared/components/rating-circle/rating-circle'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { Card, CardContent } from '@/shared/ui/card'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
 const getUserFriendlyUrl = (name: string) => {
     return name
@@ -48,7 +49,7 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                         <Button size="lg" asChild>
                             <Link
                                 href={{
-                                    pathname: `${locale}/casino-review/${getUserFriendlyUrl(casino.title)}`,
+                                    pathname: `${locale}/casino-review/${bonusrUrlFriendly(casino.title)}`,
                                     query: {
                                         id: casino.casino,
                                     },

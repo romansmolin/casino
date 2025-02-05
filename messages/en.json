@@ -26,6 +26,23 @@
       "cashback-bonuses": "Cashback Bonus",
       "welcome-bonuses": "Welcome Bonus",
       "crypto-bonuses": "Crypto Bonus",
+      "20-free-spins-bonuses": "20 Free Spins",
+      "50-free-spins-bonuses": "50 Free Spins",
+      "100-free-spins-bonuses": "100 Free Spins",
       "faq": "Frequently Asked Questions"
+    },
+    "free-spins-page": {
+      "title": "Find Best Free Spins Bonuses!"
+    },
+    "bonus-category": {
+      "no-deposit-bonuses": "Best No Deposit Bonus",
+      "real-money-bonuses": "Best Real Money Bonus",
+      "cashback-bonuses": "Best Cashback Bonus",
+      "welcome-bonuses": "Best Welcome Bonus",
+      "crypto-bonuses": "Best Crypto Bonus",
+      "free-spins-bonuses": "Best Free Spins Bonuses",
+      "20-free-spins-bonuses": "Best 20 Free Spins Bonuses",
+      "50-free-spins-bonuses": "Best 50 Free Spins Bonuses",
+      "100-free-spins-bonuses": "Best 100 Free Spins Bonuses"
     }
   }

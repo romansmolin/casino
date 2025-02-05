@@ -4,7 +4,7 @@ import { Star, Check, Badge } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import { getUserFriendlyUrl } from '@/shared/utils/text-formaters'
+import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 interface CasinoCardProps {
@@ -46,7 +46,7 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, l
 				<Button size="lg" className="w-full" variant="outline" asChild>
 					<Link
 						href={{
-							pathname: `${locale}/casino-review/${getUserFriendlyUrl(name)}`,
+							pathname: `${locale}/casino-review/${bonusrUrlFriendly(name)}`,
 							query: {
 								id: uuid,
 							},

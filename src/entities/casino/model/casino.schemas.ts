@@ -21,8 +21,8 @@ export const CASINO_TOP_BY_COUNTRY = gql`
 `
 
 export const CASINO_BY_UUID = gql`
-    query GetCasinoByID($uuid: String!) {
-        getCasinoByUUID(uuid: $uuid) {
+    query GetCasinoByID($uuid: String!, $locale: String!) {
+        getCasinoByUUID(uuid: $uuid, locale: $locale) {
             name
             bonus_title
             logoUrl
@@ -84,6 +84,17 @@ export const CASINOS_BY_TYPE = gql`
                     }
                 }
                 casinoType
+                uuid
+            }
+        }
+    }
+`
+
+export const GET_ALL_CASINOS_WITHOUT_PAGINATION = gql`
+    query GetAllCasinosWithoutPagination($locale: String!) {
+        getAllCasinosWithoutPagination(locale: $locale) {
+            casinos {
+                name
                 uuid
             }
         }

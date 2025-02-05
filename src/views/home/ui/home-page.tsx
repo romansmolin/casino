@@ -1,14 +1,14 @@
-import { BestBonusesOfTheMonth } from '@/features/bonus'
+import { BestBonusesOfTheMonth, BonusCategories } from '@/features/bonus'
 
 import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
 import { CasinoTop } from '@/features/casino'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
-import BonusCategories from '@/features/bonus/ui/bonus-categories'
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
     console.log('HomePage: ', locale)
+    
     const t = await getTranslations('mainPage')
     const { pageContent } = await fetchPageContentBySlug('/', locale)
 

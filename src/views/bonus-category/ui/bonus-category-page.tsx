@@ -1,18 +1,30 @@
 import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-content'
-import { BonusGridWithPagination } from '@/features/bonus'
+import {  BonusFreeSpinsSection, BonusGridWithPagination } from '@/features/bonus'
+import { Locale } from '@/shared/lib/i18n/routing'
+import { getLocale, getTranslations } from 'next-intl/server'
 import React from 'react'
 
 const BonusCategoryPage = async ({ bonusCategory, currentPage }: { bonusCategory: BonusCategoryType, currentPage: number }) => {
-    const { pageContent } = await fetchPageContentBySlug(bonusCategory)
-    
+    const t = await getTranslations('free-spins-page')
+    const locale = await getLocale()
+    const { pageContent } = await fetchPageContentBySlug(bonusCategory, locale as Locale)
+
     return (
-        <> 
-            <BonusGridWithPagination 
+        <>
+            <BonusGridWithPagination
                 bonusCategory={bonusCategory}
                 currentPage={currentPage}
             />
+            {bonusCategory === 'free-spins-bonuses' && (
+                <section className="space-y-8 flex-1 bento-block">
+                    <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+                        {t('title')}
+                    </h2>
+                    <BonusFreeSpinsSection />
+                </section>
+            )}
             {pageContent && (
-                <PageContentRenderer pageContent={pageContent}/>
+                <PageContentRenderer pageContent={pageContent} />
             )}
         </>
     )

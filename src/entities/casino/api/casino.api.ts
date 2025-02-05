@@ -1,5 +1,6 @@
 import { getServerQuery } from '@/shared/lib/apollo-client'
-import { CASINO_BY_UUID, CASINO_TOP_BY_COUNTRY, CASINOS_BY_TYPE } from '../model/casino.schemas'
+import { CASINO_BY_UUID, CASINO_TOP_BY_COUNTRY, CASINOS_BY_TYPE, GET_ALL_CASINOS_WITHOUT_PAGINATION } from '../model/casino.schemas'
+import { Locale } from '@/shared/lib/i18n/routing'
 
 export const fetchCasinoTopByCountryServer = async (country: string, locale: string) => {
     const { data, error } = await getServerQuery(CASINO_TOP_BY_COUNTRY, { country, locale })
@@ -24,6 +25,15 @@ export const fetchCasinoByType = async({ page, number, casinoType }: { page: num
     return {
         casinos: data.getCasinosByType.casinos,
         totalPages: data.getCasinosByType.totalPages,
+        error
+    }
+}
+
+export const getAllCasinosWithoutPagination = async(locale: Locale): Promise<{casinos: Casino[], error: any}> => {
+    const {data, error} = await getServerQuery(GET_ALL_CASINOS_WITHOUT_PAGINATION, {locale})
+
+    return {
+        casinos: data.getAllCasinosWithoutPagination.casinos,
         error
     }
 }

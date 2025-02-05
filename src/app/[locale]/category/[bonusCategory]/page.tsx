@@ -14,9 +14,9 @@ const BonusCategory: React.FC<BonusCategoryProps> = async ({ params, searchParam
 
     return (
         <Suspense fallback={<LoadingIndicator />}>
-            <BonusCategoryPage bonusCategory={bonusCategory} currentPage={page ? parseInt(page) : 1} />;
+            <BonusCategoryPage bonusCategory={bonusCategory} currentPage={page ? parseInt(page) : 1} />
         </Suspense>
     )
-};
+}
 
 export default BonusCategory;

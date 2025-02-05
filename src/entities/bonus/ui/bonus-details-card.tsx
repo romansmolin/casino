@@ -6,6 +6,7 @@ import { BookOpenCheck, Play } from 'lucide-react'
 import Typography from '@/shared/components/typography/typography'
 import Link from 'next/link'
 import { getLocale } from 'next-intl/server'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
 
 interface BonusDetailsCardProps {
@@ -60,7 +61,7 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                         <div className='bg-accent text-accent-foreground hover:text-white flex'>
                             <BookOpenCheck />
                             <Link href={{
-                                pathname: `/${locale}/casino-review/${getUserFriendlyUrl(casinoName)}`,
+                                pathname: `/${locale}/casino-review/${bonusrUrlFriendly(casinoName)}`,
                                 query: {
                                     id: casinoUuid,
                                 },

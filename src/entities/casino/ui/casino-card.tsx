@@ -46,7 +46,7 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, l
 				<Button size="lg" className="w-full" variant="outline" asChild>
 					<Link
 						href={{
-							pathname: `${locale}/casino-review/${bonusrUrlFriendly(name)}`,
+							pathname: `/${locale}/casino-review/${bonusrUrlFriendly(name)}`,
 							query: {
 								id: uuid,
 							},

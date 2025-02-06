@@ -4,9 +4,10 @@ import { Accardion } from '@/shared/components/accardion'
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { Card, CardContent, CardTitle } from '@/shared/ui/card'
-import { CheckCircleIcon, CircleHelp, InfoIcon } from 'lucide-react'
+import { CheckCircleIcon, CircleHelp, HandMetal, InfoIcon } from 'lucide-react'
 import { getLocale } from 'next-intl/server'
 import React from 'react'
+import BonusAllowedCountriesSection from './bonus-allowed-countries-section'
 
 const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
@@ -21,24 +22,37 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
                 casinoName={bonus.casinoName}
                 bonusStatus={bonus.info.bonusStatus}
                 casinoUuid={bonus.casinoUuid}
+                bonusTypes={bonus.info.bonusType}
             />
 
-            <Card className='bento-block'>
+            <Card className='bento-block space-y-5'>
                 <CardTitle className='flex items-center gap-2'>
                     <CheckCircleIcon className="mr-2 h-8 w-8" />
                     <Typography as="h2" variant='h2'>Review</Typography>
                 </CardTitle>
-                <CardContent className='space-y-5'>
+                <CardContent>
                     <StrapiTextRenderer contentData={bonus.bonusReview} />
                 </CardContent>
             </Card>
 
-            <Card className='bento-block'>
+            {bonus.info.availableFor?.length > 0 && (
+                <Card className='bento-block space-y-5'>
+                    <CardTitle className='flex items-center gap-2'>
+                        <HandMetal className="mr-2 h-8 w-8" />
+                        <Typography as="h2" variant='h2'>Allowed Countries</Typography>
+                    </CardTitle>
+                    <CardContent>
+                        <BonusAllowedCountriesSection countries={bonus.info.availableFor} />
+                    </CardContent>
+                </Card>
+            )}
+
+            <Card className='bento-block space-y-5'>
                 <CardTitle className='flex items-center gap-2'>
                     <CircleHelp className="mr-2 h-8 w-8" />
                     <Typography as="h2" variant='h2'>Frequently Asked Questions</Typography>
                 </CardTitle>
-                <CardContent className='space-y-5'>
+                <CardContent>
                     <Accardion items={bonus.faqInfo} />
                 </CardContent>
             </Card>

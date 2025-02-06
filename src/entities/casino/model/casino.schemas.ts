@@ -62,8 +62,8 @@ export const CASINO_BY_UUID = gql`
 `
 
 export const CASINOS_BY_TYPE = gql`
-    query GetCasinosByType($casinoType: String!) {
-        getCasinosByType(casinoType: $casinoType) {
+    query GetCasinosByType($casinoType: String!, $locale: String!) {
+        getCasinosByType(casinoType: $casinoType, locale: $locale) {
             totalPages
             casinos {
                 id

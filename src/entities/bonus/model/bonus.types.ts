@@ -19,7 +19,7 @@ type BonusFaq = {
 type BonusInfo = {
     releaseDate: string,
     availableFor: string[], 
-    bonusType: string[]
+    bonusType: BonusCategoryType[]
     bonusStatus: 'active' | 'inactive'
 }
 

@@ -55,7 +55,7 @@ export function SidebarBonusesMenu({
                             <CollapsibleContent>
                                 <SidebarMenuSub>
                                     {item.items?.map((subItem) => (
-                                        <SidebarMenuSubItem key={subItem.title} className='hover:bg-primary rounded-md'>
+                                        <SidebarMenuSubItem key={subItem.title} className='hover:bg-primary hover:text-white rounded-md'>
                                             <SidebarMenuSubButton asChild className='h-10 '>
                                                 <Link href={`/${locale}/${subItem.url}`} className="flex gap-2">
                                                     {/* {subItem.icon && <subItem.icon />} */}

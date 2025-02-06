@@ -7,6 +7,7 @@ import Typography from '@/shared/components/typography/typography'
 import Link from 'next/link'
 import { getLocale } from 'next-intl/server'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
+import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 
 
 interface BonusDetailsCardProps {
@@ -16,6 +17,7 @@ interface BonusDetailsCardProps {
     bonusStatus: 'active' | 'inactive'
     casinoName: string
     casinoUuid: string
+    bonusTypes: BonusCategoryType[]
 }
 
 const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
@@ -24,7 +26,8 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
     bonusSubtitle,
     bonusStatus,
     casinoUuid,
-    casinoName
+    casinoName,
+    bonusTypes
 }) => {
     const locale = await getLocale()
 
@@ -39,7 +42,8 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
         <Card>
             <CardContent className='flex flex-col gap-5 lg:gap-[unset] lg:flex-row justify-between items-center bento-block'>
                 <div className='flex flex-col lg:flex-row items-center gap-5 w-full'>
-                    <div className='rounded-xl w-full bg-primary flex justify-center items-centers lg:max-w-md'>
+
+                    <div className='rounded-xl w-full bg-primary flex justify-center items-centers lg:max-w-sm'>
                         <Image
                             src={bonusLogo}
                             alt={bonusTitle}
@@ -47,11 +51,20 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                             height={150}
                         />
                     </div>
-                    <div className='space-y-2 flex flex-col items-center lg:items-start'>
-                        <Typography as="h1" variant='h1'>{casinoName}</Typography>
-                        <Typography as="h2" variant='h4'>{bonusSubtitle}</Typography>
+                    <div className='flex flex-col space-y-5'>
+                        <div className='flex flex-col items-center gap-2 lg:items-start'>
+                            <Typography as="h1" variant='h1'>{casinoName}</Typography>
+                            <Typography as="h2" variant='h4' className='text-center md:text-left'>{bonusSubtitle}</Typography>
+                        </div>
+                        <div className='grid grid-cols-2 xl:grid-cols-3 gap-3'>
+                            {bonusTypes.map(type => (
+                                <BonusTypeBadge key={type} type={type} className='max-w-60'/>
+                            ))}
+                        </div>
                     </div>
+
                 </div>
+
                 <div className='flex flex-col gap-4'>
                     <Button size={'lg'} className='flex gap-2 items-center'>
                         <Play />

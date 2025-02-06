@@ -1,3 +1,4 @@
+import { FREE_SPINS_TYPES } from '@/entities/bonus'
 import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-content'
 import {  BonusFreeSpinsSection, BonusGridWithPagination } from '@/features/bonus'
 import { Locale } from '@/shared/lib/i18n/routing'
@@ -15,7 +16,7 @@ const BonusCategoryPage = async ({ bonusCategory, currentPage }: { bonusCategory
                 bonusCategory={bonusCategory}
                 currentPage={currentPage}
             />
-            {bonusCategory === 'free-spins-bonuses' && (
+            {bonusCategory === 'free-spins-bonuses' || FREE_SPINS_TYPES.some(item => item.label === bonusCategory) && (
                 <section className="space-y-8 flex-1 bento-block">
                     <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
                         {t('title')}

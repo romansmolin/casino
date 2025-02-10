@@ -9,11 +9,6 @@ export interface BonusBonusInfo extends Schema.Component {
   };
   attributes: {
     release_date: Attribute.Date;
-    available_for: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        ['Latvia', 'USA', 'Russia']
-      >;
     bonus_type: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
@@ -36,6 +31,7 @@ export interface BonusBonusInfo extends Schema.Component {
         'plugin::multi-select.multi-select',
         ['Active', 'Innactive']
       >;
+    availableFor: Attribute.JSON;
   };
 }
 
@@ -49,6 +45,11 @@ export interface BonusMainBonusInfo extends Schema.Component {
   attributes: {
     bonusLink: Attribute.String;
     info: Attribute.Blocks;
+    bonus: Attribute.Relation<
+      'bonus.main-bonus-info',
+      'oneToOne',
+      'api::bonus.bonus'
+    >;
   };
 }
 

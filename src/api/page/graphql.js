@@ -31,6 +31,13 @@ module.exports = (strapi) => () => ({
             type: String
             text: String
             bold: Boolean
+            url: String
+            children: [ReviewTextChildren]
+        }
+
+        type ReviewTextChildren {
+          text: String
+          type: String
         }
 
         type FAQItem {

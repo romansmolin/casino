@@ -10,15 +10,6 @@
     "release_date": {
       "type": "date"
     },
-    "available_for": {
-      "type": "customField",
-      "options": [
-        "Latvia",
-        "USA",
-        "Russia"
-      ],
-      "customField": "plugin::multi-select.multi-select"
-    },
     "bonus_type": {
       "type": "customField",
       "options": [
@@ -43,6 +34,9 @@
         "Innactive"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "availableFor": {
+      "type": "json"
     }
   }
 }

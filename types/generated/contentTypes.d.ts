@@ -932,12 +932,12 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
-          'crypto_casino',
-          'vip_available',
-          'no_deposit_bonus_available',
-          'support_available',
-          'valid_license',
-          'aviator_game_available',
+          'Fast, secure deposits and withdrawals with top cryptos.:crypto_casino',
+          'Get exclusive rewards, cashback, and high-roller bonuses:vip_available',
+          'Play for free and win real money with special offers:no_deposit_bonus_available',
+          'Reliable customer service via chat, email, and phone:support_available',
+          'A trusted casino with full licensing and fair play:valid_license',
+          'Enjoy the thrilling crash game with big winning potential:aviator_game_available',
           ''
         ]
       >;
@@ -954,12 +954,6 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
         number
       >;
     review: Attribute.Blocks &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Promos: Attribute.Component<'list.available-promos-list', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -992,6 +986,12 @@ export interface ApiCasinoCasino extends Schema.CollectionType {
           'Sportsbook:sportsbook-casinos'
         ]
       > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    allowedCountries: Attribute.JSON &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

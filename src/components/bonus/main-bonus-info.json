@@ -12,6 +12,11 @@
     },
     "info": {
       "type": "blocks"
+    },
+    "bonus": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bonus.bonus"
     }
   }
 }

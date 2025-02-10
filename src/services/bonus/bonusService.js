@@ -97,9 +97,11 @@ const getBonusById = async (uuid, locale) => {
         }
 
         const bonusData = data.results[0];
-
         console.log('bonusData: ', bonusData)
+
         const bonus = bonusMapperWithExtras(bonusData);
+
+        console.log('bonus: ', bonus)
 
         return {
             bonus

@@ -22,6 +22,7 @@ module.exports =
           faq: [FaqItem]
           mainBonus: MainBonus
           casinoType: [String]
+          allowedCountries: [String]
         }
 
         type GetCasinoByType {
@@ -51,6 +52,12 @@ module.exports =
         type MainBonus {
           bonusLink: String
           info: [ReviewDetails]
+          bonus: MainBonusDetails
+        }
+
+        type MainBonusDetails {
+          uuid: String
+          primaryBonusType: String
         }
 
         type FaqItem {
@@ -74,11 +81,18 @@ module.exports =
           type: String
           text: String
           bold: Boolean
+          url: String
+          children: [ReviewTextChildren]
+        }
+
+        type ReviewTextChildren {
+          text: String
+          type: String
         }
 
         extend type Query {
             getCasinoByUUID(uuid: String!, locale: String!): GetCasinoByUUID
-			      getCasinosByType(casinoType: String!): GetCasinoByType        
+			      getCasinosByType(casinoType: String!, locale: String!): GetCasinoByType        
             getAllCasinosWithoutPagination(locale: String!): GetAllCasinosWithoutPagination
         }
     `,

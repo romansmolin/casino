@@ -56,12 +56,12 @@
       "type": "customField",
       "customField": "plugin::multi-select.multi-select",
       "options": [
-        "crypto_casino",
-        "vip_available",
-        "no_deposit_bonus_available",
-        "support_available",
-        "valid_license",
-        "aviator_game_available",
+        "Fast, secure deposits and withdrawals with top cryptos.:crypto_casino",
+        "Get exclusive rewards, cashback, and high-roller bonuses:vip_available",
+        "Play for free and win real money with special offers:no_deposit_bonus_available",
+        "Reliable customer service via chat, email, and phone:support_available",
+        "A trusted casino with full licensing and fair play:valid_license",
+        "Enjoy the thrilling crash game with big winning potential:aviator_game_available",
         ""
       ]
     },
@@ -76,16 +76,6 @@
     },
     "review": {
       "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Promos": {
-      "type": "component",
-      "repeatable": true,
-      "component": "list.available-promos-list",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -132,6 +122,14 @@
         "Sportsbook:sportsbook-casinos"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "allowedCountries": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
     }
   }
 }

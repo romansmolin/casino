@@ -8,13 +8,12 @@ const getCasinoByUUID = async (uuid, locale) => {
 		const data = await strapi.service("api::casino.casino").find({
 			populate: [
 				"logo",
-				"Promos",
-				"Promos.Promo",
-				"Promos.Promo.bonus_img",
 				"faq.fact1",
 				"mainBonus",
-				"localizations",
+				"mainBonus.bonus",
+				"Bonus",
 			],
+			// populate: "*",
 			filters: { uuid },
 			locale
 		});
@@ -23,12 +22,8 @@ const getCasinoByUUID = async (uuid, locale) => {
 			throw new Error("Casino not found");
 		}
 
-		const promos = data.results[0].Promos.map((item) => ({
-			bonus_title: item.Promo.bonus_title,
-			bonus_subtitle: item.Promo.bonus_subtitle,
-			bonus_link: item.Promo.link,
-			bonus_img: item.Promo.bonus_img[0].url,
-		}));
+		console.log('data: ', data.results[0])
+
 
 		return {
 			id: data.results[0].id,
@@ -38,11 +33,11 @@ const getCasinoByUUID = async (uuid, locale) => {
 			features: data.results[0].features,
 			rating: data.results[0].rating,
 			review: data.results[0].review,
-			promos: promos,
 			faq: data.results[0].faq?.fact1,
 			mainBonus: data.results[0].mainBonus,
 			casinoType: data.results[0].casinoType,
-			uuid: data.results[0].uuid
+			uuid: data.results[0].uuid,
+			allowedCountries: data.results[0]?.allowedCountries?.data || []
 		};
 	} catch (error) {
 		console.error("Error fetching casino data:", error);
@@ -52,7 +47,7 @@ const getCasinoByUUID = async (uuid, locale) => {
 
 const getCasinosByType = async (args) => {
 	try {
-		const casinos = await strapi.services["api::casino.casino"].find({
+		const casinos = await strapi.service("api::casino.casino").find({
 			populate: [
 				"logo",
 				"Promos",
@@ -62,6 +57,7 @@ const getCasinosByType = async (args) => {
 				"mainBonus",
 				"localizations",
 			],
+			locale: args.locale
 		});
         const { page, number, casinoType } = args;
 

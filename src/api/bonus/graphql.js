@@ -1,8 +1,15 @@
-'use strict';
+"use strict";
 
-const { getAllBonuses, getBonusesByType, getBonusById, getAllBonusesWithoutPagination } = require("../../services/bonus/bonusService");
+const {
+  getAllBonuses,
+  getBonusesByType,
+  getBonusById,
+  getAllBonusesWithoutPagination,
+} = require("../../services/bonus/bonusService");
 
-module.exports = (strapi) => ({ nexus }) => ({
+module.exports =
+  (strapi) =>
+  ({ nexus }) => ({
     typeDefs: `
         type GetAllBonuses {
             bonuses: [Bonus]
@@ -44,6 +51,13 @@ module.exports = (strapi) => ({ nexus }) => ({
             type: String
             text: String
             bold: Boolean
+            url: String
+            children: [ReviewTextChildren]
+        }
+
+        type ReviewTextChildren {
+            text: String
+            type: String
         }
 
         type FaqItem {
@@ -66,42 +80,42 @@ module.exports = (strapi) => ({ nexus }) => ({
         }
     `,
     resolvers: {
-        Query: {
-            getAllBonuses: {
-                resolve: async (parent, args) => {
-                    return getAllBonuses(args);
-                }
-            },
-            getBonusesByType: {
-                resolve: async (parent, args) => {
-                    return getBonusesByType(args);
-                }
-            },
-            getBonusById: {
-                resolve: async (parent, args) => {
-                    const { uuid, locale } = args;
-                    return getBonusById(uuid, locale);
-                }
-            },
-            getAllBonusesWithoutPagination: {
-                resolve: async (parent, args) => {
-                    return getAllBonusesWithoutPagination(args)
-                }
-            }
-        }
+      Query: {
+        getAllBonuses: {
+          resolve: async (parent, args) => {
+            return getAllBonuses(args);
+          },
+        },
+        getBonusesByType: {
+          resolve: async (parent, args) => {
+            return getBonusesByType(args);
+          },
+        },
+        getBonusById: {
+          resolve: async (parent, args) => {
+            const { uuid, locale } = args;
+            return getBonusById(uuid, locale);
+          },
+        },
+        getAllBonusesWithoutPagination: {
+          resolve: async (parent, args) => {
+            return getAllBonusesWithoutPagination(args);
+          },
+        },
+      },
     },
     resolversConfig: {
-        "Query.getAllBonuses": {
-            auth: false,
-        },
-        "Query.getBonusesByType": {
-            auth: false,
-        },
-        "Query.getBonusById": {
-            auth: false,
-        },
-        "Query.getAllBonusesWithoutPagination": {
-            auth: false,
-        },
-    }
-});
+      "Query.getAllBonuses": {
+        auth: false,
+      },
+      "Query.getBonusesByType": {
+        auth: false,
+      },
+      "Query.getBonusById": {
+        auth: false,
+      },
+      "Query.getAllBonusesWithoutPagination": {
+        auth: false,
+      },
+    },
+  });

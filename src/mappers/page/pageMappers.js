@@ -17,6 +17,7 @@ const pageContentSectionMapper = (contentBlock) => ({
         imageBackgroundColor: contentBlock.imageBackgroundColor[0]
 })
 
+
 const pageFaqSectionMapper = (faqBlock) => ({
     type: 'faq',
     image: null, 

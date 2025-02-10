@@ -60,6 +60,10 @@ export const GET_BONUS_BY_UUID = gql`
                         type
                         text
                         bold
+                        url
+                        children {
+                            text
+                        }
                     }
                 }
                 faqInfo {

@@ -13,14 +13,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { open } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props}>
-            <SidebarHeader className='pt-2 flex flex-row gap-2 items-center'>
+            <SidebarHeader className='pt-2 flex items-center justify-center'>
                 {open && (
-                    <>
                         <Link href="/">
-                            <Image src='/assets/logo.webp' alt='Logo' width={75} height={20} />
+                            <Image src='/assets/logo.svg' alt='Logo' width={195} height={250} className='p-2 w-80'/>
                         </Link>
-                        <Typography variant='h2' as="h4">BetBoost</Typography>
-                    </>
                 )}
             </SidebarHeader>
             <SidebarContent>

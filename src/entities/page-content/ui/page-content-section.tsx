@@ -44,7 +44,7 @@ const PageContentSection: React.FC<ContentSectionProps> = ({ text, image, positi
                         </div>
                     </div>
                 )}
-                <div className={cn('space-y-8 ', isLeft ? 'order-2 lg:order-2' : 'order-1 lg:order-1')}>
+                <div className={cn('space-y-5 ', isLeft ? 'order-2 lg:order-2' : 'order-1 lg:order-1')}>
                     <StrapiTextRenderer contentData={text} />
                 </div>
                 {!isLeft && (

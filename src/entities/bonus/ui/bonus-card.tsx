@@ -24,7 +24,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
     const t = await getTranslations('bonuses')
 
     return (
-        <Card className="w-full border flex flex-col max-w-[250px] min-w-[250px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-8 h-full">
+        <Card className="w-full border flex flex-col max-w-[250px] min-w-[250px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-5 h-full">
             <CardHeader className='p-[unset]'>
                 <div className="bg-primary w-full flex justify-center rounded-xl items-center">
                     <Image
@@ -45,7 +45,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, 
 
                 <div className='flex gap-2 flex-wrap'>
                     {info.bonusType.map((type) => (
-                        type !== 'free-spins-bonuses' && <BonusTypeBadge type={type} key={type} />
+                        type !== 'free-spins-bonuses' && <BonusTypeBadge type={type} key={type} className='w-fit'/>
                     ))}
                 </div>
             </CardContent>

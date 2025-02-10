@@ -59,7 +59,7 @@ export function SidebarBonusesMenu({
                                             <SidebarMenuSubButton asChild className='h-10 '>
                                                 <Link href={`/${locale}/${subItem.url}`} className="flex gap-2">
                                                     {/* {subItem.icon && <subItem.icon />} */}
-                                                    <span>{subItem.title}</span>
+                                                    <span>{t(subItem.title)}</span>
                                                 </Link>
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>
@@ -71,5 +71,5 @@ export function SidebarBonusesMenu({
                 ))}
             </SidebarMenu>
         </SidebarGroup>
-    )
+    )  
 }

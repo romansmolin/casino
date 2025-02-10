@@ -21,6 +21,7 @@ export const CASINO_TOP_BY_COUNTRY = gql`
 `
 
 export const CASINO_BY_UUID = gql`
+    # Write your query or mutation here
     query GetCasinoByID($uuid: String!, $locale: String!) {
         getCasinoByUUID(uuid: $uuid, locale: $locale) {
             name
@@ -28,19 +29,19 @@ export const CASINO_BY_UUID = gql`
             logoUrl
             features
             rating
+            casinoType
+            allowedCountries
             review {
                 type
                 children {
                     type
                     text
                     bold
+                    url
+                    children {
+                        text
+                    }
                 }
-            }
-            promos {
-                bonus_title
-                bonus_subtitle
-                bonus_link
-                bonus_img
             }
             faq {
                 text
@@ -48,6 +49,11 @@ export const CASINO_BY_UUID = gql`
             }
             mainBonus {
                 bonusLink
+                bonus {
+                    uuid
+                    primaryBonusType
+                }
+
                 info {
                     type
                     children {
@@ -57,6 +63,7 @@ export const CASINO_BY_UUID = gql`
                     }
                 }
             }
+            casinoType
         }
     }
 `

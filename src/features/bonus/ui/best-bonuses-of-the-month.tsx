@@ -10,7 +10,7 @@ const BestBonusesOfTheMonth = async () => {
     const t = await getTranslations('bonuses')
 
     return (
-        <section className="animate-bento-block-lg space-y-8 bento-block border border-border">
+        <section className="animate-bento-block-lg space-y-5 bento-block border border-border">
             <Typography as='h1' variant="h1">{t('best-bonuses-of-the-month')}</Typography>
             <div className='relative w-[calc(100%+1.25rem)] md:w-[unset]'>
                 <BonusGrid bonuses={bonuses} horizontalyScrollable/>

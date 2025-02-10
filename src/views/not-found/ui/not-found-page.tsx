@@ -4,7 +4,7 @@ import React from 'react'
 
 const NotFoundPage = () => {
     return (
-        <section className="bento-block space-y-8 h-[98%] flex justify-center items-center">
+        <section className="bento-block space-y-5 h-[98%] flex justify-center items-center">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl font-bold">No Page Found</CardTitle>

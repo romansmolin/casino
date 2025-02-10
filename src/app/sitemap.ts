@@ -4,7 +4,6 @@ import { Locale } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
 import { MetadataRoute } from 'next'
 
-const casinoUrlTemplate = `http://localhost:3000/en/casino-review/fairspin-casino?id=05cdc587-508b-4874-a958-c9c59c81fcdd`
 const BASE_URL = 'http://localhost:3000'
 
 
@@ -17,9 +16,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
             return bonuses.map((bonus) => ({
                 url: `${BASE_URL}/${locale}/${bonusrUrlFriendly(bonus.primaryBonusType)}/${getUserFriendlyUrl(bonus.casinoName)}?uuid=${bonus.uuid}`,
-                lastModified: new Date(),
-                changeFrequency: 'yearly' as const,
-                priority: 1,
+                // lastModified: new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
             }))
         } catch (error) {
             console.error(`Error fetching casinos for locale "${locale}":`, error)
@@ -33,9 +32,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
             return casinos.map((casino) => ({
                 url: `${BASE_URL}/${locale}/casino-review/${bonusrUrlFriendly(casino.name)}?id=${casino.uuid}`,
-                lastModified: new Date(),
-                changeFrequency: 'yearly' as const,
-                priority: 1,
+                // lastModified: new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
             }))
         } catch (error) {
             console.error(`Error fetching casinos for locale "${locale}":`, error)
@@ -45,21 +44,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const generateRoutesForStaticPages = async (locale: Locale) => {
         const staticRoutes = [
+            '/',
             '/category/no-deposit-bonuses',
             '/category/free-spins-bonuses',
             '/category/free-cash-bonuses',
             '/category/0-wager-bonuses',
             '/category/welcome-bonuses',
             '/category/cashback-bonuses',
-            '/category/cashback-bonuses',
-            '/category/crypto-bonuses'
+            '/category/crypto-bonuses',
+            '/casino-category/sportsbook-casinos',
+            '/casino-category/fresh-casinos',
+            '/casino-category/crypto-casinos',
+            '/casino-category/pay-n-play-casinos'
         ]
 
         return staticRoutes.map(route => ({
             url: `${BASE_URL}/${locale}${route}`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly' as const,
-            priority: 0.8,
+            // lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 1,
         }))
     }
 

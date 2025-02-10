@@ -20,6 +20,7 @@ interface Casino {
 	mainBonus: CasinoMainBonus
 	casinoType: CasinoType[]
 	uuid: string
+	allowedCountries: string[]
 }
 
 interface CasinoReview extends Casino {
@@ -30,6 +31,10 @@ interface CasinoReview extends Casino {
 type CasinoMainBonus = {
 	bonusLink: string
 	info: StrapiContent[]
+	bonus: {
+		uuid: string
+		primaryBonusType: BonusCategoryType
+	}
 }
 
 type CasinoReviewFaq = {
@@ -41,6 +46,10 @@ type StrapiContentItem = {
 	type: string;
 	text: string;
 	bold: boolean;
+	url: string
+	children: {
+		text: string
+	}[]
 }
 
 type StrapiContent = {

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Card, CardContent } from '@/shared/ui/card';
 import { cn } from '@/shared/lib/css';
+import Typography from '../typography/typography';
 
 const getTableContentData = (contentData: StrapiContent[]) => {
     const tableContent: TableContentItem[] = []
@@ -32,10 +33,10 @@ const TableContent = ({ content }: { content: StrapiContent[] }) => {
     const tableContent = getTableContentData(content)
 
     return (
-        <Card className={cn('bento-block lg:h-[calc(100vh-20px)] lg:top-[15px] lg:sticky', '!p-0')}>
+        <Card className={cn('bento-block lg:h-[calc(100vh-20px)] lg:top-[15px] lg:sticky',)}>
             <CardContent className='border-0'>
                 <div className={'flex flex-col rounded-xl'}>
-                    <h3 className="font-bold">Table Of Content</h3>
+                    <Typography as="h3" variant='h4' className="font-bold mb-2">Table Of Content</Typography>
                     <ul>
                         {tableContent.map((item) => (
                             <li key={item.heading}>

@@ -31,19 +31,12 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
 }) => {
     const locale = await getLocale()
 
-    const getUserFriendlyUrl = (name: string) => {
-        return name
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^\w-]+/g, "");
-    };
-
     return (
         <Card>
             <CardContent className='flex flex-col gap-5 lg:gap-[unset] lg:flex-row justify-between items-center bento-block'>
                 <div className='flex flex-col lg:flex-row items-center gap-5 w-full'>
 
-                    <div className='rounded-xl w-full bg-primary flex justify-center items-centers lg:max-w-sm'>
+                    <div className='rounded-xl w-full min-h-40 bg-primary flex justify-center items-centers lg:max-w-sm'>
                         <Image
                             src={bonusLogo}
                             alt={bonusTitle}
@@ -56,9 +49,14 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                             <Typography as="h1" variant='h1'>{casinoName}</Typography>
                             <Typography as="h2" variant='h4' className='text-center md:text-left'>{bonusSubtitle}</Typography>
                         </div>
-                        <div className='grid grid-cols-2 xl:grid-cols-3 gap-3'>
+
+                        <div className='flex gap-2 flex-wrap'>
                             {bonusTypes.map(type => (
-                                <BonusTypeBadge key={type} type={type} className='max-w-60'/>
+                                type !== 'free-spins-bonuses' && (
+                                    <div key={type}>
+                                        <BonusTypeBadge key={type} type={type} className='w-fit'/>
+                                    </div>
+                                )
                             ))}
                         </div>
                     </div>

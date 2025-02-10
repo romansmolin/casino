@@ -3,7 +3,6 @@ import {
     SquareTerminal,
     Landmark
 } from 'lucide-react'
-
 export const menu = {
     user: {
         name: 'shadcn',
@@ -19,39 +18,39 @@ export const menu = {
             items: [
                 {
                     icon: SquareTerminal,
-                    title: 'No Deposit Bonuses',
+                    title: 'no-deposit-bonuses',
                     url: 'category/no-deposit-bonuses',
                 },
                 {
-                    title: 'Free Spins Bonuses',
+                    title: 'free-spins-bonuses',
                     url: 'category/free-spins-bonuses',
                 },
                 {
-                    title: 'Free Cash Bonuses',
+                    title: 'free-cash-bonuses',
                     url: 'category/free-cash-bonuses',
                 },
                 {
-                    title: '0 Wager Bonuse',
+                    title: 'wager-free-bonuses',
                     url: 'category/0-wager-bonuses',
                 },
             ],
         },
         {
-            title: 'real-money-bonus',
+            title: 'real-money-bonuses',
             url: '#',
             icon: Bot,
             isActive: true,
             items: [
                 {
-                    title: 'Welcome Bonuses',
+                    title: 'welcome-bonuses',
                     url: '#',
                 },
                 {
-                    title: 'Cashback Bonuses',
+                    title: 'cashback-bonuses',
                     url: '#',
                 },
                 {
-                    title: 'Crypto Bonuses',
+                    title: 'crypto-bonuses',
                     url: '#',
                 },
             ],
@@ -63,19 +62,19 @@ export const menu = {
             isActive: true,
             items: [
                 {
-                    title: 'Sportsbook Casinos',
+                    title: 'sportsbook-casinos',
                     url: 'casino-category/sportsbook-casinos',
                 },
                 {
-                    title: 'Pay N Play Casino',
+                    title: 'pay-n-play-casinos',
                     url: 'casino-category/pay-n-play-casinos',
                 },
                 {
-                    title: 'Crypto Casinos',
+                    title: 'crypto-casinos',
                     url: 'casino-category/crypto-casinos',
                 },
                 {
-                    title: 'Fresh Casinos',
+                    title: 'fresh-casinos',
                     url: 'casino-category/fresh-casinos',
                 },
             ],

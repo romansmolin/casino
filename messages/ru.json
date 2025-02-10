@@ -1,8 +1,18 @@
 {
     "sidebar": {
-      "no-deposit-bonus": "Без Депозитные Бонусы",
-      "real-money-bonus": "Приветсвенные Бонусы",
+      "no-deposit-bonuses": "Без Депозитные Бонусы",
+      "real-money-bonuses": "Денежный Бонус",
       "best-of-the-month": "Лучшие за месяц",
+      "cashback-bonuses": "Кэшбек Бонус",
+      "welcome-bonuses": "Приветсвенный Бонус",
+      "crypto-bonuses": "Крипто Бонус",
+      "crypto-casinos": "Крипто Казино",
+      "pay-n-play-casinos": "Pay N Play Казино",
+      "fresh-casinos": "Новые Казино",
+      "sportsbook-casinos": "Спортивные Казино",
+      "free-cash-bonuses": "Денежные Бонусы",
+      "wager-free-bonuses": "Бонусы без Вейджера",
+      "free-spins-bonuses": "Бесплатные Вращения",
       "bonuses": "Бонусы",
       "casinos": "Казино"
     },
@@ -12,7 +22,8 @@
     },
     "bonuses": {
       "best-bonuses-of-the-month": "Лучшие Бонусы за Месяц",
-      "claim-bonus": "Получить Бонус"
+      "claim-bonus": "Получить Бонус!",
+      "read": "Узнать Больше!"
     },
     "casinoTopCard": {
       "rating": "Рейтинг",
@@ -44,6 +55,19 @@
       "20-free-spins-bonuses": "Лучшие 20 Бесплатных Вращений",
       "50-free-spins-bonuses": "Лучшие 50 Бесплатных Вращений",
       "100-free-spins-bonuses": "Лучшие 100 Бесплатных Вращений"
+    },
+    "casino-category": {
+      "crypto-casinos": "Крипто Казино",
+      "pay-n-play-casinos": "Pay N Play Казино",
+      "fresh-casinos": "Новые Казино",
+      "sportsbook-casinos": "Спортивные Казино"
+    },
+    "casino-review-highlights": {
+      "crypto_casino": "Быстрые и безопасные депозиты и выводы с топовыми криптовалютами.",
+      "vip_available": "Эксклюзивные бонусы, кэшбэк и привилегии для VIP-игроков.",
+      "no_deposit_bonus_available": "Играйте бесплатно и выигрывайте реальные деньги!",
+      "support_available": "Надежная служба поддержки через чат, email и телефон.",
+      "valid_license": "Надежное казино с лицензией и честной игрой.",
+      "aviator_game_available": "Наслаждайтесь захватывающей игрой Aviator с шансами на крупный выигрыш!"
     }
-
   }

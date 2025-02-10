@@ -8,10 +8,14 @@ import { CheckCircleIcon, CircleHelp, HandMetal, InfoIcon } from 'lucide-react'
 import { getLocale } from 'next-intl/server'
 import React from 'react'
 import BonusAllowedCountriesSection from './bonus-allowed-countries-section'
+import { notFound } from 'next/navigation'
+import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 
 const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
-    const { bonus } = await fetchBonusById(uuid, locale as Locale)
+    const { bonus, error } = await fetchBonusById(uuid, locale as Locale)
+
+    if (!bonus || error) notFound()
 
     return (
         <>
@@ -42,7 +46,7 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
                         <Typography as="h2" variant='h2'>Allowed Countries</Typography>
                     </CardTitle>
                     <CardContent>
-                        <BonusAllowedCountriesSection countries={bonus.info.availableFor} />
+                        <AllowedCountriesSection allowedCountries={bonus.info.availableFor} />
                     </CardContent>
                 </Card>
             )}

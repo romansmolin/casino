@@ -1,8 +1,18 @@
 {
     "sidebar": {
-      "no-deposit-bonus": "No Deposit Bonus",
-      "real-money-bonus": "Real Money Bonus",
+      "no-deposit-bonuses": "No Deposit Bonuses",
+      "real-money-bonuses": "Real Money Bonuses",
       "best-of-the-month": "Best of the Month",
+      "cashback-bonuses": "Cashback Bonuses",
+      "welcome-bonuses": "Welcome Bonuses",
+      "crypto-bonuses": "Crypto Bonuses",
+      "crypto-casinos": "Crypto Casinos",
+      "pay-n-play-casinos": "Pay N Play Casinos",
+      "fresh-casinos": "Fresh Casinos",
+      "sportsbook-casinos": "Sportsbook Casinos",
+      "free-cash-bonuses": "Free Cash Bonuses",
+      "wager-free-bonuses": "0 Wager Bonuses",
+      "free-spins-bonuses": "Free Spins Bonuses",
       "bonuses": "Bonuses",
       "casinos": "Casinos"
     },
@@ -12,7 +22,8 @@
     },
     "bonuses": {
       "best-bonuses-of-the-month": "Best Bonuses of the Month",
-      "claim-bonus": "Clain Bonus"
+      "claim-bonus": "Get Bonus!",
+      "read": "Read Bonus Review!"
     },
     "casinoTopCard": {
       "rating": "Rating",
@@ -44,5 +55,19 @@
       "20-free-spins-bonuses": "Best 20 Free Spins Bonuses",
       "50-free-spins-bonuses": "Best 50 Free Spins Bonuses",
       "100-free-spins-bonuses": "Best 100 Free Spins Bonuses"
+    },
+    "casino-category": {
+      "crypto-casinos": "Crypto Casinos",
+      "pay-n-play-casinos": "Pay N Play Casinos",
+      "fresh-casinos": "Fresh Casinos",
+      "sportsbook-casinos": "Sportsbook Casinos"
+    },
+    "casino-review-highlights": {
+      "crypto_casino": "Fast, secure deposits and withdrawals with top cryptos.",
+      "vip_available": "Get exclusive rewards, cashback, and high-roller bonuses.",
+      "no_deposit_bonus_available": "Play for free and win real money with special offers!",
+      "support_available": "Reliable customer service via chat, email, and phone.",
+      "valid_license": "A trusted casino with full licensing and fair play.",
+      "aviator_game_available": "Enjoy the thrilling crash game with big winning potential!"
     }
   }

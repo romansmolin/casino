@@ -16,14 +16,15 @@ const BonusCategoryPage = async ({ bonusCategory, currentPage }: { bonusCategory
                 bonusCategory={bonusCategory}
                 currentPage={currentPage}
             />
-            {bonusCategory === 'free-spins-bonuses' || FREE_SPINS_TYPES.some(item => item.label === bonusCategory) && (
-                <section className="space-y-8 flex-1 bento-block">
+            {(bonusCategory === 'free-spins-bonuses' || FREE_SPINS_TYPES.some(item => item.label === bonusCategory)) && (
+                <section className="space-y-5 flex-1 bento-block">
                     <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
                         {t('title')}
                     </h2>
                     <BonusFreeSpinsSection />
                 </section>
             )}
+            
             {pageContent && (
                 <PageContentRenderer pageContent={pageContent} />
             )}

@@ -14,7 +14,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
 
     return (
         <>
-            <section className="space-y-8 flex-1 bento-block">
+            <section className="space-y-5 flex-1 bento-block">
                 <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl'>
                     {t('title')} 2024
                 </h1>
@@ -22,7 +22,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
             </section>
             <BestBonusesOfTheMonth />
 
-            <section className="space-y-8 animate-bento-block flex-1 bento-block">
+            <section className="space-y-5 animate-bento-block flex-1 bento-block">
                 <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
                     {t('categories-block')}
                 </h2>

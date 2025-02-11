@@ -1,3 +1,4 @@
+import { GlobalSearch } from '@/features/global-search'
 import { LanguageSwitcher } from '@/features/i18n'
 import { ModeToggle } from '@/shared/components/mode-toggle/mode-toggle'
 import { SidebarTrigger } from '@/shared/ui/sidebar'
@@ -10,8 +11,12 @@ const Header = () => {
                 <SidebarTrigger className="-ml-1" />
 
                 <div className='flex gap-2'>
-                    <LanguageSwitcher />
-                    <ModeToggle />
+                    <div className='flex gap-2'>
+                        <LanguageSwitcher />
+                        <ModeToggle />
+                    </div>
+
+                    <GlobalSearch />
                 </div>
             </div>
         </header>

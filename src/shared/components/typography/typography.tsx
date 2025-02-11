@@ -5,7 +5,7 @@ type TypographyProps = {
     as?: ElementType;
     children: ReactNode;
     className?: string;
-    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'body' | 'small';
+    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'body' | 'medium' | 'small';
     align?: 'left' | 'center' | 'right' | 'justify';
     nowrap?: boolean;
 };
@@ -25,6 +25,7 @@ const Typography: React.FC<TypographyProps> = ({
         h3: 'text-xl sm:text-2xl md:text-3xl font-semibold',
         h4: 'text-lg sm:text-xl md:text-2xl font-semibold',
         body: 'text-base',
+        medium: 'text-md',
         small: 'text-sm',
     };
 

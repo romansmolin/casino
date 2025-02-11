@@ -4,7 +4,8 @@ const top = require('../api/top/graphql')
 const casino = require('../api/casino/graphql')
 const bonuses = require('../api/bonus/graphql')
 const pages = require('../api/page/graphql')
-const extensions = [top, casino, bonuses, pages]
+const globalSearch = require('../api/search/graphql')
+const extensions = [top, casino, bonuses, pages, globalSearch]
 
 module.exports = (strapi) => {
   const extensionService = strapi.plugin('graphql').service('extension')

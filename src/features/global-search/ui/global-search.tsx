@@ -44,7 +44,7 @@ export default function GlobalSearch() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pr-12"
                 />
-                <Button type="submit" size="sm" className="absolute right-1 top-1/2 -translate-y-1/2">
+                <Button type="submit" size="sm" className="absolute h-full w-10 right-0 top-1/2 -translate-y-1/2">
                     <Search className="h-4 w-4" />
                     <span className="sr-only">Search</span>
                 </Button>

@@ -69,5 +69,16 @@
       "support_available": "Reliable customer service via chat, email, and phone.",
       "valid_license": "A trusted casino with full licensing and fair play.",
       "aviator_game_available": "Enjoy the thrilling crash game with big winning potential!"
+    },
+    "notifications": {
+      "SUCCESS": "Success",
+      "FAILED": "Failed",
+      "messages": {
+        "SUCCESS": "You subscribed on our newletter succesfully!",
+        "FAILED": "Somethin went wrong!",
+        "MEMBER_EXISTS": "Sorry, such email already exists in our database",
+        "INVALID_RESOURCE": "This email is probably fake, please re-check",
+        "WRONG_EMAIL": "The email is incorrect, please enter another one"
+      }
     }
   }

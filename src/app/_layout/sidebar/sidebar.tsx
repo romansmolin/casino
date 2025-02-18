@@ -10,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { open } = useSidebar()
+    const { open, isMobile } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader className='pt-2 flex items-center justify-center'>
@@ -20,6 +20,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         </Link>
                 )}
             </SidebarHeader>
+
             <SidebarContent>
                 <SidebarBonusesMenu items={menu.bonuses} />
                 {/* <NavProjects projects={data.projects} /> */}

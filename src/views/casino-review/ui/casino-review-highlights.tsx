@@ -24,7 +24,7 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({ c
                 <div className="flex flex-col rounded-xl lg:w-[100%] h-full">
                     <Typography variant='h1' as='h1' className="font-bold pb-4 border-b-2">{casinoName} Review</Typography>
 
-                    <div className="flex-grow flex flex-col justify-between mt-5 lg:flex-row gap-12">
+                    <div className="flex-grow flex flex-col justify-between mt-5 lg:flex-row gap-4">
                         <div>
                             <ul className="space-y-4 max-w- text-left">
                                 {features?.map((feature) => (

@@ -5,6 +5,7 @@ import { CasinoTop } from '@/features/casino'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
+import { NewsletterForm } from '@/features/newsletter'
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
     console.log('HomePage: ', locale)
@@ -20,6 +21,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
                 </h1>
                 <CasinoTop byCountry='Germany' />
             </section>
+            <NewsletterForm />
             <BestBonusesOfTheMonth />
 
             <section className="space-y-5 animate-bento-block flex-1 bento-block">

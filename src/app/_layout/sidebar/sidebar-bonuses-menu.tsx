@@ -10,12 +10,14 @@ import {
     SidebarMenuSubItem,
     SidebarMenuSubButton,
     SidebarHeader,
+    useSidebar,
 } from '@/shared/ui/sidebar'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl';
 import Typography from '@/shared/components/typography/typography'
+import { cn } from '@/shared/lib/css'
 
 export function SidebarBonusesMenu({
     items,
@@ -34,6 +36,7 @@ export function SidebarBonusesMenu({
 }) {
     const t = useTranslations('sidebar');
     const locale = useLocale();
+    const { isMobile } = useSidebar()
 
     return (
         <SidebarGroup>
@@ -44,7 +47,7 @@ export function SidebarBonusesMenu({
                         asChild
                         defaultOpen={item.isActive}
                         className="group/collapsible">
-                        <SidebarMenuItem>
+                        <SidebarMenuItem className={cn(isMobile ? 'text-white' : 'text-dark')}>
                             <CollapsibleTrigger asChild>
                                 <SidebarMenuButton tooltip={item.title}>
                                     {item.icon && <item.icon />}

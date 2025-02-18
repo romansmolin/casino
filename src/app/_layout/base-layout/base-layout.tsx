@@ -5,6 +5,7 @@ import Header from '../header/header'
 import { AppSidebar } from '../sidebar/sidebar'
 import { Trispace, Nunito } from 'next/font/google'
 import { Locale } from '@/shared/lib/i18n/routing'
+import { Toaster } from '@/shared/ui/toaster'
 
 const trispace = Trispace({ subsets: ['latin'] })
 const nunito = Nunito({
@@ -24,6 +25,7 @@ const BaseLayout = ({locale, children}: {locale: Locale, children: ReactNode}) =
                         {children}
                     </div>
                 </SidebarInset>
+                <Toaster />
             </Providers>
         </body>
     </html>

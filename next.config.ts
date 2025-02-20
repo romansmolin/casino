@@ -10,7 +10,7 @@ const withNextIntl = createNextIntlPlugin(
 const nextConfig: NextConfig = {
     /* config options here */
     images: {
-        domains: ['res.cloudinary.com', 'flagcdn.com']
+        domains: ['res.cloudinary.com', 'flagcdn.com', 'i.pravatar.cc']
     },
     
 }

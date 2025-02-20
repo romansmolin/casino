@@ -22,7 +22,7 @@ const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: strin
                             className="w-9 h-7 rounded-[5px]"
                         />
                         <span className="text-sm font-medium text-green-500">
-                            {country.name} ✅
+                            {country.name} 
                         </span>
                     </div>
                 ))}

@@ -18,11 +18,16 @@ const CasinoAvailability = ({ allowedCountries }: { allowedCountries: string[] }
     return (
         <div className="bento-block !p-4">
             {location ? (
-                <div className="flex gap-2">
+                <div className="flex justify-between items-center md:justify-start gap-2">
                     {isAllowed !== null && (
-                        <p className={`text-lg font-bold ${isAllowed ? "text-green-500" : "text-red-500"}`}>
-                            {isAllowed ? `✅ Users from ${location.country} can play!` : `❌  Users from ${location.country} are not allowed to play in this casino!`}
-                        </p>
+                        <div className="flex justify-center items-center gap-4 md:gap-2">
+                            <p>
+                                {isAllowed ? "✅" : "❌"}
+                            </p>
+                            <p className={`text-lg max-w-[250px] font-bold ${isAllowed ? "text-green-500" : "text-red-500"}`}>
+                                {isAllowed ? `Users from ${location.country} can play!` : `Users from ${location.country} are not allowed to play in this casino!`}
+                            </p>
+                        </div>
                     )}
 
                     <p className="block">

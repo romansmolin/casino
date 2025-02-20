@@ -33,7 +33,7 @@ const BonusGridWithPagination: React.FC<BonusGridWithPaginationProps> = async ({
     return (
         <section className='bento-block space-y-5'>
             <Typography as="h2" variant='h1'>{t(bonusCategory)}</Typography>
-            <BonusGrid bonuses={bonuses} />
+            <BonusGrid bonuses={bonuses} bonusCardClass='max-w-[unset] min-w-[unset]'/>
             <PaginationControl totalPages={totalPages} currentPage={currentPage} />
         </section>
     )

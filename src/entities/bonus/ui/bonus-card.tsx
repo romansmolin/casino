@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 import Typography from '@/shared/components/typography/typography'
+import { cn } from '@/shared/lib/css'
 
 interface BonusCardProps {
     casinoName: string
@@ -17,14 +18,15 @@ interface BonusCardProps {
     info: BonusInfo
     uuid: string
     primaryBonusType: string
+    bonusCardClass?: string
 }
 
-const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusSubtitle, bonusTitle, casinoLogo, info, uuid, primaryBonusType }) => {
+const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusCardClass = '', bonusTitle, casinoLogo, info, uuid, primaryBonusType }) => {
     const locale = await getLocale()
     const t = await getTranslations('bonuses')
 
     return (
-        <Card className="w-full border flex flex-col max-w-[250px] min-w-[250px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-5 h-full">
+        <Card className={cn('w-full border flex flex-col max-w-[270px] min-w-[270px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-5 h-full', bonusCardClass)}>
             <CardHeader className='p-[unset]'>
                 <div className="bg-primary w-full flex justify-center rounded-xl items-center">
                     <Image

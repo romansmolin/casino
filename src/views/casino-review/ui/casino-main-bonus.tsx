@@ -19,7 +19,7 @@ const CasinoMainBonus = async ({ mainBonus, casinoName }: { mainBonus: CasinoMai
                     <div className='flex-1 flex-shrink-0 space-y-5 bento-block'>
                         <StrapiTextRenderer contentData={mainBonus.info} />
 
-                        <div className='flex gap-3'>
+                        <div className='flex flex-col md:flex-row gap-3'>
                             <Button size="lg" asChild>
                                 <Link href={mainBonus.bonusLink} className='flex gap-2'>
                                     <SquareMousePointer />

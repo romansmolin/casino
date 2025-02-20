@@ -1,12 +1,6 @@
 import type { Metadata } from 'next'
 import '../globals.css'
-import { Trispace, Nunito } from 'next/font/google'
-import { SidebarInset, SidebarTrigger } from '@/shared/ui/sidebar'
-import Header from '../_layout/header/header'
-import { AppSidebar } from '../_layout/sidebar/sidebar'
-import Providers from '../_providers'
 import { notFound } from 'next/navigation'
-import { getMessages } from 'next-intl/server'
 import { Locale, routing } from '@/shared/lib/i18n/routing'
 import {setRequestLocale} from 'next-intl/server';
 import BaseLayout from '../_layout/base-layout/base-layout'

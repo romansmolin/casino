@@ -21,7 +21,7 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
     const locale = await getLocale()
     return (
         <Card>
-            <CardContent className="max-w-[250px] min-w-[250px] md:max-w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border shadow-none">
+            <CardContent className="max-w-[270px] min-w-[270px] md:max-w-[unset] grid grid-cols-1 md:grid-cols-5 justify-between gap-4 p-5 items-center rounded-xl box-border border shadow-none">
                 {/* Logo */}
                 <div className="md:col-span-1 h-[170px] bg-primary p-4 rounded-xl flex items-center justify-center">
                     <div className="w-full md:w-[150px] h-full flex justify-center items-center">

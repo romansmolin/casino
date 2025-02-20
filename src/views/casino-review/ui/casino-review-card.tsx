@@ -16,9 +16,9 @@ const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bo
 
 	return (
 		<Card className="lg:w-1/3 h-full flex flex-col">
-			<CardContent className="p-3 flex flex-col justify-between bento-block items-center space-y-5 grow">
+			<CardContent className="p-3 flex flex-col justify-between bento-block items-center space-y-6 grow">
 
-				<div className='space-y-5'>
+				<div className='space-y-6'>
 					<div className="rounded-xl w-full h-[100px] bg-primary flex justify-center items-center">
 						<Image width={150} height={50} src={logo} alt={`${casinoName} logo`} />
 					</div>

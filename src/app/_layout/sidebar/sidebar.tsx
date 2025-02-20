@@ -10,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { open, isMobile } = useSidebar()
+    const { open } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader className='pt-2 flex items-center justify-center'>

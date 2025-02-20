@@ -80,5 +80,21 @@
         "INVALID_RESOURCE": "This email is probably fake, please re-check",
         "WRONG_EMAIL": "The email is incorrect, please enter another one"
       }
+    },
+    "review-process": {
+      "title": "Our review process",
+      "subtitle": "Since the early days of gambling, players have sought reliable and exciting places to test their luck. Our platform embodies this spirit—an open and trusted space where casino enthusiasts can discover top brands, uncover hidden gems, and stay informed about the industry's best and worst offerings.",
+      "first-pargraph": {
+        "title": "Looking for intersting brands",
+        "text": "Our team consists of passionate gambling enthusiasts who love to have fun testing their luck in online casinos. We're always on the lookout for new brands and services, thoroughly evaluating them and sharing our insights on our platform. Our goal is to help people discover reputable casinos worth their attention while also warning them about potential scams"
+      },
+      "second-pargraph": {
+        "title": "Comparison with our criteria",
+        "text": "We believe that every casino in the market should meet a range of criteria, from providing secure services to offering generous bonuses. Our team meticulously examines every aspect of each casino and delivers a well-informed verdict."
+      },
+      "third-pargraph": {
+        "title": "Write detailed review and post",
+        "text": "Finally, once all aspects of the casino have been evaluated, our skilled copywriter crafts an engaging and informative review, highlighting every key detail."
+      }
     }
   }

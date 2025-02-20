@@ -25,8 +25,9 @@ const BaseLayout = ({locale, children}: {locale: Locale, children: ReactNode}) =
                         {children}
                     </div>
                 </SidebarInset>
-                <Toaster />
             </Providers>
+            <Toaster />
+
         </body>
     </html>
     )

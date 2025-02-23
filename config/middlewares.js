@@ -16,6 +16,7 @@ module.exports = [
             'market-assets.strapi.io',
             'res.cloudinary.com',
           ],
+          "frame-src": [ "http://localhost:*", "self", "sandbox.embed.apollographql.com" ],
           upgradeInsecureRequests: null,
         },
       },

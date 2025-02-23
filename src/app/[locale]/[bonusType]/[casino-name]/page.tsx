@@ -3,7 +3,7 @@ import LoadingIndicator from '@/shared/components/loading-indicator/loading-indi
 import { BonusReviewPage } from '@/views/bonus-review'
 import React, { Suspense } from 'react'
 
-// @ts-ignore
+// @ts-nocheck
 const BonusReview = async ({ searchParams }: { searchParams: Promise<{ uuid: string }> }) => {
     const { uuid } = await searchParams
     

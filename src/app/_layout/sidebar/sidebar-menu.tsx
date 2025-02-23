@@ -19,7 +19,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 
-export function SidebarBonusesMenu({
+export function SidebarMenuList({
     items,
 }: {
     items: {

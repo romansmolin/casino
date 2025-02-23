@@ -1,7 +1,9 @@
 import {
     Bot,
     SquareTerminal,
-    Landmark
+    Landmark,
+    Info,
+    MessageCircleQuestion
 } from 'lucide-react'
 export const menu = {
     user: {
@@ -76,6 +78,26 @@ export const menu = {
                 {
                     title: 'fresh-casinos',
                     url: 'casino-category/fresh-casinos',
+                },
+            ],
+        },
+        {
+            title: 'info',
+            url: '#',
+            icon: Info,
+            // isActive: true,
+            items: [
+                {
+                    title: 'about-us',
+                    url: '/about-us',
+                },
+                {
+                    title: 'terms-and-conditions',
+                    url: '/terms-and-conditions',
+                },
+                {
+                    title: 'contact-us',
+                    url: '/contact-us',
                 },
             ],
         },

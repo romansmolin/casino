@@ -55,7 +55,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             '/casino-category/sportsbook-casinos',
             '/casino-category/fresh-casinos',
             '/casino-category/crypto-casinos',
-            '/casino-category/pay-n-play-casinos'
+            '/casino-category/pay-n-play-casinos',
+            '/terms-and-conditions',
+            '/about-us'
         ]
 
         return staticRoutes.map(route => ({

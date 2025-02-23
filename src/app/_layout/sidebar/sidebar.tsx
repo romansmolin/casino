@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, useSidebar } from '@/shared/ui/sidebar'
-import { SidebarBonusesMenu } from './sidebar-bonuses-menu'
+import { SidebarMenuList } from './sidebar-menu'
 import { menu } from './sidebar-menu-consts'
 import Typography from '@/shared/components/typography/typography'
 import Image from 'next/image'
@@ -22,7 +22,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
 
             <SidebarContent>
-                <SidebarBonusesMenu items={menu.bonuses} />
+                <SidebarMenuList items={menu.bonuses} />
+
                 {/* <NavProjects projects={data.projects} /> */}
             </SidebarContent>
             <SidebarFooter>{/* <NavUser user={data.user} /> */}</SidebarFooter>

@@ -14,7 +14,11 @@
       "wager-free-bonuses": "0 Wager Bonuses",
       "free-spins-bonuses": "Free Spins Bonuses",
       "bonuses": "Bonuses",
-      "casinos": "Casinos"
+      "casinos": "Casinos",
+      "about-us": "About Us",
+      "info": "Information",
+      "terms-and-conditions": "Terms and Conditions",
+      "contact-us": "Contact Us"
     },
     "mainPage": {
       "title": "Best Casinos of December",
@@ -95,6 +99,14 @@
       "third-pargraph": {
         "title": "Write detailed review and post",
         "text": "Finally, once all aspects of the casino have been evaluated, our skilled copywriter crafts an engaging and informative review, highlighting every key detail."
+      }
+    },
+    "contact-us": {
+      "SUCCESS": "Success",
+      "FAILED": "Failed",
+      "messages": {
+        "SUCCESS": "The mail is sent successfully!",
+        "FAILED": "Somethin went wrong!"
       }
     }
   }

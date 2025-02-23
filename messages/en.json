@@ -1,112 +1,130 @@
 {
     "sidebar": {
-      "no-deposit-bonuses": "No Deposit Bonuses",
-      "real-money-bonuses": "Real Money Bonuses",
-      "best-of-the-month": "Best of the Month",
-      "cashback-bonuses": "Cashback Bonuses",
-      "welcome-bonuses": "Welcome Bonuses",
-      "crypto-bonuses": "Crypto Bonuses",
-      "crypto-casinos": "Crypto Casinos",
-      "pay-n-play-casinos": "Pay N Play Casinos",
-      "fresh-casinos": "Fresh Casinos",
-      "sportsbook-casinos": "Sportsbook Casinos",
-      "free-cash-bonuses": "Free Cash Bonuses",
-      "wager-free-bonuses": "0 Wager Bonuses",
-      "free-spins-bonuses": "Free Spins Bonuses",
-      "bonuses": "Bonuses",
-      "casinos": "Casinos",
-      "about-us": "About Us",
-      "info": "Information",
-      "terms-and-conditions": "Terms and Conditions",
-      "contact-us": "Contact Us"
+        "no-deposit-bonuses": "No Deposit Bonuses",
+        "real-money-bonuses": "Real Money Bonuses",
+        "best-of-the-month": "Best of the Month",
+        "cashback-bonuses": "Cashback Bonuses",
+        "welcome-bonuses": "Welcome Bonuses",
+        "crypto-bonuses": "Crypto Bonuses",
+        "crypto-casinos": "Crypto Casinos",
+        "pay-n-play-casinos": "Pay N Play Casinos",
+        "fresh-casinos": "Fresh Casinos",
+        "sportsbook-casinos": "Sportsbook Casinos",
+        "free-cash-bonuses": "Free Cash Bonuses",
+        "wager-free-bonuses": "0 Wager Bonuses",
+        "free-spins-bonuses": "Free Spins Bonuses",
+        "bonuses": "Bonuses",
+        "casinos": "Casinos",
+        "about-us": "About Us",
+        "info": "Information",
+        "terms-and-conditions": "Terms and Conditions",
+        "contact-us": "Contact Us"
     },
     "mainPage": {
-      "title": "Best Casinos of December",
-      "categories-block": "Check our extensive bonus library!"
+        "title": "Best Casinos of December",
+        "categories-block": "Check our extensive bonus library!"
     },
     "bonuses": {
-      "best-bonuses-of-the-month": "Best Bonuses of the Month",
-      "claim-bonus": "Get Bonus!",
-      "read": "Read Bonus Review!"
+        "best-bonuses-of-the-month": "Best Bonuses of the Month",
+        "claim-bonus": "Get Bonus!",
+        "read": "Read Bonus Review!"
     },
     "casinoTopCard": {
-      "rating": "Rating",
-      "playNow": "Play Now",
-      "review": "Review"
+        "rating": "Rating",
+        "playNow": "Play Now",
+        "review": "Review"
     },
-    "common": { 
-      "no-deposit-bonuses": "No Deposit Bonus",
-      "real-money-bonuses": "Real Money Bonus",
-      "best-of-the-month": "Best of the Month",
-      "cashback-bonuses": "Cashback Bonus",
-      "welcome-bonuses": "Welcome Bonus",
-      "crypto-bonuses": "Crypto Bonus",
-      "20-free-spins-bonuses": "20 Free Spins",
-      "50-free-spins-bonuses": "50 Free Spins",
-      "100-free-spins-bonuses": "100 Free Spins",
-      "faq": "Frequently Asked Questions"
+    "common": {
+        "no-deposit-bonuses": "No Deposit Bonus",
+        "real-money-bonuses": "Real Money Bonus",
+        "best-of-the-month": "Best of the Month",
+        "cashback-bonuses": "Cashback Bonus",
+        "welcome-bonuses": "Welcome Bonus",
+        "crypto-bonuses": "Crypto Bonus",
+        "20-free-spins-bonuses": "20 Free Spins",
+        "50-free-spins-bonuses": "50 Free Spins",
+        "100-free-spins-bonuses": "100 Free Spins",
+        "faq": "Frequently Asked Questions"
     },
     "free-spins-page": {
-      "title": "Find Best Free Spins Bonuses!"
+        "title": "Find Best Free Spins Bonuses!"
     },
     "bonus-category": {
-      "no-deposit-bonuses": "Best No Deposit Bonus",
-      "real-money-bonuses": "Best Real Money Bonus",
-      "cashback-bonuses": "Best Cashback Bonus",
-      "welcome-bonuses": "Best Welcome Bonus",
-      "crypto-bonuses": "Best Crypto Bonus",
-      "free-spins-bonuses": "Best Free Spins Bonuses",
-      "20-free-spins-bonuses": "Best 20 Free Spins Bonuses",
-      "50-free-spins-bonuses": "Best 50 Free Spins Bonuses",
-      "100-free-spins-bonuses": "Best 100 Free Spins Bonuses"
+        "no-deposit-bonuses": "Best No Deposit Bonus",
+        "real-money-bonuses": "Best Real Money Bonus",
+        "cashback-bonuses": "Best Cashback Bonus",
+        "welcome-bonuses": "Best Welcome Bonus",
+        "crypto-bonuses": "Best Crypto Bonus",
+        "free-spins-bonuses": "Best Free Spins Bonuses",
+        "20-free-spins-bonuses": "Best 20 Free Spins Bonuses",
+        "50-free-spins-bonuses": "Best 50 Free Spins Bonuses",
+        "100-free-spins-bonuses": "Best 100 Free Spins Bonuses"
     },
     "casino-category": {
-      "crypto-casinos": "Crypto Casinos",
-      "pay-n-play-casinos": "Pay N Play Casinos",
-      "fresh-casinos": "Fresh Casinos",
-      "sportsbook-casinos": "Sportsbook Casinos"
+        "crypto-casinos": "Crypto Casinos",
+        "pay-n-play-casinos": "Pay N Play Casinos",
+        "fresh-casinos": "Fresh Casinos",
+        "sportsbook-casinos": "Sportsbook Casinos"
     },
     "casino-review-highlights": {
-      "crypto_casino": "Fast, secure deposits and withdrawals with top cryptos.",
-      "vip_available": "Get exclusive rewards, cashback, and high-roller bonuses.",
-      "no_deposit_bonus_available": "Play for free and win real money with special offers!",
-      "support_available": "Reliable customer service via chat, email, and phone.",
-      "valid_license": "A trusted casino with full licensing and fair play.",
-      "aviator_game_available": "Enjoy the thrilling crash game with big winning potential!"
+        "crypto_casino": "Fast, secure deposits and withdrawals with top cryptos.",
+        "vip_available": "Get exclusive rewards, cashback, and high-roller bonuses.",
+        "no_deposit_bonus_available": "Play for free and win real money with special offers!",
+        "support_available": "Reliable customer service via chat, email, and phone.",
+        "valid_license": "A trusted casino with full licensing and fair play.",
+        "aviator_game_available": "Enjoy the thrilling crash game with big winning potential!"
     },
     "notifications": {
-      "SUCCESS": "Success",
-      "FAILED": "Failed",
-      "messages": {
-        "SUCCESS": "You subscribed on our newletter succesfully!",
-        "FAILED": "Somethin went wrong!",
-        "MEMBER_EXISTS": "Sorry, such email already exists in our database",
-        "INVALID_RESOURCE": "This email is probably fake, please re-check",
-        "WRONG_EMAIL": "The email is incorrect, please enter another one"
-      }
+        "SUCCESS": "Success",
+        "FAILED": "Failed",
+        "messages": {
+            "SUCCESS": "You subscribed on our newletter succesfully!",
+            "FAILED": "Somethin went wrong!",
+            "MEMBER_EXISTS": "Sorry, such email already exists in our database",
+            "INVALID_RESOURCE": "This email is probably fake, please re-check",
+            "WRONG_EMAIL": "The email is incorrect, please enter another one"
+        }
     },
     "review-process": {
-      "title": "Our review process",
-      "subtitle": "Since the early days of gambling, players have sought reliable and exciting places to test their luck. Our platform embodies this spirit—an open and trusted space where casino enthusiasts can discover top brands, uncover hidden gems, and stay informed about the industry's best and worst offerings.",
-      "first-pargraph": {
-        "title": "Looking for intersting brands",
-        "text": "Our team consists of passionate gambling enthusiasts who love to have fun testing their luck in online casinos. We're always on the lookout for new brands and services, thoroughly evaluating them and sharing our insights on our platform. Our goal is to help people discover reputable casinos worth their attention while also warning them about potential scams"
-      },
-      "second-pargraph": {
-        "title": "Comparison with our criteria",
-        "text": "We believe that every casino in the market should meet a range of criteria, from providing secure services to offering generous bonuses. Our team meticulously examines every aspect of each casino and delivers a well-informed verdict."
-      },
-      "third-pargraph": {
-        "title": "Write detailed review and post",
-        "text": "Finally, once all aspects of the casino have been evaluated, our skilled copywriter crafts an engaging and informative review, highlighting every key detail."
-      }
+        "title": "Our review process",
+        "subtitle": "Since the early days of gambling, players have sought reliable and exciting places to test their luck. Our platform embodies this spirit—an open and trusted space where casino enthusiasts can discover top brands, uncover hidden gems, and stay informed about the industry's best and worst offerings.",
+        "first-pargraph": {
+            "title": "Looking for intersting brands",
+            "text": "Our team consists of passionate gambling enthusiasts who love to have fun testing their luck in online casinos. We're always on the lookout for new brands and services, thoroughly evaluating them and sharing our insights on our platform. Our goal is to help people discover reputable casinos worth their attention while also warning them about potential scams"
+        },
+        "second-pargraph": {
+            "title": "Comparison with our criteria",
+            "text": "We believe that every casino in the market should meet a range of criteria, from providing secure services to offering generous bonuses. Our team meticulously examines every aspect of each casino and delivers a well-informed verdict."
+        },
+        "third-pargraph": {
+            "title": "Write detailed review and post",
+            "text": "Finally, once all aspects of the casino have been evaluated, our skilled copywriter crafts an engaging and informative review, highlighting every key detail."
+        }
     },
     "contact-us": {
-      "SUCCESS": "Success",
-      "FAILED": "Failed",
-      "messages": {
-        "SUCCESS": "The mail is sent successfully!",
-        "FAILED": "Somethin went wrong!"
-      }
+        "SUCCESS": "Success",
+        "FAILED": "Failed",
+        "messages": {
+            "SUCCESS": "The mail is sent successfully!",
+            "FAILED": "Somethin went wrong!"
+        },
+        "title": "Contact Us",
+        "subtitle": "We'd love to hear from you. Please fill out this form or reach out to us using the contact information below.",
+        "info": "Contact Information",
+        "form": {
+            "title": "Send us a message",
+            "subtitle": "Fill out the form below and we'll get back to you as soon as possible.",
+            "username": "User name",
+            "email": "Email",
+            "message": "Message"
+        },
+        "send": "Send"
+    },
+    "seo": {
+        "single-bonus": {
+            "no_deposit_bonuses": "No Deposit Bonus",
+            "seo-description": "Play in {casinoName} with No Deposit Bonus. Register and get {bonusTitle} in {year}",
+            "seo-title": "{casinoName} {bonusTitle} | Best Bonuses {year}"
+        }
     }
-  }
+}

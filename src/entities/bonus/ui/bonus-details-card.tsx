@@ -63,7 +63,7 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
 
                 </div>
 
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-4 w-full lg:w-[unset]'>
                     <Button size={'lg'} className='flex gap-2 items-center'>
                         <Play />
                         <p>Get Bonus Now!</p>

@@ -54,6 +54,7 @@ export const GET_BONUS_BY_UUID = gql`
                 bonusSubtitle
                 bonusTitle
                 casinoLogo
+                primaryBonusType
                 bonusReview {
                     type
                     children {

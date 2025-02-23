@@ -28,7 +28,7 @@ const BonusGridWithPagination: React.FC<BonusGridWithPaginationProps> = async ({
     const t = await getTranslations('bonus-category')
     const { bonuses, totalPages } = await fetchBonusesByType(currentPage, 6, bonusCategory, locale as Locale)
 
-    if (bonuses.length === 0) return <NoBonusesFound />
+    if (bonuses?.length === 0) return <NoBonusesFound />
 
     return (
         <section className='bento-block space-y-5'>

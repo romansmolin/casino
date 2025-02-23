@@ -73,9 +73,9 @@ const ContactUsForm = () => {
                     name="name"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>User Name</FormLabel>
+                            <FormLabel>{t('form.username')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder="Input you name" {...field} />
+                                <Input className="h-11" placeholder={t('form.username')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -89,9 +89,9 @@ const ContactUsForm = () => {
                     name="email"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel>{t('form.email')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder="Input your email" {...field} />
+                                <Input className="h-11" placeholder={t('form.email')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -105,9 +105,9 @@ const ContactUsForm = () => {
                     name="message"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Message</FormLabel>
+                            <FormLabel>{t('form.message')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder="Message..."  {...field} />
+                                <Input className="h-11" placeholder={t('form.message')}  {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -118,7 +118,7 @@ const ContactUsForm = () => {
 
                 <Button size="lg" className="w-full" disabled={loading}>
                     {loading ? <LoadingIndicator /> : <Send />}
-                    Send
+                    {t('send')}
                 </Button>
             </form>
         </Form>

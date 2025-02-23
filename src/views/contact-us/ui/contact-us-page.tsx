@@ -4,20 +4,22 @@ import { InboxIcon, PhoneIcon } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/ui/card'
 import { ContactUsForm } from '@/features/contact-us'
 import { NewsletterForm } from '@/features/newsletter'
+import { getTranslations } from 'next-intl/server'
 
-const ContactUsPage = () => {
+const ContactUsPage = async () => {
+    const t = await getTranslations('contact-us')
     return (
         <>
             <section className='bento-block flex flex-col md:flex-row gap-10'>
                 <div className='flex-1 lex flex-col space-y-5'>
-                    <Typography as="h1" variant='h1'>Contact Us</Typography>
+                    <Typography as="h1" variant='h1'>{t('title')}</Typography>
 
                     <p className='text-justify'>
-                        We&apos;d love to hear from you. Please fill out this form or reach out to us using the contact information below.
+                        {t('subtitle')}                   
                     </p>
 
                     <div className="space-y-5">
-                        <h3 className="text-xl font-bold">Contact Information</h3>
+                        <h3 className="text-xl font-bold">{t('info')}</h3>
                         <div className="flex items-center space-x-2">
                             <InboxIcon className="w-5 h-5" />
                             <span>contact@example.com</span>
@@ -31,9 +33,9 @@ const ContactUsPage = () => {
 
                 <div className='flex-1'>
                     <Card className='bg-card/50 backdrop-blur'>
-                        <CardHeader>
-                            <Typography as="h2" variant='h3'>Send us a message</Typography>
-                            <CardDescription>Fill out the form below and we&apos;ll get back to you as soon as possible.</CardDescription>
+                        <CardHeader className='pb-0'>
+                            <Typography as="h2" variant='h3'>{t('form.title')}</Typography>
+                            <CardDescription>{t('form.subtitle')}</CardDescription>
                         </CardHeader>
                         <CardContent className='p-6'>
                             <ContactUsForm />
@@ -41,7 +43,7 @@ const ContactUsPage = () => {
                     </Card>
                 </div>
             </section>
-            <NewsletterForm />
+            <NewsletterForm  isAnimated={false}/>
         </>
     )
 }

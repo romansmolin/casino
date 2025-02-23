@@ -10,9 +10,10 @@ import { useToast } from '@/shared/lib/react/use-toast'
 import { useTranslations } from 'next-intl'
 import { Card, CardContent } from '@/shared/ui/card'
 import Typography from '@/shared/components/typography/typography'
+import { cn } from '@/shared/lib/css'
 
 
-const NewsletterForm = () => {
+const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
     const [email, setEmail] = useState<string>('')
     const { handleSubscribe, loading } = useNewsletterMutation()
     const { toast } = useToast()
@@ -44,7 +45,7 @@ const NewsletterForm = () => {
     };
 
     return (
-        <section className="py-12 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-background to-muted bento-block animate-bento-block">
+        <section className={cn(`py-12 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-background to-muted bento-block`, isAnimated && 'animate-bento-block')}>
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div className="space-y-8">
                     <div className="space-y-2">
@@ -78,7 +79,7 @@ const NewsletterForm = () => {
                     </Card>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="flex flex-col sm:flex-row gap-2">
+                        <div className="flex flex-col sm:flex-row gap-5 lg:gap-2">
                             <Input
                                 type="email"
                                 placeholder="Enter your email"

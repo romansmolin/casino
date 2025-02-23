@@ -15,7 +15,7 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
     const { bonus, error } = await fetchBonusById(uuid, locale as Locale)
 
-    if (!bonus || error) notFound()
+     if (!bonus || error) notFound()
 
     return (
         <>

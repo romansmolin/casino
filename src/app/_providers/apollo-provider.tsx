@@ -10,7 +10,7 @@ import {
 
 function makeClient() {
     const httpLink = new HttpLink({
-        uri: process.env.GRAPHQL_API_URL || "http://localhost:1337/graphql",
+        uri: process.env.NEXT_PUBLIC_GRAPHQL_API_URL || "http://localhost:1337/graphql",
     })
 
     return new NextSSRApolloClient({

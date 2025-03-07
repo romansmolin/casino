@@ -36,7 +36,7 @@ const sendEmail = async (args) => {
 
         const mailOptions = {
             from: process.env.NODEMAILER_EMAIL,
-            to: targetEmail,
+            to: email,
             subject: `New Request Via Contact Form from ${email}`,
             html: htmlContent
         };

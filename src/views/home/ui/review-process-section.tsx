@@ -68,7 +68,7 @@ const ReviewProcessSection = async () => {
                 </div>
                 <div className='flex justify-center items-center flex-1 lg:col-span-2'>
                     <Image
-                        src={'/assets/review_process.svg'}
+                        src={'/assets/review_process.png'}
                         alt='Review Procees'
                         width={300}
                         height={300}

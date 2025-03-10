@@ -74,7 +74,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
     return (
         <>
             <section className="space-y-5 flex-1 bento-block">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">{t('title')} 2024</h1>
+                {/* <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">{t('title')} 2024</h1> */}
                 <CasinoTop byCountry='Germany' />
             </section>
 

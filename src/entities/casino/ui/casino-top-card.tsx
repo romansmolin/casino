@@ -19,7 +19,14 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                 {/* Logo */}
                 <div className="md:col-span-1 h-[170px] bg-primary p-4 rounded-xl flex items-center justify-center">
                     <div className="w-full md:w-[150px] h-full flex justify-center items-center">
-                        <Image src={casino.logo} alt={`${casino.title} Logo`} width={150} height={150} priority/>
+                        <Image 
+                            src={casino.logo} 
+                            alt={`${casino.title} Logo`} 
+                            width={405} 
+                            height={405} 
+                            priority
+                            className='w-full h-full object-cover'
+                        />
                     </div>
                 </div>
 

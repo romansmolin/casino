@@ -22,10 +22,12 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                         <Image 
                             src={casino.logo} 
                             alt={`${casino.title} Logo`} 
-                            width={405} 
-                            height={405} 
+                            width={270} 
+                            height={270} 
                             priority
+                            placeholder="blur"
                             className='w-full h-full object-contain'
+                            blurDataURL="https://placehold.co/405x405" 
                         />
                     </div>
                 </div>

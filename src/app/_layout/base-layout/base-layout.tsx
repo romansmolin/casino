@@ -13,6 +13,7 @@ const AppSidebar = dynamic(() => import('../sidebar/sidebar'))
 const nunito = Nunito({
     weight: '600',
     subsets: ['cyrillic'], 
+    display: 'swap',
   });
 
 const BaseLayout = ({locale, children}: {locale: Locale, children: ReactNode}) => {

@@ -6,21 +6,17 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu"
-import { SunIcon } from 'lucide-react'
 import UkFlag from '@/shared/icons/uk-flag'
 import RussiaFlag from '@/shared/icons/russia-flag'
 import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
-import { Locale, usePathname, useRouter } from '@/shared/lib/i18n/routing'
+import { Locale, useRouter } from '@/shared/lib/i18n/routing'
 
 const LanguageSwitcher = () => {
   const locale = useLocale()
-  const [isPending, startTransition] = useTransition();
-  const pathname = usePathname();
+  const [, startTransition] = useTransition();
   const params = useParams();
   const router = useRouter();
 

@@ -1,5 +1,5 @@
 import { GLOBAL_SEARCH } from "../model/global-search.schema"
-import { ApolloError, useQuery, useLazyQuery } from "@apollo/client"
+import { ApolloError, useLazyQuery } from "@apollo/client"
 import { Locale } from "@/shared/lib/i18n/routing"
 
 

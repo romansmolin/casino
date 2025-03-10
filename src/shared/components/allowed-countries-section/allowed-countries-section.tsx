@@ -2,8 +2,6 @@
 import useAllCountries from '@/shared/hooks/use-get-all-countries';
 import React from 'react'
 import Image from 'next/image';
-import Typography from '../typography/typography';
-import { Card, CardContent } from '@/shared/ui/card';
 
 const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: string[] }) => {
     const { countries } = useAllCountries();

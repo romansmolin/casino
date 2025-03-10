@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 interface CasinoTopEntry {
 	rating: number;
 	title: string;

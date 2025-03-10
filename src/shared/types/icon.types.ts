@@ -1,3 +1,3 @@
-interface Icon {
+export interface Icon {
     className?: string
 }

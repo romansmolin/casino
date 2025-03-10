@@ -1,7 +1,7 @@
 import { FREE_SPINS_TYPES } from '@/entities/bonus'
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
-import { Card, CardContent, CardHeader } from '@/shared/ui/card'
+import { Card, CardContent } from '@/shared/ui/card'
 import { Gem } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'

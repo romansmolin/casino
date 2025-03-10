@@ -1,7 +1,6 @@
 import React from 'react';
 import PageContentSection from './page-content-section';
-import { Accardion } from '@/shared/components/accardion';
-import Typography from '@/shared/components/typography/typography';
+
 import PageContentFaq from './page-content-faq';
 
 type Content = {

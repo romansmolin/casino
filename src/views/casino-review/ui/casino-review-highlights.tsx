@@ -5,10 +5,6 @@ import { Check } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
 
-type ReadableFeatures = {
-    [key: string]: string
-}
-
 interface CasinoReviewHighlightsProps {
     casinoName: string
     features: string[]

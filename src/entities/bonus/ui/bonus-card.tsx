@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/shared/ui/button'
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/shared/ui/card'
+import { Card, CardHeader, CardContent, CardFooter } from '@/shared/ui/card'
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'

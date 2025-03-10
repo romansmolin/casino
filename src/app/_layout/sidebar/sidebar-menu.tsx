@@ -2,21 +2,18 @@
 
 import {
     SidebarGroup,
-    SidebarGroupLabel,
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
     SidebarMenuSub,
     SidebarMenuSubItem,
     SidebarMenuSubButton,
-    SidebarHeader,
     useSidebar,
 } from '@/shared/ui/sidebar'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl';
-import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 
 export function SidebarMenuList({

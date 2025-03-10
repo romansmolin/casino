@@ -1,4 +1,3 @@
-import { transform } from 'next/dist/build/swc/generated-native'
 import type { Config } from 'tailwindcss'
 
 export default {
@@ -77,6 +76,7 @@ export default {
     plugins: [
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         require('tailwindcss-animate'),
+        // eslint-disable-next-line no-unused-vars
         function ({ addComponents }: { addComponents: (components: Record<string, any>) => void }) {
             addComponents({
                 '.animate-bento-block-lg': {

@@ -3,7 +3,6 @@ import {
     SquareTerminal,
     Landmark,
     Info,
-    MessageCircleQuestion
 } from 'lucide-react'
 export const menu = {
     user: {

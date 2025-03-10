@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/shared/lib/css'
 import StrapiTextRenderer from './strapi-text-renderer'
-import { Card, CardContent } from '@/shared/ui/card'
 
 type Paragraph = {
     type: string

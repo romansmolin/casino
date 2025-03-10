@@ -1,10 +1,10 @@
 import { Button } from '@/shared/ui/button'
-import { Card, CardHeader, CardContent, CardFooter } from '@/shared/ui/card'
-import { Star, Check, Badge } from 'lucide-react'
+import { Card, CardHeader, CardFooter } from '@/shared/ui/card'
+import { Star } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 interface CasinoCardProps {
@@ -17,7 +17,7 @@ interface CasinoCardProps {
 	casinoType: string[]
 }
 
-const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, logoUrl, features, rating, casinoType }) => {
+const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, logoUrl, rating }) => {
 	const locale = await getLocale()
 	const t = await getTranslations("casinoTopCard")
 

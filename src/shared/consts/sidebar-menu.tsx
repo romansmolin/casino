@@ -1,4 +1,4 @@
-import { Castle, Dices, HomeIcon, NotebookText } from 'lucide-react'
+import { Castle, HomeIcon } from 'lucide-react'
 
 export const sidebarMenu = [
     { href: '/', icon: <HomeIcon className="w-5 h-5" />, label: 'Home' },

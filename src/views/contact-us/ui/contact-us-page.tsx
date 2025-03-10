@@ -1,7 +1,7 @@
 import Typography from '@/shared/components/typography/typography'
 import React from 'react'
 import { InboxIcon, PhoneIcon } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/ui/card'
+import { Card, CardContent, CardDescription, CardHeader } from '@/shared/ui/card'
 import { ContactUsForm } from '@/features/contact-us'
 import { NewsletterForm } from '@/features/newsletter'
 import { getTranslations } from 'next-intl/server'

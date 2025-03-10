@@ -35,7 +35,8 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusCardClass 
                         className="w-24 h-24"
                         width={100}
                         height={100}
-                        blurDataURL="https://placehold.co/405x405" // Local or base64-encoded image
+                        blurDataURL="https://placehold.co/405x405" 
+                        priority
                     />
                 </div>
             </CardHeader>

@@ -9,7 +9,7 @@ import Typography from '@/shared/components/typography/typography'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+const AppSidebar =({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     const { open } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props}>
@@ -31,3 +31,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </Sidebar>
     )
 }
+
+export default AppSidebar

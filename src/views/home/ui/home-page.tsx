@@ -106,4 +106,4 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
 }
 
 export default HomePage
-export const runtime = 'edge'
+// export const runtime = 'edge'

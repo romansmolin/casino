@@ -9,6 +9,7 @@ interface HomePageProps {
 
 export default async function Home({ params }: HomePageProps) {
     const { locale } = await params
+    
     return (
         <Suspense fallback={<LoadingIndicator />}>
             <HomePage locale={locale} />

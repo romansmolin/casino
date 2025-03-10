@@ -79,20 +79,20 @@ export default {
         // eslint-disable-next-line no-unused-vars
         function ({ addComponents }: { addComponents: (components: Record<string, any>) => void }) {
             addComponents({
-                '.animate-bento-block-lg': {
-                    '@screen lg': {
-                        viewTimelineName: '--timeline-offset',
-                        animation: 'slideFadeIn 1s both',
-                        animationTimeline: '--timeline-offset',
-                        animationRange: '200px 500px',
-                    },
-                },
-                '.animate-bento-block': {
-                    viewTimelineName: '--timeline-offset',
-                    animation: 'slideFadeIn 1s both',
-                    animationTimeline: '--timeline-offset',
-                    animationRange: '200px 500px',
-                }
+                // '.animate-bento-block-lg': {
+                //     '@screen lg': {
+                //         viewTimelineName: '--timeline-offset',
+                //         animation: 'slideFadeIn 1s both',
+                //         animationTimeline: '--timeline-offset',
+                //         animationRange: '200px 500px',
+                //     },
+                // },
+                // '.animate-bento-block': {
+                //     viewTimelineName: '--timeline-offset',
+                //     animation: 'slideFadeIn 1s both',
+                //     animationTimeline: '--timeline-offset',
+                //     animationRange: '200px 500px',
+                // }
             })
         },
     ],

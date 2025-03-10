@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin(
     './src/shared/lib/i18n/request.ts'
 );
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
 
 const nextConfig: NextConfig = {
     /* config options here */
@@ -13,5 +17,5 @@ const nextConfig: NextConfig = {
     },
     
 }
-export default withNextIntl(nextConfig);
+export default withBundleAnalyzer(withNextIntl(nextConfig));
 

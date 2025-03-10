@@ -3,11 +3,10 @@ import { SidebarInset } from '@/shared/ui/sidebar'
 import React, { ReactNode } from 'react'
 import Header from '../header/header'
 import { AppSidebar } from '../sidebar/sidebar'
-import { Trispace, Nunito } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { Toaster } from '@/shared/ui/toaster'
 
-const trispace = Trispace({ subsets: ['latin'] })
 const nunito = Nunito({
     weight: '600',
     subsets: ['cyrillic'], 

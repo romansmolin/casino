@@ -4,13 +4,6 @@ import useGeolocation from "@/shared/hooks/use-geolocation";
 import Image from "next/image";
 import React from "react";
 
-type Location = {
-    latitude: number;
-    longitude: number;
-    country?: string;
-    countryCode?: string; // ISO Code for flag
-};
-
 const CasinoAvailability = ({ allowedCountries }: { allowedCountries: string[] }) => {
     const { location, error } = useGeolocation();
     const isAllowed = location ? allowedCountries.includes(location.country || "") : null;

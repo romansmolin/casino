@@ -39,7 +39,7 @@ const LanguageSwitcher = () => {
   return (
     <DropdownMenu>
         <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label='Language switcher'>
                 {locale === 'en' ? (
                     <UkFlag className="h-[1.5rem] w-[1.5rem] rotate-0 transition-all" />
                 ): (

@@ -1,14 +1,17 @@
-import { BestBonusesOfTheMonth, BonusCategories } from '@/features/bonus'
+import React from 'react'
+import dynamic from 'next/dynamic'
+import { getTranslations } from 'next-intl/server'
 
 import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
+import { BestBonusesOfTheMonth, BonusCategories } from '@/features/bonus'
 import { CasinoTop } from '@/features/casino'
-import { Locale } from '@/shared/lib/i18n/routing'
-import { getTranslations } from 'next-intl/server'
-import React from 'react'
-import { NewsletterForm } from '@/features/newsletter'
-import ReviewProcessSection from './review-process-section'
-import TestimonialSection from './testimonials-section'
+
 import Typography from '@/shared/components/typography/typography'
+import { Locale } from '@/shared/lib/i18n/routing'
+
+const ReviewProcessSection = dynamic(() => import('./review-process-section')) 
+const TestimonialSection = dynamic(() => import('./testimonials-section')) 
+const NewsletterForm  = dynamic(() => import('../../../features/newsletter/ui/newsletter-section'))
 
 
 const testimonials = [
@@ -64,7 +67,6 @@ const testimonials = [
   ];
 
 const HomePage = async ({ locale }: { locale: Locale }) => {
-    console.log('HomePage: ', locale)
     
     const t = await getTranslations('mainPage')
     const { pageContent } = await fetchPageContentBySlug('/', locale)

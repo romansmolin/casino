@@ -10,6 +10,8 @@ const signUpOnNewsletter = async (emailAddress, status = "subscribed") => {
 			throw new Error("Email address is required");
 		}
 
+		console.log('emailAddress: ', emailAddress)
+
 		const data = {
 			email_address: emailAddress,
 			status: status, // Can be "subscribed" or "pending" (for double opt-in)
@@ -40,7 +42,6 @@ const signUpOnNewsletter = async (emailAddress, status = "subscribed") => {
 			}
 			if (responseData.title === 'Invalid Resource') {
 				status = 'INVALID_RESOURCE'
-				
 			}
 
 			return {

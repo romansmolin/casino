@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
     images: {
         domains: ['res.cloudinary.com', 'flagcdn.com', 'i.pravatar.cc', 'placehold.co']
     },
-    experimental: {
-        // @ts-ignore
-        inlineCss: true,
-    },
 }
 export default withBundleAnalyzer(withNextIntl(nextConfig));
 

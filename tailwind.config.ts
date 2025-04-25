@@ -63,15 +63,74 @@ export default {
                 sm: 'calc(var(--radius) - 4px)',
             },
             keyframes: {
+                'accordion-down': {
+                    from: { height: '0' },
+                    to: { height: 'var(--radix-accordion-content-height)' },
+                },
+                'accordion-up': {
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: '0' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                    '50%': { transform: 'translateY(-10px) translateX(5px)' },
+                },
+                spin: {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' },
+                },
+                pulse: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.5' },
+                },
+                leverPull: {
+                    '0%, 100%': { transform: 'rotate(0deg)' },
+                    '10%': { transform: 'rotate(45deg)' },
+                    '15%': { transform: 'rotate(0deg)' },
+                },
+                winPulse: {
+                    '0%, 15%, 100%': { opacity: '0' },
+                    '80%, 90%': { opacity: '1' },
+                },
+                spin1: {
+                    '0%': { transform: 'translateY(0)' },
+                    '15%': { transform: 'translateY(-420px)' },
+                    '20%, 100%': { transform: 'translateY(-50px)' },
+                },
+                spin2: {
+                    '0%': { transform: 'translateY(0)' },
+                    '15%': { transform: 'translateY(-420px)' },
+                    '25%, 100%': { transform: 'translateY(-50px)' },
+                },
+                spin3: {
+                    '0%': { transform: 'translateY(0)' },
+                    '15%': { transform: 'translateY(-420px)' },
+                    '30%, 100%': { transform: 'translateY(-50px)' },
+                },
+                bellHighlight: {
+                    '0%, 35%, 100%': { opacity: '0' },
+                    '40%, 90%': { opacity: '1' },
+                },
                 slideFadeIn: {
                     from: { opacity: '0', transform: 'translateY(5vh)' },
                     to: { opacity: '1', transform: 'translateY(0)' },
                 },
             },
             animation: {
-                slideFadeIn: 'slideFadeIn 1s both',
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out',
+                spin: 'spin 3s linear infinite',
+                pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                float: 'float 6s ease-in-out infinite',
+                'lever-pull': 'leverPull 5s ease-in-out infinite',
+                'win-pulse': 'winPulse 5s ease-in-out infinite',
+                spin1: 'spin1 5s ease-in-out infinite',
+                spin2: 'spin2 5s ease-in-out infinite',
+                spin3: 'spin3 5s ease-in-out infinite',
+                'bell-highlight': 'bellHighlight 5s ease-in-out infinite',
+                'bento-block': 'slideFadeIn 1s both',
             },
         },
     },
-    plugins: [],
+    plugins: [require('tailwindcss-animate')],
 } satisfies Config

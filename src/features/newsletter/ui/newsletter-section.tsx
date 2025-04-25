@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from 'react'
 import { Input } from '@/shared/ui/input'
@@ -12,7 +12,6 @@ import { Card, CardContent } from '@/shared/ui/card'
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 
-
 const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
     const [email, setEmail] = useState<string>('')
     const { handleSubscribe, loading } = useNewsletterMutation()
@@ -22,40 +21,49 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
     const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        event.preventDefault()
 
         if (!email || !emailRegex.test(email)) {
             toast({
-                title: t("FAILED"),
+                title: t('FAILED'),
                 description: t(`messages.WRONG_EMAIL`),
                 variant: 'destructive',
-            });
+            })
 
             return
         }
 
-        const { status, message } = await handleSubscribe(email);
-        const isSuccess = status === "SUCCESS";
+        const { status, message } = await handleSubscribe(email)
+        const isSuccess = status === 'SUCCESS'
 
         toast({
-            title: t(isSuccess ? "SUCCESS" : "FAILED"),
+            title: t(isSuccess ? 'SUCCESS' : 'FAILED'),
             description: t(`messages.${message}`),
-            variant: isSuccess ? "success" : "destructive",
-        });
-    };
+            variant: isSuccess ? 'success' : 'destructive',
+        })
+    }
 
     return (
-        <section className={cn(`py-12 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-background to-muted bento-block`, isAnimated && 'animate-bento-block')}>
+        <section
+            className={cn(
+                `py-12 px-4 md:px-6 lg:px-8 bento-block relative`,
+                isAnimated && 'animate-bento-block'
+            )}>
+            {/* <div className="absolute inset-0 bg-linear-to-r from-primary to-primary-foreground opacity-20 blur-3xl" /> */}
+
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div className="space-y-8">
                     <div className="space-y-2">
-                        <Typography as="h2" variant='h1'>Exclusive Bonuses</Typography>
+                        <Typography as="h2" variant="h1">
+                            Exclusive Bonuses
+                        </Typography>
                         <p className="text-xl text-muted-foreground max-w-[600px]">
-                            Join our newsletter and unlock a world of insider tips, special offers, and game-changing updates.
+                            Join our newsletter and unlock a world of insider tips, special offers, and
+                            game-changing updates.
                         </p>
                     </div>
 
-                    <Card className="bg-card/50 backdrop-blur">
+                    <Card className="">
                         <CardContent className="p-6">
                             <ul className="space-y-4">
                                 <li className="flex items-center space-x-3">
@@ -85,20 +93,24 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                                 placeholder="Enter your email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="flex-grow h-12"
+                                className="grow h-12"
                                 required
                             />
                             <Button type="submit" disabled={loading} className="w-full sm:w-auto h-12">
-                                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-4 w-4" />}
+                                {loading ? (
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                ) : (
+                                    <Mail className="mr-2 h-4 w-4" />
+                                )}
                                 Subscribe
                             </Button>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            By subscribing, you agree to our{" "}
+                            By subscribing, you agree to our{' '}
                             <a href="#" className="underline">
                                 Terms
-                            </a>{" "}
-                            and{" "}
+                            </a>{' '}
+                            and{' '}
                             <a href="#" className="underline">
                                 Privacy Policy
                             </a>
@@ -107,8 +119,7 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                     </form>
                 </div>
 
-                <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-foreground opacity-20 blur-3xl" />
+                {/* <div className="relative">
                     <div className="relative flex justify-center items-center rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
                         <Image
                             src="/assets/newsletter.svg"
@@ -118,7 +129,7 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                             className="h-[250px] w-[150px] md:w-[unset] md:h-auto md:object-cover"
                         />
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     )

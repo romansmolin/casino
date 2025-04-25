@@ -13,10 +13,10 @@ const CasinoMainBonus = async ({ mainBonus, casinoName }: { mainBonus: CasinoMai
     const t = await getTranslations('bonuses')
 
     return (
-        <Card className='!shadow-none'>
-            <CardContent className='!p-[unset] !border-none'>
+        <Card className='shadow-none!'>
+            <CardContent className='p-[unset]! border-none!'>
                 <div className="flex flex-col lg:flex-row gap-4">
-                    <div className='flex-1 flex-shrink-0 space-y-5 bento-block'>
+                    <div className='flex-1 shrink-0 space-y-5 bento-block'>
                         <StrapiTextRenderer contentData={mainBonus.info} />
 
                         <div className='flex flex-col md:flex-row gap-3'>

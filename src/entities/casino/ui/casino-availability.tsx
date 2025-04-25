@@ -9,7 +9,7 @@ const CasinoAvailability = ({ allowedCountries }: { allowedCountries: string[] }
     const isAllowed = location ? allowedCountries.includes(location.country || "") : null;
 
     return (
-        <div className="bento-block !p-4">
+        <div className="bento-block p-4!">
             {location ? (
                 <div className="flex justify-between items-center md:justify-start gap-2">
                     {isAllowed !== null && (

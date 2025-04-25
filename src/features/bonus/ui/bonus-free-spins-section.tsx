@@ -17,8 +17,8 @@ const BonusFreeSpinsSection = async () => {
             {
                 FREE_SPINS_TYPES.map((type) => (
                     <Link href={`/${locale}/category/${type.label}`} key={type.label}>
-                        <Card className={cn('rounded-xl cursor-pointer p-4 flex-grow duration-300 ease-in-out transform md:hover:scale-105 md:hover:rotate-1', type.color)}>
-                            <CardContent className='flex justify-center items-center gap-5 flex-col flex-grow'>
+                        <Card className={cn('rounded-xl cursor-pointer p-4 grow duration-300 ease-in-out transform md:hover:scale-105 md:hover:rotate-1', type.color)}>
+                            <CardContent className='flex justify-center items-center gap-5 flex-col grow'>
                                 <Gem className='w-16 h-16 text-white'/>
                                 <Typography as="h2" variant='h2' className='text-center text-white'>{t(type.label)}</Typography>
                             </CardContent>

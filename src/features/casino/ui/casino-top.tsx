@@ -23,7 +23,7 @@ const CasinoTop: React.FC<CasinoTopProps> = async ({ byCountry, byType }) => {
                     />
                 ))}
             </div>
-            <div className='pointer-events-none absolute top-1/2 transform -translate-y-1/2 h-[99%] right-0 w-5 bg-gradient-to-r from-transparent to-white dark:to-black md:hidden'>
+            <div className='pointer-events-none absolute top-1/2 transform -translate-y-1/2 h-[99%] right-0 w-5 bg-linear-to-r from-transparent to-white dark:to-black md:hidden'>
             </div>
         </div>
     )

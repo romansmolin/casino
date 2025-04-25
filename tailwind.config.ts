@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default {
-    darkMode: ['class'],
+    darkMode: 'class',
     content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
         extend: {
@@ -73,27 +73,5 @@ export default {
             },
         },
     },
-    plugins: [
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        // require('tailwindcss-animate'),
-        // eslint-disable-next-line no-unused-vars
-        // function ({ addComponents }: { addComponents: (components: Record<string, any>) => void }) {
-        //     addComponents({
-        //         // '.animate-bento-block-lg': {
-        //         //     '@screen lg': {
-        //         //         viewTimelineName: '--timeline-offset',
-        //         //         animation: 'slideFadeIn 1s both',
-        //         //         animationTimeline: '--timeline-offset',
-        //         //         animationRange: '200px 500px',
-        //         //     },
-        //         // },
-        //         // '.animate-bento-block': {
-        //         //     viewTimelineName: '--timeline-offset',
-        //         //     animation: 'slideFadeIn 1s both',
-        //         //     animationTimeline: '--timeline-offset',
-        //         //     animationRange: '200px 500px',
-        //         // }
-        //     })
-        // },
-    ],
+    plugins: [],
 } satisfies Config

@@ -44,7 +44,7 @@ const TableContent = ({ content }: { content: StrapiContent[] }) => {
                                     href={`#${item.linkId}`}
                                     className={`flex items-center gap-3 py-2 ${item.linkId === pathname ? 'bg-muted/40 text-primary' : ''} transition-all hover:text-primary`}
                                 >
-                                    {<Dices className="w-5 h-5 flex-shrink-0" />}
+                                    {<Dices className="w-5 h-5 shrink-0" />}
                                     {item.heading}
                                 </Link>
                             </li>

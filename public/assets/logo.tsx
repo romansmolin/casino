@@ -1,22 +1,30 @@
+import { cn } from '@/shared/lib/css'
 import React from 'react'
 
-const Logo = () => {
+interface LogoProps {
+    className?: string
+    width?: number | string
+    height?: number | string
+}
+
+const Logo = ({ className, width = 48, height = 48 }: LogoProps) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="600"
             height="600"
             viewBox="0 0 600 600"
-            className="w-12 h-12 md:w-16 md:h-16">
+            className={cn('md:w-16 md:h-16', className)}
+            style={{
+                width: width,
+                height: height,
+            }}>
             <foreignObject width="100%" height="100%" x="0" y="0" externalResourcesRequired="true">
-                <div className="bg-transparent w-screen max-w-full aspect-square md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[600px] xl:h-[600px]">
+                <div className="bg-transparent aspect-square">
                     <div
                         className="w-full aspect-square overflow-hidden flex justify-center items-center shadow-xl bg-primary"
                         style={{
                             borderRadius: '80px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
                         }}>
                         <span>
                             <svg

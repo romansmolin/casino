@@ -18,7 +18,7 @@ import Logo from '../../../../public/assets/logo'
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     const { open } = useSidebar()
     return (
-        <Sidebar collapsible="icon" {...props}>
+        <Sidebar collapsible="icon" {...props} className="bg-transparent dark:bg-muted/50">
             <SidebarHeader className="pt-2 flex items-center justify-center">
                 {open && (
                     <Link href="/" className="flex gap-3 items-center py-4">
@@ -26,6 +26,8 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                         <span className="text-4xl">BetBoost</span>
                     </Link>
                 )}
+
+                {!open && <Logo className="p-2" />}
             </SidebarHeader>
 
             <SidebarContent>

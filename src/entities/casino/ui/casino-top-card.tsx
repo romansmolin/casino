@@ -31,7 +31,7 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                     </div>
                 </div>
                 {/* Text */}
-                <div className="flex flex-col gap-2 items-center justify-between md:col-span-2 lg:p-4 leading-normal text-center md:text-left px-5">
+                <div className="flex flex-col gap-2 items-center justify-between md:col-span-2 lg:p-4 leading-normal text-center md:text-left px-5 ">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gradient">{casino.title}</h5>
                     <div className="p-2 bg-red-500 rounded-xl flex justify-center items-center gap-2">
                         <Star className="text-white" />
@@ -48,7 +48,7 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                 </div>
 
                 {/* Buttons */}
-                <div className="md:col-span-1 flex justify-center w-full md:w-auto px-5">
+                <div className="md:col-span-1 flex justify-center w-full md:w-auto p-5 md:py-[unset] md:px-5">
                     <div className="flex flex-col gap-3 w-full lg:w-44">
                         <Button size="lg">{t('playNow')}</Button>
                         <Button size="lg" asChild>

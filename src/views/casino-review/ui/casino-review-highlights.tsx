@@ -20,7 +20,7 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({ c
                 <div className="flex flex-col rounded-xl lg:w-[100%] h-full">
                     <Typography variant='h1' as='h1' className="font-bold pb-4 border-b-2">{casinoName} Review</Typography>
 
-                    <div className="flex-grow flex flex-col justify-between mt-5 lg:flex-row gap-4">
+                    <div className="grow flex flex-col justify-between mt-5 lg:flex-row gap-4">
                         <div>
                             <ul className="space-y-4 max-w- text-left">
                                 {features?.map((feature) => (
@@ -40,7 +40,7 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({ c
                         </div>
                     </div>
 
-                    <div className="flex-grow flex flex-col justify-end mt-6 text-primary-600 font-bold">
+                    <div className="grow flex flex-col justify-end mt-6 text-primary-600 font-bold">
                         <span className="text-sm">
                             Terms & Conditions Apply. You must be at least 18 years old to visit this casino.
                             Gamble Responsibly!

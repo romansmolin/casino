@@ -21,13 +21,25 @@ interface BonusCardProps {
     bonusCardClass?: string
 }
 
-const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusCardClass = '', bonusTitle, casinoLogo, info, uuid, primaryBonusType }) => {
+const BonusCard: React.FC<BonusCardProps> = async ({
+    casinoName,
+    bonusCardClass = '',
+    bonusTitle,
+    casinoLogo,
+    info,
+    uuid,
+    primaryBonusType,
+}) => {
     const locale = await getLocale()
     const t = await getTranslations('bonuses')
 
     return (
-        <Card className={cn('w-full border flex flex-col max-w-[270px] min-w-[270px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] p-5 lg:p-4 space-y-5 h-full', bonusCardClass)}>
-            <CardHeader className='p-[unset]'>
+        <Card
+            className={cn(
+                'w-full border flex flex-col max-w-[270px] min-w-[270px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] space-y-5 h-full',
+                bonusCardClass
+            )}>
+            <CardHeader className="w-full p-[unset] mb-[unset]">
                 <div className="bg-primary w-full flex justify-center rounded-xl items-center">
                     <Image
                         src={casinoLogo}
@@ -35,31 +47,39 @@ const BonusCard: React.FC<BonusCardProps> = async ({ casinoName, bonusCardClass 
                         className="w-24 h-24"
                         width={100}
                         height={100}
-                        blurDataURL="https://placehold.co/405x405" 
+                        blurDataURL="https://placehold.co/405x405"
                         priority
                     />
                 </div>
             </CardHeader>
 
-            <CardContent className="!p-[unset] !mt-1 flex-grow">
-                <div className='flex flex-col space-y-4 py-6'>
-                    <Typography variant='h3' as="h2" className='text-center'>{casinoName}</Typography>
+            <CardContent className=" mt-1! grow px-5 lg:px-4">
+                <div className="flex flex-col space-y-4 py-6">
+                    <Typography variant="h3" as="h2" className="text-center">
+                        {casinoName}
+                    </Typography>
                     <h3 className="text-2xl font-bold text-center">{bonusTitle}</h3>
                 </div>
 
-                <div className='flex gap-2 flex-wrap'>
-                    {info.bonusType.map((type) => (
-                        type !== 'free-spins-bonuses' && <BonusTypeBadge type={type} key={type} className='w-fit'/>
-                    ))}
+                <div className="flex gap-2 flex-wrap">
+                    {info.bonusType.map(
+                        (type) =>
+                            type !== 'free-spins-bonuses' && (
+                                <BonusTypeBadge type={type} key={type} className="w-fit" />
+                            )
+                    )}
                 </div>
             </CardContent>
 
-            <CardFooter className='p-[unset]'>
+            <CardFooter className="px-5 lg:px-4">
                 <Button className="w-full" asChild>
-                    <Link href={{
-                        pathname: `/${locale}/${bonusrUrlFriendly(primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
-                        query: { uuid }
-                    }}>{t('claim-bonus')}</Link>
+                    <Link
+                        href={{
+                            pathname: `/${locale}/${bonusrUrlFriendly(primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
+                            query: { uuid },
+                        }}>
+                        {t('claim-bonus')}
+                    </Link>
                 </Button>
             </CardFooter>
         </Card>

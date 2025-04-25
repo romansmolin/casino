@@ -32,7 +32,7 @@ const ContactUsPage = async () => {
                 </div>
 
                 <div className='flex-1'>
-                    <Card className='bg-card/50 backdrop-blur'>
+                    <Card className='bg-card/50 backdrop-blur-sm'>
                         <CardHeader className='pb-0'>
                             <Typography as="h2" variant='h3'>{t('form.title')}</Typography>
                             <CardDescription>{t('form.subtitle')}</CardDescription>

@@ -64,9 +64,8 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
 
     return (
         <>
-            <section className="relative space-y-5 flex-1 bento-block">
+            <section className="space-y-5 flex-1 bento-block">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">{t('title')} 2024</h1>
-                {/* <div className="absolute inset-0 bg-linear-to-r from-primary to-primary-foreground opacity-20 blur-3xl" /> */}
                 <CasinoTop byCountry="Germany" />
             </section>
 
@@ -84,12 +83,6 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
             <TestimonialSection testimonials={testimonials} />
 
             <HomePageContent pageContent={pageContent} />
-
-            {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div className="aspect-video rounded-xl bg-muted/50" />
-                <div className="aspect-video rounded-xl bg-muted/50" />
-                <div className="aspect-video rounded-xl bg-muted/50" />
-            </div> */}
         </>
     )
 }

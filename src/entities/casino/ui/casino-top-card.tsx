@@ -6,7 +6,7 @@ import RatingCircle from '@/shared/components/rating-circle/rating-circle'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { Card, CardContent } from '@/shared/ui/card'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
-import { Star } from 'lucide-react'
+import { Book, Dices, Star } from 'lucide-react'
 
 const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
     const t = await getTranslations('casinoTopCard')
@@ -50,8 +50,11 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                 {/* Buttons */}
                 <div className="md:col-span-1 flex justify-center w-full md:w-auto p-5 md:py-[unset] md:px-5">
                     <div className="flex flex-col gap-3 w-full lg:w-44">
-                        <Button size="lg">{t('playNow')}</Button>
-                        <Button size="lg" asChild>
+                        <Button size="lg">
+                            <Dices />
+                            {t('playNow')}
+                        </Button>
+                        <Button size="lg" asChild variant={'outline'}>
                             <Link
                                 href={{
                                     pathname: `${locale}/casino-review/${bonusrUrlFriendly(casino.title)}`,
@@ -59,6 +62,7 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                                         id: casino.casino,
                                     },
                                 }}>
+                                <Book />
                                 {t('review')}
                             </Link>
                         </Button>

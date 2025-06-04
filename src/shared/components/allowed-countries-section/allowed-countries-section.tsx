@@ -1,10 +1,10 @@
-"use client"
-import useAllCountries from '@/shared/hooks/use-get-all-countries';
+'use client'
+import useAllCountries from '@/shared/hooks/use-get-all-countries'
 import React from 'react'
-import Image from 'next/image';
+import Image from 'next/image'
 
 const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: string[] }) => {
-    const { countries } = useAllCountries();
+    const { countries } = useAllCountries()
 
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -19,9 +19,7 @@ const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: strin
                             alt={`${country.name} flag`}
                             className="w-9 h-7 rounded-[5px]"
                         />
-                        <span className="text-sm font-medium text-green-500">
-                            {country.name} 
-                        </span>
+                        <span className="text-sm font-medium text-green-500">{country.name}</span>
                     </div>
                 ))}
         </div>

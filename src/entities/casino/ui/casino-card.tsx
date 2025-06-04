@@ -58,10 +58,7 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, l
                         {t('review')}
                     </Link>
                 </Button>
-                <Button
-                    className="w-full relative cursor-pointer transition-all duration-300 group"
-                    size="lg">
-                    <div className="absolute inset-0 rounded-md bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+                <Button className="w-full relative cursor-pointer transition-all " size="lg">
                     <div className="z-10 flex gap-2 items-center">
                         <Eye />
                         Visit Casino

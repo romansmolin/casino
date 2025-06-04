@@ -38,22 +38,24 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
             <CasinoMainBonus casinoName={casino.name} mainBonus={casino.mainBonus} />
 
             <div className="flex flex-col lg:flex-row gap-4">
-                <div className='lg:w-1/3'>
+                <div className="lg:w-1/3">
                     <CasinoTableContent content={casino.review} />
                 </div>
-                <div className='lg:w-2/3'>
+                <div className="lg:w-2/3">
                     <Card>
-                        <CardContent className='space-y-5 bento-block'>
+                        <CardContent className="space-y-5 bento-block">
                             <CasinoReviewRenderer contentData={casino.review} />
                         </CardContent>
                     </Card>
                 </div>
             </div>
 
-            <Card className='bento-block space-y-5'>
-                <CardTitle className='flex items-center gap-2'>
+            <Card className="bento-block space-y-5">
+                <CardTitle className="flex items-center gap-2">
                     <CircleHelp className="mr-2 h-8 w-8" />
-                    <Typography as="h2" variant='h2'>Allowed Countries</Typography>
+                    <Typography as="h2" variant="h2">
+                        Allowed Countries
+                    </Typography>
                 </CardTitle>
                 <CardContent>
                     <AllowedCountriesSection allowedCountries={casino.allowedCountries} />

@@ -8,6 +8,7 @@ import { getLocale, getTranslations } from 'next-intl/server'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
+import { Gift } from 'lucide-react'
 
 interface BonusCardProps {
     casinoName: string
@@ -72,12 +73,13 @@ const BonusCard: React.FC<BonusCardProps> = async ({
             </CardContent>
 
             <CardFooter className="px-5 lg:px-4">
-                <Button className="w-full" asChild>
+                <Button className="w-full" asChild size={'lg'}>
                     <Link
                         href={{
                             pathname: `/${locale}/${bonusrUrlFriendly(primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
                             query: { uuid },
                         }}>
+                        <Gift />
                         {t('claim-bonus')}
                     </Link>
                 </Button>

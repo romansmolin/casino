@@ -1,5 +1,6 @@
 import { BonusDetailsCard, fetchBonusById } from '@/entities/bonus'
 import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
+import { StrapiContent } from '@/entities/page-content/model/types'
 import { Accardion } from '@/shared/components/accardion'
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
@@ -14,7 +15,7 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
     const { bonus, error } = await fetchBonusById(uuid, locale as Locale)
 
-     if (!bonus || error) notFound()
+    if (!bonus || error) notFound()
 
     return (
         <>
@@ -28,21 +29,25 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
                 bonusTypes={bonus.info.bonusType}
             />
 
-            <Card className='bento-block space-y-5'>
-                <CardTitle className='flex items-center gap-2'>
+            <Card className="bento-block space-y-5">
+                <CardTitle className="flex items-center gap-2">
                     <CheckCircleIcon className="mr-2 h-8 w-8" />
-                    <Typography as="h2" variant='h2'>Review</Typography>
+                    <Typography as="h2" variant="h2">
+                        Review
+                    </Typography>
                 </CardTitle>
                 <CardContent>
-                    <StrapiTextRenderer contentData={bonus.bonusReview} />
+                    <StrapiTextRenderer contentData={bonus.bonusReview as StrapiContent[]} />
                 </CardContent>
             </Card>
 
             {bonus.info.availableFor?.length > 0 && (
-                <Card className='bento-block space-y-5'>
-                    <CardTitle className='flex items-center gap-2'>
+                <Card className="bento-block space-y-5">
+                    <CardTitle className="flex items-center gap-2">
                         <HandMetal className="mr-2 h-8 w-8" />
-                        <Typography as="h2" variant='h2'>Allowed Countries</Typography>
+                        <Typography as="h2" variant="h2">
+                            Allowed Countries
+                        </Typography>
                     </CardTitle>
                     <CardContent>
                         <AllowedCountriesSection allowedCountries={bonus.info.availableFor} />
@@ -50,10 +55,12 @@ const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
                 </Card>
             )}
 
-            <Card className='bento-block space-y-5'>
-                <CardTitle className='flex items-center gap-2'>
+            <Card className="bento-block space-y-5">
+                <CardTitle className="flex items-center gap-2">
                     <CircleHelp className="mr-2 h-8 w-8" />
-                    <Typography as="h2" variant='h2'>Frequently Asked Questions</Typography>
+                    <Typography as="h2" variant="h2">
+                        Frequently Asked Questions
+                    </Typography>
                 </CardTitle>
                 <CardContent>
                     <Accardion items={bonus.faqInfo} />

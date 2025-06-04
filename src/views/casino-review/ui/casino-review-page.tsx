@@ -12,6 +12,7 @@ import { notFound } from 'next/navigation'
 import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 import Typography from '@/shared/components/typography/typography'
 import { CircleHelp } from 'lucide-react'
+import { StrapiContent } from '@/entities/page-content/model/types'
 
 const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
@@ -44,7 +45,7 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
                 <div className="lg:w-2/3">
                     <Card>
                         <CardContent className="space-y-5 bento-block">
-                            <CasinoReviewRenderer contentData={casino.review} />
+                            <CasinoReviewRenderer contentData={casino.review as StrapiContent[]} />
                         </CardContent>
                     </Card>
                 </div>

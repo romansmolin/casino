@@ -6,10 +6,10 @@
 // 2. Add to config/plugins.js: graphql: { enabled: true }
 // 3. Uncomment the lines below
 
-const graphql = require('./graphql/graphql')
+import graphql from './graphql/graphql.js';
 
-module.exports = {
-  register({strapi}) {
-    graphql(strapi)
+export default {
+  register({ strapi }) {
+    graphql(strapi);
   }
-}
+};

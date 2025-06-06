@@ -12,6 +12,7 @@
     "ts:check-watch": "tsc --noEmit --watch"
   },
   "dependencies": {
+    "@creazy231/strapi-plugin-apollo-sandbox": "^0.0.15",
     "@strapi/design-system": "^1.19.0",
     "@strapi/icons": "^1.19.0",
     "@strapi/plugin-cloud": "5.15.0",

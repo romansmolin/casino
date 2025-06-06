@@ -1,18 +1,19 @@
 'use strict';
 
-const top = require('../api/top/graphql')
-const casino = require('../api/casino/graphql')
-const bonuses = require('../api/bonus/graphql')
-const pages = require('../api/page/graphql')
-const globalSearch = require('../api/search/graphql')
-const newsletter = require('../api/newsletter/graphql')
-const nodemailer = require('../api/nodemailer/graphql')
-const extensions = [top, casino, bonuses, pages, globalSearch, newsletter, nodemailer]
+import top from '../api/top/graphql.js';
+import casino from '../api/casino/graphql.js';
+import bonuses from '../api/bonus/graphql.js';
+import pages from '../api/page/graphql.js';
+import globalSearch from '../api/search/graphql.js';
+import newsletter from '../api/newsletter/graphql.js';
+import nodemailer from '../api/nodemailer/graphql.js';
 
-module.exports = (strapi) => {
-  const extensionService = strapi.plugin('graphql').service('extension')
+const extensions = [top, casino, bonuses, pages, globalSearch, newsletter, nodemailer];
+
+export default (strapi) => {
+  const extensionService = strapi.plugin('graphql').service('extension');
 
   for (const extension of extensions) {
-    extensionService.use(extension(strapi))
+    extensionService.use(extension(strapi));
   }
-}
+};

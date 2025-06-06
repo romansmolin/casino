@@ -1,16 +1,21 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BonusBonusInfo extends Schema.Component {
+export interface BonusBonusInfo extends Struct.ComponentSchema {
   collectionName: 'components_bonus_bonus_infos';
   info: {
+    description: '';
     displayName: 'BonusInfo';
     icon: 'feather';
-    description: '';
   };
   attributes: {
-    release_date: Attribute.Date;
-    bonus_type: Attribute.JSON &
-      Attribute.CustomField<
+    availableFor: Schema.Attribute.JSON;
+    bonus_status: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Active', 'Innactive']
+      >;
+    bonus_type: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
           'No Deposit Bonus:no-deposit-bonuses',
@@ -23,153 +28,147 @@ export interface BonusBonusInfo extends Schema.Component {
           '50 Free Spins:50-free-spins-bonuses',
           '100 Free Spins:100-free-spins-bonuses',
           'Free Spins Bonus:free-spins-bonuses',
-          ''
+          '',
         ]
       >;
-    bonus_status: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        ['Active', 'Innactive']
-      >;
-    availableFor: Attribute.JSON;
+    release_date: Schema.Attribute.Date;
   };
 }
 
-export interface BonusMainBonusInfo extends Schema.Component {
+export interface BonusMainBonusInfo extends Struct.ComponentSchema {
   collectionName: 'components_bonus_main_bonus_infos';
   info: {
+    description: '';
     displayName: 'MainBonusInfo';
     icon: 'bold';
-    description: '';
   };
   attributes: {
-    bonusLink: Attribute.String;
-    info: Attribute.Blocks;
-    bonus: Attribute.Relation<
-      'bonus.main-bonus-info',
-      'oneToOne',
-      'api::bonus.bonus'
-    >;
+    bonus: Schema.Attribute.Relation<'oneToOne', 'api::bonus.bonus'>;
+    bonusLink: Schema.Attribute.String;
+    info: Schema.Attribute.Blocks;
   };
 }
 
-export interface CardCasinoCard extends Schema.Component {
+export interface CardCasinoCard extends Struct.ComponentSchema {
   collectionName: 'components_card_casino_cards';
   info: {
+    description: '';
     displayName: 'CasinoCard';
     icon: 'code';
-    description: '';
   };
   attributes: {
-    title: Attribute.String;
-    main_bonus_title: Attribute.String;
-    logo: Attribute.Media;
-    rating: Attribute.Integer &
-      Attribute.SetMinMax<
+    casino: Schema.Attribute.Relation<'oneToOne', 'api::casino.casino'>;
+    hasLiveCasino: Schema.Attribute.Boolean;
+    hasLiveChat: Schema.Attribute.Boolean;
+    hasRegularOffers: Schema.Attribute.Boolean;
+    hasVIPProgram: Schema.Attribute.Boolean;
+    logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    main_bonus_title: Schema.Attribute.String;
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
         {
           max: 100;
         },
         number
       >;
-    hasRegularOffers: Attribute.Boolean;
-    hasLiveCasino: Attribute.Boolean;
-    hasVIPProgram: Attribute.Boolean;
-    hasLiveChat: Attribute.Boolean;
-    casino: Attribute.Relation<
-      'card.casino-card',
-      'oneToOne',
-      'api::casino.casino'
-    >;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface CardPromoCard extends Schema.Component {
+export interface CardPromoCard extends Struct.ComponentSchema {
   collectionName: 'components_card_promo_cards';
   info: {
+    description: '';
     displayName: 'PromoCard';
     icon: 'cube';
-    description: '';
   };
   attributes: {
-    bonus_title: Attribute.String;
-    bonus_subtitle: Attribute.String;
-    bonus_img: Attribute.Media;
-    link: Attribute.String;
+    bonus_img: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    bonus_subtitle: Schema.Attribute.String;
+    bonus_title: Schema.Attribute.String;
+    link: Schema.Attribute.String;
   };
 }
 
-export interface ContentContentSection extends Schema.Component {
+export interface ContentContentSection extends Struct.ComponentSchema {
   collectionName: 'components_content_content_sections';
   info: {
-    displayName: 'ContentSection';
     description: '';
+    displayName: 'ContentSection';
   };
   attributes: {
-    text: Attribute.Blocks & Attribute.Required;
-    image: Attribute.Media;
-    position: Attribute.Enumeration<['left', 'rigth']> & Attribute.Required;
-    imageBackgroundColor: Attribute.JSON &
-      Attribute.CustomField<
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageBackgroundColor: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
         'plugin::multi-select.multi-select',
         ['Pinky Red:#dd3070', 'Orange:#DD7030', 'Blue:#3030DD', '']
       >;
+    position: Schema.Attribute.Enumeration<['left', 'rigth']> &
+      Schema.Attribute.Required;
+    text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
-export interface FaqFaqItem extends Schema.Component {
+export interface FaqFaq extends Struct.ComponentSchema {
+  collectionName: 'components_faq_faqs';
+  info: {
+    description: '';
+    displayName: 'FAQ';
+  };
+  attributes: {
+    fact1: Schema.Attribute.Component<'faq.faq-item', true>;
+  };
+}
+
+export interface FaqFaqItem extends Struct.ComponentSchema {
   collectionName: 'components_faq_faq_items';
   info: {
     displayName: 'FaqItem';
   };
   attributes: {
-    text: Attribute.Text;
-    label: Attribute.String;
+    label: Schema.Attribute.String;
+    text: Schema.Attribute.Text;
   };
 }
 
-export interface FaqFaq extends Schema.Component {
-  collectionName: 'components_faq_faqs';
-  info: {
-    displayName: 'FAQ';
-    description: '';
-  };
-  attributes: {
-    fact1: Attribute.Component<'faq.faq-item', true>;
-  };
-}
-
-export interface ListAvailablePromosList extends Schema.Component {
+export interface ListAvailablePromosList extends Struct.ComponentSchema {
   collectionName: 'components_list_available_promos_lists';
   info: {
     displayName: 'AvailablePromosList';
     icon: 'apps';
   };
   attributes: {
-    Promo: Attribute.Component<'card.promo-card'>;
+    Promo: Schema.Attribute.Component<'card.promo-card', false>;
   };
 }
 
-export interface ListCasinoTopList extends Schema.Component {
+export interface ListCasinoTopList extends Struct.ComponentSchema {
   collectionName: 'components_list_casino_top_lists';
   info: {
     displayName: 'CasinoTopList';
     icon: 'apps';
   };
   attributes: {
-    CasinoCard: Attribute.Component<'card.casino-card', true>;
+    CasinoCard: Schema.Attribute.Component<'card.casino-card', true>;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'bonus.bonus-info': BonusBonusInfo;
       'bonus.main-bonus-info': BonusMainBonusInfo;
       'card.casino-card': CardCasinoCard;
       'card.promo-card': CardPromoCard;
       'content.content-section': ContentContentSection;
-      'faq.faq-item': FaqFaqItem;
       'faq.faq': FaqFaq;
+      'faq.faq-item': FaqFaqItem;
       'list.available-promos-list': ListAvailablePromosList;
       'list.casino-top-list': ListCasinoTopList;
     }

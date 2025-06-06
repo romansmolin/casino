@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'mysql2');
+  const client = env('DATABASE_CLIENT', 'mysql');
 
   const connections = {
     mysql: {
@@ -75,6 +75,7 @@ module.exports = ({ env }) => {
     //     filename: path.join(
     //       __dirname,
     //       '..',
+    //       '..',
     //       env('DATABASE_FILENAME', '.tmp/data.db')
     //     ),
     //   },
@@ -88,5 +89,8 @@ module.exports = ({ env }) => {
       ...connections[client],
       acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
+    settings: {
+      useTypescriptMigrations: true
+    }
   };
 };

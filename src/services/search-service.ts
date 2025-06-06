@@ -1,17 +1,16 @@
 "use strict";
 
-const globalSearch = async (query, locale) => {
+import {
+  searchCasinosByName,
+  searchBonusesByCasinoName,
+} from "../repositories/search-repository";
+
+const globalSearch = async (query: string, locale: string) => {
   try {
     console.log("query: ", query);
     const [casinos, bonuses] = await Promise.all([
-      strapi.service("api::casino.casino").find({
-        filters: { name: { $containsi: query } },
-        locale,
-      }),
-      strapi.service("api::bonus.bonus").find({
-        locale,
-        filters: { casinoName: { $containsi: query } },
-      }),
+      searchCasinosByName(query, locale),
+      searchBonusesByCasinoName(query, locale),
     ]);
 
     console.log("bonuses: ", bonuses);
@@ -20,12 +19,12 @@ const globalSearch = async (query, locale) => {
       throw new Error("Casino not found");
     }
 
-    const casinoSearchResult = casinos.results.map((casino) => ({
+    const casinoSearchResult = casinos.results.map((casino: any) => ({
       casinoName: casino.name,
       casinoUuid: casino.uuid,
     }));
 
-    const bonusSearchResult = bonuses.results.map((bonus) => ({
+    const bonusSearchResult = bonuses.results.map((bonus: any) => ({
       bonusTitle: bonus.bonusTitle,
       bonusUuid: bonus.uuid,
       casinoName: bonus.casinoName,

@@ -2,15 +2,15 @@
 
 import { casinoMapper } from "../mappers/casino-mappers";
 import { paginate } from "./paginate";
+import {
+  findCasinoByUuid,
+  findCasinosByLocale,
+  findAllCasinosByLocale,
+} from "../repositories/casino-repository";
 
-const getCasinoByUUID = async (uuid, locale) => {
+const getCasinoByUUID = async (uuid: string, locale: string) => {
   try {
-    const data = await strapi.service("api::casino.casino").find({
-      populate: ["logo", "faq.fact1", "mainBonus", "mainBonus.bonus", "Bonus"],
-      // populate: "*",
-      filters: { uuid },
-      locale,
-    });
+    const data = await findCasinoByUuid(uuid, locale);
 
     if (!data) {
       throw new Error("Casino not found");
@@ -36,24 +36,13 @@ const getCasinoByUUID = async (uuid, locale) => {
   }
 };
 
-const getCasinosByType = async (args) => {
+const getCasinosByType = async (args: any) => {
   try {
-    const casinos = await strapi.service("api::casino.casino").find({
-      populate: [
-        "logo",
-        "Promos",
-        "Promos.Promo",
-        "Promos.Promo.bonus_img",
-        "faq.fact1",
-        "mainBonus",
-        "localizations",
-      ],
-      locale: args.locale,
-    });
+    const casinos = await findCasinosByLocale(args.locale);
     const { page, number, casinoType } = args;
 
-    const filteredCasinos = casinos.results.filter((casino) =>
-      casino.casinoType.some((type) => type === casinoType),
+    const filteredCasinos = casinos.results.filter((casino: any) =>
+      casino.casinoType.some((type: string) => type === casinoType),
     );
 
     if (!casinos) {
@@ -63,7 +52,9 @@ const getCasinosByType = async (args) => {
       };
     }
 
-    const mappedCasinos = filteredCasinos.map((casino) => casinoMapper(casino));
+    const mappedCasinos = filteredCasinos.map((casino: any) =>
+      casinoMapper(casino),
+    );
     const { items: casinoItems, totalPages } = paginate(
       mappedCasinos,
       page,
@@ -83,26 +74,17 @@ const getCasinosByType = async (args) => {
   }
 };
 
-const getAllCasinosWithoutPagination = async (args) => {
+const getAllCasinosWithoutPagination = async (args: any) => {
   try {
     const { locale } = args;
 
-    const casinos = await strapi.service("api::casino.casino").find({
-      locale,
-      populate: [
-        "logo",
-        "Promos",
-        "Promos.Promo",
-        "Promos.Promo.bonus_img",
-        "faq.fact1",
-        "mainBonus",
-        "localizations",
-      ],
-    });
+    const casinos = await findAllCasinosByLocale(locale);
 
     console.log("casinos: ", casinos);
 
-    const mappedCasinos = casinos.results.map((casino) => casinoMapper(casino));
+    const mappedCasinos = casinos.results.map((casino: any) =>
+      casinoMapper(casino),
+    );
 
     return {
       casinos: mappedCasinos,

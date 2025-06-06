@@ -2,10 +2,11 @@ import {
   pageContentSectionMapper,
   pageFaqSectionMapper,
 } from "../mappers/page-mappers";
+import { findPagesByLocale } from "../repositories/page-repository";
 
-const processedPageContent = (content) =>
+const processedPageContent = (content: any) =>
   content
-    .map((contentItem) => {
+    .map((contentItem: any) => {
       switch (contentItem.__component) {
         case "content.content-section":
           return pageContentSectionMapper(contentItem);
@@ -15,20 +16,13 @@ const processedPageContent = (content) =>
           return null; // Handle unknown types
       }
     })
-    .filter((item) => item !== null);
+    .filter((item: any) => item !== null);
 
-const getPageContentBySlug = async (slug, locale) => {
+const getPageContentBySlug = async (slug: string, locale: string) => {
   try {
-    const pages = await strapi.service("api::page.page").find({
-      populate: [
-        "dynamicContent",
-        "dynamicContent.image",
-        "dynamicContent.fact1",
-      ],
-      locale,
-    });
+    const pages = await findPagesByLocale(locale);
 
-    const page = pages.results.find((page) => page.slug === slug);
+    const page = pages.results.find((page: any) => page.slug === slug);
 
     if (!page) {
       return {

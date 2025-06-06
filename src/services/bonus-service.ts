@@ -2,14 +2,18 @@
 
 import { bonusMapper, bonusMapperWithExtras } from "../mappers/bonus-mappers";
 import { paginate } from "./paginate";
+import {
+  findAllBonuses,
+  findAllBonusesByLocale,
+  findBonusesByTypeAndLocale,
+  findBonusByUuid,
+} from "../repositories/bonus-repository";
 
-const getAllBonuses = async (args) => {
+const getAllBonuses = async (args: any) => {
   try {
-    const data = await strapi.services["api::bonus.bonus"].find({
-      populate: ["casinos", "logo", "bonus_info", "casinos.logo"],
-    });
+    const data = await findAllBonuses();
 
-    const mappedBonuses = data.results.map((item) => bonusMapper(item));
+    const mappedBonuses = data.results.map((item: any) => bonusMapper(item));
     const { page, number } = args;
     const { items: bonuses, totalPages } = paginate(
       mappedBonuses,
@@ -29,14 +33,11 @@ const getAllBonuses = async (args) => {
   }
 };
 
-const getAllBonusesWithoutPagination = async (args) => {
+const getAllBonusesWithoutPagination = async (args: any) => {
   try {
-    const data = await strapi.service("api::bonus.bonus").find({
-      locale: args.locale,
-      populate: ["casinos", "logo", "bonus_info", "casinos.logo"],
-    });
+    const data = await findAllBonusesByLocale(args.locale);
 
-    const mappedBonuses = data.results.map((item) => bonusMapper(item));
+    const mappedBonuses = data.results.map((item: any) => bonusMapper(item));
 
     console.log("mappedBonuses: ", mappedBonuses);
 
@@ -51,19 +52,16 @@ const getAllBonusesWithoutPagination = async (args) => {
   }
 };
 
-const getBonusesByType = async (args) => {
+const getBonusesByType = async (args: any) => {
   try {
-    const data = await strapi.service("api::bonus.bonus").find({
-      populate: ["casinos", "logo", "bonus_info", "casinos.logo", "faq.fact1"],
-      locale: args.locale,
-    });
+    const data = await findBonusesByTypeAndLocale(args.locale);
 
     const { page, number, type } = args;
-    const filteredBonuses = data.results.filter((bonus) =>
+    const filteredBonuses = data.results.filter((bonus: any) =>
       bonus.bonus_info.bonus_type.includes(type),
     );
 
-    const filteredProcessedBonuses = filteredBonuses.map((item) =>
+    const filteredProcessedBonuses = filteredBonuses.map((item: any) =>
       bonusMapper(item),
     );
     const { items: bonuses, totalPages } = paginate(
@@ -84,21 +82,9 @@ const getBonusesByType = async (args) => {
   }
 };
 
-const getBonusById = async (uuid, locale) => {
+const getBonusById = async (uuid: string, locale: string) => {
   try {
-    const data = await strapi.service("api::bonus.bonus").find({
-      locale,
-      filters: { uuid },
-      populate: [
-        "casinos",
-        "logo",
-        "bonus_info",
-        "casinos.logo",
-        "faq.fact1",
-        "bonusOverview",
-        "localizations",
-      ],
-    });
+    const data = await findBonusByUuid(uuid, locale);
 
     if (!data || !data.results.length) {
       throw new Error("Bonus not found");

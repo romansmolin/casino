@@ -28,7 +28,7 @@ const CasinoMainBonus = async ({
 
                         <div className="flex flex-col md:flex-row gap-3">
                             <Button size="lg" asChild>
-                                <Link href={mainBonus.bonusLink} className="flex gap-2">
+                                <Link href={mainBonus.bonusLink || '#'} className="flex gap-2">
                                     <SquareMousePointer />
                                     {t('claim-bonus')}
                                 </Link>

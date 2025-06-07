@@ -22,6 +22,7 @@ interface Casino {
     casinoType: CasinoType[]
     uuid: string
     allowedCountries: string[]
+    allowedCurrencies: string[]
 }
 
 interface CasinoReview extends Casino {

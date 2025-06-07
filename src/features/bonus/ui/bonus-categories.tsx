@@ -47,7 +47,7 @@ const BonusCategories = () => {
     return (
         <div className="relative w-[calc(100%+1.25rem)] md:w-[unset]">
             <ScrollArea>
-                <div className="flex flex-row  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="flex flex-row  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-4">
                     {categories.map((category) => {
                         const { icon: Icon, color } = BONUS_CATEGORIES_CONFIG[category]
                         return (

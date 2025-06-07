@@ -11,12 +11,14 @@ import { Card, CardContent, CardTitle } from '@/shared/ui/card'
 import { notFound } from 'next/navigation'
 import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 import Typography from '@/shared/components/typography/typography'
-import { CircleHelp } from 'lucide-react'
+import { CircleHelp, Coins, Currency } from 'lucide-react'
 import { StrapiContent } from '@/entities/page-content/model/types'
 
 const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
     const locale = await getLocale()
     const { casino, error } = await fetchCasinoByUuid<CasinoReview>(uuid, locale)
+
+    console.log('casino: ', casino)
 
     if (!casino || error) notFound()
 
@@ -51,17 +53,39 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
                 </div>
             </div>
 
-            <Card className="bento-block space-y-5">
-                <CardTitle className="flex items-center gap-2">
-                    <CircleHelp className="mr-2 h-8 w-8" />
-                    <Typography as="h2" variant="h2">
-                        Allowed Countries
-                    </Typography>
-                </CardTitle>
-                <CardContent>
-                    <AllowedCountriesSection allowedCountries={casino.allowedCountries} />
-                </CardContent>
-            </Card>
+            {casino.allowedCountries?.length > 0 && (
+                <Card className="bento-block space-y-5">
+                    <CardTitle className="flex items-center gap-2">
+                        <CircleHelp className="mr-2 h-8 w-8" />
+                        <Typography as="h2" variant="h2">
+                            Allowed Countries
+                        </Typography>
+                    </CardTitle>
+                    <CardContent>
+                        <AllowedCountriesSection allowedCountries={casino.allowedCountries} />
+                    </CardContent>
+                </Card>
+            )}
+
+            {casino.allowedCurrencies?.length > 0 && (
+                <Card className="bento-block space-y-5">
+                    <CardTitle className="flex items-center gap-2">
+                        <Coins className="mr-2 h-8 w-8" />
+                        <Typography as="h2" variant="h2">
+                            Accepted Currencies
+                        </Typography>
+                    </CardTitle>
+                    <CardContent>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                            {casino.allowedCurrencies.map((currency) => (
+                                <div key={currency} className="flex items-center gap-2 p-2 border rounded-md">
+                                    <span className="text-sm font-medium text-green-500">{currency}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
+            )}
 
             <CasinoReviewFaq faq={casino.faq} casinoName={casino.name} />
         </>

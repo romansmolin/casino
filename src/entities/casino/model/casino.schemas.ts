@@ -31,6 +31,7 @@ export const CASINO_BY_UUID = gql`
             rating
             casinoType
             allowedCountries
+            allowedCurrencies
             review {
                 type
                 children {
@@ -69,8 +70,8 @@ export const CASINO_BY_UUID = gql`
 `
 
 export const CASINOS_BY_TYPE = gql`
-    query GetCasinosByType($casinoType: String!, $locale: String!) {
-        getCasinosByType(casinoType: $casinoType, locale: $locale) {
+    query GetCasinosByType($casinoType: String!, $locale: String!, $page: Int!, $number: Int!) {
+        getCasinosByType(casinoType: $casinoType, locale: $locale, page: $page, number: $number) {
             totalPages
             casinos {
                 id

@@ -34,7 +34,7 @@ const content: Record<string, any> = {
 const PageContentRenderer: React.FC<ContentRendererProps> = ({ pageContent }) => {
     return (
         <div className="flex flex-col rounded-xl gap-5 w-[100%] bg-clip-border">
-            {pageContent.map((contentItem, idx) => {
+            {pageContent?.map((contentItem, idx) => {
                 const renderContent = content[contentItem.type]
                 return renderContent ? renderContent(contentItem, idx) : null
             })}

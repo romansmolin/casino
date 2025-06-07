@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 export default `
     type GetCasinoByUUID {
@@ -14,6 +14,7 @@ export default `
       mainBonus: MainBonus
       casinoType: [String]
       allowedCountries: [String]
+      allowedCurrencies: [String]
     }
 
     type GetCasinoByType {
@@ -83,7 +84,7 @@ export default `
 
     extend type Query {
         getCasinoByUUID(uuid: String!, locale: String!): GetCasinoByUUID
-        getCasinosByType(casinoType: String!, locale: String!): GetCasinoByType        
+        getCasinosByType(casinoType: String!, locale: String!, page: Int!, number: Int!): GetCasinoByType        
         getAllCasinosWithoutPagination(locale: String!): GetAllCasinosWithoutPagination
     }
 `;

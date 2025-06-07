@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "affiliate_links",
+  "info": {
+    "singularName": "affiliate-link",
+    "pluralName": "affiliate-links",
+    "displayName": "Affiliate Link",
+    "description": "User-friendly links that redirect to affiliate URLs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[a-z0-9-]+$"
+    },
+    "targetUrl": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "clickCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "expiresAt": {
+      "type": "datetime",
+      "required": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "bonus": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bonus.bonus",
+      "inversedBy": "affiliate_link"
+    },
+    "casino": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::casino.casino",
+      "inversedBy": "affiliate_link"
+    }
+  }
+}

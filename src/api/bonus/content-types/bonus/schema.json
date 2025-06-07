@@ -24,13 +24,13 @@
     },
     "bonus_info": {
       "type": "component",
-      "repeatable": false,
-      "component": "bonus.bonus-info",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "component": "bonus.bonus-info",
+      "repeatable": false
     },
     "bonus_subtitle": {
       "type": "string",
@@ -50,6 +50,11 @@
     },
     "logo": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": true,
       "required": false,
       "allowedTypes": [
@@ -57,12 +62,7 @@
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "bonusOverview": {
       "type": "blocks",
@@ -95,24 +95,30 @@
     },
     "faq": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "faq.faq"
+      "component": "faq.faq",
+      "repeatable": false
     },
     "primaryBonusType": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
       "enum": [
         "no-deposit-bonuses"
       ]
+    },
+    "affiliate_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::affiliate-link.affiliate-link",
+      "mappedBy": "bonus"
     }
   }
 }

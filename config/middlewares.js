@@ -28,6 +28,10 @@ module.exports = [
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
+  {
+    name: 'global::affiliate-redirect',
+    config: {},
+  },
   'strapi::body',
   'strapi::session',
   'strapi::favicon',

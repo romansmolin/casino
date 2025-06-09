@@ -13,12 +13,12 @@ import AllowedCountriesSection from '@/shared/components/allowed-countries-secti
 import Typography from '@/shared/components/typography/typography'
 import { CircleHelp, Coins, Currency } from 'lucide-react'
 import { StrapiContent } from '@/entities/page-content/model/types'
+import { getCasinoBySlug } from '@/entities/casino/api/casino.api'
+import { Locale } from '@/shared/lib/i18n/routing'
 
-const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
+const CasinoReviewPage = async ({ slug }: { slug: string }) => {
     const locale = await getLocale()
-    const { casino, error } = await fetchCasinoByUuid<CasinoReview>(uuid, locale)
-
-    console.log('casino: ', casino)
+    const { casino, error } = await getCasinoBySlug(slug, locale as Locale)
 
     if (!casino || error) notFound()
 
@@ -31,6 +31,7 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
                     bonusTitle={casino.bonus_title}
                     logo={casino.logoUrl}
                     casinoType={casino.casinoType}
+                    affiliateLink={casino.affiliateLink}
                 />
                 <CasinoReviewHighlights
                     casinoName={casino.name}
@@ -47,13 +48,19 @@ const CasinoReviewPage = async ({ uuid }: { uuid: string }) => {
                 <div className="lg:w-2/3">
                     <Card>
                         <CardContent className="space-y-5 bento-block">
-                            <CasinoReviewRenderer contentData={casino.review as StrapiContent[]} />
+                            {casino.review && Array.isArray(casino.review) && casino.review.length > 0 ? (
+                                <CasinoReviewRenderer contentData={casino.review as StrapiContent[]} />
+                            ) : (
+                                <div className="text-center text-muted-foreground">
+                                    No review content available
+                                </div>
+                            )}
                         </CardContent>
                     </Card>
                 </div>
             </div>
 
-            {casino.allowedCountries?.length > 0 && (
+            {casino.allowedCountries.length > 0 && (
                 <Card className="bento-block space-y-5">
                     <CardTitle className="flex items-center gap-2">
                         <CircleHelp className="mr-2 h-8 w-8" />

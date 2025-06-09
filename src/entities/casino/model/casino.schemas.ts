@@ -32,6 +32,8 @@ export const CASINO_BY_UUID = gql`
             casinoType
             allowedCountries
             allowedCurrencies
+            slug
+            affiliateLink
             review {
                 type
                 children {
@@ -80,6 +82,7 @@ export const CASINOS_BY_TYPE = gql`
                 logoUrl
                 features
                 rating
+                slug
                 mainBonus {
                     bonusLink
                     info {
@@ -93,7 +96,58 @@ export const CASINOS_BY_TYPE = gql`
                 }
                 casinoType
                 uuid
+                affiliateLink
             }
+        }
+    }
+`
+
+export const CASINO_BY_SLUG = gql`
+    query GetCasinoBySlug($slug: String!, $locale: String!) {
+        getCasinoBySlug(slug: $slug, locale: $locale) {
+            name
+            mainBonus {
+                bonus {
+                    uuid
+                    primaryBonusType
+                }
+                bonusLink
+                info {
+                    type
+                    children {
+                        type
+                        text
+                        bold
+                    }
+                }
+            }
+            allowedCountries
+            allowedCurrencies
+            bonus_title
+            casinoType
+            faq {
+                label
+                text
+            }
+            features
+            id
+            logoUrl
+            rating
+            review {
+                type
+                children {
+                    bold
+                    children {
+                        text
+                        type
+                    }
+                    text
+                    type
+                    url
+                }
+            }
+            slug
+            affiliateLink
         }
     }
 `
@@ -105,6 +159,15 @@ export const GET_ALL_CASINOS_WITHOUT_PAGINATION = gql`
                 name
                 uuid
             }
+        }
+    }
+`
+
+export const GET_CASINO_SEO_INFO_BY_SLUG = gql`
+    query GetCasinoSeoInfoBySlug($locale: String!, $slug: String!) {
+        getCasinoSeoInfoBySlug(locale: $locale, slug: $slug) {
+            description
+            title
         }
     }
 `

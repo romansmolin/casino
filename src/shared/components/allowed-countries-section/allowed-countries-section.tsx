@@ -1,11 +1,14 @@
 'use client'
 import useAllCountries from '@/shared/hooks/use-get-all-countries'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 
 const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: string[] }) => {
-    const { countries } = useAllCountries()
+    const { countries, error } = useAllCountries()
 
+    useEffect(() => {
+        console.log('error: ', error)
+    }, [])
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {countries

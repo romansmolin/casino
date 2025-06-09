@@ -5,7 +5,7 @@ import React from 'react'
 import { StrapiContent, StrapiContentItem } from '../model/types'
 
 const StrapiTextRenderer = ({ contentData }: { contentData: StrapiContent[] }) => {
-    return contentData.map((item: StrapiContent, index: number) => {
+    return contentData?.map((item: StrapiContent, index: number) => {
         if (item.type === 'heading' && item.children[0]?.text) {
             return (
                 <Typography

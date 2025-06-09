@@ -4,6 +4,7 @@ import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardHeader } from '@/shared/ui/card'
 import { Dice1, Dices } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface CasinoHighlightProps {
@@ -11,9 +12,16 @@ interface CasinoHighlightProps {
     bonusTitle: string
     logo: string
     casinoType: CasinoType[]
+    affiliateLink: string
 }
 
-const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bonusTitle, casinoType }) => {
+const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({
+    casinoName,
+    logo,
+    bonusTitle,
+    casinoType,
+    affiliateLink,
+}) => {
     return (
         <Card className="lg:w-1/3 h-full flex flex-col bento-block !p-0">
             <CardHeader className="!p-0">
@@ -39,9 +47,11 @@ const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({ casinoName, logo, bo
                 </div>
 
                 {/* Push this to bottom */}
-                <Button className="w-full" size="lg">
-                    <Dices />
-                    Play Now
+                <Button className="w-full" size="lg" asChild>
+                    <Link href={affiliateLink}>
+                        <Dices />
+                        Play Now
+                    </Link>
                 </Button>
             </CardContent>
         </Card>

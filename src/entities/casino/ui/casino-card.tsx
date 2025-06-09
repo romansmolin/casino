@@ -15,9 +15,19 @@ interface CasinoCardProps {
     features: string[]
     rating: number
     casinoType: string[]
+    slug: string
+    affiliateLink: string
 }
 
-const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, logoUrl, rating }) => {
+const CasinoCard: React.FC<CasinoCardProps> = async ({
+    uuid,
+    name,
+    bonusTitle,
+    logoUrl,
+    rating,
+    slug,
+    affiliateLink,
+}) => {
     const locale = await getLocale()
     const t = await getTranslations('casinoTopCard')
 
@@ -41,7 +51,7 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, l
 
             <CardFooter className="flex flex-col space-y-2 px-5 lg:px-4">
                 <Button size="lg" className="w-full" variant="outline" asChild>
-                    <Link
+                    {/* <Link
                         href={{
                             pathname: `/${locale}/casino-review/${bonusrUrlFriendly(name)}`,
                             query: {
@@ -50,13 +60,17 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({ uuid, name, bonusTitle, l
                         }}>
                         <Book />
                         {t('review')}
+                    </Link> */}
+                    <Link href={`/${locale}/casino-review/${slug}`}>
+                        <Book />
+                        {t('review')}
                     </Link>
                 </Button>
-                <Button className="w-full relative cursor-pointer transition-all " size="lg">
-                    <div className="z-10 flex gap-2 items-center">
+                <Button className="w-full relative cursor-pointer transition-all " size="lg" asChild>
+                    <Link href={affiliateLink} className="z-10 flex gap-2 items-center">
                         <Eye />
                         Visit Casino
-                    </div>
+                    </Link>
                 </Button>
             </CardFooter>
         </Card>

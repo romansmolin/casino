@@ -48,12 +48,12 @@ const BonusCategories = () => {
         <div className="relative w-[calc(100%+1.25rem)] md:w-[unset]">
             <ScrollArea>
                 <div className="flex flex-row  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-4">
-                    {categories.map((category) => {
-                        const { icon: Icon, color } = BONUS_CATEGORIES_CONFIG[category]
+                    {categories.map((bonuses) => {
+                        const { icon: Icon, color } = BONUS_CATEGORIES_CONFIG[bonuses]
                         return (
                             <Card
-                                key={category as keyof typeof BONUS_CATEGORIES_CONFIG}
-                                onClick={() => router.push(`/${locale}/category/${category}`)}
+                                key={bonuses as keyof typeof BONUS_CATEGORIES_CONFIG}
+                                onClick={() => router.push(`/${locale}/bonuses/${bonuses}`)}
                                 className={`flex justify-center items-center transition-all duration-300 ease-in-out transform md:hover:scale-105 md:hover:shadow-xl md:hover:rotate-1 ${color} shrink-0`}>
                                 <CardContent className="w-56 flex flex-col justify-center items-center h-64 gap-6 cursor-pointer p-4">
                                     {Icon && (
@@ -65,7 +65,7 @@ const BonusCategories = () => {
                                         as="h2"
                                         variant="h2"
                                         className="text-center text-white font-bold transition-all duration-300 ease-in-out transform group-hover:scale-105">
-                                        {t(category)}
+                                        {t(bonuses)}
                                     </Typography>
                                 </CardContent>
                             </Card>

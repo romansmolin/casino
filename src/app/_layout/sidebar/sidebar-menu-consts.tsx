@@ -1,9 +1,4 @@
-import {
-    Bot,
-    SquareTerminal,
-    Landmark,
-    Info,
-} from 'lucide-react'
+import { Bot, SquareTerminal, Landmark, Info } from 'lucide-react'
 export const menu = {
     user: {
         name: 'shadcn',
@@ -64,19 +59,19 @@ export const menu = {
             items: [
                 {
                     title: 'sportsbook-casinos',
-                    url: 'casino-category/sportsbook-casinos',
+                    url: 'casinos/sportsbook-casinos',
                 },
                 {
                     title: 'pay-n-play-casinos',
-                    url: 'casino-category/pay-n-play-casinos',
+                    url: 'casinos/pay-n-play-casinos',
                 },
                 {
                     title: 'crypto-casinos',
-                    url: 'casino-category/crypto-casinos',
+                    url: 'casinos/crypto-casinos',
                 },
                 {
                     title: 'fresh-casinos',
-                    url: 'casino-category/fresh-casinos',
+                    url: 'casinos/fresh-casinos',
                 },
             ],
         },

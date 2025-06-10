@@ -65,10 +65,7 @@ const ReviewProcessSection = async () => {
                                 <span>Our Process</span>
                                 <ArrowRight className="h-4 w-4" />
                             </div>
-                            <Typography
-                                as="h2"
-                                variant="h1"
-                                className="bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
+                            <Typography as="h2" variant="h1" className="text-primary">
                                 {t('title')}
                             </Typography>
                             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">

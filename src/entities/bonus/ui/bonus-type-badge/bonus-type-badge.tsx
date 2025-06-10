@@ -10,22 +10,16 @@ import Link from 'next/link'
 const sizeClasses: Record<BadgeSize, string> = {
     sm: 'h-6 text-xs',
     md: 'h-8 text-sm',
-    lg: 'h-10 text-base'
+    lg: 'h-10 text-base',
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
     default: '',
     outline: 'bg-transparent border-2',
-    secondary: 'bg-opacity-10'
+    secondary: 'bg-opacity-10',
 }
 
-const BonusTypeBadge = async ({
-    type,
-    variant = 'default',
-    size = 'md',
-    className,
-    onClick
-}: BadgeProps) => {
+const BonusTypeBadge = async ({ type, variant = 'default', size = 'md', className, onClick }: BadgeProps) => {
     const t = await getTranslations('common')
     const locale = await getLocale()
     const config = BONUS_CATEGORIES_CONFIG
@@ -41,11 +35,14 @@ const BonusTypeBadge = async ({
                 badgeConfig?.color,
                 className
             )}
-            onClick={onClick}
-        >
-            <Link href={`/${locale}/category/${type}`} className='flex items-center justify-center gap-1 whitespace-nowrap'>
+            onClick={onClick}>
+            <Link
+                href={`/${locale}/bonuses/${type}`}
+                className="flex items-center justify-center gap-1 whitespace-nowrap">
                 {Icon && <Icon className="w-4 h-4" />}
-                <Typography as="p" variant='small' className='text-[12px]'>{t(type)}</Typography>
+                <Typography as="p" variant="small" className="text-[12px]">
+                    {t(type)}
+                </Typography>
             </Link>
         </Badge>
     )

@@ -6,7 +6,6 @@ import { MetadataRoute } from 'next'
 
 const BASE_URL = 'http://localhost:3000'
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const locales: Locale[] = ['ru', 'en'] // Ensure proper typing
 
@@ -28,9 +27,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const generateRoutesForCasinoReviews = async (locale: Locale) => {
         try {
-            const {casinos} = await getAllCasinosWithoutPagination(locale)
+            const { casinos } = await getAllCasinosWithoutPagination(locale)
 
-            return casinos.map((casino) => ({
+            return casinos?.map((casino) => ({
                 url: `${BASE_URL}/${locale}/casino-review/${bonusrUrlFriendly(casino.name)}?id=${casino.uuid}`,
                 // lastModified: new Date(),
                 changeFrequency: 'weekly' as const,
@@ -45,22 +44,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const generateRoutesForStaticPages = async (locale: Locale) => {
         const staticRoutes = [
             '/',
-            '/category/no-deposit-bonuses',
-            '/category/free-spins-bonuses',
-            '/category/free-cash-bonuses',
-            '/category/0-wager-bonuses',
-            '/category/welcome-bonuses',
-            '/category/cashback-bonuses',
-            '/category/crypto-bonuses',
-            '/casino-category/sportsbook-casinos',
-            '/casino-category/fresh-casinos',
-            '/casino-category/crypto-casinos',
-            '/casino-category/pay-n-play-casinos',
+            '/bonuses/no-deposit-bonuses',
+            '/bonuses/free-spins-bonuses',
+            '/bonuses/free-cash-bonuses',
+            '/bonuses/0-wager-bonuses',
+            '/bonuses/welcome-bonuses',
+            '/bonuses/cashback-bonuses',
+            '/bonuses/crypto-bonuses',
+            '/casinos/sportsbook-casinos',
+            '/casinos/fresh-casinos',
+            '/casinos/crypto-casinos',
+            '/casinos/pay-n-play-casinos',
             '/terms-and-conditions',
-            '/about-us'
+            '/about-us',
         ]
 
-        return staticRoutes.map(route => ({
+        return staticRoutes.map((route) => ({
             url: `${BASE_URL}/${locale}${route}`,
             // lastModified: new Date(),
             changeFrequency: 'weekly' as const,

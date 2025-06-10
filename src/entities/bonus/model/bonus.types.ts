@@ -1,5 +1,7 @@
+import { ApiError } from '@/shared/utils/error-handler'
+
 /* eslint-disable no-unused-vars */
-interface Bonus {   
+export interface Bonus {
     casinoName: string
     casinoUuid: string
     bonusSubtitle: string
@@ -10,18 +12,40 @@ interface Bonus {
     primaryBonusType: string
     bonusReview: StrapiContent[]
     faqInfo: BonusFaq[]
+    slug: string
 }
 
-type BonusFaq = {
+export type BonusFaq = {
     label: string
     text: string
 }
 
-type BonusInfo = {
-    releaseDate: string,
-    availableFor: string[], 
+export type BonusInfo = {
+    releaseDate: string
+    availableFor: string[]
     bonusType: BonusCategoryType[]
     bonusStatus: 'active' | 'inactive'
 }
 
-type BonusCategoryType = 'free-spins-bonuses' | 'real-money-bonuses' | 'cashback-bonuses' | 'no-deposit-bonuses' | 'best-of-the-month';
+export type BonusCategoryType =
+    | 'free-spins-bonuses'
+    | 'real-money-bonuses'
+    | 'cashback-bonuses'
+    | 'no-deposit-bonuses'
+    | 'best-of-the-month'
+
+export interface BonusesByTypeResponse {
+    bonuses: Bonus[]
+    totalPages: number
+    error: ApiError | null
+}
+
+export interface BonusByIdResponse {
+    bonus: Bonus | null
+    error: ApiError | null
+}
+
+export interface BonusesWithoutPaginationResponse {
+    bonuses: Bonus[]
+    error: ApiError | null
+}

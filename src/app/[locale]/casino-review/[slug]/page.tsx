@@ -4,16 +4,16 @@ import LoadingIndicator from '@/shared/components/loading-indicator/loading-indi
 import { getCasinoSeoInfoBySlug } from '@/entities/casino/api/casino.api'
 
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }) {
-    // const post = await fetchPostData(params.slug); // Fetch data dynamically
     const { slug } = await params
     const { locale } = await params
 
-    const { title, description } = await getCasinoSeoInfoBySlug(slug, locale)
+    const { title, description, keywords } = await getCasinoSeoInfoBySlug(slug, locale)
     const year = new Date().getFullYear()
 
     return {
         title: `${title} | ${year}`,
         description,
+        keywords,
     }
 }
 

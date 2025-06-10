@@ -65,10 +65,7 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                             <Sparkles className="h-4 w-4" />
                             <span>Limited Time Offer</span>
                         </div>
-                        <Typography
-                            as="h2"
-                            variant="h1"
-                            className="bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
+                        <Typography as="h2" variant="h1" className="text-primary">
                             Exclusive Bonuses
                         </Typography>
                         <p className="text-xl text-muted-foreground max-w-[600px] leading-relaxed">

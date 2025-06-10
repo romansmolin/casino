@@ -1,4 +1,4 @@
-import { BonusDetailsCard, fetchBonusById } from '@/entities/bonus'
+import { BonusDetailsCard, fetchBonusBySlug } from '@/entities/bonus'
 import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
 import { StrapiContent } from '@/entities/page-content/model/types'
 import { Accardion } from '@/shared/components/accardion'
@@ -11,9 +11,9 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 
-const BonusReviewPage = async ({ uuid }: { uuid: string }) => {
+const BonusReviewPage = async ({ slug }: { slug: string }) => {
     const locale = await getLocale()
-    const { bonus, error } = await fetchBonusById(uuid, locale as Locale)
+    const { bonus, error } = await fetchBonusBySlug(slug, locale as Locale)
 
     if (!bonus || error) notFound()
 

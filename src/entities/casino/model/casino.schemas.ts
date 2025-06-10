@@ -5,7 +5,7 @@ export const CASINO_TOP_BY_COUNTRY = gql`
         getTopByCountryName(country: $country, locale: $locale) {
             id
             country
-            top_list {
+            topList {
                 rating
                 title
                 main_bonus_title
@@ -168,6 +168,7 @@ export const GET_CASINO_SEO_INFO_BY_SLUG = gql`
         getCasinoSeoInfoBySlug(locale: $locale, slug: $slug) {
             description
             title
+            keywords
         }
     }
 `

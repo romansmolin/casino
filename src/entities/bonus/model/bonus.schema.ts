@@ -9,6 +9,7 @@ export const GET_BONUSES_BY_TYPE = gql`
                 bonusSubtitle
                 bonusTitle
                 uuid
+                slug
                 casinoLogo
                 primaryBonusType
                 info {
@@ -33,6 +34,7 @@ export const GET_ALL_BONUSES = gql`
                 bonusTitle
                 casinoLogo
                 uuid
+                slug
                 info {
                     releaseDate
                     availableFor
@@ -90,6 +92,55 @@ export const GET_ALL_BONUSES_WITHOUT_PAGINATION = gql`
                 casinoName
                 uuid
                 primaryBonusType
+            }
+        }
+    }
+`
+
+export const GET_SEO_INFO_BY_BONUS_SLUG = gql`
+    query GetBonusSeoInfoBySlug($slug: String!, $locale: String!) {
+        getBonusSeoInfoBySlug(slug: $slug, locale: $locale) {
+            title
+            description
+            keywords
+        }
+    }
+`
+
+export const GET_BONUS_BY_SLUG = gql`
+    query GetBonusBySlug($slug: String!, $locale: String!) {
+        getBonusBySlug(slug: $slug, locale: $locale) {
+            bonus {
+                casinoName
+                uuid
+                primaryBonusType
+                info {
+                    releaseDate
+                    bonusType
+                    bonusStatus
+                    availableFor
+                }
+                casinoUuid
+                casinoLogo
+                bonusTitle
+                bonusSubtitle
+                bonusReview {
+                    type
+                    children {
+                        url
+                        type
+                        text
+                        children {
+                            type
+                            text
+                        }
+                        bold
+                    }
+                }
+                faqInfo {
+                    text
+                    label
+                }
             }
         }
     }

@@ -30,3 +30,13 @@ export const GET_PAGE_CONTENT_BY_SLUG = gql`
         }
     }
 `
+
+export const GET_PAGE_SEO_BY_SLUG = gql`
+    query GetPageSeoInfoBySlug($slug: String!, $locale: String!) {
+        getPageSeoInfoBySlug(slug: $slug, locale: $locale) {
+            title
+            keywords
+            description
+        }
+    }
+`

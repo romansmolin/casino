@@ -8,80 +8,90 @@ import {
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
 import { Locale } from '@/shared/lib/i18n/routing'
+import { ApiError, handleError } from '@/shared/utils/error-handler'
+import { Casino, CasinoReview, CasinoTopEntry } from '../model/casino.types'
 
-interface ApiError {
-    message: string
-    code?: string
-    originalError?: any
+// API Response Types
+interface CasinoTopByCountryResponse {
+    topByCountry: CasinoTopEntry[] | null
+    error: ApiError | null
 }
 
-const handleError = (error: any, context: string): ApiError => {
-    console.error(`Error in ${context}:`, error)
+interface CasinoByUuidResponse<T = Casino> {
+    casino: T | null
+    error: ApiError | null
+}
 
-    if (error?.graphQLErrors?.length > 0) {
-        return {
-            message: error.graphQLErrors[0].message,
-            code: error.graphQLErrors[0].extensions?.code,
-            originalError: error,
-        }
-    }
+interface CasinosByTypeResponse {
+    casinos: Casino[] | null
+    totalPages: number
+    error: ApiError | null
+}
 
-    if (error?.networkError) {
-        return {
-            message: 'Network error occurred',
-            code: 'NETWORK_ERROR',
-            originalError: error,
-        }
-    }
+interface CasinosWithoutPaginationResponse {
+    casinos: Casino[] | null
+    error: ApiError | null
+}
 
-    return {
-        message: error?.message || 'An unexpected error occurred',
-        code: 'UNKNOWN_ERROR',
-        originalError: error,
-    }
+interface CasinoBySlugResponse {
+    casino: CasinoReview | null
+    error: ApiError | null
+}
+
+interface CasinoSeoInfoResponse {
+    title: string | null
+    description: string | null
+    keywords: string[] | null
+    error: ApiError | null
 }
 
 export const fetchCasinoTopByCountryServer = async (
     country: string,
     locale: string
-): Promise<{ topByCountry?: any; error?: ApiError }> => {
+): Promise<CasinoTopByCountryResponse> => {
     try {
         const { data, error } = await getServerQuery(CASINO_TOP_BY_COUNTRY, { country, locale })
 
         if (error) {
             return {
+                topByCountry: null,
                 error: handleError(error, 'fetchCasinoTopByCountryServer'),
             }
         }
 
         return {
-            topByCountry: data?.getTopByCountryName.top_list,
+            topByCountry: data?.getTopByCountryName.top_list || null,
+            error: null,
         }
     } catch (err) {
         return {
+            topByCountry: null,
             error: handleError(err, 'fetchCasinoTopByCountryServer'),
         }
     }
 }
 
-export const fetchCasinoByUuid = async <T>(
+export const fetchCasinoByUuid = async <T = Casino>(
     uuid: string,
     locale: string
-): Promise<{ casino?: T; error?: ApiError }> => {
+): Promise<CasinoByUuidResponse<T>> => {
     try {
         const { data, error } = await getServerQuery(CASINO_BY_UUID, { uuid, locale })
 
         if (error) {
             return {
+                casino: null,
                 error: handleError(error, 'fetchCasinoByUuid'),
             }
         }
 
         return {
-            casino: data?.getCasinoByUUID as T,
+            casino: (data?.getCasinoByUUID as T) || null,
+            error: null,
         }
     } catch (err) {
         return {
+            casino: null,
             error: handleError(err, 'fetchCasinoByUuid'),
         }
     }
@@ -97,30 +107,34 @@ export const fetchCasinoByType = async ({
     number: number
     casinoType: string
     locale: Locale
-}): Promise<{ casinos?: any[]; totalPages?: number; error?: ApiError }> => {
+}): Promise<CasinosByTypeResponse> => {
     try {
-        if (!page) page = 1
-        console.log('page: ', page)
+        const normalizedPage = page || 1
 
         const { data, error } = await getServerQuery(CASINOS_BY_TYPE, {
             casinoType,
-            page,
+            page: normalizedPage,
             number,
             locale,
         })
 
         if (error) {
             return {
+                casinos: null,
+                totalPages: 0,
                 error: handleError(error, 'fetchCasinoByType'),
             }
         }
 
         return {
-            casinos: data?.getCasinosByType.casinos,
-            totalPages: data?.getCasinosByType.totalPages,
+            casinos: data?.getCasinosByType.casinos || null,
+            totalPages: data?.getCasinosByType.totalPages || 0,
+            error: null,
         }
     } catch (err) {
         return {
+            casinos: null,
+            totalPages: 0,
             error: handleError(err, 'fetchCasinoByType'),
         }
     }
@@ -128,44 +142,47 @@ export const fetchCasinoByType = async ({
 
 export const getAllCasinosWithoutPagination = async (
     locale: Locale
-): Promise<{ casinos?: Casino[]; error?: ApiError }> => {
+): Promise<CasinosWithoutPaginationResponse> => {
     try {
         const { data, error } = await getServerQuery(GET_ALL_CASINOS_WITHOUT_PAGINATION, { locale })
 
         if (error) {
             return {
+                casinos: null,
                 error: handleError(error, 'getAllCasinosWithoutPagination'),
             }
         }
 
         return {
-            casinos: data?.getAllCasinosWithoutPagination.casinos,
+            casinos: data?.getAllCasinosWithoutPagination.casinos || null,
+            error: null,
         }
     } catch (err) {
         return {
+            casinos: null,
             error: handleError(err, 'getAllCasinosWithoutPagination'),
         }
     }
 }
 
-export const getCasinoBySlug = async (
-    slug: string,
-    locale: Locale
-): Promise<{ casino?: CasinoReview; error?: ApiError }> => {
+export const getCasinoBySlug = async (slug: string, locale: Locale): Promise<CasinoBySlugResponse> => {
     try {
         const { data, error } = await getServerQuery(CASINO_BY_SLUG, { slug, locale })
 
         if (error) {
             return {
+                casino: null,
                 error: handleError(error, 'getCasinoBySlug'),
             }
         }
 
         return {
-            casino: data?.getCasinoBySlug,
+            casino: data?.getCasinoBySlug || null,
+            error: null,
         }
     } catch (err) {
         return {
+            casino: null,
             error: handleError(err, 'getCasinoBySlug'),
         }
     }
@@ -174,23 +191,31 @@ export const getCasinoBySlug = async (
 export const getCasinoSeoInfoBySlug = async (
     slug: string,
     locale: string
-): Promise<{ title?: string; description?: string; error?: ApiError }> => {
+): Promise<CasinoSeoInfoResponse> => {
     try {
         const { data, error } = await getServerQuery(GET_CASINO_SEO_INFO_BY_SLUG, { slug, locale })
 
         if (error) {
             return {
+                title: null,
+                description: null,
+                keywords: null,
                 error: handleError(error, 'getCasinoSeoInfoBySlug'),
             }
         }
 
         return {
-            title: data?.getCasinoSeoInfoBySlug?.title,
-            description: data?.getCasinoSeoInfoBySlug?.description,
+            title: data?.getCasinoSeoInfoBySlug?.title || null,
+            description: data?.getCasinoSeoInfoBySlug?.description || null,
+            keywords: data?.getCasinoSeoInfoBySlug?.keywords || null,
+            error: null,
         }
     } catch (err) {
         return {
-            error: handleError(err, 'getCasinoBySlug'),
+            title: null,
+            description: null,
+            keywords: null,
+            error: handleError(err, 'getCasinoSeoInfoBySlug'),
         }
     }
 }

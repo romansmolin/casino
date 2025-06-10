@@ -1,15 +1,16 @@
-import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator';
-import { BonusCategoryPage } from '@/views/bonus-category';
-import React, { Suspense } from 'react';
+import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+import { BonusCategoryPage } from '@/views/bonus-category'
+import React, { Suspense } from 'react'
 
 interface BonusCategoryProps {
-    params: Promise<{ bonusCategory: BonusCategoryType }>;
+    params: Promise<{ bonusCategory: BonusCategoryType }>
     searchParams: Promise<{ [key: string]: string | undefined }>
 }
 
 const BonusCategory: React.FC<BonusCategoryProps> = async ({ params, searchParams }) => {
-    const { bonusCategory } = await params;
-    const sp = await searchParams;
+    const { bonusCategory } = await params
+    const sp = await searchParams
     const { page } = sp
 
     return (
@@ -19,4 +20,4 @@ const BonusCategory: React.FC<BonusCategoryProps> = async ({ params, searchParam
     )
 }
 
-export default BonusCategory;
+export default BonusCategory

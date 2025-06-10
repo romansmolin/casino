@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-interface CasinoTopEntry {
+export interface CasinoTopEntry {
     rating: number
     title: string
     main_bonus_title: string
@@ -12,7 +12,7 @@ interface CasinoTopEntry {
     __typename: string
 }
 
-interface Casino {
+export interface Casino {
     name: string
     bonus_title: string
     logoUrl: string
@@ -27,12 +27,12 @@ interface Casino {
     affiliateLink: string
 }
 
-interface CasinoReview extends Casino {
+export interface CasinoReview extends Casino {
     review: StrapiContent[]
     faq: CasinoReviewFaq[]
 }
 
-type CasinoMainBonus = {
+export type CasinoMainBonus = {
     bonusLink: string
     info: StrapiContent[]
     bonus: {
@@ -41,12 +41,12 @@ type CasinoMainBonus = {
     }
 }
 
-type CasinoReviewFaq = {
+export type CasinoReviewFaq = {
     text: string
     label: string
 }
 
-type StrapiContentItem = {
+export type StrapiContentItem = {
     type: string
     text: string
     bold: boolean
@@ -56,9 +56,17 @@ type StrapiContentItem = {
     }[]
 }
 
-type StrapiContent = {
+export type StrapiContent = {
     type: string
     children: StrapiContentItem[]
 }
 
-type CasinoType = 'sportsbook' | 'fresh-casino' | 'crypto-casino' | 'pay-n-play'
+export type CasinoType = 'sportsbook' | 'fresh-casino' | 'crypto-casino' | 'pay-n-play'
+
+// Import types that may be used but not defined in this file
+type BonusCategoryType =
+    | 'free-spins-bonuses'
+    | 'real-money-bonuses'
+    | 'cashback-bonuses'
+    | 'no-deposit-bonuses'
+    | 'best-of-the-month'

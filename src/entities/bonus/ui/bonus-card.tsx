@@ -5,10 +5,10 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/shared/ui/card'
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 import { Gift } from 'lucide-react'
+import { BonusCategoryType, BonusInfo } from '../model/bonus.types'
 
 interface BonusCardProps {
     casinoName: string
@@ -17,9 +17,8 @@ interface BonusCardProps {
     bonusTitle: string
     casinoLogo: string
     info: BonusInfo
-    uuid: string
-    primaryBonusType: string
     bonusCardClass?: string
+    slug: string
 }
 
 const BonusCard: React.FC<BonusCardProps> = async ({
@@ -28,8 +27,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({
     bonusTitle,
     casinoLogo,
     info,
-    uuid,
-    primaryBonusType,
+    slug,
 }) => {
     const locale = await getLocale()
     const t = await getTranslations('bonuses')
@@ -45,8 +43,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({
                     <Image
                         src={casinoLogo}
                         alt={`${casinoName} logo`}
-                        className="w-24 h-24"
-                        width={100}
+                        width={150}
                         height={100}
                         blurDataURL="https://placehold.co/405x405"
                         priority
@@ -64,7 +61,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({
 
                 <div className="flex gap-2 flex-wrap">
                     {info.bonusType.map(
-                        (type) =>
+                        (type: BonusCategoryType) =>
                             type !== 'free-spins-bonuses' && (
                                 <BonusTypeBadge type={type} key={type} className="w-fit" />
                             )
@@ -74,11 +71,7 @@ const BonusCard: React.FC<BonusCardProps> = async ({
 
             <CardFooter className="px-5 lg:px-4">
                 <Button className="w-full" asChild size={'lg'}>
-                    <Link
-                        href={{
-                            pathname: `/${locale}/${bonusrUrlFriendly(primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
-                            query: { uuid },
-                        }}>
+                    <Link href={`/${locale}/bonus/${slug}`}>
                         <Gift />
                         {t('claim-bonus')}
                     </Link>

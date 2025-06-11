@@ -8,6 +8,7 @@ import {
     CASINO_BY_UUID,
     CASINO_TOP_BY_COUNTRY,
     GET_ALL_CASINOS_WITHOUT_PAGINATION,
+    GET_CASINO_CATEGORY_BY_SLUG,
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
 import { Casino, CasinoReview, CasinoTopEntry } from '../model/casino.types'
@@ -44,6 +45,10 @@ interface CasinoSeoInfoResponse {
     description: string | null
     keywords: string[] | null
     error: ApiError | null
+}
+
+interface CasinoCategoryBySlugResponse extends CasinoSeoInfoResponse {
+    categoryCasinoType: string | null
 }
 
 export const fetchCasinoTopByCountryServer = async (
@@ -228,6 +233,45 @@ export const getCasinoSeoInfoBySlug = async (
             description: null,
             keywords: null,
             error: handleError(err, 'getCasinoSeoInfoBySlug'),
+        }
+    }
+}
+
+export const fetchCasinoCategoryBySlug = async (
+    slug: string,
+    locale: Locale
+): Promise<CasinoCategoryBySlugResponse> => {
+    try {
+        const { data, error } = await getServerQuery(GET_CASINO_CATEGORY_BY_SLUG, {
+            slug,
+            locale,
+        })
+
+        if (error) {
+            return {
+                title: null,
+                description: null,
+                keywords: null,
+                categoryCasinoType: null,
+                error: handleError(error, 'fetchBonusCategoryBySlug'),
+            }
+        }
+
+        return {
+            title: data?.getCasinoCategoryBySlug?.seo.title || null,
+            description: data?.getCasinoCategoryBySlug?.seo.description || null,
+            keywords: data?.getCasinoCategoryBySlug?.seo.keywords || null,
+            categoryCasinoType:
+                data?.getCasinoCategoryBySlug?.casinoCategoryType.casinoType[0] || null,
+            error: null,
+        }
+    } catch (err) {
+        return {
+            title: null,
+            description: null,
+            keywords: null,
+            categoryCasinoType: null,
+            error: handleError(err, 'fetchBonusCategoryBySlug'),
         }
     }
 }

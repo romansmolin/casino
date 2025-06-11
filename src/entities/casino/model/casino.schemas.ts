@@ -182,3 +182,18 @@ export const GET_CASINO_SEO_INFO_BY_SLUG = gql`
         }
     }
 `
+export const GET_CASINO_CATEGORY_BY_SLUG = gql`
+    query GetCasinoCategoryBySlug($slug: String!, $locale: String) {
+        getCasinoCategoryBySlug(slug: $slug, locale: $locale) {
+            slug
+            seo {
+                title
+                keywords
+                description
+            }
+            casinoCategoryType {
+                casinoType
+            }
+        }
+    }
+`

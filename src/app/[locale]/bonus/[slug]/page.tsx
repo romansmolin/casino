@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const BonusReview = async ({ params }: { params: Promise<{ locale: Locale; slug: string }> }) => {
     const { slug } = await params
+    console.log('SLUG: ', slug)
 
     return (
         <Suspense fallback={<LoadingIndicator />}>

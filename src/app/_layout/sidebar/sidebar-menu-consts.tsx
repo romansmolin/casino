@@ -15,19 +15,19 @@ export const menu = {
                 {
                     icon: SquareTerminal,
                     title: 'no-deposit-bonuses',
-                    url: 'category/no-deposit-bonuses',
+                    url: 'bonuses/no-deposit-bonuses',
                 },
                 {
                     title: 'free-spins-bonuses',
-                    url: 'category/free-spins-bonuses',
+                    url: 'bonuses/free-spins-bonuses',
                 },
                 {
                     title: 'free-cash-bonuses',
-                    url: 'category/free-cash-bonuses',
+                    url: 'bonuses/free-cash-bonuses',
                 },
                 {
                     title: 'wager-free-bonuses',
-                    url: 'category/0-wager-bonuses',
+                    url: 'bonuses/0-wager-bonuses',
                 },
             ],
         },
@@ -39,15 +39,15 @@ export const menu = {
             items: [
                 {
                     title: 'welcome-bonuses',
-                    url: '#',
+                    url: 'bonuses/welcome-bonuses',
                 },
                 {
                     title: 'cashback-bonuses',
-                    url: '#',
+                    url: 'bonuses/cashback-bonuses',
                 },
                 {
                     title: 'crypto-bonuses',
-                    url: '#',
+                    url: 'bonuses/crypto-bonuses',
                 },
             ],
         },

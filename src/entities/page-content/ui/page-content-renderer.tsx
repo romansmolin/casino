@@ -2,6 +2,7 @@ import React from 'react'
 import PageContentSection from './page-content-section'
 
 import PageContentFaq from './page-content-faq'
+import { PageContentItem } from '../model/page-content.types'
 
 type Content = {
     type: string
@@ -15,7 +16,7 @@ type AccordionItem = {
 }
 
 interface ContentRendererProps {
-    pageContent: Content[]
+    pageContent: PageContentItem[]
 }
 
 const content: Record<string, any> = {

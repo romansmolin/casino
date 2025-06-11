@@ -3,6 +3,7 @@ import {
     GET_ALL_BONUSES_WITHOUT_PAGINATION,
     GET_BONUS_BY_SLUG,
     GET_BONUS_BY_UUID,
+    GET_BONUS_CATEGORY_BY_SLUG,
     GET_BONUSES_BY_TYPE,
     GET_SEO_INFO_BY_BONUS_SLUG,
 } from '../model/bonus.schema'
@@ -11,6 +12,7 @@ import { ApiError, handleError } from '@/shared/utils/error-handler'
 import {
     Bonus,
     BonusByIdResponse,
+    BonusBySlugResponse,
     BonusesByTypeResponse,
     BonusesWithoutPaginationResponse,
 } from '../model/bonus.types'
@@ -152,6 +154,41 @@ export const fetchBonusBySlug = async (
         return {
             bonus: null,
             error: handleError(err, 'fetchBonusBySlug'),
+        }
+    }
+}
+
+export const fetchBonusCategoryBySlug = async (
+    slug: string,
+    locale: string
+): Promise<BonusBySlugResponse> => {
+    try {
+        const { data, error } = await getServerQuery(GET_BONUS_CATEGORY_BY_SLUG, { slug, locale })
+
+        if (error) {
+            return {
+                title: null,
+                description: null,
+                keywords: null,
+                categoryBonusType: null,
+                error: handleError(error, 'fetchBonusCategoryBySlug'),
+            }
+        }
+
+        return {
+            title: data?.getBonusCategoryBySlug?.seo.title || null,
+            description: data?.getBonusCategoryBySlug?.seo.description || null,
+            keywords: data?.getBonusCategoryBySlug?.seo.keywords || null,
+            categoryBonusType: data?.getBonusCategoryBySlug?.bonusCategoryType.bonusType[0] || null,
+            error: null,
+        }
+    } catch (err) {
+        return {
+            title: null,
+            description: null,
+            keywords: null,
+            categoryBonusType: null,
+            error: handleError(err, 'fetchBonusCategoryBySlug'),
         }
     }
 }

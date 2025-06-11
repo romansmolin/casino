@@ -1,5 +1,6 @@
 import { FREE_SPINS_TYPES } from '@/entities/bonus'
 import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
+import { StrapiContent } from '@/entities/casino/model/casino.types'
 import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-content'
 import { BonusFreeSpinsSection, BonusGridWithPagination } from '@/features/bonus'
 import { Locale } from '@/shared/lib/i18n/routing'
@@ -10,7 +11,7 @@ const BonusCategoryPage = async ({
     bonusCategory,
     currentPage,
 }: {
-    bonusCategory: BonusCategoryType
+    bonusCategory: string
     currentPage: number
 }) => {
     const t = await getTranslations('free-spins-page')

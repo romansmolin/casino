@@ -1,3 +1,4 @@
+import { StrapiContent } from '@/entities/casino/model/casino.types'
 import { ApiError } from '@/shared/utils/error-handler'
 
 /* eslint-disable no-unused-vars */
@@ -47,5 +48,13 @@ export interface BonusByIdResponse {
 
 export interface BonusesWithoutPaginationResponse {
     bonuses: Bonus[]
+    error: ApiError | null
+}
+
+export interface BonusBySlugResponse {
+    title: string | null
+    description: string | null
+    keywords: string[] | null
+    categoryBonusType: string | null
     error: ApiError | null
 }

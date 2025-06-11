@@ -145,3 +145,19 @@ export const GET_BONUS_BY_SLUG = gql`
         }
     }
 `
+
+export const GET_BONUS_CATEGORY_BY_SLUG = gql`
+    query GetBonusCategoryBySlug($slug: String!, $locale: String) {
+        getBonusCategoryBySlug(slug: $slug, locale: $locale) {
+            slug
+            seo {
+                title
+                keywords
+                description
+            }
+            bonusCategoryType {
+                bonusType
+            }
+        }
+    }
+`

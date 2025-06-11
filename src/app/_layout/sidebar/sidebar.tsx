@@ -15,7 +15,6 @@ import {
 
 import Logo from '../../../../public/assets/logo'
 import { SidebarMenuList } from './sidebar-menu'
-import { menu } from './sidebar-menu-consts'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     const { open } = useSidebar()
@@ -33,7 +32,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
             </SidebarHeader>
 
             <SidebarContent>
-                <SidebarMenuList items={menu.bonuses} />
+                <SidebarMenuList />
 
                 {/* <NavProjects projects={data.projects} /> */}
             </SidebarContent>

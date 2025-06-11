@@ -10,40 +10,80 @@ import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import { cn } from '@/shared/lib/css'
+import { Locale } from '@/shared/lib/i18n/routing'
 import {
     SidebarGroup,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarMenuSkeleton,
     SidebarMenuSub,
     SidebarMenuSubButton,
     SidebarMenuSubItem,
     useSidebar,
 } from '@/shared/ui/sidebar'
+import { Skeleton } from '@/shared/ui/skeleton'
 
-export function SidebarMenuList({
-    items,
-}: {
-    items: {
-        title: string
-        url: string
-        icon?: LucideIcon
-        isActive?: boolean
-        items?: {
-            title: string
-            url: string
-            icon?: LucideIcon
-        }[]
-    }[]
-}) {
+import { useMenu } from './hooks/use-menu'
+
+export function SidebarMenuList() {
     const t = useTranslations('sidebar')
-    const locale = useLocale()
+    const locale = useLocale() as Locale
     const { isMobile } = useSidebar()
 
+    const { menuItems, loading, error, refetch } = useMenu(locale)
+
+    // Loading state with skeleton
+    if (loading) {
+        return (
+            <SidebarGroup>
+                <SidebarMenu>
+                    {Array.from({ length: 3 }).map((_, sectionIndex) => (
+                        <SidebarMenuItem key={sectionIndex}>
+                            <div className="flex items-center gap-2 p-2">
+                                <Skeleton className="h-4 w-4 rounded" />
+                                <Skeleton className="h-4 w-24" />
+                            </div>
+                            <SidebarMenuSub>
+                                {Array.from({ length: 3 }).map((_, itemIndex) => (
+                                    <SidebarMenuSubItem key={itemIndex}>
+                                        <div className="flex items-center gap-2 p-2 ml-6">
+                                            <Skeleton className="h-3 w-20" />
+                                        </div>
+                                    </SidebarMenuSubItem>
+                                ))}
+                            </SidebarMenuSub>
+                        </SidebarMenuItem>
+                    ))}
+                </SidebarMenu>
+            </SidebarGroup>
+        )
+    }
+
+    // Error state
+    if (error) {
+        return (
+            <SidebarGroup>
+                <div className="p-4 text-center">
+                    <p className="text-red-500 text-sm mb-2">
+                        Error loading menu: {error.message}
+                    </p>
+                    <button
+                        onClick={() => refetch?.()}
+                        className="text-xs px-2 py-1 bg-primary text-white rounded hover:bg-primary/80"
+                    >
+                        Retry
+                    </button>
+                </div>
+            </SidebarGroup>
+        )
+    }
+
+    // Main menu content
     return (
         <SidebarGroup>
             <SidebarMenu>
-                {items.map((item) => (
+                {menuItems.map((item) => (
                     <Collapsible
                         key={item.title}
                         asChild
@@ -54,7 +94,7 @@ export function SidebarMenuList({
                             <CollapsibleTrigger asChild>
                                 <SidebarMenuButton tooltip={item.title}>
                                     {item.icon && <item.icon />}
-                                    <span>{t(item.title)}</span>
+                                    <span>{item.title}</span>
                                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                 </SidebarMenuButton>
                             </CollapsibleTrigger>
@@ -71,7 +111,7 @@ export function SidebarMenuList({
                                                     className="flex gap-2"
                                                 >
                                                     {/* {subItem.icon && <subItem.icon />} */}
-                                                    <span>{t(subItem.title)}</span>
+                                                    <span>{subItem.title}</span>
                                                 </Link>
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>

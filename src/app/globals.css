@@ -211,5 +211,5 @@ body {
 }
 
 .bento-block {
-    @apply px-5 py-7 rounded-xl bg-card dark:bg-muted/50 md:min-h-min border border-border;
+    @apply px-5 py-7 rounded-xl bg-sidebar md:min-h-min border border-border;
 }

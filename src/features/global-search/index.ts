@@ -1,5 +1,3 @@
-import GlobalSearch from "./ui/global-search";
+import GlobalSearch from './ui/global-search'
 
-export {
-    GlobalSearch
-}
+export { GlobalSearch }

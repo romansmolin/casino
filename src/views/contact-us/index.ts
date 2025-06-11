@@ -1,5 +1,3 @@
-import ContactUsPage from "./ui/contact-us-page";
+import ContactUsPage from './ui/contact-us-page'
 
-export {
-    ContactUsPage
-}
+export { ContactUsPage }

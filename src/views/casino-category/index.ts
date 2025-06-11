@@ -1,5 +1,3 @@
-import CasinoCategoryPage from "./ui/casino-category-page";
+import CasinoCategoryPage from './ui/casino-category-page'
 
-export {
-    CasinoCategoryPage
-}
+export { CasinoCategoryPage }

@@ -1,16 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Input } from '@/shared/ui/input'
-import { Button } from '@/shared/ui/button'
-import { Bell, Loader2, Mail, Star, Zap, Sparkles } from 'lucide-react'
-import Image from 'next/image'
-import { useNewsletterMutation } from '../api/newsletter.api'
-import { useToast } from '@/shared/lib/react/use-toast'
+import { Bell, Loader2, Mail, Sparkles, Star, Zap } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { Card, CardContent } from '@/shared/ui/card'
+import Image from 'next/image'
+
+import React, { useState } from 'react'
+
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
+import { useToast } from '@/shared/lib/react/use-toast'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent } from '@/shared/ui/card'
+import { Input } from '@/shared/ui/input'
+
+import { useNewsletterMutation } from '../api/newsletter.api'
 
 const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
     const [email, setEmail] = useState<string>('')
@@ -48,7 +51,8 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
             className={cn(
                 'py-16 px-4 md:px-6 lg:px-8 relative overflow-hidden bento-block',
                 isAnimated && 'animate-bento-block'
-            )}>
+            )}
+        >
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
 
@@ -69,8 +73,8 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                             Exclusive Bonuses
                         </Typography>
                         <p className="text-xl text-muted-foreground max-w-[600px] leading-relaxed">
-                            Join our newsletter and unlock a world of insider tips, special offers, and
-                            game-changing updates.
+                            Join our newsletter and unlock a world of insider tips, special
+                            offers, and game-changing updates.
                         </p>
                     </div>
 
@@ -95,11 +99,16 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                                         text: 'Weekly industry insights and trends',
                                     },
                                 ].map((item, index) => (
-                                    <li key={index} className="flex items-center space-x-3 group">
+                                    <li
+                                        key={index}
+                                        className="flex items-center space-x-3 group"
+                                    >
                                         <div className="flex-shrink-0 p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                                             {item.icon}
                                         </div>
-                                        <span className="text-sm font-medium">{item.text}</span>
+                                        <span className="text-sm font-medium">
+                                            {item.text}
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
@@ -122,7 +131,8 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                             <Button
                                 type="submit"
                                 disabled={loading}
-                                className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground transition-colors">
+                                className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground transition-colors"
+                            >
                                 {loading ? (
                                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                                 ) : (
@@ -135,13 +145,15 @@ const NewsletterForm = ({ isAnimated = true }: { isAnimated?: boolean }) => {
                             By subscribing, you agree to our{' '}
                             <a
                                 href="#"
-                                className="text-primary hover:text-primary/80 underline underline-offset-4">
+                                className="text-primary hover:text-primary/80 underline underline-offset-4"
+                            >
                                 Terms
                             </a>{' '}
                             and{' '}
                             <a
                                 href="#"
-                                className="text-primary hover:text-primary/80 underline underline-offset-4">
+                                className="text-primary hover:text-primary/80 underline underline-offset-4"
+                            >
                                 Privacy Policy
                             </a>
                             .

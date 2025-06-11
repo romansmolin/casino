@@ -1,4 +1,4 @@
-import { Bitcoin, Zap, Sparkles, Trophy, LucideIcon } from 'lucide-react'
+import { Bitcoin, LucideIcon, Sparkles, Trophy, Zap } from 'lucide-react'
 
 const CASINO_CATEGORIES_CONFIG: Record<string, { color: string; icon?: LucideIcon }> = {
     'crypto-casinos': {
@@ -19,6 +19,4 @@ const CASINO_CATEGORIES_CONFIG: Record<string, { color: string; icon?: LucideIco
     },
 }
 
-export {
-    CASINO_CATEGORIES_CONFIG
-}
+export { CASINO_CATEGORIES_CONFIG }

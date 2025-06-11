@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react'
-import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+
 import { CasinoCategoryPage } from '@/views/casino-category'
+
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
 
 const CasinoCategory = async ({
     params,

@@ -1,6 +1,8 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/shared/ui/card'
 import { FrownIcon } from 'lucide-react'
+
 import React from 'react'
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
 
 const NotFoundPage = () => {
     return (
@@ -13,7 +15,8 @@ const NotFoundPage = () => {
                     <div className="flex flex-col items-center space-y-4">
                         <FrownIcon className="w-16 h-16 text-gray-400" />
                         <p className="text-center text-gray-600">
-                            We&apos;re sorry, but we couldn&apos;t find the page you are looking for
+                            We&apos;re sorry, but we couldn&apos;t find the page you are
+                            looking for
                         </p>
                     </div>
                 </CardContent>

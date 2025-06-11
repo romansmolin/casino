@@ -1,18 +1,24 @@
+import { notFound, redirect } from 'next/navigation'
+
+import React, { Suspense } from 'react'
+
+import { BonusCategoryPage } from '@/views/bonus-category'
+
 import { fetchBonusCategoryBySlug } from '@/entities/bonus'
-import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
-import { fetchPageSeoInfoBySlug } from '@/entities/page-content'
+
 import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { BonusCategoryPage } from '@/views/bonus-category'
-import { notFound, redirect } from 'next/navigation'
-import React, { Suspense } from 'react'
 
 interface BonusCategoryProps {
     params: Promise<{ slug: string; locale: Locale }>
     searchParams: Promise<{ [key: string]: string | undefined }>
 }
 
-export async function generateMetadata({ params }: { params: { slug: string; locale: Locale } }) {
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string; locale: Locale }
+}) {
     const { slug, locale } = params
     const { title, description, keywords } = await fetchBonusCategoryBySlug(slug, locale)
 

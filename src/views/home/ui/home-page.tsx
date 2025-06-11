@@ -1,17 +1,24 @@
-import React from 'react'
-import dynamic from 'next/dynamic'
 import { getTranslations } from 'next-intl/server'
+import dynamic from 'next/dynamic'
 
-import { fetchPageContentBySlug, PageContentRenderer as HomePageContent } from '@/entities/page-content'
+import React from 'react'
+
 import { BestBonusesOfTheMonth, BonusCategories } from '@/features/bonus'
 import { CasinoTop } from '@/features/casino'
+
+import {
+    PageContentRenderer as HomePageContent,
+    fetchPageContentBySlug,
+} from '@/entities/page-content'
 
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
 
 const ReviewProcessSection = dynamic(() => import('./review-process-section'))
 const TestimonialSection = dynamic(() => import('./testimonials-section'))
-const NewsletterForm = dynamic(() => import('../../../features/newsletter/ui/newsletter-section'))
+const NewsletterForm = dynamic(
+    () => import('../../../features/newsletter/ui/newsletter-section')
+)
 
 const testimonials = [
     {
@@ -65,7 +72,9 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
     return (
         <>
             <section className="space-y-5 flex-1 bento-block">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">{t('title')} 2024</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">
+                    {t('title')} 2024
+                </h1>
                 <CasinoTop byCountry="Germany" />
             </section>
 

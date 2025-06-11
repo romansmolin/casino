@@ -1,8 +1,11 @@
-import React from 'react'
 import Image from 'next/image'
+
+import React from 'react'
+
 import { cn } from '@/shared/lib/css'
-import StrapiTextRenderer from './strapi-text-renderer'
+
 import { StrapiContent } from '../model/types'
+import StrapiTextRenderer from './strapi-text-renderer'
 
 // Import or define the correct Strapi content types
 type StrapiContentItem = {
@@ -67,8 +70,10 @@ const ContentImage: React.FC<ImageProps> = ({
                     IMAGE_WRAPPER_BASE,
                     bgColorClass,
                     skewClass,
-                    animateOnHover && 'hover:scale-[1.02] hover:shadow-[0_0_50px_0_rgba(0,0,0,0.2)]'
-                )}>
+                    animateOnHover &&
+                        'hover:scale-[1.02] hover:shadow-[0_0_50px_0_rgba(0,0,0,0.2)]'
+                )}
+            >
                 {/* Animated background patterns */}
                 <div className="absolute inset-0 opacity-30">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] animate-pulse" />
@@ -79,7 +84,8 @@ const ContentImage: React.FC<ImageProps> = ({
                         'relative z-20 transform transition-transform duration-300',
                         imageSkewClass,
                         animateOnHover && 'group-hover:scale-105'
-                    )}>
+                    )}
+                >
                     <Image
                         src={url}
                         alt={altText}
@@ -125,7 +131,8 @@ const PageContentSection: React.FC<ContentSectionProps> = ({
                 !disableAnimation && 'animate-bento-block',
                 !noBorder && 'border border-border',
                 className
-            )}>
+            )}
+        >
             {image ? (
                 <div className="flex flex-col gap-12 lg:flex-row justify-center items-center lg:gap-5">
                     {isLeft ? (

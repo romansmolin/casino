@@ -37,7 +37,8 @@ export function AnimatedCircularProgressBar({
                     '--percent-to-deg': '3.6deg',
                     transform: 'translateZ(0)',
                 } as React.CSSProperties
-            }>
+            }
+        >
             <svg fill="none" className="size-full" strokeWidth="2" viewBox="0 0 100 100">
                 {currentPercent <= 90 && currentPercent >= 0 && (
                     <circle
@@ -59,7 +60,8 @@ export function AnimatedCircularProgressBar({
                                 transform:
                                     'rotate(calc(1turn - 90deg - (var(--gap-percent) * var(--percent-to-deg) * var(--offset-factor-secondary)))) scaleY(-1)',
                                 transition: 'all var(--transition-length) ease var(--delay)',
-                                transformOrigin: 'calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)',
+                                transformOrigin:
+                                    'calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)',
                             } as React.CSSProperties
                         }
                     />
@@ -84,14 +86,16 @@ export function AnimatedCircularProgressBar({
                             transitionProperty: 'stroke-dasharray,transform',
                             transform:
                                 'rotate(calc(-90deg + var(--gap-percent) * var(--offset-factor) * var(--percent-to-deg)))',
-                            transformOrigin: 'calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)',
+                            transformOrigin:
+                                'calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)',
                         } as React.CSSProperties
                     }
                 />
             </svg>
             <span
                 data-current-value={currentPercent}
-                className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in">
+                className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
+            >
                 {currentPercent} %
             </span>
         </div>

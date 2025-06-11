@@ -1,13 +1,16 @@
-import React from 'react'
-import Image from 'next/image'
-import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
-import { Card, CardContent } from '@/shared/ui/card'
-import { Button } from '@/shared/ui/button'
-import Link from 'next/link'
 import { SquareMousePointer } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import React from 'react'
+
 import { StrapiContent } from '@/entities/page-content/model/types'
+import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
+
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent } from '@/shared/ui/card'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
 const CasinoMainBonus = async ({
     mainBonus,
@@ -41,7 +44,8 @@ const CasinoMainBonus = async ({
                                             pathname: `/${locale}/${bonusrUrlFriendly(mainBonus.bonus.primaryBonusType)}/${bonusrUrlFriendly(casinoName)}`,
                                             query: { uuid: mainBonus.bonus.uuid },
                                         }}
-                                        className="flex gap-2">
+                                        className="flex gap-2"
+                                    >
                                         <SquareMousePointer />
                                         {t('read')}
                                     </Link>

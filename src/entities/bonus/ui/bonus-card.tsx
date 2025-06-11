@@ -1,14 +1,17 @@
-import React from 'react'
-import Image from 'next/image'
-import { Button } from '@/shared/ui/button'
-import { Card, CardHeader, CardContent, CardFooter } from '@/shared/ui/card'
-import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
-import Link from 'next/link'
+import { Gift } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import React from 'react'
+
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
-import { Gift } from 'lucide-react'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
+
 import { BonusCategoryType, BonusInfo } from '../model/bonus.types'
+import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 
 interface BonusCardProps {
     casinoName: string
@@ -37,7 +40,8 @@ const BonusCard: React.FC<BonusCardProps> = async ({
             className={cn(
                 'w-full border flex flex-col max-w-[270px] min-w-[270px] md:max-w-[unset] mx-auto md:min-w-[305px]  lg:max-w-[unset] space-y-5 h-full',
                 bonusCardClass
-            )}>
+            )}
+        >
             <CardHeader className="w-full p-[unset] mb-[unset]">
                 <div className="bg-primary w-full flex justify-center rounded-xl items-center">
                     <Image

@@ -1,20 +1,21 @@
-import React, { ElementType, ReactNode } from 'react';
-import { cn } from '@/shared/lib/css';
+import React, { ElementType, ReactNode } from 'react'
+
+import { cn } from '@/shared/lib/css'
 
 type TypographyProps = {
-    as?: ElementType;
-    children: ReactNode;
-    className?: string;
-    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'body' | 'medium' | 'small';
-    align?: 'left' | 'center' | 'right' | 'justify';
-    nowrap?: boolean;
-};
+    as?: ElementType
+    children: ReactNode
+    className?: string
+    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'body' | 'medium' | 'small'
+    align?: 'left' | 'center' | 'right' | 'justify'
+    nowrap?: boolean
+}
 
 const Typography: React.FC<TypographyProps> = ({
     as: Component = 'p',
     children,
     className,
-    variant = 'body', 
+    variant = 'body',
     align = 'left',
     nowrap = false,
     ...props
@@ -27,14 +28,14 @@ const Typography: React.FC<TypographyProps> = ({
         body: 'text-base',
         medium: 'text-md',
         small: 'text-sm',
-    };
+    }
 
     const alignment: Record<NonNullable<TypographyProps['align']>, string> = {
         left: 'text-left',
         center: 'text-center',
         right: 'text-right',
         justify: 'text-justify',
-    };
+    }
 
     return (
         <Component
@@ -48,7 +49,7 @@ const Typography: React.FC<TypographyProps> = ({
         >
             {children}
         </Component>
-    );
-};
+    )
+}
 
-export default Typography;
+export default Typography

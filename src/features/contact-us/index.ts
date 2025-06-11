@@ -1,5 +1,3 @@
-import ContactUsForm from "./ui/contact-us-form";
+import ContactUsForm from './ui/contact-us-form'
 
-export {
-    ContactUsForm
-}
+export { ContactUsForm }

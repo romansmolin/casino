@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import * as React from 'react'
 
 import {
@@ -10,10 +12,10 @@ import {
     SidebarRail,
     useSidebar,
 } from '@/shared/ui/sidebar'
+
+import Logo from '../../../../public/assets/logo'
 import { SidebarMenuList } from './sidebar-menu'
 import { menu } from './sidebar-menu-consts'
-import Link from 'next/link'
-import Logo from '../../../../public/assets/logo'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
     const { open } = useSidebar()

@@ -1,12 +1,15 @@
 'use client'
 
-import { Dices } from 'lucide-react';
+import { Dices } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import React, { useEffect } from 'react'
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Card, CardContent } from '@/shared/ui/card';
-import { cn } from '@/shared/lib/css';
-import Typography from '../typography/typography';
+
+import { cn } from '@/shared/lib/css'
+import { Card, CardContent } from '@/shared/ui/card'
+
+import Typography from '../typography/typography'
 
 const getTableContentData = (contentData: StrapiContent[]) => {
     const tableContent: TableContentItem[] = []
@@ -15,7 +18,7 @@ const getTableContentData = (contentData: StrapiContent[]) => {
         if (item.type === 'heading') {
             tableContent.push({
                 heading: item.children[0].text,
-                linkId: String(idx)
+                linkId: String(idx),
             })
         }
     })
@@ -24,7 +27,7 @@ const getTableContentData = (contentData: StrapiContent[]) => {
 }
 
 type TableContentItem = {
-    heading: string;
+    heading: string
     linkId: string
 }
 
@@ -33,10 +36,12 @@ const TableContent = ({ content }: { content: StrapiContent[] }) => {
     const tableContent = getTableContentData(content)
 
     return (
-        <Card className={cn('bento-block lg:h-[calc(100vh-20px)] lg:top-[15px] lg:sticky',)}>
-            <CardContent className='border-0'>
+        <Card className={cn('bento-block lg:h-[calc(100vh-20px)] lg:top-[15px] lg:sticky')}>
+            <CardContent className="border-0">
                 <div className={'flex flex-col rounded-xl'}>
-                    <Typography as="h3" variant='h4' className="font-bold mb-2">Table Of Content</Typography>
+                    <Typography as="h3" variant="h4" className="font-bold mb-2">
+                        Table Of Content
+                    </Typography>
                     <ul>
                         {tableContent.map((item) => (
                             <li key={item.heading}>

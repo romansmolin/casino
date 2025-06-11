@@ -1,9 +1,13 @@
+import { Metadata } from 'next/types'
+
+import { Suspense } from 'react'
+
+import { HomePage } from '@/views/home'
+
 import { fetchPageSeoInfoBySlug } from '@/entities/page-content'
+
 import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { HomePage } from '@/views/home'
-import { Metadata } from 'next/types'
-import { Suspense } from 'react'
 
 interface HomePageProps {
     params: Promise<{ locale: Locale }>

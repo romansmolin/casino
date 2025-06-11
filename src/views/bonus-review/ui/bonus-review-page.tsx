@@ -1,15 +1,18 @@
+import { CheckCircleIcon, CircleHelp, HandMetal } from 'lucide-react'
+import { getLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+
+import React from 'react'
+
 import { BonusDetailsCard, fetchBonusBySlug } from '@/entities/bonus'
-import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
 import { StrapiContent } from '@/entities/page-content/model/types'
+import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
+
 import { Accardion } from '@/shared/components/accardion'
+import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { Card, CardContent, CardTitle } from '@/shared/ui/card'
-import { CheckCircleIcon, CircleHelp, HandMetal } from 'lucide-react'
-import { getLocale } from 'next-intl/server'
-import React from 'react'
-import { notFound } from 'next/navigation'
-import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 
 const BonusReviewPage = async ({ slug }: { slug: string }) => {
     const locale = await getLocale()

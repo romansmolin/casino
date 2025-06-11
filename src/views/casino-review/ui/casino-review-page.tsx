@@ -1,20 +1,24 @@
-import { getLocale } from 'next-intl/server'
-import React from 'react'
-import CasinoReviewCard from './casino-review-card'
-import CasinoReviewHighlights from './casino-review-highlights'
-import { TableContent as CasinoTableContent } from '@/shared/components/table-content'
-import CasinoReviewFaq from './casino-review-faq'
-import CasinoMainBonus from './casino-main-bonus'
-import { CasinoAvailability, fetchCasinoByUuid } from '@/entities/casino'
-import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
-import { Card, CardContent, CardTitle } from '@/shared/ui/card'
-import { notFound } from 'next/navigation'
-import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
-import Typography from '@/shared/components/typography/typography'
 import { CircleHelp, Coins, Currency } from 'lucide-react'
-import { StrapiContent } from '@/entities/page-content/model/types'
+import { getLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+
+import React from 'react'
+
+import { CasinoAvailability, fetchCasinoByUuid } from '@/entities/casino'
 import { getCasinoBySlug } from '@/entities/casino/api/casino.api'
+import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
+import { StrapiContent } from '@/entities/page-content/model/types'
+
+import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
+import { TableContent as CasinoTableContent } from '@/shared/components/table-content'
+import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
+import { Card, CardContent, CardTitle } from '@/shared/ui/card'
+
+import CasinoMainBonus from './casino-main-bonus'
+import CasinoReviewCard from './casino-review-card'
+import CasinoReviewFaq from './casino-review-faq'
+import CasinoReviewHighlights from './casino-review-highlights'
 
 const CasinoReviewPage = async ({ slug }: { slug: string }) => {
     const locale = await getLocale()
@@ -48,8 +52,12 @@ const CasinoReviewPage = async ({ slug }: { slug: string }) => {
                 <div className="lg:w-2/3">
                     <Card>
                         <CardContent className="space-y-5 bento-block">
-                            {casino.review && Array.isArray(casino.review) && casino.review.length > 0 ? (
-                                <CasinoReviewRenderer contentData={casino.review as StrapiContent[]} />
+                            {casino.review &&
+                            Array.isArray(casino.review) &&
+                            casino.review.length > 0 ? (
+                                <CasinoReviewRenderer
+                                    contentData={casino.review as StrapiContent[]}
+                                />
                             ) : (
                                 <div className="text-center text-muted-foreground">
                                     No review content available
@@ -85,8 +93,13 @@ const CasinoReviewPage = async ({ slug }: { slug: string }) => {
                     <CardContent>
                         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
                             {casino.allowedCurrencies.map((currency) => (
-                                <div key={currency} className="flex items-center gap-2 p-2 border rounded-md">
-                                    <span className="text-sm font-medium text-green-500">{currency}</span>
+                                <div
+                                    key={currency}
+                                    className="flex items-center gap-2 p-2 border rounded-md"
+                                >
+                                    <span className="text-sm font-medium text-green-500">
+                                        {currency}
+                                    </span>
                                 </div>
                             ))}
                         </div>

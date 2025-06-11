@@ -1,4 +1,5 @@
-import { Trophy, Wallet, BadgeDollarSign, RotateCcw, Gem, Bitcoin, Ribbon } from 'lucide-react'
+import { BadgeDollarSign, Bitcoin, Gem, Ribbon, RotateCcw, Trophy, Wallet } from 'lucide-react'
+
 import { BadgeConfig } from '../ui/bonus-type-badge/badge.types'
 
 const BONUS_CATEGORIES_CONFIG: Record<string, BadgeConfig> = {

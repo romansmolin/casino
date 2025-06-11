@@ -1,5 +1,3 @@
-import LanguageSwitcher from "./ui/language-switcher";
+import LanguageSwitcher from './ui/language-switcher'
 
-export {
-    LanguageSwitcher
-}
+export { LanguageSwitcher }

@@ -1,9 +1,12 @@
+import { getLocale, getTranslations } from 'next-intl/server'
+import Link from 'next/link'
+
+import React from 'react'
+
 import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 import { Badge } from '@/shared/ui/badge'
-import { getLocale, getTranslations } from 'next-intl/server'
-import Link from 'next/link'
-import React from 'react'
+
 import { CASINO_CATEGORIES_CONFIG } from '../const/config'
 import { CasinoType } from '../model/casino.types'
 
@@ -48,10 +51,12 @@ const CasinoTypeBadge: React.FC<CasinoTypeBadge> = async ({
                 variantClasses[variant],
                 badgeConfig?.color,
                 className
-            )}>
+            )}
+        >
             <Link
                 href={`/${locale}/casinos/${type}`}
-                className="flex items-center justify-center gap-1 whitespace-nowrap">
+                className="flex items-center justify-center gap-1 whitespace-nowrap"
+            >
                 {Icon && <Icon className="w-4 h-4" />}
                 <Typography as="p" variant="small" className="text-[12px]">
                     {t(type)}

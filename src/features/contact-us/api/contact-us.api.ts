@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client'
+
 import { SEND_CONTACT_US_FORM } from '../model/contact-us.schema'
 
 export const useContactUsMutation = () => {
@@ -6,7 +7,11 @@ export const useContactUsMutation = () => {
         fetchPolicy: 'network-only',
     })
 
-    const handleContactUs = async (email: string, name: string, message: string): Promise<{status: string, message: string}> => {
+    const handleContactUs = async (
+        email: string,
+        name: string,
+        message: string
+    ): Promise<{ status: string; message: string }> => {
         try {
             const response = await sendContactUsForm({
                 variables: { email, name, message },

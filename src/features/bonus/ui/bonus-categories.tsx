@@ -1,13 +1,16 @@
 'use client'
 
-import React from 'react'
-import { Card, CardContent } from '@/shared/ui/card'
-import Typography from '@/shared/components/typography/typography'
-import { useLocale, useTranslations } from 'next-intl'
 import { BadgeDollarSign, Bitcoin, Gem, RotateCcw, Trophy, Wallet } from 'lucide-react'
-import { BadgeConfig } from '@/entities/bonus/ui/bonus-type-badge/badge.types'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { ScrollBar, ScrollArea } from '@/shared/ui/scroll-area'
+
+import React from 'react'
+
+import { BadgeConfig } from '@/entities/bonus/ui/bonus-type-badge/badge.types'
+
+import Typography from '@/shared/components/typography/typography'
+import { Card, CardContent } from '@/shared/ui/card'
+import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
 
 //TODO: I was required to duplicate this const, since if I am importing it from consts.ts, next js throw weird error
 const BONUS_CATEGORIES_CONFIG: Record<string, BadgeConfig> = {
@@ -54,7 +57,8 @@ const BonusCategories = () => {
                             <Card
                                 key={bonuses as keyof typeof BONUS_CATEGORIES_CONFIG}
                                 onClick={() => router.push(`/${locale}/bonuses/${bonuses}`)}
-                                className={`flex justify-center items-center transition-all duration-300 ease-in-out transform md:hover:scale-105 md:hover:shadow-xl md:hover:rotate-1 ${color} shrink-0`}>
+                                className={`flex justify-center items-center transition-all duration-300 ease-in-out transform md:hover:scale-105 md:hover:shadow-xl md:hover:rotate-1 ${color} shrink-0`}
+                            >
                                 <CardContent className="w-56 flex flex-col justify-center items-center h-64 gap-6 cursor-pointer p-4">
                                     {Icon && (
                                         <div className="p-4 rounded-full bg-opacity-20 transition-all duration-300 ease-in-out md:transform md:group-hover:scale-110">
@@ -64,7 +68,8 @@ const BonusCategories = () => {
                                     <Typography
                                         as="h2"
                                         variant="h2"
-                                        className="text-center text-white font-bold transition-all duration-300 ease-in-out transform group-hover:scale-105">
+                                        className="text-center text-white font-bold transition-all duration-300 ease-in-out transform group-hover:scale-105"
+                                    >
                                         {t(bonuses)}
                                     </Typography>
                                 </CardContent>

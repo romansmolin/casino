@@ -1,5 +1,3 @@
-import BonusReviewPage from "./ui/bonus-review-page";
+import BonusReviewPage from './ui/bonus-review-page'
 
-export {
-    BonusReviewPage
-}
+export { BonusReviewPage }

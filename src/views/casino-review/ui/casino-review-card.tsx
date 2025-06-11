@@ -1,11 +1,14 @@
-import { CasinoTypeBadge } from '@/entities/casino'
-import Typography from '@/shared/components/typography/typography'
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardHeader } from '@/shared/ui/card'
 import { Dice1, Dices } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
 import React from 'react'
+
+import { CasinoTypeBadge } from '@/entities/casino'
+
+import Typography from '@/shared/components/typography/typography'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardHeader } from '@/shared/ui/card'
 
 interface CasinoHighlightProps {
     casinoName: string
@@ -42,7 +45,9 @@ const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({
 
                     <div className="flex flex-wrap gap-2">
                         {casinoType?.length > 0 &&
-                            casinoType.map((type) => <CasinoTypeBadge type={type} key={type} />)}
+                            casinoType.map((type) => (
+                                <CasinoTypeBadge type={type} key={type} />
+                            ))}
                     </div>
                 </div>
 

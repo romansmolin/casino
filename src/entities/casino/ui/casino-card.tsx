@@ -1,11 +1,13 @@
-import { Button } from '@/shared/ui/button'
-import { Card, CardHeader, CardFooter } from '@/shared/ui/card'
 import { Book, Eye, Star } from 'lucide-react'
-import Image from 'next/image'
-import React from 'react'
-import Link from 'next/link'
-import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 import { getLocale, getTranslations } from 'next-intl/server'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import React from 'react'
+
+import { Button } from '@/shared/ui/button'
+import { Card, CardFooter, CardHeader } from '@/shared/ui/card'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
 interface CasinoCardProps {
     uuid: string
@@ -66,7 +68,11 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({
                         {t('review')}
                     </Link>
                 </Button>
-                <Button className="w-full relative cursor-pointer transition-all " size="lg" asChild>
+                <Button
+                    className="w-full relative cursor-pointer transition-all "
+                    size="lg"
+                    asChild
+                >
                     <Link href={affiliateLink} className="z-10 flex gap-2 items-center">
                         <Eye />
                         Visit Casino

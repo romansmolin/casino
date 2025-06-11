@@ -1,10 +1,26 @@
 {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": false,
     "singleQuote": true,
-    "printWidth": 110,
-    "bracketSpacing": true,
-    "bracketSameLine": true,
-    "jsxBracketSameLine": false
+    "semi": false,
+    "trailingComma": "es5",
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports",
+        "prettier-plugin-organize-attributes"
+    ],
+    "importOrder": [
+        "^react",
+        "^i18next$",
+        "^@/views/(.*)$",
+        "^@/widgets/(.*)$",
+        "^@/features/(.*)$",
+        "^@/entities/(.*)$",
+        "^@/shared/(.*)$",
+        "^@/hooks/(.*)$",
+        "^[../]",
+        "^[./]"
+    ],
+    "tabWidth": 4,
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "printWidth": 95,
+    "attributeSort": "ASC"
 }

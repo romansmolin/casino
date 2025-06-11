@@ -1,12 +1,17 @@
 'use client'
 
+import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 
-import { Card, CardContent } from '@/shared/ui/card'
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/shared/ui/carousel'
-
-import Autoplay from 'embla-carousel-autoplay'
 import Typography from '@/shared/components/typography/typography'
+import { Card, CardContent } from '@/shared/ui/card'
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/shared/ui/carousel'
 
 interface TestimonialSliderCardProps {
     testimonials: {
@@ -35,7 +40,8 @@ export default function TestimonialSection({ testimonials }: TestimonialSliderCa
                         Autoplay({
                             delay: 2000,
                         }),
-                    ]}>
+                    ]}
+                >
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">

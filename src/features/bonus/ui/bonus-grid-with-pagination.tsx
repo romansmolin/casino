@@ -1,12 +1,15 @@
+import { FrownIcon } from 'lucide-react'
+import { getLocale, getTranslations } from 'next-intl/server'
+
+import React from 'react'
+
 import { BonusGrid, fetchBonusesByType } from '@/entities/bonus'
 import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
+
 import PaginationControl from '@/shared/components/pagination-control/pagination-control'
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { Card, CardHeader, CardTitle, CardContent } from '@/shared/ui/card'
-import { FrownIcon } from 'lucide-react'
-import { getLocale, getTranslations } from 'next-intl/server'
-import React from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
 
 interface BonusGridWithPaginationProps {
     currentPage: number
@@ -19,7 +22,12 @@ const BonusGridWithPagination: React.FC<BonusGridWithPaginationProps> = async ({
 }) => {
     const locale = await getLocale()
     const t = await getTranslations('bonus-category')
-    const { bonuses, totalPages } = await fetchBonusesByType(currentPage, 6, bonusCategory, locale as Locale)
+    const { bonuses, totalPages } = await fetchBonusesByType(
+        currentPage,
+        6,
+        bonusCategory,
+        locale as Locale
+    )
 
     if (bonuses?.length === 0) return <NoBonusesFound />
 
@@ -47,8 +55,8 @@ const NoBonusesFound = () => {
                     <div className="flex flex-col items-center space-y-4">
                         <FrownIcon className="w-16 h-16 text-gray-400" />
                         <p className="text-center text-gray-600">
-                            We&apos;re sorry, but we couldn&apos;t find any bonuses for you at this time.
-                            Please check back later for new offers.
+                            We&apos;re sorry, but we couldn&apos;t find any bonuses for you at
+                            this time. Please check back later for new offers.
                         </p>
                     </div>
                 </CardContent>

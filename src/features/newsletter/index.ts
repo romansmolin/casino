@@ -1,5 +1,3 @@
-import NewsletterForm from "./ui/newsletter-section";
+import NewsletterForm from './ui/newsletter-section'
 
-export {
-    NewsletterForm
-}
+export { NewsletterForm }

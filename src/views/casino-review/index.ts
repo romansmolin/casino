@@ -1,5 +1,3 @@
-import CasinoReviewPage from "./ui/casino-review-page";
+import CasinoReviewPage from './ui/casino-review-page'
 
-export {
-    CasinoReviewPage
-}
+export { CasinoReviewPage }

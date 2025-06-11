@@ -1,8 +1,10 @@
+import { MetadataRoute } from 'next'
+
 import { fetchAllBonusesWithoutPagination } from '@/entities/bonus/api/bonus.api'
 import { getAllCasinosWithoutPagination } from '@/entities/casino/api/casino.api'
+
 import { Locale } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
-import { MetadataRoute } from 'next'
 
 const BASE_URL = 'http://localhost:3000'
 

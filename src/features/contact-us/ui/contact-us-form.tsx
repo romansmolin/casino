@@ -1,37 +1,43 @@
-"use client"
-import { z } from "zod"
-import React from 'react'
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/ui/form";
-import { Input } from "@/shared/ui/input";
-import { Button } from "@/shared/ui/button";
-import { Send } from "lucide-react";
-import { useToast } from "@/shared/lib/react/use-toast";
-import { useTranslations } from "next-intl";
-import { useContactUsMutation } from "../api/contact-us.api";
-import LoadingIndicator from "@/shared/components/loading-indicator/loading-indicator";
+'use client'
 
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Send } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { z } from 'zod'
+
+import React from 'react'
+import { useForm } from 'react-hook-form'
+
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+import { useToast } from '@/shared/lib/react/use-toast'
+import { Button } from '@/shared/ui/button'
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/shared/ui/form'
+import { Input } from '@/shared/ui/input'
+
+import { useContactUsMutation } from '../api/contact-us.api'
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
 const formSchema = z.object({
     name: z
         .string()
-        .min(2, "Name must be at least 2 characters long")
-        .max(50, "Name must be at most 50 characters long")
+        .min(2, 'Name must be at least 2 characters long')
+        .max(50, 'Name must be at most 50 characters long')
         .trim(),
-    email: z
-        .string()
-        .trim()
-        .toLowerCase()
-        .regex(emailRegex, "Invalid email format"),
+    email: z.string().trim().toLowerCase().regex(emailRegex, 'Invalid email format'),
     message: z
         .string()
-        .min(20, "Message must be at least 20 characters long")
-        .max(400, "Message must be at most 400 characters long")
-        .trim()
-});
-
+        .min(20, 'Message must be at least 20 characters long')
+        .max(400, 'Message must be at most 400 characters long')
+        .trim(),
+})
 
 const ContactUsForm = () => {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -39,8 +45,8 @@ const ContactUsForm = () => {
         defaultValues: {
             name: '',
             email: '',
-            message: ''
-        }
+            message: '',
+        },
     })
     const { toast } = useToast()
     const t = useTranslations('contact-us')
@@ -52,16 +58,16 @@ const ContactUsForm = () => {
 
         if (res.status === 'SUCCESS') {
             toast({
-                title: t("SUCCESS"),
+                title: t('SUCCESS'),
                 description: t(`messages.SUCCESS`),
                 variant: 'success',
-            });
+            })
         } else if (res.status === 'FAILED') {
             toast({
-                title: t("FAILED"),
+                title: t('FAILED'),
                 description: t(`messages.FAILED`),
                 variant: 'destructive',
-            });
+            })
         }
     }
 
@@ -75,14 +81,16 @@ const ContactUsForm = () => {
                         <FormItem>
                             <FormLabel>{t('form.username')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder={t('form.username')} {...field} />
+                                <Input
+                                    className="h-11"
+                                    placeholder={t('form.username')}
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
-                >
-
-                </FormField>
+                ></FormField>
 
                 <FormField
                     control={form.control}
@@ -91,14 +99,16 @@ const ContactUsForm = () => {
                         <FormItem>
                             <FormLabel>{t('form.email')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder={t('form.email')} {...field} />
+                                <Input
+                                    className="h-11"
+                                    placeholder={t('form.email')}
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
-                >
-
-                </FormField>
+                ></FormField>
 
                 <FormField
                     control={form.control}
@@ -107,14 +117,16 @@ const ContactUsForm = () => {
                         <FormItem>
                             <FormLabel>{t('form.message')}</FormLabel>
                             <FormControl>
-                                <Input className="h-11" placeholder={t('form.message')}  {...field} />
+                                <Input
+                                    className="h-11"
+                                    placeholder={t('form.message')}
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
-                >
-
-                </FormField>
+                ></FormField>
 
                 <Button size="lg" className="w-full" disabled={loading}>
                     {loading ? <LoadingIndicator /> : <Send />}

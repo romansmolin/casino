@@ -1,12 +1,15 @@
-import { Card, CardContent } from '@/shared/ui/card'
-import React from 'react'
-import Image from 'next/image'
-import { Button } from '@/shared/ui/button'
 import { BookOpenCheck, Play } from 'lucide-react'
-import Typography from '@/shared/components/typography/typography'
-import Link from 'next/link'
 import { getLocale } from 'next-intl/server'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import React from 'react'
+
+import Typography from '@/shared/components/typography/typography'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent } from '@/shared/ui/card'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
+
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 
 interface BonusDetailsCardProps {
@@ -42,7 +45,11 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                             <Typography as="h1" variant="h1">
                                 {casinoName}
                             </Typography>
-                            <Typography as="h2" variant="h4" className="text-center md:text-left">
+                            <Typography
+                                as="h2"
+                                variant="h4"
+                                className="text-center md:text-left"
+                            >
                                 {bonusSubtitle}
                             </Typography>
                         </div>
@@ -52,7 +59,11 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                                 (type) =>
                                     type !== 'free-spins-bonuses' && (
                                         <div key={type}>
-                                            <BonusTypeBadge key={type} type={type} className="w-fit" />
+                                            <BonusTypeBadge
+                                                key={type}
+                                                type={type}
+                                                className="w-fit"
+                                            />
                                         </div>
                                     )
                             )}
@@ -65,7 +76,11 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                         <Play />
                         <p>Get Bonus Now!</p>
                     </Button>
-                    <Button size={'lg'} className="bg-accent text-accent-foreground hover:text-white" asChild>
+                    <Button
+                        size={'lg'}
+                        className="bg-accent text-accent-foreground hover:text-white"
+                        asChild
+                    >
                         <div className="bg-accent text-accent-foreground hover:text-white flex">
                             <BookOpenCheck />
                             <Link
@@ -74,7 +89,8 @@ const BonusDetailsCard: React.FC<BonusDetailsCardProps> = async ({
                                     query: {
                                         id: casinoUuid,
                                     },
-                                }}>
+                                }}
+                            >
                                 Read Review!
                             </Link>
                         </div>

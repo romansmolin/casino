@@ -1,16 +1,18 @@
-import Typography from '@/shared/components/typography/typography'
 import {
-    Building2Icon,
-    SquarePen,
-    Binoculars,
     ArrowRight,
-    Star,
+    Binoculars,
+    Building2Icon,
     CheckCircle2,
-    Trophy,
     Sparkles,
+    SquarePen,
+    Star,
+    Trophy,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
+
 import React from 'react'
+
+import Typography from '@/shared/components/typography/typography'
 import { Card } from '@/shared/ui/card'
 
 const ReviewProcessSection = async () => {
@@ -78,7 +80,8 @@ const ReviewProcessSection = async () => {
                             {processSteps.map((step, index) => (
                                 <Card
                                     key={index}
-                                    className="p-6 group hover:shadow-lg transition-all duration-300 border-primary/10 bg-card/50 backdrop-blur-sm relative overflow-hidden hover:-translate-y-1">
+                                    className="p-6 group hover:shadow-lg transition-all duration-300 border-primary/10 bg-card/50 backdrop-blur-sm relative overflow-hidden hover:-translate-y-1"
+                                >
                                     {/* Enhanced Gradient Background */}
                                     <div
                                         className={`absolute inset-0 bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
@@ -86,7 +89,8 @@ const ReviewProcessSection = async () => {
 
                                     <div className="relative flex items-start space-x-6">
                                         <div
-                                            className={`flex-shrink-0 p-3 rounded-xl ${step.iconBg} ${step.iconColor} ${step.glowColor} shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                                            className={`flex-shrink-0 p-3 rounded-xl ${step.iconBg} ${step.iconColor} ${step.glowColor} shadow-lg group-hover:scale-110 transition-all duration-300`}
+                                        >
                                             {step.icon}
                                         </div>
                                         <div className="space-y-2">
@@ -180,14 +184,16 @@ const ReviewProcessSection = async () => {
                                     </div>
                                     <div
                                         className="absolute top-1/2 left-4 animate-float"
-                                        style={{ animationDelay: '0.5s' }}>
+                                        style={{ animationDelay: '0.5s' }}
+                                    >
                                         <div className="p-3 rounded-xl bg-green-500/10 backdrop-blur-sm border border-green-500/20 shadow-lg shadow-green-500/20">
                                             <CheckCircle2 className="h-8 w-8 text-green-500" />
                                         </div>
                                     </div>
                                     <div
                                         className="absolute bottom-24 right-4 animate-float"
-                                        style={{ animationDelay: '1s' }}>
+                                        style={{ animationDelay: '1s' }}
+                                    >
                                         <div className="p-3 rounded-xl bg-yellow-500/10 backdrop-blur-sm border border-yellow-500/20 shadow-lg shadow-yellow-500/20">
                                             <Trophy className="h-8 w-8 text-yellow-500" />
                                         </div>

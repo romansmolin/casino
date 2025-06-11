@@ -1,5 +1,3 @@
-import BonusCategoryPage from "./ui/bonus-category-page";
+import BonusCategoryPage from './ui/bonus-category-page'
 
-export {
-    BonusCategoryPage
-}
+export { BonusCategoryPage }

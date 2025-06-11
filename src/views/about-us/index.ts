@@ -1,5 +1,3 @@
-import AboutUsPage from "./ui/about-us-page";
+import AboutUsPage from './ui/about-us-page'
 
-export {
-    AboutUsPage
-}
+export { AboutUsPage }

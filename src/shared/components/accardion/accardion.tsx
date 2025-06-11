@@ -1,5 +1,7 @@
-import React from 'react'
 import { ChevronDownIcon } from 'lucide-react'
+
+import React from 'react'
+
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/shared/ui/collapsible'
 
 type AccordionItem = {
@@ -14,7 +16,7 @@ const Accardion: React.FC<FaqProps> = ({ items }) => {
     return (
         <div>
             <div className="space-y-4">
-                {items.map(item => (
+                {items.map((item) => (
                     <Collapsible key={item.label}>
                         <CollapsibleTrigger className="flex items-center justify-between w-full bg-muted px-4 py-3 rounded-md">
                             <h3 className="text-lg font-medium">{item.label}</h3>

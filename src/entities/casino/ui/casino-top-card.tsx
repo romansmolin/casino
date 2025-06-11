@@ -1,12 +1,14 @@
-import React from 'react'
-import Image from 'next/image'
-import { Button } from '@/shared/ui/button'
-import Link from 'next/link'
-import RatingCircle from '@/shared/components/rating-circle/rating-circle'
+import { Book, Dices, Star } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import React from 'react'
+
+import RatingCircle from '@/shared/components/rating-circle/rating-circle'
+import { Button } from '@/shared/ui/button'
 import { Card, CardContent } from '@/shared/ui/card'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
-import { Book, Dices, Star } from 'lucide-react'
 
 const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
     const t = await getTranslations('casinoTopCard')
@@ -32,10 +34,14 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                 </div>
                 {/* Text */}
                 <div className="flex flex-col gap-2 items-center justify-between md:col-span-2 lg:p-4 leading-normal text-center md:text-left px-5 ">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gradient">{casino.title}</h5>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gradient">
+                        {casino.title}
+                    </h5>
                     <div className="p-2 bg-red-500 rounded-xl flex justify-center items-center gap-2">
                         <Star className="text-white" />
-                        <p className="text-white text-center font-bold ">{casino.main_bonus_title}</p>
+                        <p className="text-white text-center font-bold ">
+                            {casino.main_bonus_title}
+                        </p>
                     </div>
                 </div>
 
@@ -61,7 +67,8 @@ const CasinoTopCard = async ({ casino }: { casino: CasinoTopEntry }) => {
                                     query: {
                                         id: casino.casino,
                                     },
-                                }}>
+                                }}
+                            >
                                 <Book />
                                 {t('review')}
                             </Link>

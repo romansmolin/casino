@@ -5,7 +5,10 @@ import dynamic from 'next/dynamic'
 
 // Lazy-load ApolloNextAppProvider (only on the client)
 const ApolloNextAppProvider = dynamic(
-    () => import('@apollo/experimental-nextjs-app-support/ssr').then((mod) => mod.ApolloNextAppProvider),
+    () =>
+        import('@apollo/experimental-nextjs-app-support/ssr').then(
+            (mod) => mod.ApolloNextAppProvider
+        ),
     { ssr: false }
 )
 
@@ -23,14 +26,16 @@ let apolloModulesPromise: Promise<typeof apolloModules> | null = null
 const getApolloModules = () => {
     if (apolloModules) return apolloModules // Return cached modules if already loaded
     // @ts-ignore
-    throw (apolloModulesPromise ??= import('@apollo/experimental-nextjs-app-support/ssr').then((mod) => {
-        apolloModules = {
-            NextSSRApolloClient: mod.NextSSRApolloClient,
-            NextSSRInMemoryCache: mod.NextSSRInMemoryCache,
-            SSRMultipartLink: mod.SSRMultipartLink,
+    throw (apolloModulesPromise ??= import('@apollo/experimental-nextjs-app-support/ssr').then(
+        (mod) => {
+            apolloModules = {
+                NextSSRApolloClient: mod.NextSSRApolloClient,
+                NextSSRInMemoryCache: mod.NextSSRInMemoryCache,
+                SSRMultipartLink: mod.SSRMultipartLink,
+            }
+            return apolloModules
         }
-        return apolloModules
-    }))
+    ))
 }
 
 // MakeClient function remains synchronous

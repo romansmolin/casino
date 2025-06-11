@@ -1,10 +1,12 @@
 'use client'
 
+import Image from 'next/image'
+
+import React from 'react'
+
 import useGeolocation from '@/shared/hooks/use-geolocation'
 import { Icons } from '@/shared/ui/icons'
 import { Skeleton } from '@/shared/ui/skeleton'
-import Image from 'next/image'
-import React from 'react'
 
 const CasinoAvailability = ({ allowedCountries }: { allowedCountries: string[] }) => {
     const { location, error } = useGeolocation()
@@ -30,10 +32,15 @@ const CasinoAvailability = ({ allowedCountries }: { allowedCountries: string[] }
 
                     <div className="flex-1 min-w-0">
                         <p
-                            className={`text-base font-medium truncate ${isAllowed ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                            {isAllowed ? 'Available in Your Region' : 'Not Available in Your Region'}
+                            className={`text-base font-medium truncate ${isAllowed ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                        >
+                            {isAllowed
+                                ? 'Available in Your Region'
+                                : 'Not Available in Your Region'}
                         </p>
-                        <p className="text-sm text-muted-foreground truncate">{location.country}</p>
+                        <p className="text-sm text-muted-foreground truncate">
+                            {location.country}
+                        </p>
                     </div>
 
                     {location.countryCode !== 'Unknown' && (

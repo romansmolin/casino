@@ -1,16 +1,18 @@
-"use client"
+'use client'
 
-import { useState } from "react"
+import { Search } from 'lucide-react'
+import { useLocale } from 'next-intl'
 
-import { Search } from "lucide-react"
-import { Button } from "@/shared/ui/button"
-import { Input } from "@/shared/ui/input"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui/dialog"
-import { useGlobalSearch } from "../api/global-search.api"
-import { useLocale } from "next-intl"
-import { Link, Locale } from "@/shared/lib/i18n/routing"
-import Typography from "@/shared/components/typography/typography"
-import { bonusrUrlFriendly } from "@/shared/utils/text-formaters"
+import { useState } from 'react'
+
+import Typography from '@/shared/components/typography/typography'
+import { Link, Locale } from '@/shared/lib/i18n/routing'
+import { Button } from '@/shared/ui/button'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/ui/dialog'
+import { Input } from '@/shared/ui/input'
+import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
+
+import { useGlobalSearch } from '../api/global-search.api'
 
 export interface SearchResult {
     id: number
@@ -19,20 +21,21 @@ export interface SearchResult {
 }
 
 export default function GlobalSearch() {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const locale = useLocale()
 
-    const { triggerSearch, casinoSearchResult, bonusSearchResult, loading, error } = useGlobalSearch(locale as Locale);
+    const { triggerSearch, casinoSearchResult, bonusSearchResult, loading, error } =
+        useGlobalSearch(locale as Locale)
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (searchTerm.trim().length > 0) {
-            setIsModalOpen(true);
-            triggerSearch(searchTerm); // Trigger the search
+            setIsModalOpen(true)
+            triggerSearch(searchTerm) // Trigger the search
         }
-    };
+    }
 
     return (
         <>
@@ -44,7 +47,11 @@ export default function GlobalSearch() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pr-12"
                 />
-                <Button type="submit" size="sm" className="absolute h-full w-10 right-0 top-1/2 -translate-y-1/2">
+                <Button
+                    type="submit"
+                    size="sm"
+                    className="absolute h-full w-10 right-0 top-1/2 -translate-y-1/2"
+                >
                     <Search className="h-4 w-4" />
                     <span className="sr-only">Search</span>
                 </Button>
@@ -63,12 +70,18 @@ export default function GlobalSearch() {
                             <p className="text-center text-red-500">Error: {error.message}</p>
                         ) : (
                             <>
-                                {casinoSearchResult?.length === 0 && bonusSearchResult.length === 0 ? (
-                                    <p className="text-center text-muted-foreground">No results found</p>
+                                {casinoSearchResult?.length === 0 &&
+                                bonusSearchResult.length === 0 ? (
+                                    <p className="text-center text-muted-foreground">
+                                        No results found
+                                    </p>
                                 ) : (
                                     <ul className="max-h-[300px] overflow-auto">
                                         {casinoSearchResult?.map((result) => (
-                                            <li key={result.casinoName} className="mb-4 last:mb-0">
+                                            <li
+                                                key={result.casinoName}
+                                                className="mb-4 last:mb-0"
+                                            >
                                                 <Link
                                                     href={{
                                                         pathname: `/casino-review/${bonusrUrlFriendly(result.casinoName)}`,
@@ -79,21 +92,34 @@ export default function GlobalSearch() {
                                                     className="hover:text-primary"
                                                     onClick={() => setIsModalOpen(false)}
                                                 >
-                                                    <Typography as="h3" className="font-medium text-lg">{result.casinoName} Review</Typography>
+                                                    <Typography
+                                                        as="h3"
+                                                        className="font-medium text-lg"
+                                                    >
+                                                        {result.casinoName} Review
+                                                    </Typography>
                                                 </Link>
                                             </li>
                                         ))}
                                         {bonusSearchResult?.map((result) => (
-                                            <li key={result.bonusTitle} className="mb-4 last:mb-0">
+                                            <li
+                                                key={result.bonusTitle}
+                                                className="mb-4 last:mb-0"
+                                            >
                                                 <Link
                                                     href={{
                                                         pathname: `/${bonusrUrlFriendly(result.primaryBonusType)}/${bonusrUrlFriendly(result.casinoName)}`,
-                                                        query: { uuid: result.bonusUuid }
+                                                        query: { uuid: result.bonusUuid },
                                                     }}
                                                     className="hover:text-primary"
                                                     onClick={() => setIsModalOpen(false)}
                                                 >
-                                                    <Typography as="h3" className="font-medium text-lg">{result.casinoName} {result.bonusTitle}</Typography>
+                                                    <Typography
+                                                        as="h3"
+                                                        className="font-medium text-lg"
+                                                    >
+                                                        {result.casinoName} {result.bonusTitle}
+                                                    </Typography>
                                                 </Link>
                                             </li>
                                         ))}
@@ -105,5 +131,5 @@ export default function GlobalSearch() {
                 </DialogContent>
             </Dialog>
         </>
-    );
-}   
+    )
+}

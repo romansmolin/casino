@@ -1,9 +1,16 @@
 import React, { Suspense } from 'react'
+
 import { CasinoReviewPage } from '@/views/casino-review'
-import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+
 import { getCasinoSeoInfoBySlug } from '@/entities/casino/api/casino.api'
 
-export async function generateMetadata({ params }: { params: { slug: string; locale: string } }) {
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string; locale: string }
+}) {
     const { slug } = await params
     const { locale } = await params
 

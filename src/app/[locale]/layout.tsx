@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
-import '../globals.css'
+import { setRequestLocale } from 'next-intl/server'
+import { Nunito } from 'next/font/google'
 import { notFound } from 'next/navigation'
+
 import { Locale, routing } from '@/shared/lib/i18n/routing'
-import { setRequestLocale } from 'next-intl/server';
-import { SidebarInset } from '@/shared/ui/sidebar';
-import { Toaster } from '@/shared/ui/toaster';
-import Header from '../_layout/header/header';
-import Providers from '../_providers';
-import { Nunito } from 'next/font/google';
-import AppSidebar from '../_layout/sidebar/sidebar';
+import { SidebarInset } from '@/shared/ui/sidebar'
+import { Toaster } from '@/shared/ui/toaster'
+
+import Header from '../_layout/header/header'
+import AppSidebar from '../_layout/sidebar/sidebar'
+import Providers from '../_providers'
+import '../globals.css'
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -18,12 +20,11 @@ export const metadata: Metadata = {
 const nunito = Nunito({
     weight: '600',
     subsets: ['cyrillic'],
-});
-
+})
 
 export default async function RootLayout({
     children,
-    params
+    params,
 }: Readonly<{
     children: React.ReactNode
     params: Promise<{ locale: Locale }>
@@ -35,14 +36,14 @@ export default async function RootLayout({
         return notFound()
     }
 
-    await setRequestLocale(locale);
+    await setRequestLocale(locale)
 
     return (
         <html lang={locale} suppressHydrationWarning>
             <body className={nunito.className}>
                 <Providers>
                     <AppSidebar />
-                    <SidebarInset className='w-full'>
+                    <SidebarInset className="w-full">
                         <Header />
                         <div className="flex flex-1 flex-col gap-4 p-2 md:p-4 pt-0 ">
                             {children}

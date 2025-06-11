@@ -38,7 +38,12 @@ export const getServerQuery = async (
         return { data, error: null }
     } catch (error) {
         console.error('Error in getServerQuery:', error)
-        console.error('Error trying use this scheme:', schema, ' with the following values: ', variables)
+        console.error(
+            'Error trying use this scheme:',
+            schema,
+            ' with the following values: ',
+            variables
+        )
 
         return {
             data: null,

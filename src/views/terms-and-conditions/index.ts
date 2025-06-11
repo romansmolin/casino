@@ -1,5 +1,3 @@
-import TermsAndConditionsPage from "./ui/terms-and-conditions-page";
+import TermsAndConditionsPage from './ui/terms-and-conditions-page'
 
-export {
-    TermsAndConditionsPage
-}
+export { TermsAndConditionsPage }

@@ -1,10 +1,12 @@
+import { Check } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
+
+import React from 'react'
+
 import RatingCircle from '@/shared/components/rating-circle/rating-circle'
 import Typography from '@/shared/components/typography/typography'
 import { AnimatedCircularProgressBar } from '@/shared/magicui/animated-circular-progress-bar'
 import { Card, CardContent } from '@/shared/ui/card'
-import { Check } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
-import React from 'react'
 
 interface CasinoReviewHighlightsProps {
     casinoName: string
@@ -41,7 +43,8 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({
                                 {features?.map((feature) => (
                                     <li
                                         key={feature}
-                                        className="flex text-justify items-center space-x-3 rtl:space-x-reverse">
+                                        className="flex text-justify items-center space-x-3 rtl:space-x-reverse"
+                                    >
                                         <span className="p-1 rounded-full flex items-center justify-center bg-primary/20">
                                             <Check />
                                         </span>
@@ -59,7 +62,10 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({
                                 gaugePrimaryColor={ratingColor}
                                 gaugeSecondaryColor="var(--muted)"
                             />
-                            <span className="text-2xl font-bold" style={{ color: ratingColor }}>
+                            <span
+                                className="text-2xl font-bold"
+                                style={{ color: ratingColor }}
+                            >
                                 Rating
                             </span>
                         </div>
@@ -67,8 +73,8 @@ const CasinoReviewHighlights: React.FC<CasinoReviewHighlightsProps> = async ({
 
                     <div className="grow flex flex-col justify-end mt-6 text-primary-600 font-bold">
                         <span className="text-sm">
-                            Terms & Conditions Apply. You must be at least 18 years old to visit this casino.
-                            Gamble Responsibly!
+                            Terms & Conditions Apply. You must be at least 18 years old to
+                            visit this casino. Gamble Responsibly!
                         </span>
                     </div>
                 </div>

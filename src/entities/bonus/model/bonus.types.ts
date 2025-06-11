@@ -1,4 +1,5 @@
 import { StrapiContent } from '@/entities/casino/model/casino.types'
+
 import { ApiError } from '@/shared/utils/error-handler'
 
 /* eslint-disable no-unused-vars */

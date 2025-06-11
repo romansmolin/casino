@@ -1,5 +1,3 @@
-import Accardion from "./accardion";
+import Accardion from './accardion'
 
-export {
-    Accardion
-}
+export { Accardion }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 type Country = {
     name: string
@@ -12,7 +12,9 @@ const useAllCountries = () => {
     useEffect(() => {
         const fetchCountries = async () => {
             try {
-                const response = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2')
+                const response = await fetch(
+                    'https://restcountries.com/v3.1/all?fields=name,cca2'
+                )
                 const data = await response.json()
                 const formattedCountries = data.map((country: any) => ({
                     name: country.name.common,

@@ -1,9 +1,12 @@
+import { getLocale, getTranslations } from 'next-intl/server'
+
+import React from 'react'
+
 import { BonusGrid, fetchBonusesByType } from '@/entities/bonus'
+
 import Typography from '@/shared/components/typography/typography'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
-import { getLocale, getTranslations } from 'next-intl/server'
-import React from 'react'
 
 const BestBonusesOfTheMonth = async () => {
     const locale = await getLocale()

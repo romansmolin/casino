@@ -1,5 +1,3 @@
-import TableContent from "./table-content";
+import TableContent from './table-content'
 
-export {
-    TableContent
-}
+export { TableContent }

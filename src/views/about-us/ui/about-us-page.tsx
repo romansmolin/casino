@@ -1,8 +1,12 @@
-import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-content'
-import { NewsletterForm } from '@/features/newsletter'
-import { Locale } from '@/shared/lib/i18n/routing'
 import { getLocale } from 'next-intl/server'
+
 import React from 'react'
+
+import { NewsletterForm } from '@/features/newsletter'
+
+import { PageContentRenderer, fetchPageContentBySlug } from '@/entities/page-content'
+
+import { Locale } from '@/shared/lib/i18n/routing'
 
 const AboutUsPage = async () => {
     const locale = await getLocale()

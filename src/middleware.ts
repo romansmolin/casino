@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware'
-import { routing } from './shared/lib/i18n/routing'
 import { NextRequest } from 'next/server'
+
+import { routing } from './shared/lib/i18n/routing'
 
 // export default createMiddleware(routing);
 const handleI18nRouting = createMiddleware(routing)

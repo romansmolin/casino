@@ -1,20 +1,25 @@
 'use client'
 
 import {
+    Collapsible,
+    CollapsibleContent,
+    CollapsibleTrigger,
+} from '@radix-ui/react-collapsible'
+import { ChevronRight, type LucideIcon } from 'lucide-react'
+import { useLocale, useTranslations } from 'next-intl'
+import Link from 'next/link'
+
+import { cn } from '@/shared/lib/css'
+import {
     SidebarGroup,
     SidebarMenu,
-    SidebarMenuItem,
     SidebarMenuButton,
+    SidebarMenuItem,
     SidebarMenuSub,
-    SidebarMenuSubItem,
     SidebarMenuSubButton,
+    SidebarMenuSubItem,
     useSidebar,
 } from '@/shared/ui/sidebar'
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
-import { ChevronRight, type LucideIcon } from 'lucide-react'
-import Link from 'next/link'
-import { useLocale, useTranslations } from 'next-intl';
-import { cn } from '@/shared/lib/css'
 
 export function SidebarMenuList({
     items,
@@ -31,8 +36,8 @@ export function SidebarMenuList({
         }[]
     }[]
 }) {
-    const t = useTranslations('sidebar');
-    const locale = useLocale();
+    const t = useTranslations('sidebar')
+    const locale = useLocale()
     const { isMobile } = useSidebar()
 
     return (
@@ -43,7 +48,8 @@ export function SidebarMenuList({
                         key={item.title}
                         asChild
                         defaultOpen={item.isActive}
-                        className="group/collapsible">
+                        className="group/collapsible"
+                    >
                         <SidebarMenuItem className={cn(isMobile ? 'text-white' : 'text-dark')}>
                             <CollapsibleTrigger asChild>
                                 <SidebarMenuButton tooltip={item.title}>
@@ -55,9 +61,15 @@ export function SidebarMenuList({
                             <CollapsibleContent>
                                 <SidebarMenuSub>
                                     {item.items?.map((subItem) => (
-                                        <SidebarMenuSubItem key={subItem.title} className='hover:bg-primary hover:text-white rounded-md'>
-                                            <SidebarMenuSubButton asChild className='h-10 '>
-                                                <Link href={`/${locale}/${subItem.url}`} className="flex gap-2">
+                                        <SidebarMenuSubItem
+                                            key={subItem.title}
+                                            className="hover:bg-primary hover:text-white rounded-md"
+                                        >
+                                            <SidebarMenuSubButton asChild className="h-10 ">
+                                                <Link
+                                                    href={`/${locale}/${subItem.url}`}
+                                                    className="flex gap-2"
+                                                >
                                                     {/* {subItem.icon && <subItem.icon />} */}
                                                     <span>{t(subItem.title)}</span>
                                                 </Link>
@@ -71,5 +83,5 @@ export function SidebarMenuList({
                 ))}
             </SidebarMenu>
         </SidebarGroup>
-    )  
+    )
 }

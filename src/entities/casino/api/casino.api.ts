@@ -1,14 +1,15 @@
 import { getServerQuery } from '@/shared/lib/apollo-client'
+import { Locale } from '@/shared/lib/i18n/routing'
+import { ApiError, handleError } from '@/shared/utils/error-handler'
+
 import {
+    CASINOS_BY_TYPE,
     CASINO_BY_SLUG,
     CASINO_BY_UUID,
     CASINO_TOP_BY_COUNTRY,
-    CASINOS_BY_TYPE,
     GET_ALL_CASINOS_WITHOUT_PAGINATION,
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
-import { Locale } from '@/shared/lib/i18n/routing'
-import { ApiError, handleError } from '@/shared/utils/error-handler'
 import { Casino, CasinoReview, CasinoTopEntry } from '../model/casino.types'
 
 // API Response Types
@@ -50,7 +51,10 @@ export const fetchCasinoTopByCountryServer = async (
     locale: string
 ): Promise<CasinoTopByCountryResponse> => {
     try {
-        const { data, error } = await getServerQuery(CASINO_TOP_BY_COUNTRY, { country, locale })
+        const { data, error } = await getServerQuery(CASINO_TOP_BY_COUNTRY, {
+            country,
+            locale,
+        })
 
         if (error) {
             return {
@@ -144,7 +148,9 @@ export const getAllCasinosWithoutPagination = async (
     locale: Locale
 ): Promise<CasinosWithoutPaginationResponse> => {
     try {
-        const { data, error } = await getServerQuery(GET_ALL_CASINOS_WITHOUT_PAGINATION, { locale })
+        const { data, error } = await getServerQuery(GET_ALL_CASINOS_WITHOUT_PAGINATION, {
+            locale,
+        })
 
         if (error) {
             return {
@@ -165,7 +171,10 @@ export const getAllCasinosWithoutPagination = async (
     }
 }
 
-export const getCasinoBySlug = async (slug: string, locale: Locale): Promise<CasinoBySlugResponse> => {
+export const getCasinoBySlug = async (
+    slug: string,
+    locale: Locale
+): Promise<CasinoBySlugResponse> => {
     try {
         const { data, error } = await getServerQuery(CASINO_BY_SLUG, { slug, locale })
 
@@ -193,7 +202,10 @@ export const getCasinoSeoInfoBySlug = async (
     locale: string
 ): Promise<CasinoSeoInfoResponse> => {
     try {
-        const { data, error } = await getServerQuery(GET_CASINO_SEO_INFO_BY_SLUG, { slug, locale })
+        const { data, error } = await getServerQuery(GET_CASINO_SEO_INFO_BY_SLUG, {
+            slug,
+            locale,
+        })
 
         if (error) {
             return {

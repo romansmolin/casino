@@ -1,8 +1,8 @@
 import React from 'react'
-import PageContentSection from './page-content-section'
 
-import PageContentFaq from './page-content-faq'
 import { PageContentItem } from '../model/page-content.types'
+import PageContentFaq from './page-content-faq'
+import PageContentSection from './page-content-section'
 
 type Content = {
     type: string

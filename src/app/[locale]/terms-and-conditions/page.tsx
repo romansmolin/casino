@@ -1,6 +1,8 @@
-import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
-import { TermsAndConditionsPage } from '@/views/terms-and-conditions'
 import React, { Suspense } from 'react'
+
+import { TermsAndConditionsPage } from '@/views/terms-and-conditions'
+
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
 
 const TermsAndConditions = () => {
     return (

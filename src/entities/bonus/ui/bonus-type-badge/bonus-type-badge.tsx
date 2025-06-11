@@ -1,11 +1,14 @@
+import { getLocale, getTranslations } from 'next-intl/server'
+import Link from 'next/link'
+
+import React from 'react'
+
+import Typography from '@/shared/components/typography/typography'
 import { cn } from '@/shared/lib/css'
 import { Badge } from '@/shared/ui/badge'
-import { getLocale, getTranslations } from 'next-intl/server'
-import React from 'react'
-import { BadgeSize, BadgeVariant, BadgeProps } from './badge.types'
+
 import { BONUS_CATEGORIES_CONFIG } from '../../model/consts'
-import Typography from '@/shared/components/typography/typography'
-import Link from 'next/link'
+import { BadgeProps, BadgeSize, BadgeVariant } from './badge.types'
 
 const sizeClasses: Record<BadgeSize, string> = {
     sm: 'h-6 text-xs',
@@ -19,7 +22,13 @@ const variantClasses: Record<BadgeVariant, string> = {
     secondary: 'bg-opacity-10',
 }
 
-const BonusTypeBadge = async ({ type, variant = 'default', size = 'md', className, onClick }: BadgeProps) => {
+const BonusTypeBadge = async ({
+    type,
+    variant = 'default',
+    size = 'md',
+    className,
+    onClick,
+}: BadgeProps) => {
     const t = await getTranslations('common')
     const locale = await getLocale()
     const config = BONUS_CATEGORIES_CONFIG
@@ -35,10 +44,12 @@ const BonusTypeBadge = async ({ type, variant = 'default', size = 'md', classNam
                 badgeConfig?.color,
                 className
             )}
-            onClick={onClick}>
+            onClick={onClick}
+        >
             <Link
                 href={`/${locale}/bonuses/${type}`}
-                className="flex items-center justify-center gap-1 whitespace-nowrap">
+                className="flex items-center justify-center gap-1 whitespace-nowrap"
+            >
                 {Icon && <Icon className="w-4 h-4" />}
                 <Typography as="p" variant="small" className="text-[12px]">
                     {t(type)}

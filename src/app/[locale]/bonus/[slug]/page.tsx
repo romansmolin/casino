@@ -1,11 +1,15 @@
-import { fetchBonusById } from '@/entities/bonus'
-import { fetchSeoInfoByBonusSlug } from '@/entities/bonus/api/bonus.api'
-import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
-import { Locale } from '@/shared/lib/i18n/routing'
-import { BonusReviewPage } from '@/views/bonus-review'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+
 import React, { Suspense } from 'react'
+
+import { BonusReviewPage } from '@/views/bonus-review'
+
+import { fetchBonusById } from '@/entities/bonus'
+import { fetchSeoInfoByBonusSlug } from '@/entities/bonus/api/bonus.api'
+
+import LoadingIndicator from '@/shared/components/loading-indicator/loading-indicator'
+import { Locale } from '@/shared/lib/i18n/routing'
 
 type Props = {
     params: Promise<{ locale: Locale; slug: string }>
@@ -24,7 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-const BonusReview = async ({ params }: { params: Promise<{ locale: Locale; slug: string }> }) => {
+const BonusReview = async ({
+    params,
+}: {
+    params: Promise<{ locale: Locale; slug: string }>
+}) => {
     const { slug } = await params
     console.log('SLUG: ', slug)
 

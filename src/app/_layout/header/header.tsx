@@ -1,8 +1,10 @@
+import React from 'react'
+
 import { GlobalSearch } from '@/features/global-search'
 import { LanguageSwitcher } from '@/features/i18n'
+
 import { ModeToggle } from '@/shared/components/mode-toggle/mode-toggle'
 import { SidebarTrigger } from '@/shared/ui/sidebar'
-import React from 'react'
 
 const Header = () => {
     return (
@@ -10,8 +12,8 @@ const Header = () => {
             <div className="flex items-center justify-between w-full gap-2 px-4">
                 <SidebarTrigger className="-ml-1" />
 
-                <div className='flex gap-2'>
-                    <div className='flex gap-2'>
+                <div className="flex gap-2">
+                    <div className="flex gap-2">
                         <LanguageSwitcher />
                         <ModeToggle />
                     </div>

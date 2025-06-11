@@ -1,8 +1,11 @@
+import { getLocale } from 'next-intl/server'
+
+import React from 'react'
+
 import { fetchCasinoTopByCountryServer } from '@/entities/casino'
 import CasinoTopCard from '@/entities/casino/ui/casino-top-card'
+
 import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
-import { getLocale } from 'next-intl/server'
-import React from 'react'
 
 interface CasinoTopProps {
     byCountry?: string

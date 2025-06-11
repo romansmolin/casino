@@ -1,4 +1,5 @@
-import { Bot, SquareTerminal, Landmark, Info } from 'lucide-react'
+import { Bot, Info, Landmark, SquareTerminal } from 'lucide-react'
+
 export const menu = {
     user: {
         name: 'shadcn',

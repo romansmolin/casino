@@ -1,11 +1,15 @@
+import { getLocale, getTranslations } from 'next-intl/server'
+
+import React from 'react'
+
+import { BonusFreeSpinsSection, BonusGridWithPagination } from '@/features/bonus'
+
 import { FREE_SPINS_TYPES } from '@/entities/bonus'
 import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
 import { StrapiContent } from '@/entities/casino/model/casino.types'
-import { fetchPageContentBySlug, PageContentRenderer } from '@/entities/page-content'
-import { BonusFreeSpinsSection, BonusGridWithPagination } from '@/features/bonus'
+import { PageContentRenderer, fetchPageContentBySlug } from '@/entities/page-content'
+
 import { Locale } from '@/shared/lib/i18n/routing'
-import { getLocale, getTranslations } from 'next-intl/server'
-import React from 'react'
 
 const BonusCategoryPage = async ({
     bonusCategory,
@@ -24,7 +28,9 @@ const BonusCategoryPage = async ({
             {(bonusCategory === 'free-spins-bonuses' ||
                 FREE_SPINS_TYPES.some((item) => item.label === bonusCategory)) && (
                 <section className="space-y-5 flex-1 bento-block">
-                    <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">{t('title')}</h2>
+                    <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+                        {t('title')}
+                    </h2>
                     <BonusFreeSpinsSection />
                 </section>
             )}

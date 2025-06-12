@@ -59,3 +59,9 @@ export interface BonusBySlugResponse {
     categoryBonusType: string | null
     error: ApiError | null
 }
+
+export interface BonusCategory {
+    slug: string
+    coverImage: string
+    title: string
+}

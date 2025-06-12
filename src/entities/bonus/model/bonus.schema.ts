@@ -161,3 +161,14 @@ export const GET_BONUS_CATEGORY_BY_SLUG = gql`
         }
     }
 `
+
+export const GET_ALL_BONUS_CATEGORIES = gql`
+    query GetAllBonusCategories($locale: String!) {
+        getAllBonusCategories(locale: $locale) {
+            slug
+            bonusCategoryType
+            coverImage
+            title
+        }
+    }
+`

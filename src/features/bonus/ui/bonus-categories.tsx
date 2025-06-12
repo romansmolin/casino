@@ -1,84 +1,66 @@
 'use client'
 
-import { BadgeDollarSign, Bitcoin, Gem, RotateCcw, Trophy, Wallet } from 'lucide-react'
+import { useQuery } from '@apollo/client'
+import { PlusCircleIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 
-import { BadgeConfig } from '@/entities/bonus/ui/bonus-type-badge/badge.types'
+import { BonusCategory, BonusCategoryCard } from '@/entities/bonus'
+import { GET_ALL_BONUS_CATEGORIES } from '@/entities/bonus/model/bonus.schema'
 
-import Typography from '@/shared/components/typography/typography'
-import { Card, CardContent } from '@/shared/ui/card'
+import { Locale } from '@/shared/lib/i18n/routing'
+import { useIsMobile } from '@/shared/lib/react/use-mobile'
+import { Button } from '@/shared/ui/button'
 import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
-
-//TODO: I was required to duplicate this const, since if I am importing it from consts.ts, next js throw weird error
-const BONUS_CATEGORIES_CONFIG: Record<string, BadgeConfig> = {
-    'no-deposit-bonuses': {
-        color: 'bg-[#dd6030]',
-        icon: Wallet,
-    },
-    'best-of-the-month': {
-        color: 'bg-[#3030dd]',
-        icon: Trophy,
-    },
-    'real-money-bonuses': {
-        color: 'bg-[#fdd55e]',
-        icon: BadgeDollarSign,
-    },
-    'cashback-bonuses': {
-        color: 'bg-[#77bd58]',
-        icon: RotateCcw,
-    },
-    'welcome-bonuses': {
-        color: 'bg-[#c90076]',
-        icon: Gem,
-    },
-    'crypto-bonuses': {
-        icon: Bitcoin,
-        color: 'bg-[#44a8f3]',
-    },
-}
 
 const BonusCategories = () => {
     const t = useTranslations('common')
+    const clodsedLength = 6
     const locale = useLocale()
-    const router = useRouter()
+    const isMobile = useIsMobile()
+    const [showAll, setShowAll] = useState(false)
 
-    const categories = Object.keys(BONUS_CATEGORIES_CONFIG)
+    const { data, error } = useQuery(GET_ALL_BONUS_CATEGORIES, {
+        variables: { locale },
+    })
+
+    const visibleCategories = useMemo(() => {
+        if (isMobile) return data?.getAllBonusCategories ?? []
+        return showAll
+            ? (data?.getAllBonusCategories ?? [])
+            : (data?.getAllBonusCategories ?? []).slice(0, clodsedLength)
+    }, [data, isMobile, showAll])
 
     return (
         <div className="relative w-[calc(100%+1.25rem)] md:w-[unset]">
             <ScrollArea>
-                <div className="flex flex-row  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-4">
-                    {categories.map((bonuses) => {
-                        const { icon: Icon, color } = BONUS_CATEGORIES_CONFIG[bonuses]
-                        return (
-                            <Card
-                                key={bonuses as keyof typeof BONUS_CATEGORIES_CONFIG}
-                                onClick={() => router.push(`/${locale}/bonuses/${bonuses}`)}
-                                className={`flex justify-center items-center transition-all duration-300 ease-in-out transform md:hover:scale-105 md:hover:shadow-xl md:hover:rotate-1 ${color} shrink-0`}
-                            >
-                                <CardContent className="w-56 flex flex-col justify-center items-center h-64 gap-6 cursor-pointer p-4">
-                                    {Icon && (
-                                        <div className="p-4 rounded-full bg-opacity-20 transition-all duration-300 ease-in-out md:transform md:group-hover:scale-110">
-                                            <Icon className="w-16 h-16 text-white" />
-                                        </div>
-                                    )}
-                                    <Typography
-                                        as="h2"
-                                        variant="h2"
-                                        className="text-center text-white font-bold transition-all duration-300 ease-in-out transform group-hover:scale-105"
-                                    >
-                                        {t(bonuses)}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        )
-                    })}
+                <div className="flex flex-row py-2.5  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-4 duration-300 transition-all">
+                    {visibleCategories.map((category: BonusCategory) => (
+                        <BonusCategoryCard
+                            key={category.slug}
+                            slug={category.slug}
+                            coverImage={category.coverImage}
+                            title={category.title}
+                            locale={locale as Locale}
+                        />
+                    ))}
                 </div>
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
+
+            {!isMobile && (
+                <div className="flex justify-center pt-4">
+                    <Button
+                        size="lg"
+                        className="cursor-pointer"
+                        onClick={() => setShowAll(!showAll)}
+                    >
+                        <PlusCircleIcon />
+                        Show More
+                    </Button>
+                </div>
+            )}
         </div>
     )
 }

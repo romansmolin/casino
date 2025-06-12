@@ -11,7 +11,7 @@ import { Toaster } from '@/shared/ui/toaster'
 
 import Header from '../header/header'
 
-const AppSidebar = dynamic(() => import('../sidebar/sidebar'))
+const AppSidebar = dynamic(() => import('../sidebar/ui/sidebar'))
 
 const nunito = Nunito({
     weight: '600',

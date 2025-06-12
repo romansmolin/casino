@@ -1,6 +1,7 @@
 'use client'
 
 import { ApolloLink, HttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import dynamic from 'next/dynamic'
 
 // Lazy-load ApolloNextAppProvider (only on the client)
@@ -46,17 +47,53 @@ function makeClient() {
         uri: 'http://localhost:1337/graphql',
     })
 
+    const authLink = setContext((_, { headers }) => {
+        // Get the authentication token from environment variables
+        const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
+
+        return {
+            headers: {
+                ...headers,
+                authorization: token ? `Bearer ${token}` : '',
+            },
+        }
+    })
+
     return new NextSSRApolloClient({
-        cache: new NextSSRInMemoryCache(),
+        cache: new NextSSRInMemoryCache({
+            typePolicies: {
+                Query: {
+                    fields: {
+                        getMenu: {
+                            // Cache menu data for 5 minutes (300 seconds)
+                            merge(existing: any, incoming: any) {
+                                return incoming
+                            },
+                        },
+                    },
+                },
+            },
+        }),
+        defaultOptions: {
+            watchQuery: {
+                fetchPolicy: 'cache-first',
+                errorPolicy: 'all',
+            },
+            query: {
+                fetchPolicy: 'cache-first',
+                errorPolicy: 'all',
+            },
+        },
         link:
             typeof window === 'undefined'
                 ? ApolloLink.from([
                       new SSRMultipartLink({
                           stripDefer: true,
                       }),
+                      authLink,
                       httpLink,
                   ])
-                : httpLink,
+                : ApolloLink.from([authLink, httpLink]),
     })
 }
 

@@ -24,7 +24,7 @@ import {
 } from '@/shared/ui/sidebar'
 import { Skeleton } from '@/shared/ui/skeleton'
 
-import { useMenu } from './hooks/use-menu'
+import { useMenu } from '../hooks/use-menu'
 
 export function SidebarMenuList() {
     const t = useTranslations('sidebar')

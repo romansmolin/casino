@@ -1,5 +1,7 @@
 import { ApolloError, useLazyQuery } from '@apollo/client'
 
+import { BonusCategoryType } from '@/entities/bonus/model/bonus.types'
+
 import { Locale } from '@/shared/lib/i18n/routing'
 
 import { GLOBAL_SEARCH } from '../model/global-search.schema'

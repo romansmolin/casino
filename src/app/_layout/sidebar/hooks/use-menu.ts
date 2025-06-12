@@ -72,6 +72,9 @@ export function useMenu(locale: Locale): MenuHookResult {
         {
             variables: { locale },
             errorPolicy: 'all',
+            fetchPolicy: 'cache-first',
+            nextFetchPolicy: 'cache-first',
+            notifyOnNetworkStatusChange: false,
         }
     )
 

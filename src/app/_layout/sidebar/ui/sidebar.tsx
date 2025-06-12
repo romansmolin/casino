@@ -13,7 +13,7 @@ import {
     useSidebar,
 } from '@/shared/ui/sidebar'
 
-import Logo from '../../../../public/assets/logo'
+import Logo from '../../../../../public/assets/logo'
 import { SidebarMenuList } from './sidebar-menu'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
@@ -33,8 +33,6 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
 
             <SidebarContent>
                 <SidebarMenuList />
-
-                {/* <NavProjects projects={data.projects} /> */}
             </SidebarContent>
             <SidebarFooter>{/* <NavUser user={data.user} /> */}</SidebarFooter>
             <SidebarRail />

@@ -5,18 +5,52 @@ import {
     InMemoryCache,
     OperationVariables,
     TypedDocumentNode,
+    from,
 } from '@apollo/client'
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc'
+import { setContext } from '@apollo/client/link/context'
 
-export const { getClient } = registerApolloClient(() => {
-    return new ApolloClient({
-        cache: new InMemoryCache(),
-        link: new HttpLink({
+// Server-side Apollo Client setup
+let apolloClient: ApolloClient<any> | null = null
+
+const createServerApolloClient = async () => {
+    if (typeof window !== 'undefined') {
+        return null // Client-side, return null
+    }
+
+    if (apolloClient) {
+        return apolloClient // Return cached client
+    }
+
+    const { registerApolloClient } = await import(
+        '@apollo/experimental-nextjs-app-support/rsc'
+    )
+
+    const { getClient } = registerApolloClient(() => {
+        const httpLink = new HttpLink({
             uri: 'http://localhost:1337/graphql',
-            // uri: 'http://localhost:1337/graphql',
-        }),
+        })
+
+        const authLink = setContext((_, { headers }) => {
+            // Get the authentication token from environment variables
+            const token = process.env.STRAPI_API_TOKEN
+
+            return {
+                headers: {
+                    ...headers,
+                    authorization: token ? `Bearer ${token}` : '',
+                },
+            }
+        })
+
+        return new ApolloClient({
+            cache: new InMemoryCache(),
+            link: from([authLink, httpLink]),
+        })
     })
-})
+
+    apolloClient = getClient()
+    return apolloClient
+}
 
 // @ts-ignore
 export const getServerQuery = async (
@@ -24,7 +58,12 @@ export const getServerQuery = async (
     variables: OperationVariables
 ) => {
     try {
-        const { data, errors } = await getClient().query({
+        const client = await createServerApolloClient()
+        if (!client) {
+            throw new Error('Apollo client not available on client side')
+        }
+
+        const { data, errors } = await client.query({
             query: schema,
             variables,
             fetchPolicy: 'no-cache',

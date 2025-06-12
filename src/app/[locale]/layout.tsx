@@ -7,8 +7,7 @@ import { Locale, routing } from '@/shared/lib/i18n/routing'
 import { SidebarInset } from '@/shared/ui/sidebar'
 import { Toaster } from '@/shared/ui/toaster'
 
-import Header from '../_layout/header/header'
-import AppSidebar from '../_layout/sidebar/sidebar'
+import { AppSidebar, Header } from '../_layout'
 import Providers from '../_providers'
 import '../globals.css'
 

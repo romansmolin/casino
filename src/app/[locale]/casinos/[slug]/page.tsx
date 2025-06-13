@@ -39,6 +39,8 @@ const CasinoCategory = async ({
     const { categoryCasinoType } = await fetchCasinoCategoryBySlug(slug, locale)
     const currentPage = page ? parseInt(page, 10) : 1
 
+    console.log('CasinoCategoryPage: ', categoryCasinoType)
+
     if (!categoryCasinoType) notFound()
 
     return (

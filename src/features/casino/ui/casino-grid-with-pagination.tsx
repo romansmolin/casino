@@ -27,12 +27,14 @@ const CasinoGridWithPagination: React.FC<CasinoGridWithPaginationProps> = async 
         locale: locale as Locale,
     })
 
+    console.log('CASINOS: ', casinos)
+
     return (
         <section className="bento-block space-y-5">
             <Typography as="h2" variant="h1">
                 {formatCasinoType(casinosCategory)}
             </Typography>
-            <CasinoGrid casinos={casinos} />
+            {casinos && <CasinoGrid casinos={casinos} />}
             <PaginationControl totalPages={totalPages} currentPage={currentPage} />
         </section>
     )

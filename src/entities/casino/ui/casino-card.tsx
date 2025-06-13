@@ -36,7 +36,7 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({
     return (
         <Card className="w-full space-y-5 border min-w-[250px] md:max-w-[305px] mx-auto md:min-w-[305px] lg:min-w-[unset] lg:max-w-[unset] overflow-hidden hover:shadow-lg  cursor-pointer">
             <CardHeader className="flex flex-col gap-4 items-center text-center p-[unset]">
-                <div className="bg-primary w-full flex justify-center items-center">
+                <div className="bg-primary w-full flex justify-center items-center max-h-[90px]">
                     <Image src={logoUrl} alt={`${name} logo`} width={150} height={150} />
                 </div>
 
@@ -53,16 +53,6 @@ const CasinoCard: React.FC<CasinoCardProps> = async ({
 
             <CardFooter className="flex flex-col space-y-2 px-5 lg:px-4">
                 <Button size="lg" className="w-full" variant="outline" asChild>
-                    {/* <Link
-                        href={{
-                            pathname: `/${locale}/casino-review/${bonusrUrlFriendly(name)}`,
-                            query: {
-                                id: uuid,
-                            },
-                        }}>
-                        <Book />
-                        {t('review')}
-                    </Link> */}
                     <Link href={`/${locale}/casino-review/${slug}`}>
                         <Book />
                         {t('review')}

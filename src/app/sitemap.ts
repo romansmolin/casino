@@ -1,7 +1,13 @@
 import { MetadataRoute } from 'next'
 
-import { fetchAllBonusesWithoutPagination } from '@/entities/bonus/api/bonus.api'
-import { getAllCasinosWithoutPagination } from '@/entities/casino/api/casino.api'
+import {
+    fetchAllBonusCategories,
+    fetchAllBonusesWithoutPagination,
+} from '@/entities/bonus/api/bonus.api'
+import {
+    fetchAllCasinoCategories,
+    getAllCasinosWithoutPagination,
+} from '@/entities/casino/api/casino.api'
 
 import { Locale } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
@@ -43,23 +49,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     }
 
+    const generateRoutesForCasinoCategories = async (locale: Locale) => {
+        try {
+            const { categories, error } = await fetchAllCasinoCategories(locale)
+
+            if (error) throw error
+
+            return categories?.map((category) => ({
+                url: `${BASE_URL}/${locale}/casinos/${category.slug}`,
+                changeFrequency: 'weekly' as const,
+                priority: 1,
+            }))
+        } catch (error) {
+            console.error(`Error fetching casino categories for locale "${locale}":`, error)
+            return []
+        }
+    }
+
+    const generateRoutesForBonusCategories = async (locale: Locale) => {
+        try {
+            const { categories, error } = await fetchAllBonusCategories(locale)
+
+            if (error) throw error
+
+            return categories?.map((category) => ({
+                url: `${BASE_URL}/${locale}/bonuses/${category.slug}`,
+                changeFrequency: 'weekly' as const,
+                priority: 1,
+            }))
+        } catch (error) {
+            console.error(`Error fetching bonus categories for locale "${locale}":`, error)
+            return []
+        }
+    }
+
     const generateRoutesForStaticPages = async (locale: Locale) => {
-        const staticRoutes = [
-            '/',
-            '/bonuses/no-deposit-bonuses',
-            '/bonuses/free-spins-bonuses',
-            '/bonuses/free-cash-bonuses',
-            '/bonuses/0-wager-bonuses',
-            '/bonuses/welcome-bonuses',
-            '/bonuses/cashback-bonuses',
-            '/bonuses/crypto-bonuses',
-            '/casinos/sportsbook-casinos',
-            '/casinos/fresh-casinos',
-            '/casinos/crypto-casinos',
-            '/casinos/pay-n-play-casinos',
-            '/terms-and-conditions',
-            '/about-us',
-        ]
+        const staticRoutes = ['/', '/terms-and-conditions', '/about-us']
 
         return staticRoutes.map((route) => ({
             url: `${BASE_URL}/${locale}${route}`,
@@ -79,6 +104,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return allRoutes.flat() // Flatten nested arrays
     }
 
+    const generateAllCasinoCategoriesRoutes = async () => {
+        const allRoutes = await Promise.all(locales.map(generateRoutesForCasinoCategories))
+        return allRoutes.flat() // Flatten nested arrays
+    }
+
+    const generateAllBonusCategoriesRoutes = async () => {
+        const allRoutes = await Promise.all(locales.map(generateRoutesForBonusCategories))
+        return allRoutes.flat() // Flatten nested arrays
+    }
+
     const generateAllStaticRoutes = async () => {
         const allRoutes = await Promise.all(locales.map(generateRoutesForStaticPages))
         return allRoutes.flat() // Flatten nested arrays
@@ -87,6 +122,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const bonusReviewRoutes = await generateAllBonusReviewRoutes()
     const casinoReviewsRoutes = await generateAllCasinosReviewRoutes()
     const staticRoutes = await generateAllStaticRoutes()
+    const casinoCategoriesRoutes = await generateAllCasinoCategoriesRoutes()
+    const bonusCategoriesRoutes = await generateAllBonusCategoriesRoutes()
 
-    return [...bonusReviewRoutes, ...casinoReviewsRoutes, ...staticRoutes]
+    // @ts-ignore
+    return [
+        ...bonusReviewRoutes,
+        ...casinoReviewsRoutes,
+        ...staticRoutes,
+        ...casinoCategoriesRoutes,
+        ...bonusCategoriesRoutes,
+    ]
 }

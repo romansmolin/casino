@@ -65,3 +65,8 @@ export interface BonusCategory {
     coverImage: string
     title: string
 }
+
+export interface AllBonusCategoriesResponse {
+    categories: BonusCategory[]
+    error: ApiError | null
+}

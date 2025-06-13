@@ -4,6 +4,7 @@ import { ApiError, handleError } from '@/shared/utils/error-handler'
 
 import {
     GET_ALL_BONUSES_WITHOUT_PAGINATION,
+    GET_ALL_BONUS_CATEGORIES,
     GET_BONUSES_BY_TYPE,
     GET_BONUS_BY_SLUG,
     GET_BONUS_BY_UUID,
@@ -11,9 +12,11 @@ import {
     GET_SEO_INFO_BY_BONUS_SLUG,
 } from '../model/bonus.schema'
 import {
+    AllBonusCategoriesResponse,
     Bonus,
     BonusByIdResponse,
     BonusBySlugResponse,
+    BonusCategory,
     BonusesByTypeResponse,
     BonusesWithoutPaginationResponse,
 } from '../model/bonus.types'
@@ -212,6 +215,37 @@ export const fetchBonusCategoryBySlug = async (
             keywords: null,
             categoryBonusType: null,
             error: handleError(err, 'fetchBonusCategoryBySlug'),
+        }
+    }
+}
+
+export const fetchAllBonusCategories = async (
+    locale: Locale
+): Promise<AllBonusCategoriesResponse> => {
+    try {
+        const { data, error } = await getServerQuery(GET_ALL_BONUS_CATEGORIES, { locale })
+
+        if (error) {
+            return {
+                error: handleError(error, 'fetchAllBonusCategories'),
+                categories: [],
+            }
+        }
+
+        const preparedData = data.getAllBonusCategories.map((category: BonusCategory) => ({
+            slug: category.slug,
+            coverImage: category.coverImage,
+            title: category.title,
+        }))
+
+        return {
+            categories: preparedData,
+            error: null,
+        }
+    } catch (error) {
+        return {
+            error: handleError(error, 'fetchAllBonusCategories'),
+            categories: [],
         }
     }
 }

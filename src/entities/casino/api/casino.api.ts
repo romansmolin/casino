@@ -7,11 +7,12 @@ import {
     CASINO_BY_SLUG,
     CASINO_BY_UUID,
     CASINO_TOP_BY_COUNTRY,
+    GET_ALL_CASINOS_CATEGORIES,
     GET_ALL_CASINOS_WITHOUT_PAGINATION,
     GET_CASINO_CATEGORY_BY_SLUG,
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
-import { Casino, CasinoReview, CasinoTopEntry } from '../model/casino.types'
+import { Casino, CasinoCategory, CasinoReview, CasinoTopEntry } from '../model/casino.types'
 
 // API Response Types
 interface CasinoTopByCountryResponse {
@@ -49,6 +50,11 @@ interface CasinoSeoInfoResponse {
 
 interface CasinoCategoryBySlugResponse extends CasinoSeoInfoResponse {
     categoryCasinoType: string | null
+}
+
+interface AllCasinoCategories {
+    categories: CasinoCategory[]
+    error: ApiError | null
 }
 
 export const fetchCasinoTopByCountryServer = async (
@@ -272,6 +278,37 @@ export const fetchCasinoCategoryBySlug = async (
             keywords: null,
             categoryCasinoType: null,
             error: handleError(err, 'fetchBonusCategoryBySlug'),
+        }
+    }
+}
+
+export const fetchAllCasinoCategories = async (
+    locale: Locale
+): Promise<AllCasinoCategories> => {
+    try {
+        const { data, error } = await getServerQuery(GET_ALL_CASINOS_CATEGORIES, { locale })
+
+        if (error) {
+            return {
+                error: handleError(error, 'fetchAllCasinoCategories'),
+                categories: [],
+            }
+        }
+
+        const preparedData = data.getAllCasinosCategories.map((category: CasinoCategory) => ({
+            slug: category.slug,
+            coverImage: category.coverImage,
+            title: category.title,
+        }))
+
+        return {
+            categories: preparedData,
+            error: null,
+        }
+    } catch (error) {
+        return {
+            error: handleError(error, 'fetchAllCasinoCategories'),
+            categories: [],
         }
     }
 }

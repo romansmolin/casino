@@ -7,29 +7,29 @@ import { useLocale, useTranslations } from 'next-intl'
 import React, { useMemo, useState } from 'react'
 
 import { BonusCategory, BonusCategoryCard } from '@/entities/bonus'
-import { GET_ALL_BONUS_CATEGORIES } from '@/entities/bonus/model/bonus.schema'
+import { CasinoCategoryCard, GET_ALL_CASINOS_CATEGORIES } from '@/entities/casino'
 
 import { Locale } from '@/shared/lib/i18n/routing'
 import { useIsMobile } from '@/shared/lib/react/use-mobile'
 import { Button } from '@/shared/ui/button'
 import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
 
-const BonusCategories = () => {
+const CasinoCategories = () => {
     const t = useTranslations('common')
     const clodsedLength = 6
     const locale = useLocale()
     const isMobile = useIsMobile()
     const [showAll, setShowAll] = useState(false)
 
-    const { data, error } = useQuery(GET_ALL_BONUS_CATEGORIES, {
+    const { data, error } = useQuery(GET_ALL_CASINOS_CATEGORIES, {
         variables: { locale },
     })
 
     const visibleCategories = useMemo(() => {
-        if (isMobile) return data?.getAllBonusCategories ?? []
+        if (isMobile) return data?.getAllCasinosCategories ?? []
         return showAll
-            ? (data?.getAllBonusCategories ?? [])
-            : (data?.getAllBonusCategories ?? []).slice(0, clodsedLength)
+            ? (data?.getAllCasinosCategories ?? [])
+            : (data?.getAllCasinosCategories ?? []).slice(0, clodsedLength)
     }, [data, isMobile, showAll])
 
     return (
@@ -37,7 +37,7 @@ const BonusCategories = () => {
             <ScrollArea className="pb-2.5">
                 <div className="flex flex-row py-2.5  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 duration-300 transition-all">
                     {visibleCategories.map((category: BonusCategory) => (
-                        <BonusCategoryCard
+                        <CasinoCategoryCard
                             key={category.slug}
                             slug={category.slug}
                             coverImage={category.coverImage}
@@ -49,7 +49,7 @@ const BonusCategories = () => {
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
 
-            {!isMobile && data?.getAllBonusCategories.length > 6 && (
+            {!isMobile && data?.getAllCasinosCategories.length > 6 && (
                 <div className="flex justify-center">
                     <Button
                         size="lg"
@@ -65,4 +65,4 @@ const BonusCategories = () => {
     )
 }
 
-export default BonusCategories
+export default CasinoCategories

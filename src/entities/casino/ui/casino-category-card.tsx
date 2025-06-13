@@ -4,13 +4,13 @@ import React from 'react'
 
 import { Locale } from '@/shared/lib/i18n/routing'
 
-import { BonusCategory } from '../model/bonus.types'
+import { CasinoCategory } from '../model/casino.types'
 
-interface BonusCategoryCardProps extends BonusCategory {
+interface CasinoCategoryCardProps extends CasinoCategory {
     locale: Locale
 }
 
-const BonusCategoryCard: React.FC<BonusCategoryCardProps> = ({
+const CasinoCategoryCard: React.FC<CasinoCategoryCardProps> = ({
     slug,
     coverImage,
     title,
@@ -19,7 +19,7 @@ const BonusCategoryCard: React.FC<BonusCategoryCardProps> = ({
     return (
         <Link
             key={slug}
-            href={`${locale}/bonuses/${slug}`}
+            href={`${locale}/casinos/${slug}`}
             className="group w-[270px] sm:w-[300px] md:w-[unset] md:h-[unset] relative overflow-hidden rounded-2xl aspect-[2/3] xs:aspect-[3/4] sm:aspect-[4/5] transform transition-all duration-500 hover:-translate-y-2 shrink-0"
         >
             {/* Background Image */}
@@ -42,7 +42,7 @@ const BonusCategoryCard: React.FC<BonusCategoryCardProps> = ({
                         </h3>
                         <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <span className="text-primary text-sm font-medium">
-                                Explore Offers →
+                                Explore Casinos →
                             </span>
                         </div>
                     </div>
@@ -60,4 +60,4 @@ const BonusCategoryCard: React.FC<BonusCategoryCardProps> = ({
     )
 }
 
-export default BonusCategoryCard
+export default CasinoCategoryCard

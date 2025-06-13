@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 
 import { BestBonusesOfTheMonth, BonusCategories } from '@/features/bonus'
-import { CasinoTop } from '@/features/casino'
+import { CasinoCategories, CasinoTop } from '@/features/casino'
 
 import {
     PageContentRenderer as HomePageContent,
@@ -25,25 +25,27 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
 
     return (
         <>
-            <section className="space-y-5 flex-1 bento-block">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left">
+            <section className="space-y-7 flex-1 bento-block">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left text-primary">
                     {t('title')} 2024
                 </h1>
                 <CasinoTop byCountry="Germany" />
             </section>
-
             <NewsletterForm />
             <BestBonusesOfTheMonth />
-
             <section className="space-y-5 flex-1 bento-block relative">
-                <Typography as="h2" variant="h1">
+                <Typography as="h2" variant="h1" className="text-primary">
                     {t('categories-block')}
                 </Typography>
                 <BonusCategories />
             </section>
-
             <ReviewProcessSection />
-
+            <section className="space-y-7 flex-1 bento-block relative">
+                <Typography as="h2" variant="h1" className="text-primary">
+                    {t('casino-categories')}
+                </Typography>
+                <CasinoCategories />
+            </section>
             {pageContent && <HomePageContent pageContent={pageContent} />}
         </>
     )

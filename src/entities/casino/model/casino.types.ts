@@ -70,3 +70,9 @@ type BonusCategoryType =
     | 'cashback-bonuses'
     | 'no-deposit-bonuses'
     | 'best-of-the-month'
+
+export interface CasinoCategory {
+    slug: string
+    coverImage: string
+    title: string
+}

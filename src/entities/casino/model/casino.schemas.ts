@@ -197,3 +197,13 @@ export const GET_CASINO_CATEGORY_BY_SLUG = gql`
         }
     }
 `
+
+export const GET_ALL_CASINOS_CATEGORIES = gql`
+    query GetAllCasinosCategories($locale: String!) {
+        getAllCasinosCategories(locale: $locale) {
+            title
+            slug
+            coverImage
+        }
+    }
+`

@@ -15,7 +15,7 @@ const BestBonusesOfTheMonth = async () => {
 
     return (
         <section className="relative space-y-5 bento-block border border-border">
-            <Typography as="h2" variant="h1">
+            <Typography as="h2" variant="h1" className="text-primary">
                 {t('best-bonuses-of-the-month')}
             </Typography>
             <ScrollArea className="relative w-[calc(100%+1.25rem)] md:w-[unset]">

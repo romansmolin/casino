@@ -12,7 +12,6 @@ const TopPage = async ({ slug, locale }: { slug: string; locale: Locale }) => {
 
     if (!top || error) notFound()
 
-    console.log('TOP: ', top)
     return (
         <section className="bento-block space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left text-primary">

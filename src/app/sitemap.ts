@@ -6,131 +6,193 @@ import {
 } from '@/entities/bonus/api/bonus.api'
 import {
     fetchAllCasinoCategories,
+    fetchAllCasinoTops,
     getAllCasinosWithoutPagination,
 } from '@/entities/casino/api/casino.api'
 
-import { Locale } from '@/shared/lib/i18n/routing'
+import { Locale, routing } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
 
 const BASE_URL = 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const locales: Locale[] = ['ru', 'en'] // Ensure proper typing
+    // Use the locales from routing configuration
+    const locales = routing.locales
 
-    const generateRoutesForBonusReviews = async (locale: Locale) => {
-        try {
-            const { bonuses } = await fetchAllBonusesWithoutPagination(locale)
+    // HELPER FOR SITEMAP GENERATION - Only generate routes for locales where content exists
 
-            return bonuses.map((bonus) => ({
-                url: `${BASE_URL}/${locale}/${bonusrUrlFriendly(bonus.primaryBonusType)}/${getUserFriendlyUrl(bonus.casinoName)}?uuid=${bonus.uuid}`,
-                // lastModified: new Date(),
-                changeFrequency: 'weekly' as const,
-                priority: 0.7,
-            }))
-        } catch (error) {
-            console.error(`Error fetching casinos for locale "${locale}":`, error)
-            return []
+    const generateRoutesForBonusReviews = async () => {
+        const allRoutes: MetadataRoute.Sitemap = []
+
+        for (const locale of locales) {
+            try {
+                const { bonuses, error } = await fetchAllBonusesWithoutPagination(locale)
+
+                // Only generate routes if we have bonuses and no error
+                if (!error && bonuses && bonuses.length > 0) {
+                    const routes = bonuses.map((bonus) => ({
+                        url: `${BASE_URL}/${locale}/${bonusrUrlFriendly(bonus.primaryBonusType)}/${getUserFriendlyUrl(bonus.casinoName)}?uuid=${bonus.uuid}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 0.7,
+                    }))
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(`Error fetching bonuses for locale "${locale}":`, error)
+                // Continue with next locale instead of failing completely
+            }
         }
+
+        return allRoutes
     }
 
-    const generateRoutesForCasinoReviews = async (locale: Locale) => {
-        try {
-            const { casinos } = await getAllCasinosWithoutPagination(locale)
+    const generateRoutesForCasinoReviews = async () => {
+        const allRoutes: MetadataRoute.Sitemap = []
 
-            return casinos?.map((casino) => ({
-                url: `${BASE_URL}/${locale}/casino-review/${bonusrUrlFriendly(casino.name)}?id=${casino.uuid}`,
-                // lastModified: new Date(),
-                changeFrequency: 'weekly' as const,
-                priority: 0.7,
-            }))
-        } catch (error) {
-            console.error(`Error fetching casinos for locale "${locale}":`, error)
-            return []
+        for (const locale of locales) {
+            try {
+                const { casinos, error } = await getAllCasinosWithoutPagination(locale)
+
+                // Only generate routes if we have casinos and no error
+                if (!error && casinos && casinos.length > 0) {
+                    const routes = casinos.map((casino) => ({
+                        url: `${BASE_URL}/${locale}/casino-review/${bonusrUrlFriendly(casino.name)}?id=${casino.uuid}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 0.7,
+                    }))
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(`Error fetching casinos for locale "${locale}":`, error)
+                // Continue with next locale instead of failing completely
+            }
         }
+
+        return allRoutes
     }
 
-    const generateRoutesForCasinoCategories = async (locale: Locale) => {
-        try {
-            const { categories, error } = await fetchAllCasinoCategories(locale)
+    const generateRoutesForCasinoCategories = async () => {
+        const allRoutes: MetadataRoute.Sitemap = []
 
-            if (error) throw error
+        for (const locale of locales) {
+            try {
+                const { categories, error } = await fetchAllCasinoCategories(locale)
 
-            return categories?.map((category) => ({
-                url: `${BASE_URL}/${locale}/casinos/${category.slug}`,
+                // Only generate routes if we have categories and no error
+                if (!error && categories && categories.length > 0) {
+                    const routes = categories.map((category) => ({
+                        url: `${BASE_URL}/${locale}/casinos/${category.slug}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 1,
+                    }))
+
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(
+                    `Error fetching casino categories for locale "${locale}":`,
+                    error
+                )
+                // Continue with next locale instead of failing completely
+            }
+        }
+
+        return allRoutes
+    }
+
+    const generateRoutesForBonusCategories = async () => {
+        const allRoutes: MetadataRoute.Sitemap = []
+
+        for (const locale of locales) {
+            try {
+                const { categories, error } = await fetchAllBonusCategories(locale)
+
+                // Only generate routes if we have categories and no error
+                if (!error && categories && categories.length > 0) {
+                    const routes = categories.map((category) => ({
+                        url: `${BASE_URL}/${locale}/bonuses/${category.slug}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 1,
+                    }))
+                    if (locale === 'ru') console.log('routes: ', routes)
+
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(`Error fetching bonus categories for locale "${locale}":`, error)
+                // Continue with next locale instead of failing completely
+            }
+        }
+
+        return allRoutes
+    }
+
+    const generateAllCasinoTops = async () => {
+        const allRoutes: MetadataRoute.Sitemap = []
+
+        for (const locale of locales) {
+            try {
+                const { tops, error } = await fetchAllCasinoTops(locale)
+
+                // Only generate routes if we have tops and no error
+                if (!error && tops && tops.length > 0) {
+                    const routes = tops.map((top) => ({
+                        url: `${BASE_URL}/${locale}/top/${top.slug}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 1,
+                    }))
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(`Error fetching casino tops for locale "${locale}":`, error)
+                // Continue with next locale instead of failing completely
+            }
+        }
+
+        return allRoutes
+    }
+
+    const generateRoutesForStaticPages = async () => {
+        const staticRoutes = ['/']
+        const allRoutes: MetadataRoute.Sitemap = []
+
+        // For static pages, generate for all locales since they should exist
+        for (const locale of locales) {
+            const routes = staticRoutes.map((route) => ({
+                url: `${BASE_URL}/${locale}${route}`,
                 changeFrequency: 'weekly' as const,
                 priority: 1,
             }))
-        } catch (error) {
-            console.error(`Error fetching casino categories for locale "${locale}":`, error)
-            return []
+            allRoutes.push(...routes)
         }
+
+        return allRoutes
     }
 
-    const generateRoutesForBonusCategories = async (locale: Locale) => {
-        try {
-            const { categories, error } = await fetchAllBonusCategories(locale)
+    // SITEMAP GENERATION - Execute all route generation concurrently
 
-            if (error) throw error
+    const [
+        bonusReviewRoutes,
+        casinoReviewsRoutes,
+        staticRoutes,
+        casinoCategoriesRoutes,
+        bonusCategoriesRoutes,
+        casinoTopsRoutes,
+    ] = await Promise.all([
+        generateRoutesForBonusReviews(),
+        generateRoutesForCasinoReviews(),
+        generateRoutesForStaticPages(),
+        generateRoutesForCasinoCategories(),
+        generateRoutesForBonusCategories(),
+        generateAllCasinoTops(),
+    ])
 
-            return categories?.map((category) => ({
-                url: `${BASE_URL}/${locale}/bonuses/${category.slug}`,
-                changeFrequency: 'weekly' as const,
-                priority: 1,
-            }))
-        } catch (error) {
-            console.error(`Error fetching bonus categories for locale "${locale}":`, error)
-            return []
-        }
-    }
-
-    const generateRoutesForStaticPages = async (locale: Locale) => {
-        const staticRoutes = ['/', '/terms-and-conditions', '/about-us']
-
-        return staticRoutes.map((route) => ({
-            url: `${BASE_URL}/${locale}${route}`,
-            // lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 1,
-        }))
-    }
-
-    const generateAllBonusReviewRoutes = async () => {
-        const allRoutes = await Promise.all(locales.map(generateRoutesForBonusReviews))
-        return allRoutes.flat() // Flatten nested arrays
-    }
-
-    const generateAllCasinosReviewRoutes = async () => {
-        const allRoutes = await Promise.all(locales.map(generateRoutesForCasinoReviews))
-        return allRoutes.flat() // Flatten nested arrays
-    }
-
-    const generateAllCasinoCategoriesRoutes = async () => {
-        const allRoutes = await Promise.all(locales.map(generateRoutesForCasinoCategories))
-        return allRoutes.flat() // Flatten nested arrays
-    }
-
-    const generateAllBonusCategoriesRoutes = async () => {
-        const allRoutes = await Promise.all(locales.map(generateRoutesForBonusCategories))
-        return allRoutes.flat() // Flatten nested arrays
-    }
-
-    const generateAllStaticRoutes = async () => {
-        const allRoutes = await Promise.all(locales.map(generateRoutesForStaticPages))
-        return allRoutes.flat() // Flatten nested arrays
-    }
-
-    const bonusReviewRoutes = await generateAllBonusReviewRoutes()
-    const casinoReviewsRoutes = await generateAllCasinosReviewRoutes()
-    const staticRoutes = await generateAllStaticRoutes()
-    const casinoCategoriesRoutes = await generateAllCasinoCategoriesRoutes()
-    const bonusCategoriesRoutes = await generateAllBonusCategoriesRoutes()
-
-    // @ts-ignore
     return [
         ...bonusReviewRoutes,
         ...casinoReviewsRoutes,
         ...staticRoutes,
         ...casinoCategoriesRoutes,
         ...bonusCategoriesRoutes,
+        ...casinoTopsRoutes,
     ]
 }

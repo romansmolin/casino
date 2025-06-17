@@ -2,7 +2,7 @@ import { cache } from 'react'
 
 import { getServerQuery } from '@/shared/lib/apollo-client'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { handleError } from '@/shared/utils/error-handler'
+import { ApiError, handleError } from '@/shared/utils/error-handler'
 
 import {
     CASINOS_BY_TYPE,
@@ -12,6 +12,7 @@ import {
     CASINO_TOP_BY_SLUG,
     GET_ALL_CASINOS_CATEGORIES,
     GET_ALL_CASINOS_WITHOUT_PAGINATION,
+    GET_ALL_CASINO_TOPS,
     GET_CASINO_CATEGORY_BY_SLUG,
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
@@ -318,6 +319,31 @@ export const fetchAllCasinoCategories = async (
         return {
             error: handleError(error, 'fetchAllCasinoCategories'),
             categories: [],
+        }
+    }
+}
+
+export const fetchAllCasinoTops = async (
+    locale: Locale
+): Promise<{ tops: { slug: string }[]; error: ApiError | null }> => {
+    try {
+        const { data, error } = await getServerQuery(GET_ALL_CASINO_TOPS, { locale })
+
+        if (error) {
+            return {
+                error: handleError(error, 'fetchAllCasinoTops'),
+                tops: [],
+            }
+        }
+
+        return {
+            error: null,
+            tops: data.getAllTops,
+        }
+    } catch (err) {
+        return {
+            error: handleError(err, 'fetchAllCasinoTops'),
+            tops: [],
         }
     }
 }

@@ -4,17 +4,6 @@ import { PageContentItem } from '../model/page-content.types'
 import PageContentFaq from './page-content-faq'
 import PageContentSection from './page-content-section'
 
-type Content = {
-    type: string
-    image: string
-    content: unknown | AccordionItem
-}
-
-type AccordionItem = {
-    label: string
-    text: string
-}
-
 interface ContentRendererProps {
     pageContent: PageContentItem[]
 }

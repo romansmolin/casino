@@ -56,6 +56,7 @@ export const CASINO_BY_UUID = gql`
             affiliateLink
             review {
                 type
+                level
                 children {
                     type
                     text
@@ -165,11 +166,17 @@ export const CASINO_BY_SLUG = gql`
             rating
             review {
                 type
+                level
+                format
+                image {
+                    url
+                }
                 children {
                     bold
                     children {
                         text
                         type
+                        bold
                     }
                     text
                     type
@@ -225,6 +232,13 @@ export const GET_ALL_CASINOS_CATEGORIES = gql`
             title
             slug
             coverImage
+        }
+    }
+`
+export const GET_ALL_CASINO_TOPS = gql`
+    query GetAllTops($locale: String!) {
+        getAllTops(locale: $locale) {
+            slug
         }
     }
 `

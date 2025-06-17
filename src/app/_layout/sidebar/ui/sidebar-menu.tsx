@@ -5,9 +5,12 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'
-import { ChevronRight, type LucideIcon } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { ChevronRight } from 'lucide-react'
+import { useLocale } from 'next-intl'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+import { useEffect, useState } from 'react'
 
 import { cn } from '@/shared/lib/css'
 import { Locale } from '@/shared/lib/i18n/routing'
@@ -26,10 +29,18 @@ import { Skeleton } from '@/shared/ui/skeleton'
 
 import { useMenu } from '../hooks/use-menu'
 
+const isCurrentSlugEqualToMenuSlug = (pathname: string, menuLink: string) => {
+    const currentMenuSlug = menuLink.split('/').slice(1).at(-1)
+    const pathnameSlug = pathname.split('/').slice(1).at(-1)
+
+    if (currentMenuSlug === pathnameSlug) return true
+    else return false
+}
+
 export function SidebarMenuList() {
-    const t = useTranslations('sidebar')
     const locale = useLocale() as Locale
     const { isMobile } = useSidebar()
+    const pathname = usePathname()
 
     const { menuItems, loading, error, refetch } = useMenu(locale)
 
@@ -105,7 +116,14 @@ export function SidebarMenuList() {
                                             key={subItem.title}
                                             className="hover:bg-primary hover:text-white rounded-md"
                                         >
-                                            <SidebarMenuSubButton asChild className="h-10 ">
+                                            <SidebarMenuSubButton
+                                                asChild
+                                                className="h-10"
+                                                isActive={isCurrentSlugEqualToMenuSlug(
+                                                    pathname,
+                                                    subItem.url
+                                                )}
+                                            >
                                                 <Link
                                                     href={`/${locale}/${subItem.url}`}
                                                     className="flex gap-2"

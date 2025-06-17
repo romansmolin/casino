@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 
 import { CasinoTypeBadge } from '@/entities/casino'
+import { CasinoType } from '@/entities/casino/model/casino.types'
 
 import Typography from '@/shared/components/typography/typography'
 import { Button } from '@/shared/ui/button'
@@ -29,7 +30,13 @@ const CasinoReviewCard: React.FC<CasinoHighlightProps> = ({
         <Card className="lg:w-1/3 h-full flex flex-col bento-block !p-0">
             <CardHeader className="!p-0">
                 <div className="rounded-t-xl w-full h-[170px] bg-primary flex justify-center items-center">
-                    <Image width={150} height={50} src={logo} alt={`${casinoName} logo`} />
+                    <Image
+                        width={300}
+                        height={150}
+                        src={logo}
+                        alt={`${casinoName} logo`}
+                        className="object-cover h-[150px]"
+                    />
                 </div>
             </CardHeader>
             <CardContent className="flex flex-col justify-between items-center space-y-6 grow p-5">

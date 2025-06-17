@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@apollo/client'
-import { PlusCircleIcon } from 'lucide-react'
+import { MinusCircleIcon, PlusCircleIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import React, { useMemo, useState } from 'react'
@@ -35,7 +35,7 @@ const BonusCategories = () => {
     return (
         <div className="w-[calc(100%+1.25rem)] md:w-[unset]">
             <ScrollArea className="pb-2.5">
-                <div className="flex flex-row py-2.5  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 duration-300 transition-all">
+                <div className="flex flex-row py-2.5  md:[width:unset] md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 duration-300 transition-all">
                     {visibleCategories.map((category: BonusCategory) => (
                         <BonusCategoryCard
                             key={category.slug}
@@ -56,8 +56,8 @@ const BonusCategories = () => {
                         className="cursor-pointer"
                         onClick={() => setShowAll(!showAll)}
                     >
-                        <PlusCircleIcon />
-                        Show More
+                        {showAll ? <MinusCircleIcon /> : <PlusCircleIcon />}
+                        {showAll ? 'Show Less' : 'Show More'}
                     </Button>
                 </div>
             )}

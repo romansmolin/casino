@@ -36,16 +36,18 @@ const CasinoCategory = async ({
     searchParams: Promise<{ page: string }>
 }) => {
     const [{ slug, locale }, { page }] = await Promise.all([params, searchParams])
-    const { categoryCasinoType } = await fetchCasinoCategoryBySlug(slug, locale)
+    const { categoryCasinoType, pageTitle } = await fetchCasinoCategoryBySlug(slug, locale)
     const currentPage = page ? parseInt(page, 10) : 1
-
-    console.log('CasinoCategoryPage: ', categoryCasinoType)
 
     if (!categoryCasinoType) notFound()
 
     return (
         <Suspense fallback={<LoadingIndicator />}>
-            <CasinoCategoryPage category={categoryCasinoType} currentPage={currentPage} />
+            <CasinoCategoryPage
+                category={categoryCasinoType}
+                currentPage={currentPage}
+                title={pageTitle || ''}
+            />
         </Suspense>
     )
 }

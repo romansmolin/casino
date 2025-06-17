@@ -13,11 +13,13 @@ import { formatCasinoType } from '@/shared/utils/text-formaters'
 interface CasinoGridWithPaginationProps {
     casinosCategory: string
     currentPage: number
+    title: string
 }
 
 const CasinoGridWithPagination: React.FC<CasinoGridWithPaginationProps> = async ({
     currentPage,
     casinosCategory,
+    title,
 }) => {
     const locale = await getLocale()
     const { casinos, totalPages } = await fetchCasinoByType({
@@ -27,12 +29,10 @@ const CasinoGridWithPagination: React.FC<CasinoGridWithPaginationProps> = async 
         locale: locale as Locale,
     })
 
-    console.log('CASINOS: ', casinos)
-
     return (
-        <section className="bento-block space-y-5">
+        <section className="bento-block space-y-7">
             <Typography as="h2" variant="h1">
-                {formatCasinoType(casinosCategory)}
+                {title}
             </Typography>
             {casinos && <CasinoGrid casinos={casinos} />}
             <PaginationControl totalPages={totalPages} currentPage={currentPage} />

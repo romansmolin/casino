@@ -36,4 +36,5 @@ export interface PageSeoInfoResponse {
     description: string | null
     keywords: string[] | null
     error: ApiError | null
+    pageTitle: string | null
 }

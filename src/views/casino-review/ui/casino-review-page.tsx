@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation'
 
 import React from 'react'
 
-import { CasinoAvailability, fetchCasinoByUuid } from '@/entities/casino'
+import { CasinoAvailability } from '@/features/casino'
+
 import { getCasinoBySlug } from '@/entities/casino/api/casino.api'
 import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
 import { StrapiContent } from '@/entities/page-content/model/types'

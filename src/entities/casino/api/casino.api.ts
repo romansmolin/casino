@@ -1,63 +1,35 @@
+import { cache } from 'react'
+
 import { getServerQuery } from '@/shared/lib/apollo-client'
 import { Locale } from '@/shared/lib/i18n/routing'
-import { ApiError, handleError } from '@/shared/utils/error-handler'
+import { handleError } from '@/shared/utils/error-handler'
 
 import {
     CASINOS_BY_TYPE,
     CASINO_BY_SLUG,
     CASINO_BY_UUID,
     CASINO_TOP_BY_COUNTRY,
+    CASINO_TOP_BY_SLUG,
     GET_ALL_CASINOS_CATEGORIES,
     GET_ALL_CASINOS_WITHOUT_PAGINATION,
     GET_CASINO_CATEGORY_BY_SLUG,
     GET_CASINO_SEO_INFO_BY_SLUG,
 } from '../model/casino.schemas'
-import { Casino, CasinoCategory, CasinoReview, CasinoTopEntry } from '../model/casino.types'
+import type {
+    AllCasinoCategories,
+    Casino,
+    CasinoBySlugResponse,
+    CasinoByUuidResponse,
+    CasinoCategory,
+    CasinoCategoryBySlugResponse,
+    CasinoSeoInfoResponse,
+    CasinoTopByCountryResponse,
+    CasinoTopBySlugResponse,
+    CasinosByTypeResponse,
+    CasinosWithoutPaginationResponse,
+} from '../model/casino.types'
 
-// API Response Types
-interface CasinoTopByCountryResponse {
-    topByCountry: CasinoTopEntry[] | null
-    error: ApiError | null
-}
-
-interface CasinoByUuidResponse<T = Casino> {
-    casino: T | null
-    error: ApiError | null
-}
-
-interface CasinosByTypeResponse {
-    casinos: Casino[] | null
-    totalPages: number
-    error: ApiError | null
-}
-
-interface CasinosWithoutPaginationResponse {
-    casinos: Casino[] | null
-    error: ApiError | null
-}
-
-interface CasinoBySlugResponse {
-    casino: CasinoReview | null
-    error: ApiError | null
-}
-
-interface CasinoSeoInfoResponse {
-    title: string | null
-    description: string | null
-    keywords: string[] | null
-    error: ApiError | null
-}
-
-interface CasinoCategoryBySlugResponse extends CasinoSeoInfoResponse {
-    categoryCasinoType: string | null
-}
-
-interface AllCasinoCategories {
-    categories: CasinoCategory[]
-    error: ApiError | null
-}
-
-export const fetchCasinoTopByCountryServer = async (
+export const fetchCasinoTopByCountry = async (
     country: string,
     locale: string
 ): Promise<CasinoTopByCountryResponse> => {
@@ -70,18 +42,50 @@ export const fetchCasinoTopByCountryServer = async (
         if (error) {
             return {
                 topByCountry: null,
-                error: handleError(error, 'fetchCasinoTopByCountryServer'),
+                error: handleError(error, 'fetchCasinoTopByCountry'),
             }
         }
 
         return {
-            topByCountry: data?.getTopByCountryName.top_list || null,
+            topByCountry: data?.getTopByCountryName.topList || null,
             error: null,
         }
     } catch (err) {
         return {
             topByCountry: null,
             error: handleError(err, 'fetchCasinoTopByCountryServer'),
+        }
+    }
+}
+
+export const fetchCasinoTopBySlug = async (
+    slug: string,
+    locale: string
+): Promise<CasinoTopBySlugResponse> => {
+    try {
+        const { data, error } = await getServerQuery(CASINO_TOP_BY_SLUG, {
+            slug,
+            locale,
+        })
+
+        if (error) {
+            return {
+                top: null,
+                pageTitle: null,
+                error: handleError(error, 'fetchCasinoTopBySlug'),
+            }
+        }
+
+        return {
+            top: data?.getTopPageBySlug.top.topList || null,
+            pageTitle: data?.getTopPageBySlug.pageTitle,
+            error: null,
+        }
+    } catch (err) {
+        return {
+            top: null,
+            pageTitle: null,
+            error: handleError(err, 'fetchCasinoTopBySlug'),
         }
     }
 }
@@ -243,44 +247,49 @@ export const getCasinoSeoInfoBySlug = async (
     }
 }
 
-export const fetchCasinoCategoryBySlug = async (
-    slug: string,
-    locale: Locale
-): Promise<CasinoCategoryBySlugResponse> => {
-    try {
-        const { data, error } = await getServerQuery(GET_CASINO_CATEGORY_BY_SLUG, {
-            slug,
-            locale,
-        })
+export const fetchCasinoCategoryBySlug = cache(
+    async (slug: string, locale: Locale): Promise<CasinoCategoryBySlugResponse> => {
+        try {
+            const { data, error } = await getServerQuery(
+                GET_CASINO_CATEGORY_BY_SLUG,
+                { slug, locale },
+                {
+                    revalidate: 3600, // Cache for 1 hour
+                }
+            )
 
-        if (error) {
+            if (error) {
+                return {
+                    title: null,
+                    description: null,
+                    keywords: null,
+                    categoryCasinoType: null,
+                    pageTitle: null,
+                    error: handleError(error, 'fetchBonusCategoryBySlug'),
+                }
+            }
+
+            return {
+                title: data?.getCasinoCategoryBySlug?.seo.title || null,
+                description: data?.getCasinoCategoryBySlug?.seo.description || null,
+                keywords: data?.getCasinoCategoryBySlug?.seo.keywords || null,
+                categoryCasinoType:
+                    data?.getCasinoCategoryBySlug?.casinoCategoryType.casinoType[0] || null,
+                pageTitle: data?.getCasinoCategoryBySlug?.pageTitle || null,
+                error: null,
+            }
+        } catch (err) {
             return {
                 title: null,
                 description: null,
                 keywords: null,
                 categoryCasinoType: null,
-                error: handleError(error, 'fetchBonusCategoryBySlug'),
+                pageTitle: null,
+                error: handleError(err, 'fetchBonusCategoryBySlug'),
             }
         }
-
-        return {
-            title: data?.getCasinoCategoryBySlug?.seo.title || null,
-            description: data?.getCasinoCategoryBySlug?.seo.description || null,
-            keywords: data?.getCasinoCategoryBySlug?.seo.keywords || null,
-            categoryCasinoType:
-                data?.getCasinoCategoryBySlug?.casinoCategoryType.casinoType[0] || null,
-            error: null,
-        }
-    } catch (err) {
-        return {
-            title: null,
-            description: null,
-            keywords: null,
-            categoryCasinoType: null,
-            error: handleError(err, 'fetchBonusCategoryBySlug'),
-        }
     }
-}
+)
 
 export const fetchAllCasinoCategories = async (
     locale: Locale

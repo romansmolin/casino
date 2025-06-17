@@ -15,6 +15,7 @@ export const GET_SIDEBAR_MENU = gql`
                     bonusCategory {
                         slug
                     }
+                    topSlug
                 }
             }
         }

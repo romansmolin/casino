@@ -1,14 +1,16 @@
+import { ApiError } from '@/shared/utils/error-handler'
+
 /* eslint-disable no-unused-vars */
 export interface CasinoTopEntry {
     rating: number
     title: string
-    main_bonus_title: string
+    mainBonusTitle: string
     hasRegularOffers: boolean
     hasLiveCasino: boolean
     hasVIPProgram: boolean
     hasLiveChat: boolean
     logo: string
-    casino: string
+    slug: string
     __typename: string
 }
 
@@ -75,4 +77,54 @@ export interface CasinoCategory {
     slug: string
     coverImage: string
     title: string
+}
+
+// API Response Types
+export interface CasinoTopByCountryResponse {
+    topByCountry: CasinoTopEntry[] | null
+    error: ApiError | null
+}
+
+export interface CasinoTopBySlugResponse {
+    top: CasinoTopEntry[] | null
+    pageTitle: string | null
+    error: ApiError | null
+}
+
+export interface CasinoByUuidResponse<T = Casino> {
+    casino: T | null
+    error: ApiError | null
+}
+
+export interface CasinosByTypeResponse {
+    casinos: Casino[] | null
+    totalPages: number
+    error: ApiError | null
+}
+
+export interface CasinosWithoutPaginationResponse {
+    casinos: Casino[] | null
+    error: ApiError | null
+}
+
+export interface CasinoBySlugResponse {
+    casino: CasinoReview | null
+    error: ApiError | null
+}
+
+export interface CasinoSeoInfoResponse {
+    title: string | null
+    description: string | null
+    keywords: string[] | null
+    error: ApiError | null
+}
+
+export interface CasinoCategoryBySlugResponse extends CasinoSeoInfoResponse {
+    categoryCasinoType: string | null
+    pageTitle: string | null
+}
+
+export interface AllCasinoCategories {
+    categories: CasinoCategory[]
+    error: ApiError | null
 }

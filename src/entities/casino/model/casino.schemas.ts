@@ -1,21 +1,41 @@
 import { gql } from '@apollo/client'
 
 export const CASINO_TOP_BY_COUNTRY = gql`
-    query GetCasinoTopByCountry($country: String!, $locale: String!) {
+    query GetTopByCountryName($country: String!, $locale: String!) {
         getTopByCountryName(country: $country, locale: $locale) {
-            id
-            country
             topList {
+                hasRegularOffers
+                mainBonusTitle
                 rating
                 title
-                main_bonus_title
-                hasRegularOffers
-                hasLiveCasino
+                logo
                 hasVIPProgram
                 hasLiveChat
-                logo
-                casino
+                hasLiveCasino
+                slug
             }
+        }
+    }
+`
+
+export const CASINO_TOP_BY_SLUG = gql`
+    query GetTopPageBySlug($slug: String!, $locale: String!) {
+        getTopPageBySlug(slug: $slug, locale: $locale) {
+            top {
+                topList {
+                    title
+                    slug
+                    rating
+                    mainBonusTitle
+                    logo
+                    hasVIPProgram
+                    hasRegularOffers
+                    hasLiveChat
+                    hasLiveCasino
+                }
+            }
+            slug
+            pageTitle
         }
     }
 `
@@ -194,6 +214,7 @@ export const GET_CASINO_CATEGORY_BY_SLUG = gql`
             casinoCategoryType {
                 casinoType
             }
+            pageTitle
         }
     }
 `

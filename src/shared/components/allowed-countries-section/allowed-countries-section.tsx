@@ -8,10 +8,6 @@ import useAllCountries from '@/shared/hooks/use-get-all-countries'
 
 const AllowedCountriesSection = ({ allowedCountries }: { allowedCountries: string[] }) => {
     const { countries, error } = useAllCountries()
-
-    useEffect(() => {
-        console.log('error: ', error)
-    }, [])
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {countries

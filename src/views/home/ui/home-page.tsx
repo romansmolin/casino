@@ -29,7 +29,7 @@ const HomePage = async ({ locale }: { locale: Locale }) => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left text-primary">
                     {t('title')} 2024
                 </h1>
-                <CasinoTop byCountry="Germany" />
+                <CasinoTop byCountry="germany" />
             </section>
             <NewsletterForm />
             <BestBonusesOfTheMonth />

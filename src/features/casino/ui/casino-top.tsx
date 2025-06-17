@@ -2,7 +2,8 @@ import { getLocale } from 'next-intl/server'
 
 import React from 'react'
 
-import { fetchCasinoTopByCountryServer } from '@/entities/casino'
+import { fetchCasinoTopByCountry } from '@/entities/casino'
+import { CasinoTopEntry } from '@/entities/casino/model/casino.types'
 import CasinoTopCard from '@/entities/casino/ui/casino-top-card'
 
 import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
@@ -15,7 +16,7 @@ interface CasinoTopProps {
 const CasinoTop: React.FC<CasinoTopProps> = async ({ byCountry, byType }) => {
     const queryParam = byType || byCountry || 'Germany'
     const locale = await getLocale()
-    const { topByCountry } = await fetchCasinoTopByCountryServer(queryParam, locale)
+    const { topByCountry } = await fetchCasinoTopByCountry(queryParam, locale)
 
     return (
         <ScrollArea className="w-[calc(100%+1.25rem)] md:w-[unset]">

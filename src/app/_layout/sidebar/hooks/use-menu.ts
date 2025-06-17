@@ -17,6 +17,7 @@ interface ServerMenuData {
                 title: string
                 casinosCategory: { slug: string } | null
                 bonusCategory: { slug: string } | null
+                topSlug: string
             }>
         }>
     }
@@ -42,9 +43,10 @@ interface MenuHookResult {
 }
 
 function generateUrl(
-    type: 'bonus' | 'casino' | null,
+    type: 'bonus' | 'casino' | null | 'top',
     casinosCategory: { slug: string } | null,
-    bonusCategory: { slug: string } | null
+    bonusCategory: { slug: string } | null,
+    topSlug: string
 ): string {
     if (type === 'bonus' && bonusCategory?.slug) {
         return `bonuses/${bonusCategory.slug}`
@@ -52,6 +54,10 @@ function generateUrl(
 
     if (type === 'casino' && casinosCategory?.slug) {
         return `casinos/${casinosCategory.slug}`
+    }
+
+    if (type === 'top' && topSlug) {
+        return `top/${topSlug}`
     }
 
     // Fallback: try to determine from available data
@@ -89,7 +95,12 @@ export function useMenu(locale: Locale): MenuHookResult {
 
             const items = section.menuLink.map((link) => ({
                 title: link.title,
-                url: generateUrl(link.type, link.casinosCategory, link.bonusCategory),
+                url: generateUrl(
+                    link.type,
+                    link.casinosCategory,
+                    link.bonusCategory,
+                    link.topSlug
+                ),
                 icon: null,
             }))
 

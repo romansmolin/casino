@@ -52,10 +52,17 @@ const createServerApolloClient = async () => {
     return apolloClient
 }
 
+// Cache options interface
+interface CacheOptions {
+    revalidate?: number
+    tags?: string[]
+}
+
 // @ts-ignore
 export const getServerQuery = async (
     schema: DocumentNode | TypedDocumentNode<any, OperationVariables>,
-    variables: OperationVariables
+    variables: OperationVariables,
+    cacheOptions?: CacheOptions
 ) => {
     try {
         const client = await createServerApolloClient()
@@ -66,7 +73,15 @@ export const getServerQuery = async (
         const { data, errors } = await client.query({
             query: schema,
             variables,
-            fetchPolicy: 'no-cache',
+            fetchPolicy: 'cache-first',
+            context: {
+                fetchOptions: {
+                    next: {
+                        revalidate: cacheOptions?.revalidate,
+                        tags: cacheOptions?.tags || [],
+                    },
+                },
+            },
         })
 
         if (errors && errors.length > 0) {

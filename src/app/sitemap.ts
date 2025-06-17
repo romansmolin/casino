@@ -9,6 +9,7 @@ import {
     fetchAllCasinoTops,
     getAllCasinosWithoutPagination,
 } from '@/entities/casino/api/casino.api'
+import { fetchAllPages } from '@/entities/page-content/api/page-content.api'
 
 import { Locale, routing } from '@/shared/lib/i18n/routing'
 import { bonusrUrlFriendly, getUserFriendlyUrl } from '@/shared/utils/text-formaters'
@@ -152,18 +153,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return allRoutes
     }
 
-    const generateRoutesForStaticPages = async () => {
-        const staticRoutes = ['/']
+    // const generateRoutesForStaticPages = async () => {
+    //     const staticRoutes = ['/']
+    //     const allRoutes: MetadataRoute.Sitemap = []
+
+    //     // For static pages, generate for all locales since they should exist
+    //     for (const locale of locales) {
+    //         const routes = staticRoutes.map((route) => ({
+    //             url: `${BASE_URL}/${locale}${route}`,
+    //             changeFrequency: 'weekly' as const,
+    //             priority: 1,
+    //         }))
+    //         allRoutes.push(...routes)
+    //     }
+
+    //     return allRoutes
+    // }
+
+    const generateRoutesForAllPages = async () => {
         const allRoutes: MetadataRoute.Sitemap = []
 
-        // For static pages, generate for all locales since they should exist
         for (const locale of locales) {
-            const routes = staticRoutes.map((route) => ({
-                url: `${BASE_URL}/${locale}${route}`,
-                changeFrequency: 'weekly' as const,
-                priority: 1,
-            }))
-            allRoutes.push(...routes)
+            try {
+                const { pages, error } = await fetchAllPages(locale)
+
+                // Only generate routes if we have pages and no error
+                if (!error && pages && pages.length > 0) {
+                    const routes = pages.map((page) => ({
+                        url: `${BASE_URL}/${locale}/${page.slug}`,
+                        changeFrequency: 'weekly' as const,
+                        priority: 0.8,
+                    }))
+                    allRoutes.push(...routes)
+                }
+            } catch (error) {
+                console.error(`Error fetching pages for locale "${locale}":`, error)
+                // Continue with next locale instead of failing completely
+            }
         }
 
         return allRoutes
@@ -181,10 +207,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ] = await Promise.all([
         generateRoutesForBonusReviews(),
         generateRoutesForCasinoReviews(),
-        generateRoutesForStaticPages(),
+        // generateRoutesForStaticPages(),
         generateRoutesForCasinoCategories(),
         generateRoutesForBonusCategories(),
         generateAllCasinoTops(),
+        generateRoutesForAllPages(),
     ])
 
     return [

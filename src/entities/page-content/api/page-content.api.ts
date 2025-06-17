@@ -2,8 +2,16 @@ import { getServerQuery } from '@/shared/lib/apollo-client'
 import { Locale } from '@/shared/lib/i18n/routing'
 import { ApiError, handleError } from '@/shared/utils/error-handler'
 
-import { GET_PAGE_CONTENT_BY_SLUG, GET_PAGE_SEO_BY_SLUG } from '../model/page-content.schemas'
-import { PageContentResponse, PageSeoInfoResponse } from '../model/page-content.types'
+import {
+    GET_ALL_PAGES,
+    GET_PAGE_CONTENT_BY_SLUG,
+    GET_PAGE_SEO_BY_SLUG,
+} from '../model/page-content.schemas'
+import {
+    AllPagesResponse,
+    PageContentResponse,
+    PageSeoInfoResponse,
+} from '../model/page-content.types'
 
 export const fetchPageContentBySlug = async (
     slug: string,
@@ -46,6 +54,7 @@ export const fetchPageSeoInfoBySlug = async (
                 title: null,
                 description: null,
                 keywords: null,
+                pageTitle: null,
                 error: handleError(error, 'fetchPageSeoInfoBySlug'),
             }
         }
@@ -54,6 +63,7 @@ export const fetchPageSeoInfoBySlug = async (
             title: data?.getPageSeoInfoBySlug?.title || null,
             description: data?.getPageSeoInfoBySlug?.description || null,
             keywords: data?.getPageSeoInfoBySlug?.keywords || null,
+            pageTitle: null,
             error: null,
         }
     } catch (err) {
@@ -61,7 +71,33 @@ export const fetchPageSeoInfoBySlug = async (
             title: null,
             description: null,
             keywords: null,
+            pageTitle: null,
             error: handleError(err, 'fetchPageSeoInfoBySlug'),
+        }
+    }
+}
+
+export const fetchAllPages = async (locale: Locale): Promise<AllPagesResponse> => {
+    try {
+        const { data, error } = await getServerQuery(GET_ALL_PAGES, {
+            locale,
+        })
+
+        if (error) {
+            return {
+                pages: null,
+                error: handleError(error, 'fetchAllPages'),
+            }
+        }
+
+        return {
+            pages: data?.getAllPages || null,
+            error: null,
+        }
+    } catch (err) {
+        return {
+            pages: null,
+            error: handleError(err, 'fetchAllPages'),
         }
     }
 }

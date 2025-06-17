@@ -16,7 +16,7 @@ import { ScrollArea, ScrollBar } from '@/shared/ui/scroll-area'
 
 const BonusCategories = () => {
     const t = useTranslations('common')
-    const clodsedLength = 6
+    const clodsedLength = 8
     const locale = useLocale()
     const isMobile = useIsMobile()
     const [showAll, setShowAll] = useState(false)
@@ -49,7 +49,7 @@ const BonusCategories = () => {
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
 
-            {!isMobile && data?.getAllBonusCategories.length > 6 && (
+            {!isMobile && data?.getAllBonusCategories.length > clodsedLength && (
                 <div className="flex justify-center">
                     <Button
                         size="lg"

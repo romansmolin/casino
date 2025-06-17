@@ -40,3 +40,12 @@ export const GET_PAGE_SEO_BY_SLUG = gql`
         }
     }
 `
+
+// This query is required for sitemap generation
+export const GET_ALL_PAGES = gql`
+    query GetAllPages($locale: String!) {
+        getAllPages(locale: $locale) {
+            slug
+        }
+    }
+`

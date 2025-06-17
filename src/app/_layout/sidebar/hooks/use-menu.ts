@@ -15,9 +15,7 @@ interface ServerMenuData {
             menuLink: Array<{
                 type: 'bonus' | 'casino' | null
                 title: string
-                casinosCategory: { slug: string } | null
-                bonusCategory: { slug: string } | null
-                topSlug: string
+                slug: string
             }>
         }>
     }
@@ -43,30 +41,23 @@ interface MenuHookResult {
 }
 
 function generateUrl(
-    type: 'bonus' | 'casino' | null | 'top',
-    casinosCategory: { slug: string } | null,
-    bonusCategory: { slug: string } | null,
-    topSlug: string
+    type: 'bonus' | 'casino' | null | 'top' | 'static',
+    slug: string
 ): string {
-    if (type === 'bonus' && bonusCategory?.slug) {
-        return `bonuses/${bonusCategory.slug}`
+    if (type === 'bonus') {
+        return `bonuses/${slug}`
     }
 
-    if (type === 'casino' && casinosCategory?.slug) {
-        return `casinos/${casinosCategory.slug}`
+    if (type === 'casino') {
+        return `casinos/${slug}`
     }
 
-    if (type === 'top' && topSlug) {
-        return `top/${topSlug}`
+    if (type === 'top') {
+        return `top/${slug}`
     }
 
-    // Fallback: try to determine from available data
-    if (bonusCategory?.slug) {
-        return `bonuses/${bonusCategory.slug}`
-    }
-
-    if (casinosCategory?.slug) {
-        return `casinos/${casinosCategory.slug}`
+    if (type === 'static') {
+        return `${slug}`
     }
 
     return '#'
@@ -95,12 +86,7 @@ export function useMenu(locale: Locale): MenuHookResult {
 
             const items = section.menuLink.map((link) => ({
                 title: link.title,
-                url: generateUrl(
-                    link.type,
-                    link.casinosCategory,
-                    link.bonusCategory,
-                    link.topSlug
-                ),
+                url: generateUrl(link.type, link.slug),
                 icon: null,
             }))
 

@@ -9,6 +9,7 @@ import { cn } from '@/shared/lib/css'
 import { StrapiContent, StrapiContentItem } from '../model/types'
 
 const StrapiTextRenderer = ({ contentData }: { contentData: StrapiContent[] }) => {
+    console.log('contentData: ', contentData)
     return contentData?.map((item: StrapiContent, index: number) => {
         if (item.type === 'heading' && item.children[0]?.text) {
             return (
@@ -146,14 +147,16 @@ const StrapiTextRenderer = ({ contentData }: { contentData: StrapiContent[] }) =
             return (
                 <div
                     key={item.image?.url}
-                    className="bg-primary flex justify-center items-center rounded-md"
+                    className="flex justify-center w-fullrounded-md p-4"
                 >
                     <Image
                         src={item.image?.url}
-                        width={400}
-                        height={400}
+                        width={0}
+                        height={0}
                         alt={'Review Image'}
-                        className="object-cover"
+                        className="max-w-full h-auto max-h-96 object-contain rounded"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
+                        style={{ width: 'auto', height: 'auto' }}
                     />
                 </div>
             )

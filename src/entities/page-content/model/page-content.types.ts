@@ -25,6 +25,11 @@ export interface PageContentItem {
     }>
 }
 
+// Page interface for sitemap generation
+export interface Page {
+    slug: string
+}
+
 // API Response Types
 export interface PageContentResponse {
     pageContent: PageContentItem[] | null
@@ -37,4 +42,9 @@ export interface PageSeoInfoResponse {
     keywords: string[] | null
     error: ApiError | null
     pageTitle: string | null
+}
+
+export interface AllPagesResponse {
+    pages: Page[] | null
+    error: ApiError | null
 }

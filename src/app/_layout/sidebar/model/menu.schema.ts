@@ -5,18 +5,12 @@ export const GET_SIDEBAR_MENU = gql`
         getMenu(locale: $locale) {
             sections {
                 title
-                isActive
                 menuLink {
-                    type
                     title
-                    casinosCategory {
-                        slug
-                    }
-                    bonusCategory {
-                        slug
-                    }
-                    topSlug
+                    slug
+                    type
                 }
+                isActive
             }
         }
     }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import type { CasinoReviewFaq as CasinoReviewFaqType } from '@/entities/casino'
+
 import { Accardion } from '@/shared/components/accardion'
 import Typography from '@/shared/components/typography/typography'
 import { Card, CardContent } from '@/shared/ui/card'
@@ -8,7 +10,7 @@ const CasinoReviewFaq = ({
     faq,
     casinoName,
 }: {
-    faq: CasinoReviewFaq[]
+    faq: CasinoReviewFaqType[]
     casinoName: string
 }) => {
     return (

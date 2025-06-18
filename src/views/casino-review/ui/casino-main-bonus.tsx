@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import React from 'react'
 
+import { CasinoMainBonus as CasinoMainBonusType } from '@/entities/casino'
 import { StrapiContent } from '@/entities/page-content/model/types'
 import StrapiTextRenderer from '@/entities/page-content/ui/strapi-text-renderer'
 
@@ -16,7 +17,7 @@ const CasinoMainBonus = async ({
     mainBonus,
     casinoName,
 }: {
-    mainBonus: CasinoMainBonus
+    mainBonus: CasinoMainBonusType
     casinoName: string
 }) => {
     const locale = await getLocale()

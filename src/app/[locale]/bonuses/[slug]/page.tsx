@@ -17,9 +17,9 @@ interface BonusCategoryProps {
 export async function generateMetadata({
     params,
 }: {
-    params: { slug: string; locale: Locale }
+    params: Promise<{ slug: string; locale: Locale }>
 }) {
-    const { slug, locale } = params
+    const { slug, locale } = await params
     const { title, description, keywords } = await fetchBonusCategoryBySlug(slug, locale)
 
     return {

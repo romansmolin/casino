@@ -98,7 +98,7 @@ export function useMenu(locale: Locale): MenuHookResult {
                 items,
             }
         })
-    }, [data, loading])
+    }, [data])
 
     return {
         menuItems: transformedMenuItems,

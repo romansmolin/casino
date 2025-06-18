@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 
 import React, { useEffect } from 'react'
 
+import { StrapiContent } from '@/entities/casino/model/casino.types'
+
 import { cn } from '@/shared/lib/css'
 import { Card, CardContent } from '@/shared/ui/card'
 

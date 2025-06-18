@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/button'
 import { Card, CardContent } from '@/shared/ui/card'
 import { bonusrUrlFriendly } from '@/shared/utils/text-formaters'
 
+import { BonusCategoryType } from '../model/bonus.types'
 import BonusTypeBadge from './bonus-type-badge/bonus-type-badge'
 
 interface BonusDetailsCardProps {

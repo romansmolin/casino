@@ -12,9 +12,9 @@ import { Locale } from '@/shared/lib/i18n/routing'
 export async function generateMetadata({
     params,
 }: {
-    params: { slug: string; locale: Locale }
+    params: Promise<{ slug: string; locale: Locale }>
 }) {
-    const { slug, locale } = params
+    const { slug, locale } = await params
     const { title, description, keywords } = await fetchCasinoCategoryBySlug(slug, locale)
 
     return {

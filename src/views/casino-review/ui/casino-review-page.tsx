@@ -1,4 +1,4 @@
-import { CircleHelp, Coins, Currency } from 'lucide-react'
+import { CircleHelp, Coins, Currency, Gamepad, GamepadIcon } from 'lucide-react'
 import { getLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
@@ -7,8 +7,10 @@ import React from 'react'
 import { CasinoAvailability } from '@/features/casino'
 
 import { getCasinoBySlug } from '@/entities/casino/api/casino.api'
+import { GameProviderCard } from '@/entities/game-provider'
 import { strapiTextRenderer as CasinoReviewRenderer } from '@/entities/page-content'
 import { StrapiContent } from '@/entities/page-content/model/types'
+import { PaymentProviderCard } from '@/entities/payment-provider'
 
 import AllowedCountriesSection from '@/shared/components/allowed-countries-section/allowed-countries-section'
 import { TableContent as CasinoTableContent } from '@/shared/components/table-content'
@@ -33,7 +35,7 @@ const CasinoReviewPage = async ({ slug }: { slug: string }) => {
             <div className="flex flex-col lg:flex-row gap-4">
                 <CasinoReviewCard
                     casinoName={casino.name}
-                    bonusTitle={casino.bonus_title}
+                    bonusTitle={casino.bonusTitle}
                     logo={casino.logoUrl}
                     casinoType={casino.casinoType}
                     affiliateLink={casino.affiliateLink}
@@ -69,6 +71,38 @@ const CasinoReviewPage = async ({ slug }: { slug: string }) => {
                 </div>
             </div>
 
+            {casino.gameProviders.length > 0 && (
+                <Card className="bento-block space-y-5">
+                    <CardTitle className="flex items-center gap-2">
+                        <GamepadIcon className="mr-2 h-8 w-8" />
+                        <Typography as="h2" variant="h2">
+                            Game Providers
+                        </Typography>
+                    </CardTitle>
+                    <CardContent className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-5">
+                        {casino.gameProviders.map((provider) => (
+                            <GameProviderCard key={provider.name} provider={provider} />
+                        ))}
+                    </CardContent>
+                </Card>
+            )}
+
+            {casino.paymentProviders.length > 0 && (
+                <Card className="bento-block space-y-5">
+                    <CardTitle className="flex items-center gap-2">
+                        <GamepadIcon className="mr-2 h-8 w-8" />
+                        <Typography as="h2" variant="h2">
+                            Payment Providers
+                        </Typography>
+                    </CardTitle>
+                    <CardContent className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-5">
+                        {casino.paymentProviders.map((provider) => (
+                            <PaymentProviderCard key={provider.name} provider={provider} />
+                        ))}
+                    </CardContent>
+                </Card>
+            )}
+
             {casino.allowedCountries.length > 0 && (
                 <Card className="bento-block space-y-5">
                     <CardTitle className="flex items-center gap-2">
@@ -92,15 +126,13 @@ const CasinoReviewPage = async ({ slug }: { slug: string }) => {
                         </Typography>
                     </CardTitle>
                     <CardContent>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-5">
                             {casino.allowedCurrencies.map((currency) => (
                                 <div
                                     key={currency}
-                                    className="flex items-center gap-2 p-2 border rounded-md"
+                                    className="flex items-center justify-center gap-2 p-2 rounded-md border border-primary bg-primary/10"
                                 >
-                                    <span className="text-sm font-medium text-green-500">
-                                        {currency}
-                                    </span>
+                                    <span className="text-sm font-medium">{currency}</span>
                                 </div>
                             ))}
                         </div>

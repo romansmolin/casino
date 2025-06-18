@@ -1,4 +1,7 @@
-import { ApiError } from '@/shared/utils/error-handler'
+import type { GameProvider } from '@/entities/game-provider'
+import type { PaymentProvider } from '@/entities/payment-provider'
+
+import type { ApiError } from '@/shared/utils/error-handler'
 
 /* eslint-disable no-unused-vars */
 export interface CasinoTopEntry {
@@ -16,7 +19,7 @@ export interface CasinoTopEntry {
 
 export interface Casino {
     name: string
-    bonus_title: string
+    bonusTitle: string
     logoUrl: string
     features: string[]
     rating: number
@@ -27,6 +30,8 @@ export interface Casino {
     allowedCurrencies: string[]
     slug: string
     affiliateLink: string
+    gameProviders: GameProvider[]
+    paymentProviders: PaymentProvider[]
 }
 
 export interface CasinoReview extends Casino {

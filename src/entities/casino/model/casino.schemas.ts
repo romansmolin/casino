@@ -45,7 +45,7 @@ export const CASINO_BY_UUID = gql`
     query GetCasinoByID($uuid: String!, $locale: String!) {
         getCasinoByUUID(uuid: $uuid, locale: $locale) {
             name
-            bonus_title
+            bonusTitle
             logoUrl
             features
             rating
@@ -109,7 +109,7 @@ export const CASINOS_BY_TYPE = gql`
             casinos {
                 id
                 name
-                bonus_title
+                bonusTitle
                 logoUrl
                 features
                 rating
@@ -154,7 +154,7 @@ export const CASINO_BY_SLUG = gql`
             }
             allowedCountries
             allowedCurrencies
-            bonus_title
+            bonusTitle
             casinoType
             faq {
                 label
@@ -185,6 +185,14 @@ export const CASINO_BY_SLUG = gql`
             }
             slug
             affiliateLink
+            gameProviders {
+                providerLogo
+                name
+            }
+            paymentProviders {
+                name
+                paymentLogo
+            }
         }
     }
 `

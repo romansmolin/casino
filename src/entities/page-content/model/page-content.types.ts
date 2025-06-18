@@ -7,6 +7,11 @@ export interface PageContentItem {
     }
     position?: 'right' | 'left'
     imageBackgroundColor?: string
+    badge: string
+    actionButton: {
+        title: string
+        link: string
+    }
     content: Array<{
         type: string
         children: Array<{

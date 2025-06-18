@@ -33,7 +33,7 @@ const isCurrentSlugEqualToMenuSlug = (pathname: string, menuLink: string) => {
     const currentMenuSlug = menuLink.split('/').slice(1).at(-1)
     const pathnameSlug = pathname.split('/').slice(1).at(-1)
 
-    if (currentMenuSlug === pathnameSlug) return true
+    if (currentMenuSlug === pathnameSlug || pathnameSlug === menuLink) return true
     else return false
 }
 

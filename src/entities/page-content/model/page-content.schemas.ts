@@ -4,27 +4,35 @@ export const GET_PAGE_CONTENT_BY_SLUG = gql`
     query GetPageContentBySlug($slug: String!, $locale: String!) {
         getPageContentBySlug(slug: $slug, locale: $locale) {
             pageContent {
-                type
+                content {
+                    children {
+                        url
+                        type
+                        text
+                        children {
+                            bold
+                            text
+                            type
+                        }
+                        bold
+                    }
+                    faqs {
+                        text
+                        label
+                    }
+                    type
+                    format
+                }
                 image {
                     url
                 }
-                position
                 imageBackgroundColor
-                content {
-                    type
-                    children {
-                        type
-                        text
-                        bold
-                        url
-                        children {
-                            text
-                        }
-                    }
-                    faqs {
-                        label
-                        text
-                    }
+                position
+                type
+                badge
+                actionButton {
+                    title
+                    link
                 }
             }
         }

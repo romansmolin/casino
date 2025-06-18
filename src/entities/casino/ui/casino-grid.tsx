@@ -2,6 +2,7 @@ import React from 'react'
 
 import { cn } from '@/shared/lib/css'
 
+import { Casino } from '../model/casino.types'
 import CasinoCard from './casino-card'
 
 const CasinoGrid = ({
@@ -26,7 +27,7 @@ const CasinoGrid = ({
                     key={casino.uuid}
                     uuid={casino.uuid}
                     name={casino.name}
-                    bonusTitle={casino.bonus_title}
+                    bonusTitle={casino.bonusTitle}
                     logoUrl={casino.logoUrl}
                     features={casino.features}
                     rating={casino.rating}

@@ -255,7 +255,7 @@ export const fetchCasinoCategoryBySlug = cache(
                 GET_CASINO_CATEGORY_BY_SLUG,
                 { slug, locale },
                 {
-                    revalidate: 3600, // Cache for 1 hour
+                    // revalidate: 3600,
                 }
             )
 

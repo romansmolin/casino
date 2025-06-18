@@ -17,6 +17,8 @@ const content: Record<string, any> = {
             position={contentItem.position}
             text={contentItem.content}
             image={contentItem.image}
+            badge={contentItem.badge}
+            actionButton={contentItem.actionButton}
         />
     ),
 }

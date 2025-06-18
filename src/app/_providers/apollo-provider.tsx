@@ -44,7 +44,7 @@ function makeClient() {
     const { NextSSRApolloClient, NextSSRInMemoryCache, SSRMultipartLink } = getApolloModules()
 
     const httpLink = new HttpLink({
-        uri: 'http://localhost:1337/graphql',
+        uri: process.env.NEXT_PUBLIC_GRAPHQL_API_URL || 'http://localhost:1337/graphql',
     })
 
     const authLink = setContext((_, { headers }) => {
